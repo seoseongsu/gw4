@@ -21,8 +21,7 @@
 			<td align="center" width="50">입금액</td>
 			<td align="center" width="50">출금액</td>
 			<td align="center" width="50">잔액</td>
-		</tr>
-			abcd
+		</tr>			
 		<tr>
 			<td colspan="5" align="center">합계</td>
 			<td align="center" width="50"></td>
