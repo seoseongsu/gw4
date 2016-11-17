@@ -6,6 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>사원목록</title>
+<script>
+function deleteEvent(a){
+	if(confirm("정말 삭제하시겠습니까??")==true){
+		location.href="empDeletePro.do?emp_code="+a
+	}else{
+		return;
+	}
+}
+</script>
 </head>
 
 <body>
@@ -46,7 +55,8 @@
 				<td>${article.po_code }</td>
 				<td>${article.emp_acability }</td>
 				<td>${article.emp_join }</td>
-				<td><a href="empUpdate.do?emp_code=${article.emp_code }">수정</a>/<a href="empdelete.do?emp_code=${article.emp_code }">삭제</a></td>
+				<td><input type="button" value="수정" onclick="location='empUpdate.do?emp_code=${article.emp_code }'"/>
+				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/>
 			</tr>
 			</c:forEach>
 		</table>
