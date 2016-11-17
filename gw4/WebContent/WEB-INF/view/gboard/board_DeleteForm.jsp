@@ -19,10 +19,10 @@
 </script>
 </head>
 
-<body bgcolor="${bodyback_c}">
+<body >
 <center><b>글삭제</b>
 <br>
-<form method="POST" name="delForm"  action="board_DeletePro.do?pageNum=${pageNum}" 
+<form method="post" name="delForm"  action="board_DeletePro.do?pageNum=${pageNum}" 
    onsubmit="return deleteSave()"> 
  <table border="1" align="center" cellspacing="0" cellpadding="0" width="360">
   <tr height="30">
@@ -32,7 +32,7 @@
   <tr height="30">
      <td align=center >비밀번호 :   
        <input type="password" name="board_passwd" size="8" maxlength="12">
-	   <input type="hidden" name="board_count" value="${board_count}"></td>
+	   <input type="hidden" name="board_num" value="${board_num}"></td>
  </tr>
  <tr height="30">
     <td align=center >
