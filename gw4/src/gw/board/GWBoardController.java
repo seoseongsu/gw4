@@ -176,14 +176,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 	
 	
- /*-----------------------------------------------------------------------------------*/	
+	/*-----------------------------------------------------------------------------------*/	
 	
 	
 	@RequestMapping("board_ModifyForm.do")
-		public String board_ModifyForm(){
+		public String board_ModifyForm(HttpServletRequest request)throws Exception{
+		
+		
+			int num = Integer.parseInt(request.getParameter("board_num"));
+		    String pageNum = request.getParameter("pageNum");
+
+		    BoardVO boardList = (BoardVO) sqlMap.queryForObject("gboard.boardSelectNum", num);
+
+		
+		    request.setAttribute("pageNum", new Integer(pageNum));
+		    request.setAttribute("boardList", boardList);
+		
+		
+		
 		
 		return "/gboard/board_ModifyForm";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/*-----------------------------------------------------------------------------------*/
 	
 	@RequestMapping("board_ModifyPro.do")
 		public String board_ModifyPro(){

@@ -10,26 +10,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>List</title>
 </head>
-
-
-	<center><b>[${category_name}]</b><br />
-	<table>
+	
+	<table width="1000" align="center">
 		<tr>
-			
-			<select id ="category" name="category" >
+			<td align="center">
+			<b>[${category_name}]</b><br />
+			</td>
+		</tr>
+		</table>
+	<table width="1000" align="center">
+		<tr>
+			<td colspan"4" align="right">
+			<select  id ="category" name="category" >
 				<option>통합게시판</option>
 			<c:forEach items="${categoryList}" var="category">
 					<option value="${category.category_code}">${category.category_name}</option>		
 			</c:forEach>
-			
+			</select>
+			</td>	
 		</tr>
-		</select>
+	
 	</table>
-		<table border="1"  width="900">
+		<table border="1"  width="1000" align="center">
 		<tr>
-				<th width="600">제목</th>
+				<th width="650">제목</th>
 				<th width="100">작성자</th>
-				<th width="100">작성날짜</th>
+				<th width="150">작성날짜</th>
 				<th width="100">조회</th>
 			</tr>
 			
@@ -45,9 +51,11 @@
 			 </c:forEach>	
 			</table>
 		
-		<table>
+		<table  width="1000" align="center">
 			<tr>
-				<input type="button" value="글등록" OnClick="window.location='board_WriteForm.do'">
+			<td colspan="4" align="right">
+				<input  type="button" value="글등록" OnClick="window.location='board_WriteForm.do'">
+			</td>
 			</tr>
 		</table>
 
@@ -62,19 +70,18 @@
    </c:if> 
           
    <c:if test="${startPage > 10}">
-        <a href="list.do?pageNum=${startPage - 10 }">[이전]</a>
+        <a href="board_List.do?pageNum=${startPage - 10 }">[이전]</a>
    </c:if>
 
    <c:forEach var="i" begin="${startPage}" end="${endPage}">
-       <a href="list.do?pageNum=${i}">[${i}]</a>
+       <a href="board_List.do?pageNum=${i}">[${i}]</a>
    </c:forEach>
 
    <c:if test="${endPage < pageCount}">
-        <a href="list.do?pageNum=${startPage + 10}">[다음]</a>
+        <a href="board_List.do?pageNum=${startPage + 10}">[다음]</a>
    </c:if>
 </c:if>
-
+</table>
 </body>
 </html>
-
  

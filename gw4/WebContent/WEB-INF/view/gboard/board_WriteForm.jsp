@@ -13,8 +13,18 @@
 function categorycheck(c)
 {
 	if(c=='C001'){
-		document.writeform.board_subject.value='공지사항';
+		document.writeform.board_subject.value='[공지사항]';		
+		'brake';
 	}	
+	
+	else if (c=='C002'){
+		document.writeform.board_subject.value='[자유게시판]';		
+		'brake';
+	}
+	else if (c=='C003'){
+		document.writeform.board_subject.value='[파일함]';		
+		'brake';
+	}
 }
 
 </script>
@@ -39,7 +49,7 @@ function categorycheck(c)
 	<tr>
 		<th width="100">제목</th>
 		<td width="600">
-			<input type="text" name="board_subject" >
+			<input type="text" width="600" name="board_subject" >
 		</td>
 	</tr>
 	

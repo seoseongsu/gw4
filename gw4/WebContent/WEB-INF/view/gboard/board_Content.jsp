@@ -21,6 +21,7 @@
   <tr height="30">
     <td align="center" width="125" >작성자</td>
     <td align="center" width="125" align="center"></td>
+   
     <td align="center" width="125" >작성일</td>
     <td align="center" width="125" align="center">${boardList.board_date}</td>
   </tr>
@@ -35,7 +36,7 @@
   <tr height="30">      
     <td colspan="4" align="right" > 
 	  <input type="button" value="글수정" 
-       onclick="document.location.href='updateForm.do?num=${boardList.board_num}&pageNum=${pageNum}'">
+       onclick="document.location.href='board_ModifyForm.do?board_num=${boardList.board_num}&pageNum=${pageNum}'">
 	   &nbsp;&nbsp;&nbsp;&nbsp;
 	  <input type="button" value="글삭제" 
        onclick="document.location.href='board_DeleteForm.do?board_num=${boardList.board_num}&pageNum=${pageNum}'">
