@@ -172,4 +172,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		return "/gboard/board_DeletePro";
 		}
 	
+	
+
+	
+	
+ /*-----------------------------------------------------------------------------------*/	
+	
+	
+	@RequestMapping("board_ModifyForm.do")
+		public String board_ModifyForm(){
+		
+		return "/gboard/board_ModifyForm";
 	}
+	
+	@RequestMapping("board_ModifyPro.do")
+		public String board_ModifyPro(){
+		
+		return "/gboard/board_ModifyPro";
+	}
+}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
