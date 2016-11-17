@@ -35,8 +35,9 @@ $(function(){
 </script>
 </head>
 <body>
-<form method="post" action="empInsertPro.do" name="userinput" onSubmit="return checkIt()">
+<form method="get" action="empUpdatePro.do" name="userinput" onSubmit="return checkIt()">
   <table width="600" border="1" cellspacing="0" cellpadding="3" align="center" >
+    <input type="hidden" name="emp_code" value="${empVo.emp_code }" />
     <tr> 
     <td colspan="2" height="39" align="center">
        <font size="+1" ><b>사원정보수정</b></font></td>
@@ -124,7 +125,7 @@ $(function(){
     </tr>
     <tr> 
       <td colspan="2" align="center"> 
-          <input type="submit" name="confirm" value="등록" >
+          <input type="submit" name="confirm" value="수정" >
           <input type="reset" name="reset" value="다시입력">
           <input type="button" value="취소" onclick="javascript:window.location='empList.do'">
       </td>

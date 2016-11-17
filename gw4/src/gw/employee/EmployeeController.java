@@ -45,22 +45,6 @@ public class EmployeeController {
 	
 	@RequestMapping("/emp/empInsertPro.do")
 	public String empInsertPro(HttpServletRequest request, EmployeeVO vo) throws Exception{
-		request.setCharacterEncoding("UTF-8");
-		System.out.println(request.getParameter("emp_name"));
-		System.out.println(vo.getEmp_code());
-		System.out.println(vo.getDept_code());
-		System.out.println(vo.getPo_code());
-		System.out.println(vo.getEmp_passwd());
-		System.out.println(vo.getEmp_name());
-		System.out.println(vo.getEmp_jumin());
-		System.out.println(vo.getEmp_birth());
-		System.out.println(vo.getEmp_phone());	
-		System.out.println(vo.getEmp_email());
-		System.out.println(vo.getEmp_acability());
-		System.out.println(vo.getEmp_career());
-		System.out.println(vo.getEmp_join());
-		System.out.println(vo.getEmp_bank());
-		System.out.println(vo.getEmp_acnum());
 		sqlMap.insert("emp.empInsert", vo);
 		return "/emp/empInsertPro";
 	}
@@ -71,7 +55,6 @@ public class EmployeeController {
 		List deptList = null; 
 		List poList = null; 
 		
-		System.out.println(emp_code);
 		EmployeeVO empVo = (EmployeeVO) sqlMap.queryForObject("emp.empSelectUp", emp_code);
 		deptList = sqlMap.queryForList("dept.deptSelectAll", null);
 		poList = sqlMap.queryForList("po.poSelectAll", null);
@@ -80,5 +63,11 @@ public class EmployeeController {
 		request.setAttribute("deptList", deptList);
 		request.setAttribute("poList", poList);
 		return "/emp/empUpdate";
+	}
+	
+	@RequestMapping("/emp/empUpdatePro.do")
+	public String empUpdatePro(HttpServletRequest request, EmployeeVO vo){
+		sqlMap.update("emp.empUpdate", vo);
+		return "/emp/empUpdatePro";
 	}
 }
