@@ -22,6 +22,20 @@
 			<td align="center" width="50">출금액</td>
 			<td align="center" width="50">잔액</td>
 		</tr>			
+		
+		<c:forEach var="fund" items="${fundList}">
+			<tr>
+				<td align="center" width="50">${fund.fund_year} - ${fund.fund_month} - ${fund.fund_day}</td>
+				<td align="center" width="50">${fund.fund_division}</td>
+				<td align="center" width="80">${fund.fund_item}</td>
+				<td align="center" width="120">${fund.fund_briefs}</td>
+				<td align="center" width="50">${fund.fund_account}</td>
+				<td align="center" width="50">${fund.fund_deposit}</td>
+				<td align="center" width="50">${fund.fund_withdraw}</td>
+				<td align="center" width="50">${fund.fund_balance}</td>
+			</tr>
+		</c:forEach>
+		
 		<tr>
 			<td colspan="5" align="center">합계</td>
 			<td align="center" width="50"></td>

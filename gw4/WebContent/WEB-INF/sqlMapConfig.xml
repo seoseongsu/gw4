@@ -8,4 +8,5 @@
 	<sqlMap resource="/sql/employeeSQL.xml"/>
 	<sqlMap resource="/sql/departmentSQL.xml"/>
 	<sqlMap resource="/sql/positionSQL.xml"/>
+	<sqlMap resource="/sql/fundSQL.xml"/>
 </sqlMapConfig>
