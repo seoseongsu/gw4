@@ -7,7 +7,7 @@
 </head>
 
 <body >  
-<center><b>공지 사항</b>
+<center><b>공용 게시판</b>
 <br>
 <form>
 <table width="800" border="1" align="center">  
