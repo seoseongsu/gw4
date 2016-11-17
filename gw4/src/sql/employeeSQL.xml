@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="emp">
+	<typeAlias alias="empVo" type="gw.employee.EmployeeVO"/>
+		<select id="empSelectAll" resultClass="empVo">
+			select * from employee
+		</select>
+		<select id="empSelectUp" resultClass="empVo" parameterClass="String">
+			select * from employee where emp_code=#emp_code#
+		</select>
+		<select id="empSelectCount" resultClass="int">
+			select count(*) from employee
+		</select>
+		<insert id="empInsert" parameterClass="empVo">
+			insert into employee(emp_code,dept_code,po_code,emp_name,
+			emp_jumin,emp_birth,emp_phone,emp_email,emp_acability,emp_career,
+			emp_join,emp_bank,emp_acnum) 
+			values(emp_code_seq.nextval,#dept_code#,#po_code#,#emp_name#,
+			#emp_jumin#,#emp_birth#,#emp_phone#,#emp_email#,#emp_acability#,#emp_career#,
+			#emp_join#,#emp_bank#,#emp_acnum#)
+		</insert>
+		<update id="empUpdate" parameterClass="empVo">
+			update employee set dept_code=#dept_code#,po_code=#po_code#, 
+			emp_name=#emp_name#,emp_jumin=#emp_jumin#,emp_birth=#emp_birth#,
+			emp_phone=#emp_phone#,emp_email=#emp_email#,emp_acability=#emp_acability#,
+			emp_career=#emp_career#,emp_join=#emp_join#,emp_bank=#emp_bank#,
+			emp_acnum=#emp_acnum# where emp_code=#emp_code#
+		</update>
+		<delete id="empDelete" parameterClass="String">
+			delete from employee where emp_code=#emp_code#
+		</delete>
+</sqlMap>
+

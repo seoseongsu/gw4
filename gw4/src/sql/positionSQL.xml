@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="po">
+	<typeAlias alias="poVo" type="gw.position.PositionVO"/>
+		<select id="poSelectAll" resultClass="poVo">
+			select * from position
+		</select>
+		<select id="poSelectCount" resultClass="int">
+			select count(*) from position
+		</select>
+		<insert id="poInsert" parameterClass="poVo">
+			insert into position values(##,##,##,##,##)
+		</insert>
+</sqlMap>
+

@@ -1,0 +1,15 @@
+테이블이름
+department	//부서
+employee	//사원정보
+commute		//근태관리(미진행)
+iboard		//통합게시판구분
+board		//사내게시판
+bcomment	//게시판 댓글
+bstatement	//업무명세서(미진행)
+bbreakdown	//업무내역(미진행)
+approval	//결재(미진행)
+fund		//자금관리(미진행)
+hardware	//HW관리(미진행)
+software	//SW관리(미진행)
+salary		//급여관리(미진행)
+group		//조직도(미진행)

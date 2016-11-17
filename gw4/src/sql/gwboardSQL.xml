@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="gboard">
+	<typeAlias alias="IbaordVo" type="gw.board.IbaordVo"/>
+	<typeAlias alias="Iboard_categoryVO" type="gw.board.Iboard_categoryVO"/>
+	<typeAlias alias="BoardVO" type="gw.board.BoardVO"/>
+	<typeAlias alias="BcommentVO" type="gw.board.BcommentVO"/>
+		<!-- board_List 게시물 번호 -->
+		<select id="boardCount" resultClass="int">
+			select count(*) from board
+		</select>
+		
+		<!-- board_List 게시물 내용 -->
+		
+		<select id="boardAll" resultClass="BoardVO" parameterClass="java.util.HashMap">
+			<![CDATA[
+			select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
+			from 
+			(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,rownum r
+			from 
+			(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
+			from board order by board_num desc) ) where r >= #start# and r <= #end#
+			]]>
+		</select>
+		<!-- board_WriteForm 카테고리 -->
+		<select id="categorySelect" resultClass="Iboard_categoryVO">
+			select * from Iboard_category 
+		</select>
+		
+		<!-- 넘버 -->
+		<select id="boardSelectMaxNum" resultClass="int">
+			select max(board_num) from board
+		</select>
+		<!-- board_WritePro 내용 삽입 -->
+		<insert id="boardInsert" parameterClass="BoardVo">
+			insert into board
+			(board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname) 
+			values
+			(board_seq.NEXTVAL,#category_code#,#board_subject#,#board_content#,#board_passwd#,sysdate,#board_readcount#,#board_file_orgname#,#board_file_savname#)
+		</insert>
+		
+		<!-- baord_Content -->
+		<update id="boardReadcount" parameterClass="int">
+			update board set board_readcount=board_readcount+1 where board_num = #board_num#
+		</update>
+		
+		<!-- baord_Content -->
+		<select id="boardSelectNum" resultClass="boardVO" parameterClass="int">
+			select * from board where board_num = #board_num#
+		</select>
+		
+
+</sqlMap>
