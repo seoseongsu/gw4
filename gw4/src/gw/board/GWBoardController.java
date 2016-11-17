@@ -29,8 +29,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 			
 			return "/gboard/board_Main";
 		}
-		
+
 	
+		
+/*--------------------------------List---------------------------------------------------*/	
+		
+		
+		
 	@RequestMapping("board_List.do")
 		public String board_List(HttpServletRequest request, Iboard_categoryVO category) throws Exception{
 	   
@@ -77,8 +82,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 			return "/gboard/board_List";
 		}
 
+	
+	
+/*---------------------------- Write -------------------------------------------------------*/	
+
+	
+	
 	@RequestMapping("board_WriteForm.do")
-		public String board_writeForm(HttpServletRequest request, Model model) throws Exception{
+		public String board_writeForm(HttpServletRequest request,Model model) throws Exception{
 				
 			int num=0;  
 			
@@ -97,13 +108,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 			
 			return "/gboard/board_WriteForm";
 		}
+
+	
 	
 	@RequestMapping("board_WritePro.do")
 		public String board_writePro(HttpServletRequest request, BoardVO boardVO, Model model) throws Exception{
 			
 			boardVO.setBoard_num(Integer.parseInt(request.getParameter("board_num")));
 			
-			model.addAttribute("VO" , boardVO);
+			model.addAttribute("boardVO" , boardVO);
 	
 			sqlMap.insert("gboard.boardInsert", boardVO);
 			
@@ -114,6 +127,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		
 		
 		
+/*------------------------------Content-----------------------------------------------------*/		
+
+	
 	
 	@RequestMapping("board_Content.do")
 		public String board_Content(HttpServletRequest request) throws Exception {
@@ -131,6 +147,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		
 		return "/gboard/board_Content";
 	}
+
+	
+	
+/*------------------------------Delete-----------------------------------------------------*/	
+
+	
 	
 	@RequestMapping("board_DeleteForm.do")
 		public String board_DeleteForm(HttpServletRequest request) throws Exception{
@@ -144,6 +166,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		
 		return "/gboard/board_DeleteForm";
 		}
+
+	
 	
 	@RequestMapping("board_DeletePro.do")
 		public String board_DeletePro(HttpServletRequest request) throws Exception{
@@ -174,10 +198,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 	
 	
 
+/*--------------------- Modify --------------------------------------------------------------*/	
 	
-	
-	/*-----------------------------------------------------------------------------------*/	
-	
+
 	
 	@RequestMapping("board_ModifyForm.do")
 		public String board_ModifyForm(HttpServletRequest request)throws Exception{
@@ -187,8 +210,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		    String pageNum = request.getParameter("pageNum");
 
 		    BoardVO boardList = (BoardVO) sqlMap.queryForObject("gboard.boardSelectNum", num);
-
-		
+		    
+		    Iboard_categoryVO category = new Iboard_categoryVO();
+			List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
+		    request.setAttribute("categoryList", categoryList);
 		    request.setAttribute("pageNum", new Integer(pageNum));
 		    request.setAttribute("boardList", boardList);
 		
@@ -197,26 +222,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		
 		return "/gboard/board_ModifyForm";
 	}
+
+	
+	
+/*--------------------- Modify 작업중 --------------------------------------------------------------*/	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-/*-----------------------------------------------------------------------------------*/
 	
 	@RequestMapping("board_ModifyPro.do")
-		public String board_ModifyPro(){
+	public String board_ModifyPro(HttpServletRequest request, BoardVO boardVO, Model model)throws Exception{
+
+	    String pageNum = request.getParameter("pageNum");
+	    int num = Integer.parseInt(request.getParameter("board_num"));
 		
+		
+		model.addAttribute("boardList" , boardVO);
+		
+	    String passwd = request.getParameter("board_passwd");
+	    boardVO.setBoard_passwd("board_passwd");
+
+	    int check = 0;
+	    String pwcheck = (String) sqlMap.queryForObject("gboard.boardSelectPasswd", num);
+	    if(pwcheck!=null){
+	    	if(pwcheck.equals(passwd)){
+	    		sqlMap.update("gboard.boardModify", boardVO);
+	    		check = 1;
+	    	}else{
+	    		check = 0;
+	    	}
+	    }
+	    request.setAttribute("pageNum", new Integer(pageNum));
+	    request.setAttribute("check", new Integer(check));
 		return "/gboard/board_ModifyPro";
 	}
 }

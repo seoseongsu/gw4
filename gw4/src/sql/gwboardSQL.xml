@@ -59,4 +59,14 @@
 			delete from board where board_num=#board_num#
 		</delete>
 		
+		<!-- board_ModifyPro 글 수정 -->
+		<update id="boardModify" parameterClass="boardVO">
+			update board set board_num=#board_num#,category_code=#category_code#,board_subject=#board_subject#,board_passwd=#board_passwd#,board_content=#board_content# where board_num=#board_num#
+		</update>
+		
+		<!-- board_ModifyPro 비밀번호 가져오기 -->
+		<select id="boardSelectPasswd" resultClass="String" parameterClass="int">
+			select board_passwd from board where board_num = #board_num#
+		</select>
+		
 </sqlMap>
