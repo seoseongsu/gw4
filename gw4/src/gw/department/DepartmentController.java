@@ -12,8 +12,8 @@ public class DepartmentController {
 	@Autowired
 	private SqlMapClientTemplate sqlMap;
 	
-	@RequestMapping("/dept/deptInsert.do")
+	@RequestMapping("/dept/deptList.do")
 	public String deptInsert(HttpServletRequest request){
-		return "/dept/deptInsert";
+		return "/dept/deptList";
 	}
 }

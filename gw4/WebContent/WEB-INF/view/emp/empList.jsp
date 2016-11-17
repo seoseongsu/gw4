@@ -56,7 +56,7 @@ function deleteEvent(a){
 				<td>${article.emp_acability }</td>
 				<td>${article.emp_join }</td>
 				<td><input type="button" value="수정" onclick="location='empUpdate.do?emp_code=${article.emp_code }'"/>
-				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/>
+				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
 			</tr>
 			</c:forEach>
 		</table>
