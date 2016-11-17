@@ -5,49 +5,78 @@
 <head>
 <title>게시판</title>
 </head>
+<script src="/gw4/ckeditor/ckeditor.js"></script>
+<script language="javascript">
+
+function categorycheck(c)
+{
+	if(c=='C001'){
+		document.writeform.board_subject.value='[공지사항]';		
+		'brake';
+	}	
+	
+	else if (c=='C002'){
+		document.writeform.board_subject.value='[자유게시판]';		
+		'brake';
+	}
+	else if (c=='C003'){
+		document.writeform.board_subject.value='[파일함]';		
+		'brake';
+	}
+}
+
+</script>
+
 <body >  
 	
 <br>
 
  <form method="post" name="boarfd_Writeform" action="board_ModifyPro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
-	<table width="800" border="1" align="center">  
-  
-	  <tr height="30">
-		    <td align="center" width="125" >글번호</td>
-		    <td align="center" width="125" " align="center" name="board_num" >${boardList.board_num}</td>
-		    <td align="center" width="125">조회수</td>
-		    <td align="center" width="125" align="center" name="board_readcount">${boardList.board_readcount}</td>
-	  </tr>
-	  
-	  <tr height="30">
-		    <td align="center" width="125" >작성자</td>
-		    <td align="center" width="125" align="center"></td>
-		   
-		    <td align="center" width="125" >작성일</td>
-		    <td align="center" width="125" align="center" name="board_date">${boardList.board_date}</td>
-	  </tr>
-	  
-	  <tr height="30">
-		    <td align="center" width="125" >글제목</td>
-		    <td align="center" width="375" align="center" colspan="3">
-		    	<input type="text" size="40" maxlength="50" name="board_subject" value="${boardList.board_subject}"></td>
-	  </tr>
-	  
-	  <tr>	
-		    <td align="center" width="125" >글내용</td>
-		    <td align="left" width="375" rows="30" colspan="3"><pre>
-		      	<textarea name="board_content" rows="13" cols="40" value="${boardList.board_content}" ></textarea></pre></td>
-	  </tr>
-	  
-	   <tr>
-		    <td  width="70" >비밀번호</td>
-		    <td align="left" width="330" >
-	    		<input type="password" size="8" maxlength="12" name="board_passwd">
-			</td>
-	  </tr>
-	  
-  
-   <td colspan=2 align="center"> 
+<input type="hidden" name="board_num" value="${num}">
+<!-- <input type="text" name="board_readcount"> -->
+
+<table width="900" border ="1">
+	<tr>
+		<th width ="100">카테고리</th>
+		<td>
+		<select id ="category" name="category_code"  onchange="categorycheck(this.value)">
+			<option value="vacuum" >----------</option>
+			<c:forEach items="${categoryList}" var="category">
+				<option value="${category.category_code}">${category.category_name}</option>		
+			</c:forEach>
+		</select>		
+	</tr>
+	
+	<tr>
+		<th width="100">제목</th>
+		<td width="600">
+			<input type="text" width="600" name="board_subject" value="${boardList.board_subject}" >
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<th width="100">작성자</th>
+		<td width="600">
+	</tr>
+	
+	<tr>
+		<th width="100">글 내용</th>
+		<td><textarea rows="13" cols="101"  name="board_content" value="${boardList.board_content}" ></textarea></td>
+	</tr>
+	
+		<tr>
+		<th width="100">비밀번호</th>
+		<td><input type="password" size="8" maxlength="12" name="board_passwd"></td>
+	</tr>
+		<tr>
+		<th width="100"></th>
+		<td>
+		</td>
+	</tr>
+	
+	<tr>
+	   <td colspan=2 align="center"> 
      <input type="submit" value="글수정" >  
      <input type="reset" value="다시작성">
      <input type="button" value="목록보기" 
@@ -55,6 +84,11 @@
    </td>
  </tr>
  </table>
+
+<script type="text/javascript">
+var editor = CKEDITOR.replace('board_content');
+</script>  
+
 </form>
 </body>
 </html>      

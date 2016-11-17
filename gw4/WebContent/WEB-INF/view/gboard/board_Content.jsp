@@ -11,23 +11,21 @@
 <center><b>공지 사항</b>
 <br>
 <form>
+<input type="hidden" name="board_num" value="${boardList.board_num}">
 <table width="800" border="1" align="center">  
   <tr height="30">
-    <td align="center" width="125" >글번호</td>
-    <td align="center" width="125" align="center">${boardList.board_num}</td>
     <td align="center" width="125">조회수</td>
-    <td align="center" width="125" align="center">${boardList.board_readcount}</td>
+    <td align="center" width="125" >${boardList.board_readcount}</td>
+     <td align="center" width="125" >작성일</td>
+    <td align="center" width="125" >${boardList.board_date}</td>
   </tr>
-  <tr height="30">
+  <tr height="30" >
     <td align="center" width="125" >작성자</td>
-    <td align="center" width="125" align="center"></td>
-   
-    <td align="center" width="125" >작성일</td>
-    <td align="center" width="125" align="center">${boardList.board_date}</td>
+    <td align="left" width="375" align="center" colspan="3">작성자</td>
   </tr>
   <tr height="30">
     <td align="center" width="125" >글제목</td>
-    <td align="center" width="375" align="center" colspan="3">${boardList.board_subject}</td>
+    <td align="left" width="375" colspan="3">${boardList.board_subject}</td>
   </tr>
   <tr>	
     <td align="center" width="125" >글내용</td>
