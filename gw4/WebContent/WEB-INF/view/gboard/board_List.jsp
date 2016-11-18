@@ -11,6 +11,12 @@
 <title>List</title>
 </head>
 	
+			<script>
+			function categoryChange(category){
+				window.location="/gw4/board_List.do?category_code="+category;
+			}
+		</script>
+	
 	<table width="1000" align="center">
 		<tr>
 			<td align="center">
@@ -21,9 +27,9 @@
 	<table width="1000" align="center">
 		<tr>
 			<td colspan"4" align="right">
-			<select  id ="category" name="category" >
+			<select  id ="category" name="category" onchange="categoryChange(this.value)">
 				<option>통합게시판</option>
-			<c:forEach items="${categoryList}" var="category">
+			<c:forEach items="${categoryList}" var="category" >
 					<option value="${category.category_code}">${category.category_name}</option>		
 			</c:forEach>
 			</select>
