@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>조직도</title>
@@ -28,29 +28,30 @@
 </head>
 
 <body onload="prettyPrint();">
-    
     <ul id="org" style="display:none">
     <li>대표이사
        <ul>
-         <li id="A">교육부
-         	<ul>
-             <li>강사팀</li>
-           </ul>
-         </li>
-         <li id="B">운영부
-           <a href="http://wesnolte.com" target="_blank">Click me</a>
-           <ul>
-             <li>인사팀</li>
-             <li>총무팀</li>
-             <li>시설팀</li>
-           </ul>
-         </li>
-         <li class="C">상담부
-           <ul>
-             <li>상담팀</li>
-             <li>취업팀</li>
-           </ul>
-         </li>
+       	<c:forEach var="treeList" items="${treeList }">
+	        <li>${treeList.dept_name}</li>
+      	</c:forEach>
+      	 <li id="A">교육부
+	         	<ul>
+	             <li>강사팀</li>
+	           </ul>
+	         </li>
+	         <li id="B">운영부
+	           <ul>
+	             <li>인사팀</li>
+	             <li>총무팀</li>
+	             <li>시설팀</li>
+	           </ul>
+	         </li>
+	         <li id="C">상담부
+	           <ul>
+	             <li>상담팀</li>
+	             <li>취업팀</li>
+	           </ul>
+	    </li>
        </ul>
      </li>
    </ul>            
