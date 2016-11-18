@@ -2,14 +2,15 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!--[if IE9]>  
+<!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+<![endif]--> 
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">   
+<link rel="stylesheet" href="/gw4/css/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/gw4/css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/gw4/css/grid.css" type="text/css" media="screen">   
     <script src="js/jquery-1.6.3.min.js" type="text/javascript"></script>
     <script src="js/cufon-yui.js" type="text/javascript"></script>
     <script src="js/cufon-replace.js" type="text/javascript"></script>
@@ -148,7 +149,7 @@
                         <form id="login" method="post">
                         <fieldset>	
                              <div id="buttons">
-                                   <a href="http://localhost:8080/gw4/login.jsp">login</a>   
+                                   <a href="http://192.168.10.156:8080/gw4/login.jsp">login</a>   
                              </div>							
                         </fieldset>
                     </form>
@@ -206,7 +207,7 @@
                                 <div class="wrapper p3">
                                 	<article class="grid_4 alpha">
                                     	<h4 class="p2">전자결재</h4>
-                                        <figure><a href="#"><img class="img-border" src="images/page4-img1.jpg" alt="" /></a></figure>
+                                        <figure><a href="#"><img class="img-border" src="/gw4/images/page4-img1.jpg" alt="" /></a></figure>
                                         <div class="box">
                                         	<div class="padding">
                                             	<a href="#">electronic approval</a>
@@ -216,7 +217,7 @@
                                     <article class="grid_4">
                                     	<div class="indent-left4">
                                             <h4 class="p2">개인정보</h4>
-                                            <figure><a href="#"><img class="img-border" src="images/page4-img2.jpg" alt="" /></a></figure>
+                                            <figure><a href="#"><img class="img-border" src="/gw4/images/page4-img2.jpg" alt="" /></a></figure>
                                             <div class="box">
                                                 <div class="padding">
                                                     <a href="#">Information</a>
@@ -227,7 +228,7 @@
                                     <article class="grid_4 omega">
                                     	<div class="indent-left3">
                                             <h4 class="p2">인사관리</h4>
-                                            <figure><a href="#"><img class="img-border" src="images/page4-img3.jpg" alt="" /></a></figure>
+                                            <figure><a href="#"><img class="img-border" src="/gw4/images/page4-img3.jpg" alt="" /></a></figure>
                                             <div class="box">
                                                 <div class="padding">
                                                     <a href="#">Management</a>
@@ -239,7 +240,7 @@
                                 <div class="wrapper">
                                 	<article class="grid_4 alpha">
                                     	<h4 class="p2">커뮤니티</h4>
-                                        <figure><a href="#"><img class="img-border" src="images/page4-img4.jpg" alt="" /></a></figure>
+                                        <figure><a href="#"><img class="img-border" src="/gw4/images/page4-img4.jpg" alt="" /></a></figure>
                                         <div class="box">
                                         	<div class="padding">
                                             	<a href="#">Community</a>
@@ -249,7 +250,7 @@
                                     <article class="grid_4">
                                     	<div class="indent-left4">
                                             <h4 class="p2">게시판</h4>
-                                            <figure><a href="#"><img class="img-border" src="images/page4-img5.jpg" alt="" /></a></figure>
+                                            <figure><a href="#"><img class="img-border" src="/gw4/images/page4-img5.jpg" alt="" /></a></figure>
                                             <div class="box">
                                                 <div class="padding">
                                                     <a href="#">NoticeBoard</a>
@@ -260,7 +261,7 @@
                                     <article class="grid_4 omega">
                                     	<div class="indent-left3">
                                             <h4 class="p2">사이트맵</h4>
-                                            <figure><a href="#"><img class="img-border" src="images/page4-img6.jpg" alt="" /></a></figure>
+                                            <figure><a href="#"><img class="img-border" src="/gw4/images/page4-img6.jpg" alt="" /></a></figure>
                                             <div class="box">
                                                 <div class="padding">
                                                     <a href="#">site map</a>
@@ -287,7 +288,7 @@
                         <article class="grid_8">
 
                             <p class="p1">EYTime.com &copy; 2016 </p>
-                            <p class="p1"><a class="link" target="_blank" href="http://www.templatemonster.com/" rel="nofollow">groupware Website </a></p>
+                            <p class="p1"><a class="link" target="_blank" href="#" rel="nofollow">groupware Website </a></p>
                             <p class="p1">Professional groupware website <a href="#" target="_blank"></a>.- groupware for websites. </p>
                         </article>
                     </div>
