@@ -233,20 +233,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 	@RequestMapping("board_ModifyPro.do")
 	public String board_ModifyPro(HttpServletRequest request, BoardVO boardVO, Model model)throws Exception{
 
-	    String pageNum = request.getParameter("pageNum");
-	    int num = Integer.parseInt(request.getParameter("board_num"));
-		
-		
-		model.addAttribute("boardList" , boardVO);
-		
+		String pageNum = request.getParameter("pageNum");
+
+		BoardVO boardList = new BoardVO();
+		int num = Integer.parseInt(request.getParameter("board_num"));
+	    boardList.setBoard_num(num);
+	    boardList.setBoard_subject(request.getParameter("board_subject"));
+	    boardList.setBoard_content(request.getParameter("board_content"));
+	    boardList.setBoard_passwd(request.getParameter("board_passwd"));
+	    
 	    String passwd = request.getParameter("board_passwd");
-	    boardVO.setBoard_passwd("board_passwd");
+	    boardList.setBoard_passwd(passwd);
+		    
 
 	    int check = 0;
 	    String pwcheck = (String) sqlMap.queryForObject("gboard.boardSelectPasswd", num);
 	    if(pwcheck!=null){
 	    	if(pwcheck.equals(passwd)){
-	    		sqlMap.update("gboard.boardModify", boardVO);
+	    		sqlMap.update("gboard.boardModify", boardList);
 	    		check = 1;
 	    	}else{
 	    		check = 0;

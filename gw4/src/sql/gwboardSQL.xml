@@ -49,7 +49,7 @@
 			select * from board where board_num = #board_num#
 		</select>
 		
-		<!-- board_DeletePro board_passwd 가져오는-->
+		<!-- board_DeletePro , board_ModifyPro board_passwd 가져오는-->
 		<select id="boardSelectPasswd" resultClass="String" parameterClass="int">
 			select board_passwd from board where board_num = #board_num#
 		</select>
