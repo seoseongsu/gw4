@@ -1,5 +1,7 @@
 package gw.department;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,10 @@ public class DepartmentController {
 	private SqlMapClientTemplate sqlMap;
 	
 	@RequestMapping("/dept/deptList.do")
-	public String deptInsert(HttpServletRequest request){
+	public String deptList(HttpServletRequest request){
+		List treeList = null;
+		treeList = sqlMap.queryForList("dept.deptSelectTree", null);
+		request.setAttribute("treeList", treeList);
 		return "/dept/deptList";
 	}
 }
