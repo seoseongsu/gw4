@@ -42,7 +42,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 			List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
 	           
 	        String pageNum = request.getParameter("pageNum");
-	
+	        
+	        String category_code = request.getParameter("category_code");
+	        
+	        
 	        if (pageNum == null) {
 	            pageNum = "1";
 	        }
@@ -54,14 +57,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 	        int number=0;
 	
 	        List boardList = null;
-	        count = (Integer)sqlMap.queryForObject("gboard.boardCount", null);
-	        HashMap map = new HashMap();
-	        map.put("start", startRow);
-	        map.put("end", endRow);
-	        if (count > 0) {
-	        	boardList = sqlMap.queryForList("gboard.boardAll", map);
-	        } else {
-	        	boardList = Collections.EMPTY_LIST;
+	        
+	        if (category_code == null) {
+	           
+	        	count = (Integer)sqlMap.queryForObject("gboard.boardCount", null);
+		        HashMap map = new HashMap();
+		        map.put("start", startRow);
+		        map.put("end", endRow);
+		        if (count > 0) {
+		        	boardList = sqlMap.queryForList("gboard.boardAll", map);
+		        } else {
+		        	boardList = Collections.EMPTY_LIST;
+		        }
+		        	
+	        	
+	        }
+	        else {
+	        	
 	        }
 	       
 			number=count-(currentPage-1)*pageSize;
@@ -74,10 +86,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 	        request.setAttribute("category_name", "통합 게시판");
 			request.setAttribute("categoryList", categoryList);  
 			request.setAttribute("boardList", boardList);
-			System.out.println(number);
-			System.out.println(count);
-			System.out.println(categoryList);
-			System.out.println(boardList);
+			request.setAttribute("pageNum", pageNum);
+			
 	
 			return "/gboard/board_List";
 		}
