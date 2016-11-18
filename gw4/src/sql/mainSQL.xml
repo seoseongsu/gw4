@@ -4,13 +4,6 @@
 	<typeAlias alias="empdto" type="gw.employee.EmployeeVO"/>
 	
 	<select id="empCode" resultClass="String" parameterClass="String">
-		select
-			emp_code
-		
-		from
-			employee
-		
-		where
-			emp_code = #emp_code#
+		select emp_code from employee where	emp_code = #emp_code#
 	</select>
 </sqlMap>

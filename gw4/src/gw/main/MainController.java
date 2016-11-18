@@ -25,7 +25,7 @@ public class MainController{
 		
 		EmployeeVO dto = (EmployeeVO)sqlMap.queryForObject("empSelect", emp_code);
 		request.setAttribute("empList", dto);
-		request.setAttribute("emp_code", emp_code);
+		request.setAttribute("empcode", emp_code);
 		return"/main/main.jsp";
 	}
 	
