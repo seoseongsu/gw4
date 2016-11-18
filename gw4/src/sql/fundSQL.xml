@@ -7,4 +7,15 @@
 	<select id="FundList" resultClass="fundVo">
 		select * from fund
 	</select>
+	
+	<select id="fundAdd" resultClass="fundVo">
+		select * from fund
+	</select>
+	
+	<insert id="fundAddPro" parameterClass="fundVo">
+		insert into fund(fund_code,fund_division,fund_days,fund_item,fund_briefs,
+		fund_account,fund_deposit,fund_withdraw,fund_balance)
+		values(fund_code_seq.nextval,#fund_division#,#fund_days#,
+		#fund_item#,#fund_briefs#,#fund_account#,#fund_deposit#,#fund_withdraw#,#fund_balance#)
+	</insert>
 </sqlMap>

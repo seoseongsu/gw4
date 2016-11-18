@@ -21,7 +21,23 @@ public class FundController {
 	}
 	
 	@RequestMapping("/fund/fundAdd.do")
-	public String fundAdd(){
+	public String fundAdd(HttpServletRequest request){
+		
+		List fundAdd = sqlMap.queryForList("fundAdd", null);
+		
+		request.setAttribute("fundAdd", fundAdd);
+		
 		return "/fund/fundAdd";
+	}
+	
+	@RequestMapping("/fund/fundAddPro.do")
+	public String fundAddPro(HttpServletRequest request, FundVO vo) throws Exception{
+		sqlMap.insert("fundAddPro", vo);
+		return "/fund/fundAddPro";
+	}
+	
+	@RequestMapping("/fund/fundDeletePro.do")
+	public String fundDeletePro(){
+		return "/fund/fundDelete";
 	}
 }
