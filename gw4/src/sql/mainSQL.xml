@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap>
-	<typeAlias alias="maindto" type="groupware.main.mainDTO"/>
+	<typeAlias alias="empdto" type="gw.employee.EmployeeVO"/>
 	
-	<select id="memberCode" resultClass="String" parameterClass="String">
+	<select id="empCode" resultClass="String" parameterClass="String">
 		select
 			emp_code
 		
