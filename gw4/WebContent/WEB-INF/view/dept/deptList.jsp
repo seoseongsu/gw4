@@ -1,53 +1,91 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <html>
-<head>
-<link rel="stylesheet" href="/gw4/WEB-INF/css/tree/jquery.treeview.css"/>
-<link rel="stylesheet" href="/gw4/WEB-INF/css/tree/screen.css"/>
-<script src="/gw4/WEB-INF/js/jquery.js" type="text/javascript"></script>
-<script src="/gw4/WEB-INF/js/jquery.cookie.js" type="text/javascript"></script>
-<script src="/gw4/WEB-INF/js/jquery.treeview.js" type="text/javascript"></script>
-<script type="text/javascript">
-        $(function() {
-            $("#tree").treeview({
-                collapsed: true,
-                animated: "medium",
-                control:"#sidetreecontrol",
-                persist: "location"
-            });
-        })
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>조직도</title>
+	<link rel="stylesheet" href="/gw4/css/tree/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/gw4/css/tree/jquery.jOrgChart.css"/>
+	<link rel="stylesheet" href="/gw4/css/tree/custom.css"/>
+	<link href="/gw4/css/tree/prettify.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript" src="/gw4/js/tree/prettify.js"></script>
+    
+    <!-- jQuery includes -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    
+    <script src="/gw4/js/tree/jquery.jOrgChart.js"></script>
+
+    <script>
+    jQuery(document).ready(function() {
+        $("#org").jOrgChart({
+            chartElement : '#chart',
+            dragAndDrop  : true
+        });
+    });
     </script>
 </head>
-<body>
-<div id="sidetree">
-    <div class="treeheader">
-          
-    </div>
-    <div id="sidetreecontrol">
-        <a href="?#">전체 닫기</a> | <a href="?#">전체 열기</a>
-    </div>
-    <ul id="tree">
-        <li>
-            <strong>첫번째 메뉴</strong>
-            <ul>
-                <li><a href="#">서브메뉴</a></li>
-            </ul>
-            </li>
-        <li>
-        <strong>두번째 메뉴</strong>
-        <ul>
-            <li><a href="#">첫번째 서브메뉴</a></li>
-        </ul>
-        <ul>
-            <li>
-                <a href="#">두번째 서브메뉴</a>
-                <ul>
-                    <li><a href="#">서브메뉴 속 첫번째 서브메뉴</a></li>
-                </ul>
-            </li>
-        </ul>
-        </li>
-    </ul>
-</div>
-</body>
 
+<body onload="prettyPrint();">
+    
+    <ul id="org" style="display:none">
+    <li>대표이사
+       <ul>
+         <li id="A">교육부
+         	<ul>
+             <li>강사팀</li>
+           </ul>
+         </li>
+         <li id="B">운영부
+           <a href="http://wesnolte.com" target="_blank">Click me</a>
+           <ul>
+             <li>인사팀</li>
+             <li>총무팀</li>
+             <li>시설팀</li>
+           </ul>
+         </li>
+         <li class="C">상담부
+           <ul>
+             <li>상담팀</li>
+             <li>취업팀</li>
+           </ul>
+         </li>
+       </ul>
+     </li>
+   </ul>            
+    
+    <div id="chart" class="orgChart"></div>
+    
+    <script>
+        jQuery(document).ready(function() {
+            
+            /* Custom jQuery for the example */
+            $("#show-list").click(function(e){
+                e.preventDefault();
+                
+                $('#list-html').toggle('fast', function(){
+                    if($(this).is(':visible')){
+                        $('#show-list').text('Hide underlying list.');
+                        $(".topbar").fadeTo('fast',0.9);
+                    }else{
+                        $('#show-list').text('Show underlying list.');
+                        $(".topbar").fadeTo('fast',1);                  
+                    }
+                });
+            });
+            
+            $('#list-html').text($('#org').html());
+            
+            $("#org").bind("DOMSubtreeModified", function() {
+                $('#list-html').text('');
+                
+                $('#list-html').text($('#org').html());
+                
+                prettyPrint();                
+            });
+        });
+    </script>
+
+</body>
 </html>
