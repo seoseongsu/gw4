@@ -24,8 +24,8 @@ public class MainController{
 		String emp_code = (String)session.getAttribute("memId");
 		
 		EmployeeVO dto = (EmployeeVO)sqlMap.queryForObject("empSelect", emp_code);
-		request.setAttribute("empList", dto);
-		request.setAttribute("empcode", emp_code);
+		request.setAttribute("empDto", dto);
+		request.setAttribute("empCode", emp_code);
 		return"/main/main.jsp";
 	}
 	

@@ -3,5 +3,5 @@
 
 <%
 	session.invalidate();
-	response.sendRedirect("/groupware/main/main.nhn");
+	response.sendRedirect("/gw4/main/main.do");
 %>
