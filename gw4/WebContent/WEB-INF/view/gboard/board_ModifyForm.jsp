@@ -11,16 +11,16 @@
 function categorycheck(c)
 {
 	if(c=='C001'){
-		document.writeform.board_subject.value='[공지사항]';		
+		document.ModifyForm.board_subject.value='[공지사항]';		
 		'brake';
 	}	
 	
 	else if (c=='C002'){
-		document.writeform.board_subject.value='[자유게시판]';		
+		document.ModifyForm.board_subject.value='[자유게시판]';		
 		'brake';
 	}
 	else if (c=='C003'){
-		document.writeform.board_subject.value='[파일함]';		
+		document.ModifyForm.board_subject.value='[파일함]';		
 		'brake';
 	}
 }
@@ -31,7 +31,7 @@ function categorycheck(c)
 	
 <br>
 
- <form method="post" name="boarfd_Writeform" action="board_ModifyPro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
+ <form method="post" name="ModifyForm" action="board_ModifyPro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
 <input type="hidden" name="board_num" value="${num}">
 <!-- <input type="text" name="board_readcount"> -->
 
@@ -62,7 +62,7 @@ function categorycheck(c)
 	
 	<tr>
 		<th width="100">글 내용</th>
-		<td><textarea rows="13" cols="101"  name="board_content" value="${boardList.board_content}" ></textarea></td>
+		<td><textarea rows="13" cols="101"  name="board_content" >"${boardList.board_content}"</textarea></td>
 	</tr>
 	
 		<tr>
