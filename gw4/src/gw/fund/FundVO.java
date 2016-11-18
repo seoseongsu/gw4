@@ -4,15 +4,13 @@ public class FundVO {
 
 	private String fund_code;
 	private String fund_division;
-	private int fund_year;
-	private int fund_month;
-	private int fund_day;
+	private String fund_days;
 	private String fund_item;
 	private String fund_briefs;
 	private String fund_account;
-	private int fund_deposit;
-	private int fund_withdraw;
-	private int fund_balance;
+	private String fund_deposit;
+	private String fund_withdraw;
+	private String fund_balance;
 	
 	public String getFund_code() {
 		return fund_code;
@@ -26,23 +24,11 @@ public class FundVO {
 	public void setFund_division(String fund_division) {
 		this.fund_division = fund_division;
 	}
-	public int getFund_year() {
-		return fund_year;
+	public String getFund_days() {
+		return fund_days;
 	}
-	public void setFund_year(int fund_year) {
-		this.fund_year = fund_year;
-	}
-	public int getFund_month() {
-		return fund_month;
-	}
-	public void setFund_month(int fund_month) {
-		this.fund_month = fund_month;
-	}
-	public int getFund_day() {
-		return fund_day;
-	}
-	public void setFund_day(int fund_day) {
-		this.fund_day = fund_day;
+	public void setFund_days(String fund_days) {
+		this.fund_days = fund_days;
 	}
 	public String getFund_item() {
 		return fund_item;
@@ -62,22 +48,22 @@ public class FundVO {
 	public void setFund_account(String fund_account) {
 		this.fund_account = fund_account;
 	}
-	public int getFund_deposit() {
+	public String getFund_deposit() {
 		return fund_deposit;
 	}
-	public void setFund_deposit(int fund_deposit) {
+	public void setFund_deposit(String fund_deposit) {
 		this.fund_deposit = fund_deposit;
 	}
-	public int getFund_withdraw() {
+	public String getFund_withdraw() {
 		return fund_withdraw;
 	}
-	public void setFund_withdraw(int fund_withdraw) {
+	public void setFund_withdraw(String fund_withdraw) {
 		this.fund_withdraw = fund_withdraw;
 	}
-	public int getFund_balance() {
+	public String getFund_balance() {
 		return fund_balance;
 	}
-	public void setFund_balance(int fund_balance) {
+	public void setFund_balance(String fund_balance) {
 		this.fund_balance = fund_balance;
 	}
 }

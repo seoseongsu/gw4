@@ -36,8 +36,4 @@ public class FundController {
 		return "/fund/fundAddPro";
 	}
 	
-	@RequestMapping("/fund/fundDeletePro.do")
-	public String fundDeletePro(){
-		return "/fund/fundDelete";
-	}
 }
