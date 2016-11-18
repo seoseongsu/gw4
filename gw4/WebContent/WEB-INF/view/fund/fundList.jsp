@@ -10,7 +10,7 @@
 			<td align="center">자금수지 목록</td>
 		</tr>
 	</table>
-		<input type="button" value="자금등록" onclick="window.open('/spring/fund/fundAdd.do')">
+		<input type="button" value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do')">
 	<table border="1" width="100%">
 		<tr>
 			<td align="center" width="50">집행일</td>
