@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${check==1}"> 
-	<meta http-equiv="Refresh" content="0;url=board_List.do?pageNum=${pageNum}" >
+	<meta http-equiv="Refresh" content="0;url=board_Content.do?board_num=${board_num}" >
 </c:if>
 <c:if test="${check==0}"> 
 비밀번호가 다릅니다.

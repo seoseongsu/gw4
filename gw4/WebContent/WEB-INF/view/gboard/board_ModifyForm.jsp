@@ -31,8 +31,8 @@ function categorycheck(c)
 	
 <br>
 
- <form method="post" name="ModifyForm" action="board_ModifyPro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
-<input type="hidden" name="board_num" value="${num}">
+ <form method="get" name="ModifyForm" action="board_ModifyPro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
+<input type="hidden" name="board_num" value="${board_num}">
 <!-- <input type="text" name="board_readcount"> -->
 
 <table width="900" border ="1">
@@ -67,7 +67,7 @@ function categorycheck(c)
 	
 		<tr>
 		<th width="100">비밀번호</th>
-		<td><input type="password" size="8" maxlength="12" name="board_passwd"></td>
+		<td><input type="password" size="8" maxlength="12" name="board_passwd" ></td>
 	</tr>
 		<tr>
 		<th width="100"></th>

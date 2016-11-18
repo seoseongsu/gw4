@@ -140,8 +140,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
         sqlMap.update("gboard.boardReadcount", num);
         BoardVO boardList =  (BoardVO)sqlMap.queryForObject("gboard.boardSelectNum", num);
   
-        request.setAttribute("board_num", new Integer(num));
-        request.setAttribute("pageNum", new Integer(pageNum));
+        request.setAttribute("board_num", num);
+        request.setAttribute("pageNum", pageNum);
         request.setAttribute("boardList", boardList);
 		
 		
@@ -214,8 +214,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		    Iboard_categoryVO category = new Iboard_categoryVO();
 			List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
 		    request.setAttribute("categoryList", categoryList);
-		    request.setAttribute("pageNum", new Integer(pageNum));
+		    request.setAttribute("pageNum", pageNum);
 		    request.setAttribute("boardList", boardList);
+		    request.setAttribute("board_num", num);
 		
 		
 		
@@ -233,31 +234,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 	@RequestMapping("board_ModifyPro.do")
 	public String board_ModifyPro(HttpServletRequest request, BoardVO boardVO, Model model)throws Exception{
 
-		String pageNum = request.getParameter("pageNum");
-
-		BoardVO boardList = new BoardVO();
-		int num = Integer.parseInt(request.getParameter("board_num"));
-	    boardList.setBoard_num(num);
-	    boardList.setBoard_subject(request.getParameter("board_subject"));
-	    boardList.setBoard_content(request.getParameter("board_content"));
-	    boardList.setBoard_passwd(request.getParameter("board_passwd"));
-	    
+	    String pageNum = request.getParameter("pageNum");
+	    int num = Integer.parseInt(request.getParameter("board_num"));
+		
+		
+		model.addAttribute("boardList" , boardVO);
+		
 	    String passwd = request.getParameter("board_passwd");
-	    boardList.setBoard_passwd(passwd);
-		    
+
 
 	    int check = 0;
 	    String pwcheck = (String) sqlMap.queryForObject("gboard.boardSelectPasswd", num);
 	    if(pwcheck!=null){
 	    	if(pwcheck.equals(passwd)){
-	    		sqlMap.update("gboard.boardModify", boardList);
+	    		sqlMap.update("gboard.boardModify", boardVO);
 	    		check = 1;
 	    	}else{
 	    		check = 0;
 	    	}
 	    }
-	    request.setAttribute("pageNum", new Integer(pageNum));
-	    request.setAttribute("check", new Integer(check));
+	    request.setAttribute("pageNum", pageNum);
+	    request.setAttribute("check", check);
+	    request.setAttribute("board_num", num);
 		return "/gboard/board_ModifyPro";
 	}
 }
