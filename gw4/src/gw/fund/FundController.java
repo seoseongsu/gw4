@@ -8,14 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class FundController {
+public class FundController{
 	@Autowired SqlMapClientTemplate sqlMap;
-
+	
 	@RequestMapping("/fund/fundList.do")
 	public String fundList(HttpServletRequest request)throws Exception{
-
-		List fundList = sqlMap.queryForList("FundList", null);
-	
+		
+		List fundList = sqlMap.queryForList("fundList", null);
+		
 		request.setAttribute("fundList", fundList);
 		return "/fund/fundList";
 	}

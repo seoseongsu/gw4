@@ -4,7 +4,7 @@
 <sqlMap>
 	<typeAlias alias="fundVo" type="gw.fund.FundVO" />
 	
-	<select id="FundList" resultClass="fundVo">
+	<select id="fundList" resultClass="fundVo">
 		select * from fund
 	</select>
 	
