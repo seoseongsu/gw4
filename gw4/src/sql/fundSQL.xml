@@ -18,4 +18,18 @@
 		values(fund_code_seq.nextval,#fund_division#,#fund_days#,
 		#fund_item#,#fund_briefs#,#fund_account#,#fund_deposit#,#fund_withdraw#,#fund_balance#)
 	</insert>
+	
+	<delete id="fundDeletePro" parameterClass="String">
+		delete from fund where fund_code=#fund_code#
+	</delete>
+	
+	<select id="fundSelectUpdate" resultClass="fundVo" parameterClass="String">
+		select * from fund where fund_code=#fund_code#
+	</select>
+	
+	<update id="fundUpdate" parameterClass="fundVo">
+		update fund set fund_code=#fund_code#,fund_division=#fund_division#,fund_days=#fund_days#,
+		fund_item=#fund_item#,fund_briefs=#fund_briefs#,fund_account=#fund_account#,fund_deposit=#fund_deposit#,
+		fund_withdraw=#fund_withdraw#,fund_balance=#fund_balance#
+	</update>
 </sqlMap>

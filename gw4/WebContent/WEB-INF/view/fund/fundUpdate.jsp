@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<title>자금등록</title>
+<title>자금수정</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
@@ -17,26 +17,26 @@ $(function(){
 	});
 });
 </script>
-
 <body>
 	<table>
 		<tr>
-			<td align="left">자금수지 등록</td>
+			<td align="left">기등록자금 수정</td>
 		</tr>
 	</table>
-	<form method="get" action="fundAddPro.do" name="fundinput" onSubmit="return checkIt()">
+<form method="get" action="fundUpdatePro.do" name="fundinput" onSubmit="return checkIt()">
 	<table>
-		<tr>집행일<input type="text" id="fund_days" name="fund_days"></tr>
+		<input type="hidden" name="fund_code" value="${fundVo.fund_code }" />
+		<tr>집행일<input type="text" id="fund_days" name="fund_days" value="${fundVo.fund_days }"></tr>
 		<tr>구분
-			<select id="fund_division" name="fund_division">
+			<select id="fund_division" name="fund_division" >
 				<option value="">선택</option>
 				<option value="입금">입금</option>
 				<option value="출금">출금</option>
 			</select>
 		</tr>
-		<td>입금액<input type="text" id="fund_deposit" name="fund_deposit"><td>
-		<td>출금액<input type="text" id="fund_withdraw" name="fund_withdraw"></td>
-		<tr>적요<input type="text" id="fund_briefs" name="fund_briefs"></tr>
+		<td>입금액<input type="text" id="fund_deposit" name="fund_deposit" value="${fundVo.fund_deposit}"><td>
+		<td>출금액<input type="text" id="fund_withdraw" name="fund_withdraw" value="${fundVo.fund_withdraw}"></td>
+		<tr>적요<input type="text" id="fund_briefs" name="fund_briefs" value="${fundVo.fund_briefs }"></tr>
 		
 		<td>자금항목
 			<select id="fund_item" name="fund_item">
@@ -49,6 +49,7 @@ $(function(){
 				<option value="기타지출">기타지출</option>
 			</select>
 		</td>
+		
 		<td>거래처
 			<select id="fund_account" name ="fund_account">
 				<option value="거래처외">거래처외</option>
@@ -70,12 +71,12 @@ $(function(){
 		
 		<tr>
 			<td>
-				<input type="submit" name="confirm" value="등록">
+				<input type="submit" name="confirm" value="수정">
 				<input type="reset" name="reset" value="다시입력">
 				<input type="button" value="취소" onclick="javascript:window.location='fundList.do'">
 			</td>
 		</tr>
-		
 	</table>
-	</form>
+
+</form>
 </body>

@@ -36,4 +36,27 @@ public class FundController{
 		return "/fund/fundAddPro";
 	}
 	
+	@RequestMapping("/fund/fundDeletePro.do")
+	public String fundDeletePro(HttpServletRequest request, FundVO vo){
+		String fund_code = (String) request.getParameter("fund_code");
+		sqlMap.delete("fundDeletePro", fund_code);
+		return "/fund/fundDeletePro";
+	}
+	
+	@RequestMapping("/fund/fundUpdate.do")
+	public String fundUpdate(HttpServletRequest request){
+		String fund_code = (String) request.getParameter("fund_code");
+		
+		FundVO fundVo = (FundVO) sqlMap.queryForObject("fundSelectUpdate", fund_code);
+		request.setAttribute("fundVo", fundVo);
+		
+		return "/fund/fundUpdate";
+	}
+	
+	@RequestMapping("/fund/fundUpdatePro.do")
+	public String fundUpdatePro(HttpServletRequest request, FundVO vo) throws Exception{
+		sqlMap.update("fundUpdate", vo);
+		return "/fund/fundUpdatePro";
+	}
 }
+
