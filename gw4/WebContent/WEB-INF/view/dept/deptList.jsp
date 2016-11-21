@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>조직도</title>
 	<link rel="stylesheet" href="/gw4/css/tree/bootstrap.min.css"/>
 	<link rel="stylesheet" href="/gw4/css/tree/jquery.jOrgChart.css"/>
@@ -18,34 +18,60 @@
     <script src="/gw4/js/tree/jquery.jOrgChart.js"></script>
 
     <script>
-    jQuery(document).ready(function() {
-        $("#org").jOrgChart({
-            chartElement : '#chart',
-            dragAndDrop  : true
-        });
-    });
+	    jQuery(document).ready(function() {
+	        $("#org").jOrgChart({
+	            chartElement : '#chart',
+	            dragAndDrop  : true
+	        });
+	    });
     </script>
+    <script>
+		function deptDeleteEvent(a){
+			if(confirm("정말 삭제하시겠습니까??")==true){
+				location.href="deptDeletePro.do?dept_code="+a
+			}else{
+				return;
+			}
+		}
+	</script>
 </head>
 
 <body onload="prettyPrint();">
     <ul id="org" style="display:none">
-    <li>대표이사
-       <ul>
-       	<c:forEach var="treeListD" items="${treeListD }">
-	        <li>${treeListD.dept_name}
-	        	<ul>
-	        		<c:forEach var="treeListT" items="${treeListT }">
-	        			<c:if test="${treeListD.dept_name eq treeListT.dept_higher }">
-	        				<li>${treeListT.dept_name}</li>
-	        			</c:if>
-	        		</c:forEach>
-	        	</ul>
-	        </li>
-      	</c:forEach>
-       </ul>
-     </li>
-   </ul>            
-    
+	   <c:forEach var="treeList" items="${treeList }">
+		   <c:if test="${treeList.dept_higher eq null }">
+			   <li>${treeList.dept_name }
+			   		<p>${treeList.dept_leader }</p>
+			   		<p>${treeList.dept_phone }</p>
+			   		<font size="1"><a href="deptUpdate.do?dept_code=${treeList.dept_code}">수정</a> / 
+			   						<a href="" onclick="deptDeleteEvent(${treeList.dept_code})">삭제</a></font>	   		
+			   		<ul>
+				       	<c:forEach var="treeListD" items="${treeListD }">
+					        <li>${treeListD.dept_name}
+					        	<p>${treeListD.dept_leader}</p>
+					        	<p>${treeListD.dept_phone}</p>
+					        	<font size="1"><a href="deptUpdate.do?dept_code=${treeListD.dept_code}">수정</a> / 
+			   						<a href="" onclick="deptDeleteEvent(${treeListD.dept_code})">삭제</a></font>	  
+					        	<ul>
+					        		<c:forEach var="treeListT" items="${treeListT }">
+					        			<c:if test="${treeListD.dept_name eq treeListT.dept_higher }">
+					        				<li>${treeListT.dept_name}
+					        					<p>${treeListT.dept_leader}</p>
+					        					<p>${treeListT.dept_phone}</p>
+					        					<font size="1"><a href="deptUpdate.do?dept_code=${treeListT.dept_code}">수정</a> / 
+			   										<a href="" onclick="deptDeleteEvent(${treeListT.dept_code})">삭제</a></font>	  
+					        				</li>
+					        			</c:if>
+					        		</c:forEach>
+					        	</ul>
+					        </li>
+				      	</c:forEach>
+				    </ul>
+			    </li>
+		    </c:if>
+		 </c:forEach>
+	 </ul>
+    <a href="deptInsert.do">부서등록</a>
     <div id="chart" class="orgChart"></div>
     
     <script>
@@ -77,6 +103,7 @@
             });
         });
     </script>
+    
 
 </body>
 </html>

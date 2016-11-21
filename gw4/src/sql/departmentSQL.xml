@@ -15,7 +15,17 @@
 			select * from department where dept_name LIKE '%팀'
 		</select>
 		<insert id="deptInsert" parameterClass="deptVo">
-			insert into department values(##,##,##,##,##)
+			insert into department(dept_code,dept_name,dept_higher,dept_leader,dept_phone) 
+			values(dept_code_seq.nextval,#dept_name#,#dept_higher#,#dept_leader#,#dept_phone#)
 		</insert>
+		<update id="deptUpdate" parameterClass="deptVo">
+			update department set 
+			dept_name=#dept_name#,dept_higher=#dept_higher#,
+			dept_leader=#dept_leader#,dept_phone=#dept_phone# 
+			where dept_code=#dept_code#
+		</update>
+		<delete id="deptDelete" parameterClass="String">
+			delete from department where dept_code=#dept_code#
+		</delete>
 </sqlMap>
 
