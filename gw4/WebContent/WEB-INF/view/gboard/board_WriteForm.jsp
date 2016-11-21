@@ -8,29 +8,10 @@
 <title>writeForm</title>
 </head>
 <script src="/gw4/ckeditor/ckeditor.js"></script>
-<script language="javascript">
 
-function categorycheck(c)
-{
-	if(c=='C001'){
-		document.writeform.board_subject.value='[공지사항]';		
-		'brake';
-	}	
-	
-	else if (c=='C002'){
-		document.writeform.board_subject.value='[자유게시판]';		
-		'brake';
-	}
-	else if (c=='C003'){
-		document.writeform.board_subject.value='[파일함]';		
-		'brake';
-	}
-}
-
-</script>
 
 <body>
-<form method="get" name="writeform" action="board_WritePro.do" >
+<form method="post" name="writeform" action="board_WritePro.do" enctype="multipart/form-data" > 
 <input type="hidden" name="board_num" value="${num}">
 <!-- <input type="text" name="board_readcount"> -->
 
@@ -38,7 +19,7 @@ function categorycheck(c)
 	<tr>
 		<th width ="100">카테고리</th>
 		<td>
-		<select id ="category" name="category_code"  onchange="categorycheck(this.value)">
+		<select id ="category" name="category_code"  >
 			<option value="vacuum" >----------</option>
 			<c:forEach items="${categoryList}" var="category">
 				<option value="${category.category_code}">${category.category_name}</option>		
@@ -59,6 +40,11 @@ function categorycheck(c)
 		<td width="600">
 	</tr>
 	
+	<tr>
+		<th width="100">파일 첨부</th>
+		<td width="600" >
+		<input type="file" name="file">
+		 </td>
 	<tr>
 		<th width="100">글 내용</th>
 		<td><textarea rows="13" cols="101"  name="board_content" ></textarea></td>

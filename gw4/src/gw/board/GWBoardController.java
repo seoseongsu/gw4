@@ -1,5 +1,6 @@
 package gw.board;
 
+import java.io.File;
 import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,6 +14,9 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 
 
 
@@ -122,13 +126,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 	
 	
 	@RequestMapping("board_WritePro.do")
-		public String board_writePro(HttpServletRequest request, BoardVO boardVO, Model model) throws Exception{
+		public String board_writePro(MultipartHttpServletRequest req, BoardVO boardVO, Model model) throws Exception{
 			
-			boardVO.setBoard_num(Integer.parseInt(request.getParameter("board_num")));
+			boardVO.setBoard_num(Integer.parseInt(req.getParameter("board_num")));
 			
 			model.addAttribute("boardVO" , boardVO);
 	
 			sqlMap.insert("gboard.boardInsert", boardVO);
+			
+			
+			MultipartFile file = ((MultipartRequest) req).getFile("file");	//form에서 받아오는 save를 file에 넣음	
+			//다중업로드
+			List<MultipartFile> files = ((MultipartRequest) req).getFiles("file");	//for문 사용해야함
+			//업로드 위치
+			File copyFile = new File("d://file//"+file.getOriginalFilename());
+			//원본을 업로드위치에 복사
+			try {
+				file.transferTo(copyFile);//복사본을 업로드 할 위치에 복사, 예외처리 발생
+			} catch (Exception e) {e.printStackTrace();}
+			
+			
+			
+			
+			
 			
 			
 			
