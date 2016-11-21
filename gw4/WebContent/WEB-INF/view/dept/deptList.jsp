@@ -34,13 +34,35 @@
 			}
 		}
 	</script>
+	<style type="text/css">
+		#ch
+		{
+		width:300px;
+		height:300px;
+		background-color:grreen;
+		position: relative;
+		top:100px;
+		left:100px;
+		}
+		#bt
+		{
+		width:100px;
+		height:100px;
+		position: absolute;;
+		top:0px;
+		left:650px;
+		}
+		
+	</style>
 </head>
 
 <body onload="prettyPrint();">
-    <ul id="org" style="display:none">
-	   <c:forEach var="treeList" items="${treeList }">
-		   <c:if test="${treeList.dept_higher eq null }">
-			   <li>${treeList.dept_name }
+<div id="ch">
+
+       <c:forEach var="treeList" items="${treeList }">
+       <c:if test="${treeList.dept_higher eq null }">
+	   <ul id="org" style="display:none">
+		     <li>${treeList.dept_name }
 			   		<p>${treeList.dept_leader }</p>
 			   		<p>${treeList.dept_phone }</p>
 			   		<font size="1"><a href="deptUpdate.do?dept_code=${treeList.dept_code}">수정</a> / 
@@ -68,11 +90,16 @@
 				      	</c:forEach>
 				    </ul>
 			    </li>
-		    </c:if>
-		 </c:forEach>
-	 </ul>
-    <a href="deptInsert.do">부서등록</a>
-    <div id="chart" class="orgChart"></div>
+		</ul>
+		<div id="chart" class="orgChart"></div>
+		</c:if>
+		</c:forEach>
+	
+	<div id="bt">
+	    <input type="button" value="부서등록" onclick="location='deptInsert.do'">
+	</div>
+    
+</div>
     
     <script>
         jQuery(document).ready(function() {

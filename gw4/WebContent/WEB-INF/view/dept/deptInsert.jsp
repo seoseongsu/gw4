@@ -4,6 +4,56 @@
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>부서등록</title>
+<script language="JavaScript">
+    function checkIt() {
+        var userinput = eval("document.userinput");
+        var str = userinput.dept_name.value;
+        var dept = str.charAt(str.length - 1);
+        if(!userinput.dept_name.value) {
+            alert("부서이름을 입력하세요");
+            return false;
+        }else if(!(dept == '부')){
+        	alert("부서이름을 정확히 입력하세요");
+        	return false;
+        }else if(!(dept == '팀')){
+        	alert("부서이름을 정확히 입력하세요");
+        	return false;
+        }
+        if(!userinput.dept_higher.value) {
+            alert("상위부서을 입력하세요");
+            return false;
+        }
+        if(!userinput.dept_leader.value) {
+            alert("부서장이름을 입력하세요");
+            return false;
+        }
+        if(!userinput.dept_phone.value) {
+            alert("부서연락처를 입력하세요");
+            return false;
+        }
+        if(!userinput.jumin1.value  || !userinput.jumin2.value )
+        {
+            alert("주민등록번호를 입력하세요");
+            return false;
+        }
+    }
+
+    // 아이디 중복 여부를 판단
+    function openConfirmid(userinput) {
+        // 아이디를 입력했는지 검사
+        if (userinput.id.value == "") {
+            alert("아이디를 입력하세요");
+            return;
+        }
+        // url과 사용자 입력 id를 조합합니다.
+        url = "confirmId.jsp?id=" + userinput.id.value ;
+        
+        // 새로운 윈도우를 엽니다.
+        open(url, "confirm", 
+        "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+    }
+</script>
+
 </head>
 <body>
 <form method="get" action="deptInsertPro.do" name="userinput" onSubmit="return checkIt()">
@@ -12,17 +62,18 @@
     <td colspan="2" height="39" align="center">
        <font size="+1" ><b>부서등록</b></font></td>
     </tr>
-     
     <tr> 
       <td width="200"> 부서이름</td>
       <td width="400" > 
         <input type="text" name="dept_name" size="15" maxlength="15">
+        <font size="1" color="red">*부서순서(대표이사->OO부->OO팀).</font>
       </td>
     </tr>
     <tr> 
       <td width="200"> 상위부서</td>
       <td width="400"> 
         <input type="text" name="dept_higher" size="15" maxlength="15">
+       
       </td>
     </tr>
     <tr> 

@@ -38,7 +38,7 @@ public class DepartmentController {
 	
 	@RequestMapping("/dept/deptInsertPro.do")
 	public String deptInsertPro(HttpServletRequest request, DepartmentVO vo){
-		sqlMap.insert("dept.deptInsert", vo);
+	//	sqlMap.insert("dept.deptInsert", vo);
 		return "/dept/deptInsertPro";
 	}
 	
