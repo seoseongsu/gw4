@@ -31,27 +31,17 @@
     <ul id="org" style="display:none">
     <li>대표이사
        <ul>
-       	<c:forEach var="treeList" items="${treeList }">
-	        <li>${treeList.dept_name}</li>
+       	<c:forEach var="treeListD" items="${treeListD }">
+	        <li>${treeListD.dept_name}
+	        	<ul>
+	        		<c:forEach var="treeListT" items="${treeListT }">
+	        			<c:if test="${treeListD.dept_name eq treeListT.dept_higher }">
+	        				<li>${treeListT.dept_name}</li>
+	        			</c:if>
+	        		</c:forEach>
+	        	</ul>
+	        </li>
       	</c:forEach>
-      	 <li id="A">교육부
-	         	<ul>
-	             <li>강사팀</li>
-	           </ul>
-	         </li>
-	         <li id="B">운영부
-	           <ul>
-	             <li>인사팀</li>
-	             <li>총무팀</li>
-	             <li>시설팀</li>
-	           </ul>
-	         </li>
-	         <li id="C">상담부
-	           <ul>
-	             <li>상담팀</li>
-	             <li>취업팀</li>
-	           </ul>
-	    </li>
        </ul>
      </li>
    </ul>            

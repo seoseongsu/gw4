@@ -16,9 +16,12 @@ public class DepartmentController {
 	
 	@RequestMapping("/dept/deptList.do")
 	public String deptList(HttpServletRequest request){
-		List treeList = null;
-		treeList = sqlMap.queryForList("dept.deptSelectTree", null);
-		request.setAttribute("treeList", treeList);
+		List treeListD = null;
+		List treeListT = null;
+		treeListD = sqlMap.queryForList("dept.deptSelectTreeD", null);
+		treeListT = sqlMap.queryForList("dept.deptSelectTreeT", null);
+		request.setAttribute("treeListD", treeListD);
+		request.setAttribute("treeListT", treeListT);
 		return "/dept/deptList";
 	}
 }

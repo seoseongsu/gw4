@@ -8,8 +8,11 @@
 		<select id="deptSelectCount" resultClass="int">
 			select count(*) from department
 		</select>
-		<select id="deptSelectTree" resultClass="deptVo">
+		<select id="deptSelectTreeD" resultClass="deptVo">
 			select * from department where dept_name LIKE '%부'
+		</select>
+		<select id="deptSelectTreeT" resultClass="deptVo">
+			select * from department where dept_name LIKE '%팀'
 		</select>
 		<insert id="deptInsert" parameterClass="deptVo">
 			insert into department values(##,##,##,##,##)
