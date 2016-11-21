@@ -16,12 +16,11 @@
 	<div class="container">
 		<h1>환영합니다</h1>
 		<form class="form" method="post" action="/gw4/main/loginPro.do">
-			<input type="text" placeholder="사원코드">
-			<input type="password" placeholder="패스워드">
+			<input type="text" name="emp_code" placeholder="사원코드">
+			<input type="password" name="emp_passwd" placeholder="패스워드">
 			<button type="submit" id="login-button">로그인</button>
 		</form>
 	</div>
-	
 	<ul class="bg-bubbles">
 		<li></li>
 		<li></li>

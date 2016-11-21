@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]--> 
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/gw4/css/reset.css" type="text/css" media="screen">
@@ -19,6 +19,14 @@
     <script src="js/NewsGoth_Lt_BT_italic_400.font.js" type="text/javascript"></script>
     <script src="js/Vegur_400.font.js" type="text/javascript"></script> 
     <script src="js/FF-cash.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js" ></script>
+    <script>
+$(document).ready(function(){
+	$("#moreInfo").click(function(){
+		$("#moreInfoContent").slideToggle();
+	})
+})
+</script>
 <style>
 	@media screen and (max-width:700px){
 	 body{background-color:purple}
@@ -131,8 +139,6 @@
     width: 90%;
     position: relative;
 	}
-	#buttons {padding-top:40px; text-align:right; font-size:80px;}
-	#buttons a {margin-left:30px}
 	
 </style>
 
@@ -145,10 +151,10 @@
         	<div class="row-top">
             	<div class="main">
                 	<div class="wrapper">
-                    	<h1><a href="#"></a></h1>
+                    	<h1><a href="http://192.168.10.156:8080/gw4/main/main.do"></a></h1>
                         <form id="login" method="post">
                         <fieldset>	
-                             <div id="buttons">
+                             <div id="">
                                    <a href="http://192.168.10.156:8080/gw4/login.jsp">login</a>   
                              </div>							
                         </fieldset>
@@ -188,7 +194,6 @@
 					</ul></li>
 				<li><a href='#'>커뮤니티</a>
 					<ul>
-						<li><a href='#'>파일관리</a></li>
 						<li><a href='#'>메일</a></li>
 						<li><a href='#'>쪽지</a></li>
 						<li><a href='#'>메신저</a></li>
@@ -260,11 +265,11 @@
                                     </article>
                                     <article class="grid_4 omega">
                                     	<div class="indent-left3">
-                                            <h4 class="p2">사이트맵</h4>
-                                            <figure><a href="#"><img class="img-border" src="/gw4/images/page4-img6.jpg" alt="" /></a></figure>
+                                            <h4 class="p2">로그아웃</h4>
+                                            <figure><a href="/gw4/main/logout.do"><img class="img-border" src="/gw4/images/page4-img6.jpg" alt="" /></a></figure>
                                             <div class="box">
                                                 <div class="padding">
-                                                    <a href="#">site map</a>
+                                                    <a href="#">Logout</a>
                                                 </div>
                                             </div>
                                         </div>
