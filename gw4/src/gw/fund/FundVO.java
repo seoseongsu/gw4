@@ -2,7 +2,7 @@ package gw.fund;
 
 public class FundVO {
 
-	private String fund_code;
+	private int fund_code;
 	private String fund_division;
 	private String fund_days;
 	private String fund_item;
@@ -12,10 +12,10 @@ public class FundVO {
 	private String fund_withdraw;
 	private String fund_balance;
 	
-	public String getFund_code() {
+	public int getFund_code() {
 		return fund_code;
 	}
-	public void setFund_code(String fund_code) {
+	public void setFund_code(int fund_code) {
 		this.fund_code = fund_code;
 	}
 	public String getFund_division() {

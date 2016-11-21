@@ -58,5 +58,11 @@ public class FundController{
 		sqlMap.update("fundUpdate", vo);
 		return "/fund/fundUpdatePro";
 	}
+	
+	@RequestMapping("/fund/fundDyas.do")
+	public String fundDays(){
+		return "/fund/fundList";
+
+	}
 }
 
