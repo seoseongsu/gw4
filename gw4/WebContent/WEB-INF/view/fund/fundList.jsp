@@ -20,7 +20,7 @@ function fundDelete(a){
 			<td align="center">자금수지 목록</td>
 		</tr>
 	</table>
-		<input type="button" value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do','_self')">
+		<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do','_self')"></span>
 	<table border="1" width="100%">
 		<tr>
 			<td align="center" width="50">집행일</td>
@@ -34,9 +34,13 @@ function fundDelete(a){
 			<td align="center" width="50">비고</td>
 
 		</tr>
-		
+			<c:set var="deposit" value="0"/>
+			<c:set var="withdraw" value="0"/>
 			<c:forEach var="fund" items="${fundList}">
 			<tr>
+				<c:set var="deposit" value="${deposit + fund.fund_deposit}"/>
+				<c:set var="withdraw" value="${withdraw + fund.fund_withdraw}"/>
+				<c:set var="balance" value="${deposit - withdraw }"/>
 				<td align="center" width="50">${fund.fund_days}</td>
 				<td align="center" width="50">${fund.fund_division}</td>
 				<td align="center" width="80">${fund.fund_item}</td>
@@ -44,20 +48,22 @@ function fundDelete(a){
 				<td align="center" width="50">${fund.fund_account}</td>
 				<td align="center" width="50">${fund.fund_deposit}</td>
 				<td align="center" width="50">${fund.fund_withdraw}</td>
-				<td align="center" width="50">${fund.fund_balance}</td>
-				<td align="center" width="50">
+				<td align="center" width="50"><c:out value="${balance }"/></td>
+				<td align="center" width="50">				
 				<input type="button" value="수정" onclick="location='fundUpdate.do?fund_code=${fund.fund_code }'"/>
 				<input type="button" value="삭제" onclick="fundDelete(${fund.fund_code})"/>
 				</td>
 			</tr>
-			</c:forEach>
 
+			</c:forEach>
 		<tr>
 			<td colspan="5" align="center">합계</td>
-			<td align="center" width="50">${deposit.fund_deposit}</td>
-			<td align="center" width="50">${deposit.fund_withdraw}</td>
-			<td align="center" width="50">${deposit.fund_balance}</td>
+			<td align="center" width="50"><c:out value="${deposit}"/></td>
+			<td align="center" width="50"><c:out value="${withdraw}"/></td>
+			<td align="center" width="50"><c:out value="${balance }"/></td>
+			<td align="center" width="50"></td>
 		</tr>
+
 
 	</table>
 	</form>
