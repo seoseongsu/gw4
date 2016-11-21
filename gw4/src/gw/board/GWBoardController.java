@@ -1,22 +1,28 @@
 package gw.board;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
+import org.springframework.web.servlet.view.AbstractView;
 
 
 
@@ -24,7 +30,7 @@ import org.springframework.web.multipart.MultipartRequest;
 
 
 	@Controller
-	public class GWBoardController {
+	public class GWBoardController extends AbstractView {
 		@Autowired
 		private SqlMapClientTemplate sqlMap;
 		
@@ -151,13 +157,32 @@ import org.springframework.web.multipart.MultipartRequest;
 		}
 		
 		
-		
 /*------------------------------Content-----------------------------------------------------*/		
 
 	
 	
 	@RequestMapping("board_Content.do")
-		public String board_Content(HttpServletRequest request) throws Exception {
+		public String board_Content(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		File file = (File)model.get("download");
+		response.setCharacterEncoding(getContentType());;
+		response.setContentLength((int)file.length());
+		
+		String fileName = java.net.URLEncoder.encode(file.getName(),"UTF-8");
+		response.setHeader("Content-Disposition",  "attachment;filename=\""+fileName+"\";");
+		response.setHeader("Content-Transfer-Encoding", "binary");
+		
+		OutputStream out = response.getOutputStream();
+		FileInputStream fis = null;
+		try{
+			fis = new FileInputStream(file);
+			FileCopyUtils.copy(fis, out);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(fis != null){try{fis.close();}catch(Exception e2){}}
+		}
+		out.flush();
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
         String pageNum = request.getParameter("pageNum");
@@ -174,7 +199,8 @@ import org.springframework.web.multipart.MultipartRequest;
 	}
 
 	
-	
+
+
 /*------------------------------Delete-----------------------------------------------------*/	
 
 	
@@ -282,6 +308,15 @@ import org.springframework.web.multipart.MultipartRequest;
 	    request.setAttribute("check", check);
 	    request.setAttribute("board_num", num);
 		return "/gboard/board_ModifyPro";
+	}
+
+
+
+	@Override
+	protected void renderMergedOutputModel(Map<String, Object> arg0, HttpServletRequest arg1, HttpServletResponse arg2)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
