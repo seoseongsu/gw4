@@ -5,6 +5,9 @@
 		<select id="deptSelectAll" resultClass="deptVo">
 			select * from department
 		</select>
+		<select id="deptSelectUp" resultClass="deptVo" parameterClass="String">
+			select * from department where dept_code=#dept_code#
+		</select>
 		<select id="deptSelectCount" resultClass="int">
 			select count(*) from department
 		</select>

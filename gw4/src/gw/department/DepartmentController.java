@@ -41,4 +41,27 @@ public class DepartmentController {
 		sqlMap.insert("dept.deptInsert", vo);
 		return "/dept/deptInsertPro";
 	}
+	
+	@RequestMapping("/dept/deptUpdate.do")
+	public String deptUpdate(HttpServletRequest request){
+		String dept_code = (String) request.getParameter("dept_code");
+		
+		DepartmentVO dpetVo = (DepartmentVO) sqlMap.queryForObject("dept.deptSelectUp", dept_code);
+		
+		request.setAttribute("deptVo", dpetVo);
+		return "/dept/deptUpdate";
+	}
+	
+	@RequestMapping("/dept/deptUpdatePro.do")
+	public String deptUpdatePro(HttpServletRequest request, DepartmentVO vo){
+		sqlMap.update("dept.deptUpdate", vo);
+		return "/dept/deptUpdatePro";
+	}
+	
+	@RequestMapping("/dept/deptDeletePro.do")
+	public String deptDeletePro(HttpServletRequest request){
+		String dept_code = (String) request.getParameter("dept_code");
+		sqlMap.delete("dept.deptDelete", dept_code);
+		return "/dept/deptDeletePro";
+	}
 }

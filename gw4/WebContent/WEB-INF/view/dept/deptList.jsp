@@ -44,14 +44,14 @@
 			   		<p>${treeList.dept_leader }</p>
 			   		<p>${treeList.dept_phone }</p>
 			   		<font size="1"><a href="deptUpdate.do?dept_code=${treeList.dept_code}">수정</a> / 
-			   						<a href="" onclick="deptDeleteEvent(${treeList.dept_code})">삭제</a></font>	   		
+			   						<a href="#" onclick="deptDeleteEvent(${treeList.dept_code})">삭제</a></font>	   		
 			   		<ul>
 				       	<c:forEach var="treeListD" items="${treeListD }">
 					        <li>${treeListD.dept_name}
 					        	<p>${treeListD.dept_leader}</p>
 					        	<p>${treeListD.dept_phone}</p>
 					        	<font size="1"><a href="deptUpdate.do?dept_code=${treeListD.dept_code}">수정</a> / 
-			   						<a href="" onclick="deptDeleteEvent(${treeListD.dept_code})">삭제</a></font>	  
+			   						<a href="#" onclick="deptDeleteEvent(${treeListD.dept_code})">삭제</a></font>	  
 					        	<ul>
 					        		<c:forEach var="treeListT" items="${treeListT }">
 					        			<c:if test="${treeListD.dept_name eq treeListT.dept_higher }">
@@ -59,7 +59,7 @@
 					        					<p>${treeListT.dept_leader}</p>
 					        					<p>${treeListT.dept_phone}</p>
 					        					<font size="1"><a href="deptUpdate.do?dept_code=${treeListT.dept_code}">수정</a> / 
-			   										<a href="" onclick="deptDeleteEvent(${treeListT.dept_code})">삭제</a></font>	  
+			   										<a href="#" onclick="deptDeleteEvent(${treeListT.dept_code})">삭제</a></font>	  
 					        				</li>
 					        			</c:if>
 					        		</c:forEach>

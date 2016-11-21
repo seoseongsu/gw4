@@ -72,7 +72,7 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("/emp/empDeletePro.do")
-	public String empDeletePro(HttpServletRequest request, EmployeeVO vo){
+	public String empDeletePro(HttpServletRequest request){
 		String emp_code = (String) request.getParameter("emp_code");
 		sqlMap.delete("emp.empDelete", emp_code);
 		return "/emp/empDeletePro";
