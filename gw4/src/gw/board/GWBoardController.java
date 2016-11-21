@@ -147,11 +147,6 @@ import org.springframework.web.multipart.MultipartRequest;
 			
 			
 			
-			
-			
-			
-			
-			
 			return "/gboard/board_WritePro";
 		}
 		

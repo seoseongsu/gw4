@@ -31,6 +31,10 @@
     <td align="center" width="125" >글내용</td>
     <td align="left" width="375" rows="30" colspan="3"><pre>${boardList.board_content}</pre></td>
   </tr>
+  <tr>ㄴ
+  	<td align="center" width="125" >첨부파일</td>
+  	<td></td>
+  	</tr>
   <tr height="30">      
     <td colspan="4" align="right" > 
 	  <input type="button" value="글수정" 
