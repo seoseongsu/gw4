@@ -75,7 +75,20 @@ create table position
 );
 create sequence po_code_seq nocache
 
-
+#fund
+create table fund(
+fund_code number,
+fund_division varchar2(100),	
+fund_days varchar2(100),	
+fund_day varchar2(100), 
+fund_item varchar2(100),	
+fund_briefs varchar2(100),	
+fund_account varchar2(100),	
+fund_deposit varchar2(100),	
+fund_withdraw varchar2(100),	
+fund_balance varchar2(100)	
+);
+create sequence fund_code_seq nocache
 
 
 
