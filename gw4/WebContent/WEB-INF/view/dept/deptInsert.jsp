@@ -12,10 +12,7 @@
         if(!userinput.dept_name.value) {
             alert("부서이름을 입력하세요");
             return false;
-        }else if(!(dept == '부')){
-        	alert("부서이름을 정확히 입력하세요");
-        	return false;
-        }else if(!(dept == '팀')){
+        }else if(!(dept == '부' || dept == '팀')){
         	alert("부서이름을 정확히 입력하세요");
         	return false;
         }
