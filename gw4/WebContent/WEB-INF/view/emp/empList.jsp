@@ -58,8 +58,8 @@ function deleteEvent(a){
 			<tr align="center">
 				<td>${article.emp_code }</td>
 				<td>${article.emp_name }</td>
-				<td>${article.dept_code }</td>
-				<td>${article.po_code }</td>
+				<td>${article.dept_name }</td>
+				<td>${article.po_name }</td>
 				<td>${article.emp_jumin }</td>
 				<td>${article.emp_birth }</td>
 				<td>${article.emp_phone }</td>

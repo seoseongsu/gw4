@@ -21,7 +21,7 @@ public class EmployeeController {
 		List articleList = null;
 		count = (Integer)sqlMap.queryForObject("emp.empSelectCount", null);
 		if (count > 0) {
-            articleList = sqlMap.queryForList("emp.empSelectAll", null);
+            articleList = sqlMap.queryForList("emp.empSelectList", null);
         } else {
             articleList = Collections.EMPTY_LIST;
         }
