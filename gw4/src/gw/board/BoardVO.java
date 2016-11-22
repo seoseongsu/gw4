@@ -2,6 +2,8 @@ package gw.board;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 
 	private String category_code;
@@ -13,8 +15,15 @@ public class BoardVO {
 	private int board_readcount;  
 	private String board_file_orgname;
 	private String board_file_savname;
+	private MultipartFile file;
 	
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public String getCategory_code() {
 		return category_code;
 	}

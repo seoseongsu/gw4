@@ -12,7 +12,7 @@
 
 <body>
 <form method="post" name="writeform" action="board_WritePro.do" enctype="multipart/form-data" > 
-<input type="hidden" name="board_num" value="${num}">
+<input type="hidden" name="board_num" value="${board_num}">
 <!-- <input type="text" name="board_readcount"> -->
 
 <table width="900" border ="1">
@@ -44,6 +44,9 @@
 		<th width="100">파일 첨부</th>
 		<td width="600" >
 		<input type="file" name="file">
+		<input type="hidden" name="board_file_orgname" value="${board_file_orgname}">
+		<input type="hidden" name="board_file_savname" value="${board_file_savname}">
+		
 		 </td>
 	<tr>
 		<th width="100">글 내용</th>
