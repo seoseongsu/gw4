@@ -51,7 +51,7 @@ $(function(){
     <tr> 
       <td width="200"> 비밀번호</td>
       <td width="400" > 
-        <input type="password" name="emp_passwd" size="15" maxlength="12">
+        <input type="password" name="emp_passwd" size="15" maxlength="12" value="${empVo.emp_passwd }">
       </td>
     </tr>
     <tr> 
@@ -67,10 +67,10 @@ $(function(){
 	      	<c:forEach var="deptList" items="${deptList }">
 	      		<c:choose>
 		      		<c:when test="${deptList.dept_higher eq null}">
-		      			<option value ="${deptList.dept_code }">${deptList.dept_name }</option>
+		      			<option value ="${deptList.dept_code }" ${deptList.dept_code == empVo.dept_code ? 'selected="selected"' : '' }>${deptList.dept_name }</option>
 		      		</c:when>
 		      		<c:otherwise>
-		      			<option value ="${deptList.dept_code }">${deptList.dept_higher }>${deptList.dept_name }</option>
+		      			<option value ="${deptList.dept_code }" ${deptList.dept_code == empVo.dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_name }</option>
 		      		</c:otherwise>
 	      		</c:choose>
 	      	</c:forEach>
@@ -81,7 +81,7 @@ $(function(){
       <td>직급</td>
       <td><select name="po_code">
 	      	<c:forEach var="poList" items="${poList }">
-	      		<option value ="${poList.po_code }">${poList.po_name }</option>
+	      		<option value ="${poList.po_code }"${poList.po_code == empVo.po_code ? 'selected="selected"' : '' }>${poList.po_name }</option>
 		    </c:forEach>
 	      </select></td>
     </tr>

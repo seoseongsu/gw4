@@ -3,7 +3,7 @@
 <sqlMap namespace="dept">
 	<typeAlias alias="deptVo" type="gw.department.DepartmentVO"/>
 		<select id="deptSelectAll" resultClass="deptVo">
-			select * from department
+			select * from department order by decode(dept_higher,null,'1','대표이사','2') asc, dept_higher asc
 		</select>
 		<select id="deptSelectUp" resultClass="deptVo" parameterClass="String">
 			select * from department where dept_code=#dept_code#

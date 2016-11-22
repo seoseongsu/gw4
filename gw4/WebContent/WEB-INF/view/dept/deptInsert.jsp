@@ -12,7 +12,7 @@
         if(!userinput.dept_name.value) {
             alert("부서이름을 입력하세요");
             return false;
-        }else if(!(dept == '부' || dept == '팀')){
+        }else if(!(dept == '부' || dept == '팀' || userinput.dept_name.value == '대표이사' )){
         	alert("부서이름을 정확히 입력하세요");
         	return false;
         }
@@ -33,21 +33,6 @@
             alert("주민등록번호를 입력하세요");
             return false;
         }
-    }
-
-    // 아이디 중복 여부를 판단
-    function openConfirmid(userinput) {
-        // 아이디를 입력했는지 검사
-        if (userinput.id.value == "") {
-            alert("아이디를 입력하세요");
-            return;
-        }
-        // url과 사용자 입력 id를 조합합니다.
-        url = "confirmId.jsp?id=" + userinput.id.value ;
-        
-        // 새로운 윈도우를 엽니다.
-        open(url, "confirm", 
-        "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
     }
 </script>
 

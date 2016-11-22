@@ -38,23 +38,37 @@ function deleteEvent(a){
 	
 	<c:if test="${count > 0 }">
 		<table align="center" border="1">
-			<tr>
+			<tr align="center">
 				<td>사원번호</td>
 				<td>성명</td>
 				<td>부서(조직)</td>
 				<td>직급</td>
+				<td>주민번호</td>
+				<td>생년월일</td>
+				<td>연락처</td>
+				<td>이메일</td>
 				<td>최종학력</td>
+				<td>경력</td>		
 				<td>입사일자</td>
-				<td>...</td>					
+				<td>은행명</td>
+				<td>계좌번호</td>
+				<td>&nbsp;</td>					
 			</tr>
 			<c:forEach var="article" items="${articleList }">
-			<tr>
+			<tr align="center">
 				<td>${article.emp_code }</td>
 				<td>${article.emp_name }</td>
 				<td>${article.dept_code }</td>
 				<td>${article.po_code }</td>
+				<td>${article.emp_jumin }</td>
+				<td>${article.emp_birth }</td>
+				<td>${article.emp_phone }</td>
+				<td>${article.emp_email }</td>
 				<td>${article.emp_acability }</td>
+				<td>${article.emp_career }</td>
 				<td>${article.emp_join }</td>
+				<td>${article.emp_bank }</td>
+				<td>${article.emp_acnum }</td>
 				<td><input type="button" value="수정" onclick="location='empUpdate.do?emp_code=${article.emp_code }'"/>
 				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
 			</tr>

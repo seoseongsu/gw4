@@ -4,6 +4,33 @@
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>부서수정</title>
+<script language="JavaScript">
+    function checkIt() {
+        var userinput = eval("document.userinput");
+        var str = userinput.dept_name.value;
+        var dept = str.charAt(str.length - 1);
+        if(!userinput.dept_name.value) {
+            alert("부서이름을 입력하세요");
+            return false;
+        }else if(!(dept == '부' || dept == '팀' || userinput.dept_name.value == '대표이사' )){
+        	alert("부서이름을 정확히 입력하세요");
+        	return false;
+        }
+        if(!userinput.dept_leader.value) {
+            alert("부서장이름을 입력하세요");
+            return false;
+        }
+        if(!userinput.dept_phone.value) {
+            alert("부서연락처를 입력하세요");
+            return false;
+        }
+        if(!userinput.jumin1.value  || !userinput.jumin2.value )
+        {
+            alert("주민등록번호를 입력하세요");
+            return false;
+        }
+    }
+</script>
 </head>
 <body>
 <form method="get" action="deptUpdatePro.do" name="userinput" onSubmit="return checkIt()">
@@ -18,6 +45,7 @@
       <td width="200"> 부서이름</td>
       <td width="400" > 
         <input type="text" name="dept_name" value="${deptVo.dept_name }" size="15" maxlength="15">
+        <font size="1" color="red">*부서순서(대표이사->OO부->OO팀).</font>
       </td>
     </tr>
     <tr> 
