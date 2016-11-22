@@ -14,6 +14,18 @@ software	//SW관리(미진행)
 salary		//급여관리(미진행)
 group		//조직도(미진행)
 
+ex)
+#테이블명
+create table 테이블명
+(
+    dept_code varchar2(20) not null, 
+	dept_name varchar2(20) ,
+	dept_higher varchar2(100),
+	dept_leader varchar2(100),
+	dept_phone varchar2(100),
+	constraint pk_dept primary key(dept_code)
+);
+create sequence 시퀀스명 nocache
 
 #department
 create table department
