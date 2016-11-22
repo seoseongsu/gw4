@@ -32,4 +32,8 @@
 		fund_item=#fund_item#,fund_briefs=#fund_briefs#,fund_account=#fund_account#,fund_deposit=#fund_deposit#,
 		fund_withdraw=#fund_withdraw#,fund_balance=#fund_balance#
 	</update>
+	
+	<select id="fundSelectDays" resultClass="fundVo" parameterClass="java.util.HashMap">
+		<![CDATA[select * from fund where fund_days >= #fund_days# and fund_days <= #fund_day#]]>
+	</select>
 </sqlMap>

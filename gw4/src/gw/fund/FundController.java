@@ -1,10 +1,12 @@
 package gw.fund;
 
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -59,10 +61,19 @@ public class FundController{
 		return "/fund/fundUpdatePro";
 	}
 	
-	@RequestMapping("/fund/fundDyas.do")
-	public String fundDays(){
-		return "/fund/fundList";
+	@RequestMapping("/fund/fundDays.do")
+	public String fundDays(Model model, HttpServletRequest request){
+		
+		String fund_days = (String) request.getParameter("fund_days");
+		String fund_day = (String) request.getParameter("fund_day");
+		HashMap map = new HashMap();
+	    map.put("fund_days", fund_days);
+	    map.put("fund_day", fund_day);
+		
+		List fundDays = sqlMap.queryForList("fundSelectDays", map);
+		model.addAttribute("fundDays", fundDays);
 
+		return "/fund/fundDays";
 	}
 }
 

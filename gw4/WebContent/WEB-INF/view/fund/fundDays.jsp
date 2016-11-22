@@ -7,8 +7,9 @@
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <link rel="stylesheet" href="#" />
 <script>
+
 $(function(){
-	$("#fund_day").datepicker({
+	$("#fund_days").datepicker({
 		dateFormat: 'yymmdd',
 		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
 		dayNameMin: ['일','월','화','수','목','금','토'],
@@ -18,7 +19,7 @@ $(function(){
 	});
 });
 $(function(){
-	$("#fund_days").datepicker({
+	$("#fund_day").datepicker({
 		dateFormat: 'yymmdd',
 		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
 		dayNameMin: ['일','월','화','수','목','금','토'],
@@ -46,12 +47,13 @@ function fundDelete(a){
 		</tr>
 	</table>
 	<table>
-		<form method="get" action="fundDays.do" name="fundDays" onSubmit="return checkIt()">
-			<tr><input type="text" id="fund_day" name="fund_day"> 일정별 조회 <input type="text" id="fund_days" name="fund_days"></tr>
-			<tr><input type="button" id="fund_days" name="fund_days" value="조회하기"/></tr>
+		<form method="get" action="fundDays.do" name="fundDays" >
+			<tr><input type="text" id="fund_days" name="fund_days"> 일정별 조회<input type="text" id="fund_day" name="fund_day"></tr>
+			<tr><input type="submit" value="조회하기"></tr>
 		</form>
 	</table>
-		<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do','_self')"></span>
+		<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/spring/fund/fundAdd.do','_self')"></span>
+
 	<table border="1" width="100%">
 	<form>
 		<tr>
@@ -68,7 +70,7 @@ function fundDelete(a){
 		</tr>
 			<c:set var="deposit" value="0"/>
 			<c:set var="withdraw" value="0"/>
-			<c:forEach var="fund" items="${fundList}">
+			<c:forEach var="fund" items="${fundDays}">
 			<tr>
 				<c:set var="deposit" value="${deposit + fund.fund_deposit}"/>
 				<c:set var="withdraw" value="${withdraw + fund.fund_withdraw}"/>
@@ -96,5 +98,7 @@ function fundDelete(a){
 			<td align="center" width="50"></td>
 		</tr>
 	</table>
+
 	</form>
+	
 </body>

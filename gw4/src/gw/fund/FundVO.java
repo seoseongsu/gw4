@@ -5,6 +5,7 @@ public class FundVO {
 	private int fund_code;
 	private String fund_division;
 	private String fund_days;
+	private String fund_day;
 	private String fund_item;
 	private String fund_briefs;
 	private String fund_account;
@@ -24,11 +25,18 @@ public class FundVO {
 	public void setFund_division(String fund_division) {
 		this.fund_division = fund_division;
 	}
+	
 	public String getFund_days() {
 		return fund_days;
 	}
 	public void setFund_days(String fund_days) {
 		this.fund_days = fund_days;
+	}
+	public String getFund_day() {
+		return fund_day;
+	}
+	public void setFund_day(String fund_day) {
+		this.fund_day = fund_day;
 	}
 	public String getFund_item() {
 		return fund_item;

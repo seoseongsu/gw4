@@ -8,7 +8,7 @@
 <script>
 $(function(){
 	$("#fund_days").datepicker({
-		dateFormat: 'yy - mm - dd',
+		dateFormat: 'yymmdd',
 		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
 		dayNameMin: ['일','월','화','수','목','금','토'],
 		changeMonth: true,	//월변경가능
