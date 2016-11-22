@@ -3,5 +3,5 @@
 
 <%
 	session.invalidate();
-	response.sendRedirect("/gw4/main/main.do");
+	response.sendRedirect("/gw4/main/login.do");
 %>

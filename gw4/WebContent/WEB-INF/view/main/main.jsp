@@ -10,7 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/gw4/css/reset.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/gw4/css/style.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/gw4/css/grid.css" type="text/css" media="screen">   
+    <link rel="stylesheet" href="/gw4/css/grid.css" type="text/css" media="screen">  
+    <link rel="stylesheet" href="/gw4/css/mainstyle.css" type="text/css" media="screen"> 
     <script src="js/jquery-1.6.3.min.js" type="text/javascript"></script>
     <script src="js/cufon-yui.js" type="text/javascript"></script>
     <script src="js/cufon-replace.js" type="text/javascript"></script>
@@ -139,7 +140,6 @@ $(document).ready(function(){
     width: 90%;
     position: relative;
 	}
-	
 </style>
 
 
@@ -151,17 +151,22 @@ $(document).ready(function(){
         	<div class="row-top">
             	<div class="main">
                 	<div class="wrapper">
-                    	<h1><a href="http://192.168.10.156:8080/gw4/main/main.do"></a></h1>
-                        <form id="login" method="post">
-                        <fieldset>	
-                             <div id="">
-                                   <a href="http://192.168.10.156:8080/gw4/login.jsp">login</a>   
-                             </div>							
-                        </fieldset>
-                    </form>
-                    </div>
-                </div>
-			</div>
+                    	<h1><a href="http://localhost:8080/gw4/main/main.do"></a></h1>
+                        <c:if test="${sessionScope.memId != null}">
+                        <div class="search-field">
+							<img src="/gw4/images/employee.jpg" alt="employee_profile" class="main_img_circle">
+							<div class="line_align">
+								${sessopmScope.memId}&nbsp;
+								<input type="button" value="▼" id="moreInfo"/>
+                     		</div>
+                     		<div id="moreInfoContent">
+                     			<ul>
+                     				<li><a href="http://localhost:8080/gw4/main/logout.do">로그아웃</a></li>
+                     			</ul>
+                  			</div>							
+               			</div></c:if>
+           			</div>
+				</div>
 		</header>
 		<!--==============================menu=================================-->
 	<div>
@@ -269,7 +274,7 @@ $(document).ready(function(){
                                             <figure><a href="/gw4/main/logout.do"><img class="img-border" src="/gw4/images/page4-img6.jpg" alt="" /></a></figure>
                                             <div class="box">
                                                 <div class="padding">
-                                                    <a href="#">Logout</a>
+                                                    <a href="/gw4/main/logout.do">Logout</a>
                                                 </div>
                                             </div>
                                         </div>

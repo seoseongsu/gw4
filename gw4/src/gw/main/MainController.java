@@ -53,9 +53,5 @@ public class MainController{
 		session.removeAttribute("memId");
 		return "/main/logout";
 	}
-	@RequestMapping("/error/error.do")
-	public String error(){
-		return "/error/error";
-	}
 }
 
