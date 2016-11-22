@@ -11,7 +11,7 @@
 
 	<context:component-scan base-package="gw.board" />
 	
-	<bean id="download" class="gw.board.GWBoardController"/>
+	<bean id="GWBoardController" class="gw.board.GWBoardController"/>
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="0" />
 	</bean>
