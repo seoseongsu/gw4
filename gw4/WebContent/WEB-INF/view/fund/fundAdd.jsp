@@ -17,6 +17,22 @@ $(function(){
 	});
 });
 </script>
+<script>
+	var option="";
+	$("#fund_division").on('change',function(){
+		var value=$(this).val();
+	alert(value);
+	if(value=="입금"){
+		options="<input type="text" name="fund_deposit" value="fund_deposit">";
+		$("#name").html(options);
+	}else if(value=="출금"){
+		options="<input type="text" name="fund_withdraw" value="fund_withdraw">";
+		$("#name").html(options);
+	}else
+		$("#name").find("input").remove()
+});
+	
+</script>
 
 <body>
 	<table>
@@ -34,8 +50,8 @@ $(function(){
 				<option value="출금">출금</option>
 			</select>
 		</tr>
-		<td>입금액<input type="text" id="fund_deposit" name="fund_deposit"><td>
-		<td>출금액<input type="text" id="fund_withdraw" name="fund_withdraw"></td>
+		<td>금액<input type="text" id="fund_deposit" name=""><td>
+		<!-- <td>금액<input type="text" id="fund_withdraw" name="fund_withdraw"></td> -->
 		<tr>적요<input type="text" id="fund_briefs" name="fund_briefs"></tr>
 		
 		<td>자금항목
