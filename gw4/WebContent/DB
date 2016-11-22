@@ -13,3 +13,68 @@ hardware	//HW관리(미진행)
 software	//SW관리(미진행)
 salary		//급여관리(미진행)
 group		//조직도(미진행)
+
+
+#department
+create table department
+(
+    dept_code varchar2(20) not null, 
+	dept_name varchar2(20) ,
+	dept_higher varchar2(100),
+	dept_leader varchar2(100),
+	dept_phone varchar2(100),
+	constraint pk_dept primary key(dept_code)
+);
+constraint fk_dept foreign key(dept_higher)
+references department(dept_code)
+create sequence dept_code_seq nocache
+
+#employee
+create table employee
+(
+	emp_code varchar2(20) not null,
+	dept_code varchar2(20) not null,
+	po_code varchar2(20) not null,
+	emp_passwd varchar2(20),
+	emp_name varchar2(50),
+	emp_jumin varchar2(20),
+	emp_birth varchar2(100),
+	emp_phone varchar2(100),
+	emp_email varchar2(100),
+	emp_acability varchar2(100),
+	emp_career number,
+	emp_join varchar2(100),
+	emp_bank varchar2(100),
+	emp_acnum number,
+	constraint pk_emp primary key(emp_code),
+	constraint fk_emp foreign key(dept_code)
+	references department(dept_code)
+);
+ALTER TABLE employee ADD CONSTRAINT fk_emp2 FOREIGN KEY(po_code) 
+  REFERENCES position(po_code);
+create sequence emp_code_seq nocache
+
+#position
+create table position
+(
+    po_code varchar2(20) not null, 
+	po_name varchar2(20),
+	constraint pk_po primary key(po_code)
+);
+create sequence po_code_seq nocache
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
