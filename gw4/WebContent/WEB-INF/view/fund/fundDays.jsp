@@ -52,7 +52,7 @@ function fundDelete(a){
 			<tr><input type="submit" value="조회하기"></tr>
 		</form>
 	</table>
-		<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/spring/fund/fundAdd.do','_self')"></span>
+		<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do','_self')"></span>
 
 	<table border="1" width="100%">
 	<form>
