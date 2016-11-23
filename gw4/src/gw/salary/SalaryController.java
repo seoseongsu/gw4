@@ -15,3 +15,4 @@ public class SalaryController {
 		return "/salary/salaryList";
 	}
 }
+	
