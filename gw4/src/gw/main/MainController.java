@@ -18,8 +18,7 @@ public class MainController{
 	SqlMapClientTemplate sqlMap;
 	
 	@RequestMapping("/main/main.do")
-	public String main(){	 
-
+	public String main(HttpServletRequest request, HttpSession session){
 		return"/main/main";
 	}
 	

@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="/gw4/css/reset.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/gw4/css/style.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/gw4/css/grid.css" type="text/css" media="screen">  
-    <link rel="stylesheet" href="/gw4/css/mainstyle.css" type="text/css" media="screen"> 
     <script src="js/jquery-1.6.3.min.js" type="text/javascript"></script>
     <script src="js/cufon-yui.js" type="text/javascript"></script>
     <script src="js/cufon-replace.js" type="text/javascript"></script>
@@ -21,13 +20,6 @@
     <script src="js/Vegur_400.font.js" type="text/javascript"></script> 
     <script src="js/FF-cash.js" type="text/javascript"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js" ></script>
-    <script>
-$(document).ready(function(){
-	$("#moreInfo").click(function(){
-		$("#moreInfoContent").slideToggle();
-	})
-})
-</script>
 <style>
 	@media screen and (max-width:700px){
 	 body{background-color:purple}
@@ -140,6 +132,8 @@ $(document).ready(function(){
     width: 90%;
     position: relative;
 	}
+	#mainLoginForm{
+	padding-top: 17px;
 </style>
 
 
@@ -153,20 +147,30 @@ $(document).ready(function(){
                 	<div class="wrapper">
                     	<h1><a href="http://localhost:8080/gw4/main/main.do"></a></h1>
                         <c:if test="${sessionScope.memId != null}">
-                        <div class="search-field">
-							<img src="/gw4/images/employee.jpg" alt="employee_profile" class="main_img_circle">
-							<div class="line_align">
-								${sessopmScope.memId}&nbsp;
-								<input type="button" value="▼" id="moreInfo"/>
-                     		</div>
-                     		<div id="moreInfoContent">
-                     			<ul>
-                     				<li><a href="http://localhost:8080/gw4/main/logout.do">로그아웃</a></li>
-                     			</ul>
-                  			</div>							
-               			</div></c:if>
+                        <div id="mainLoginForm">
+                        <form name="inform" method="post" action="/gw4/main/logout.do" >
+                        <table width=250 cellpadding="0" cellspacing="0"  align="right" border="0" >
+                        <tr>
+                        	<td rowspan="2" bgcolor="171717" width="125" align="center">
+                        	<img src="/gw4/images/employee.jpg" width="75"></td>
+                        	<td width="100" bgcolor="171717" align="center" >
+                        	<font size="5" color="white">사원코드</font></td>
+                        </tr>
+                        <tr>
+                        	<td bgcolor="171717" width="100" align="center">
+                        	<font size="5" color="white">${sessionScope.memId}</font></td>
+                        </tr>
+                        <tr>
+                        	<td colspan="2" bgcolor="171717" align="right">
+                        	<input type="submit" value="로그아웃"></td>
+                        </tr>
+                        </table>
+						</form>
+						</div>
+               			</c:if>
            			</div>
 				</div>
+			</div>
 		</header>
 		<!--==============================menu=================================-->
 	<div>
