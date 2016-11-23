@@ -17,7 +17,27 @@ $(function(){
 	});
 });
 </script>
-
+<script>
+function change(style){
+	if(style == "출금")
+		{
+		fund_withdraw.style.display = "inline"
+			fund_deposit.style.display = "none"
+		
+	}
+	if(style == "입금")
+		{
+		fund_deposit.style.display = "inline"
+			fund_withdraw.style.display = "none"
+		}
+	if(style == "")
+		{
+		fund_deposit.style.display = "none"
+		fund_withdraw.style.display = "none"
+		}
+	
+}
+</script>
 
 <body>
 	<table>
@@ -27,17 +47,17 @@ $(function(){
 	</table>
 	<form method="get" action="fundAddPro.do" name="fundinput" onSubmit="return checkIt()">
 	<table>
-		<tr>집행일<input type="text" id="fund_days" name="fund_days"></tr>
+		<tr>집행일<input type="text" id="fund_days" name="fund_days" placeholder="일자를 선택하세요"></tr>
 		<tr>구분
-			<select id="fund_division" name="fund_division" >
+			<select onChange="change(this.options[this.selectedIndex].value)" id="fund_division" name="fund_division" >
 				<option value="">선택</option>
 				<option value="입금">입금</option>
 				<option value="출금">출금</option>
 			</select>
 		</tr>
-		<td>금액<input type="text" id="fund_deposit" name="fund_deposit"><td>
-	    <td>금액<input type="text" id="fund_withdraw" name="fund_withdraw"></td>
-		<tr>적요<input type="text" id="fund_briefs" name="fund_briefs"></tr>
+		<td><input type="text" id="fund_deposit" name="fund_deposit" placeholder="입금액을 입력하세요" style="display:none;">
+	    <input type="text" id="fund_withdraw" name="fund_withdraw" placeholder="출금액을 입력하세요" style="display:none;"></td>
+		<tr>적요<input type="text" id="fund_briefs" name="fund_briefs" placeholder="상세내용을 입력하세요"></tr>
 		
 		<td>자금항목
 			<select id="fund_item" name="fund_item">
