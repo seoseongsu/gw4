@@ -17,22 +17,7 @@ $(function(){
 	});
 });
 </script>
-<script>
-	var option="";
-	$("#fund_division").on('change',function(){
-		var value=$(this).val();
-	alert(value);
-	if(value=="입금"){
-		options="<input type="text" name="fund_deposit" value="fund_deposit">";
-		$("#name").html(options);
-	}else if(value=="출금"){
-		options="<input type="text" name="fund_withdraw" value="fund_withdraw">";
-		$("#name").html(options);
-	}else
-		$("#name").find("input").remove()
-});
-	
-</script>
+
 
 <body>
 	<table>
@@ -44,14 +29,14 @@ $(function(){
 	<table>
 		<tr>집행일<input type="text" id="fund_days" name="fund_days"></tr>
 		<tr>구분
-			<select id="fund_division" name="fund_division">
+			<select id="fund_division" name="fund_division" >
 				<option value="">선택</option>
 				<option value="입금">입금</option>
 				<option value="출금">출금</option>
 			</select>
 		</tr>
-		<td>금액<input type="text" id="fund_deposit" name=""><td>
-		<!-- <td>금액<input type="text" id="fund_withdraw" name="fund_withdraw"></td> -->
+		<td>금액<input type="text" id="fund_deposit" name="fund_deposit"><td>
+	    <td>금액<input type="text" id="fund_withdraw" name="fund_withdraw"></td>
 		<tr>적요<input type="text" id="fund_briefs" name="fund_briefs"></tr>
 		
 		<td>자금항목
