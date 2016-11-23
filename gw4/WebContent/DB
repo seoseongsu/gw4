@@ -8,10 +8,10 @@ bcomment	//게시판 댓글
 bstatement	//업무명세서(미진행)
 bbreakdown	//업무내역(미진행)
 approval	//결재(미진행)
-fund		//자금관리(미진행)
+fund		//자금관리
 hardware	//HW관리(미진행)
 software	//SW관리(미진행)
-salary		//급여관리(미진행)
+salary		//급여관리
 group		//조직도(미진행)
 
 ex)
@@ -90,6 +90,25 @@ fund_balance varchar2(100)
 );
 create sequence fund_code_seq nocache
 
+#salary
+create table salary(
+salary_code varchar2(20),
+emp_code varchar2(20),
+dept_code varchar2(20),
+po_code varchar2(20),
+salary_normal varchar2(100),
+salary_bonus varchar2(100),
+salary_pay varchar2(100),
+salary_pension varchar2(100),
+salary_health varchar2(100),
+salary_nursing varchar2(100),
+salary_employ varchar2(100),
+salary_income varchar2(100),
+salary_resident varchar2(100),
+salary_deduction varchar2(100),
+salary_acpay varchar2(100)
+);
+create sequence salary_code_seq nocache;
 
 
 
