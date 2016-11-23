@@ -2,86 +2,82 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>aa</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script language="javascript">
-
-var oTbl;
-var count = 0;
-//Row 추가
-
-function insRow() {
-  oTbl = document.getElementById("addTable");
-  var oRow = oTbl.insertRow();
-  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
-  var oCell = oRow.insertCell();
-
-  //삽입될 Form Tag
-  var frmTag = "<tr><td><input type=text name=addText"+count+" style=width:350px; height:20px;></td>"+
-  "<td><input type=text name=addText"+count+" style=width:50px; height:20px;></td>"+
-  "<td><input type=text name=addText"+count+" style=width:50px; height:20px;></td>"+
-  "<td><input type=text name=addText"+count+" style=width:50px; height:20px;></td>";
-  frmTag += "<td><input type=button value='삭제' onClick='removeRow()' style='cursor:hand'></td></tr>";
-  oCell.innerHTML = frmTag;
-  count++;
-  document.form.count.value=count;
-  // 다음 페이지에 몇개의 폼을 넘기는지 전달하기 위해 히든 폼에 카운트 저장
-}
-//Row 삭제
-function removeRow() {
-  oTbl.deleteRow(oTbl.clickedRowIndex);
-  count--;
-  document.form.count.value=count;
-}
-
-function frmCheck()
-{
-  var frm = document.form;
-  
-  for( var i = 0; i <= frm.elements.length - 1; i++ ){
-     if( frm.elements[i].name == "addText" )
-     {
-         if( !frm.elements[i].value ){
-             alert("텍스트박스에 값을 입력하세요!");
-                 frm.elements[i].focus();
-	 return;
-          }
-      }
-   }
- }
-
-</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+     
+    <script type="text/javascript">
+        $(document).ready(function(){
+        	var count = 1;
+            // 추가 버튼 클릭시
+            $("#addBtn").click(function(){
+                // item 의 최대번호 구하기
+                //var lastNo = $("#example tr:last").attr("class").replace("item", "");
+                var newitem = $("#example tr:eq(1)").clone();
+                count++;
+                //newitem.removeClass();
+                //newitem.find("td:eq(0)").attr("rowspan", "1");
+                //newitem.addClass("item"+count);
+ 				
+                $("#example > tbody:last").append(newitem);
+                $("#bb_main1").attr("value", "bb_main"+count);
+                $("#bb_status1").attr("value", "bb_status"+count);
+                $("#bb_time1").attr("value", "bb_time"+count);
+                $("#bb_product1").attr("value", "bb_product"+count);
+                
+               // alert(count);
+            });
+             
+            // 삭제버튼 클릭시
+            $(".delBtn").live("click", function(){
+            	if( $("#example tr:eq(1)").is($(this).parents("tr")) ){
+               		alert("처음 업무내역은 삭제 할 수 없습니다.");
+            		return false;
+            	}
+                var clickedRow = $(this).parent().parent();
+                var cls = clickedRow.attr("class");
+                /* 
+                // 각 항목의 첫번째 row를 삭제한 경우 다음 row에 td 하나를 추가해 준다.
+                if( clickedRow.find("td:eq(0)").attr("rowspan") ){
+                    if( clickedRow.next().hasClass(cls) ){
+                        clickedRow.next().prepend(clickedRow.find("td:eq(0)"));
+                    }
+                }*/
+                clickedRow.remove();
+                alert("123"+$(this).parent().parent());
+                count--;
+                // rowspan 조정
+               // resizeRowspan(cls);
+            });
+ 
+            // cls : rowspan 을 조정할 class ex) item1, item2, ...
+            function resizeRowspan(cls){
+                var rowspan = $("."+cls).length;
+                $("."+cls+":first td:eq(0)").attr("rowspan", rowspan);
+            }
+        });
+    </script>
 </head>
+ 
 <body>
-<form name="form" method="post">
-<input type="text" name="count" value="0">
-      <table width="100%" border="1" cellpadding="0" cellspacing="0">
-        <tr>
-         <td colspan="5" bgcolor="#FFFFFF" height="25" align="left">
-         <input name="addButton" type="button" style="cursor:hand" onClick="insRow()" value="추가">
-         <font color="#FF0000">*</font>추가버튼을 클릭해 보세요.</td>
-        </tr>
-        <tr>
-         <td height="25">
-           <table border="1" id="addTable" width="1000" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" border="0">
-            <tr>
-              <td><input type="text" name="addText" style="width:350px; height:20px;"></td>
-              <td align="left"></td>
-            </tr>
-          </table></td>
-        </tr>
-       </table>
- <table width="400" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td height="10">
-      </td>
-    </tr>
-    <tr>
-      <td align="center">
-      <input type="button" name="button" value="확인" onClick="frmCheck();">
-      </td>
-    </tr>
- </table>
+<button id="addBtn">추가</button>
+<form method="post" action="bsInsertPro.do" name="userinput" onSubmit="return checkIt()">
+	<input type="hidden" name="count" value="0">
+	<table id="example" border="1px">
+	        <tr>
+	            <th>주요업무</th>
+	            <th>중요도</th>
+	            <th>시간비중</th>
+	            <th>결과물</th>
+	            <th>&nbsp;</th>
+	        </tr>
+	        <tr class="item1">
+	            <td><input type="text" id="bb_main1" name="bb_main1" size="70" value="bb_main1 원본"/></td>
+	            <td><input type="text" id="bb_status1" name="bb_status1" size="10" value="bb_status1"/></td>
+	            <td><input type="text" id="bb_time1" name="bb_time1" size="10" value="bb_time1"/></td>
+	            <td><input type="text" id="bb_product1" name="bb_product1" size="15" value="bb_product1" /></td>
+	            <td><button class="delBtn">삭제</button></td>
+	        </tr>
+	</table>
 </form>
 </body>
-</html>
+</html>   

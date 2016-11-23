@@ -1,84 +1,104 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>부서등록</title>
-<script language="JavaScript">
-    function checkIt() {
-        var userinput = eval("document.userinput");
-        var str = userinput.dept_name.value;
-        var dept = str.charAt(str.length - 1);
-        if(!userinput.dept_name.value) {
-            alert("부서이름을 입력하세요");
-            return false;
-        }else if(!(dept == '부' || dept == '팀' || userinput.dept_name.value == '대표이사' )){
-        	alert("부서이름을 정확히 입력하세요");
-        	return false;
-        }
-        if(!userinput.dept_higher.value) {
-            alert("상위부서을 입력하세요");
-            return false;
-        }
-        if(!userinput.dept_leader.value) {
-            alert("부서장이름을 입력하세요");
-            return false;
-        }
-        if(!userinput.dept_phone.value) {
-            alert("부서연락처를 입력하세요");
-            return false;
-        }
-        if(!userinput.jumin1.value  || !userinput.jumin2.value )
-        {
-            alert("주민등록번호를 입력하세요");
-            return false;
-        }
-    }
-</script>
-
+<head>
+    <title>테이블에 동적으로 TR 추가 /삭제 하기</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+        	var count = 1;
+            $("#btnAddRow").on("click",function() {
+                // clone
+                $.trClone = $("#memberTable tr:last").clone().html();
+                $.newTr = $("<tr>"+$.trClone+"</tr>");
+ 
+                // append
+                $("#bb_main1").attr("value", "bb_main1"+count);
+                $("#bb_status1").attr("value", "bb_status1"+count);
+                $("#bb_time1").attr("value", "bb_time1"+count);
+                $("#bb_product1").attr("value", "bb_product1"+count);
+                $("#memberTable").append($.newTr);
+                
+ 				count++;
+                
+                //bb_main input text 추가
+                $.inputText = $(document.createElement("input"));
+                $.inputText.attr({
+                    name : "bb_main"+count,
+                    type : "text" ,
+                    id : "bb_main"+count,
+                    value : "bb_main"+count
+                });
+                $("#memberTable tr:last td:eq(0)").html("");
+                $("#memberTable tr:last td:eq(0)").append($.inputText);
+                
+             	//bb_status input text 추가
+                $.inputText = $(document.createElement("input"));
+                $.inputText.attr({
+                    name : "bb_status"+count,
+                    type : "text" ,
+                    id : "bb_status"+count,
+                    value : "bb_main"+count
+                });
+                $("#memberTable tr:last td:eq(1)").html("");
+                $("#memberTable tr:last td:eq(1)").append($.inputText);
+                
+              	//bb_time input text 추가
+                $.inputText = $(document.createElement("input"));
+                $.inputText.attr({
+                    name : "bb_time"+count,
+                    type : "text" ,
+                    id : "bb_time"+count,
+                    value : "bb_time"+count
+                });
+                $("#memberTable tr:last td:eq(2)").html("");
+                $("#memberTable tr:last td:eq(2)").append($.inputText);
+                
+              	//bb_product input text 추가
+                $.inputText = $(document.createElement("input"));
+                $.inputText.attr({
+                    name : "bb_product"+count,
+                    type : "text" ,
+                    id : "bb_product"+count,
+                    value : "bb_product"+count
+                });
+                $("#memberTable tr:last td:eq(3)").html("");
+                $("#memberTable tr:last td:eq(3)").append($.inputText);
+            });
+ 			
+            //삭제
+             $("#btnDelRow").on("click",function(){ 
+            	/*if( $("#example tr:eq(1)").is($(this).parents("tr")) ){
+            		alert("처음 업무내역은 삭제 할 수 없습니다.");
+         			return false;
+         		}*/
+            	 if(count <= 1){
+            		 alert("처음 업무내용은 삭제 할 수 없습니다.");
+            	 }else{
+            		 $("#memberTable tr:last").remove();
+            		 count--;
+            	 }
+            });
+        });
+    </script>
 </head>
-<body>
-<form method="get" action="deptInsertPro.do" name="userinput" onSubmit="return checkIt()">
-  <table width="600" border="1" cellspacing="0" cellpadding="3" align="center" >
-    <tr> 
-    <td colspan="2" height="39" align="center">
-       <font size="+1" ><b>부서등록</b></font></td>
+ 
+<body >﻿
+<div style="width:500px;text-align:right;">
+    <input type="button" value="행추가"  id="btnAddRow" />
+    <input type="button" value="행삭제"  id="btnDelRow" />
+</div>
+<form method="post" id="frmTest">
+<table id="memberTable" border="1" style="width:500px;">
+    <tr>
+        <td style="width:50px;"></td>
+        <td style="width:50px;"></td>
+        <td style="width:50px;"></td>
+        <td style="width:50px;"></td>
     </tr>
-    <tr> 
-      <td width="200"> 부서이름</td>
-      <td width="400" > 
-        <input type="text" name="dept_name" size="15" maxlength="15">
-        <font size="1" color="red">*부서순서(대표이사->OO부->OO팀).</font>
-      </td>
-    </tr>
-    <tr> 
-      <td width="200"> 상위부서</td>
-      <td width="400"> 
-        <input type="text" name="dept_higher" size="15" maxlength="15">
-       
-      </td>
-    </tr>
-    <tr> 
-      <td width="200"> 부서장이름</td>
-      <td width="400"> 
-        <input type="text" name="dept_leader" size="15" maxlength="10">
-      </td>
-    </tr>
-     <tr> 
-      <td width="200"> 부서연락처</td>
-      <td width="400"> 
-        <input type="text" name="dept_phone" size="15" maxlength="30">
-      </td>
-    </tr>
-    <tr> 
-      <td colspan="2" align="center"> 
-          <input type="submit" name="confirm" value="등록" >
-          <input type="reset" name="reset" value="다시입력">
-          <input type="button" value="취소" onclick="javascript:window.location='deptList.do'">
-      </td>
-    </tr>
-  </table>
+</table>
 </form>
-    
 </body>
 </html>
