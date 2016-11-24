@@ -33,7 +33,12 @@ public class BstatementController {
 	
 	@RequestMapping("/bs/bsInsert.do")
 	public String bsInsert(HttpServletRequest request){
-			
+		String emp_code = request.getParameter("emp_code");
+		BstatementInVO bsInVo = (BstatementInVO) sqlMap.queryForObject("bs.bsSelectIn", emp_code);
+		System.out.println(emp_code);
+	//	System.out.println(bsInVo.);
+		
+		request.setAttribute("bsInVo", bsInVo);
 		return "/bs/bsInsert";
 	}
 	

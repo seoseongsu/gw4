@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>업무명세표등록</title>
@@ -87,11 +88,11 @@
 		<tr><td colspan="6"><strong>기본정보</strong></td></tr>
 		<tr>
 			<td>사원</td>
-			<td><input type="text" name="emp_name" size="20" value="" readonly/></td>
+			<td><input type="text" name="emp_name" size="20" value="${bsInVo.emp_name }" readonly/></td>
 			<td>부서</td>
-			<td><input type="text" name="dept_name" value="" readonly/></td>
+			<td><input type="text" name="dept_name" value="${bsInVo.dept_name }" readonly/></td>
 			<td>직급</td>
-			<td><input type="text" name="po_name" value="" readonly/></td>
+			<td><input type="text" name="po_name" value="${bsInVo.po_name }" readonly/></td>
 		</tr>
 		<tr>
 			<td>실행년도</td>
@@ -117,8 +118,7 @@
 	    <tr>
 	    	<td colspan="6"><textarea style="resize: none;" rows="10" cols="98"></textarea></td>
 	    </tr>
-	</table>
-</form>﻿
+	</table>﻿
     <div class="a">
     	<strong>업무내역</strong>
     </div>
@@ -126,7 +126,6 @@
 	    <input type="button" value="행추가"  id="btnAddRow"/>
 	    <input type="button" value="행삭제"  id="btnDelRow"/>
     </div>
-<form method="post" action="#" id="frmTest">
 	<table id="memberTable" border="1" style="width:720px;">
 	    <tr>
 	        <td style="width:180px;">주요업무</td>

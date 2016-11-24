@@ -2,11 +2,21 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="bs">
 	<typeAlias alias="bsVo" type="gw.bstatement.BstatementVO"/>
+	<typeAlias alias="bsInVo" type="gw.bstatement.BstatementInVO"/>
 		<select id="bsSelectAll" resultClass="bsVo">
 			select * from bstatement
 		</select>
 		<select id="bsSelectCount" resultClass="int">
 			select count(*) from bstatement
+		</select>
+		<select id="bsSelectIn" resultClass="bsInVo" parameterClass="String">
+			select bs_code, bs.emp_code, emp_name, bs.dept_code, dept_name, dept_higher,
+			 dept_leader, bs.po_code, po_name, bs_st, bs_year, bs_goal, bs_date
+			 from bstatement bs, employee e, department d, position p
+			 where bs.emp_code = e.emp_code
+			 and bs.dept_code = d.dept_code
+			 and bs.po_code = p.po_code
+			 and bs.emp_code = #emp_code#
 		</select>
 </sqlMap>
 
