@@ -5,13 +5,33 @@
 <html>
 <head>
 <title>게시판</title>
+<!-- 
+<script>
+
+function onDownload(board_num){
+	
+	var o = document.getElementByID("ifrm_filedown");
+	o.src="download.do?board_num="+${boardList.board_num};
+}
+
+
+</script>
+ -->
+<script type="text/javascript">
+	function reply(a){
+		location.href="replyInsert.do?reply_text="+a
+		return;
+	}
+</script>
+
 </head>
 
 <body >  
 <center><b>공지 사항</b>
 <br>
-<form>
+	<form method="post" action="replyInsert.do" name="Board_reply">
 <input type="hidden" name="board_num" value="${boardList.board_num}">
+<!-- <iframe id="ifrm_filedown" style="position:absolute; z-index:1; visivility : hidden;"></iframe>  -->
 <table width="800" border="1" align="center">  
   <tr height="30">
     <td align="center" width="125">조회수</td>
@@ -27,14 +47,42 @@
     <td align="center" width="125" >글제목</td>
     <td align="left" width="375" colspan="3">${boardList.board_subject}</td>
   </tr>
+   <tr>
+  	<td align="center" width="125" >첨부파일</td>
+  	<td><a href="#" onclick="onDownload('${boardList.board_num}')">${boardList.board_file_orgname}</a></td>
+  	</tr>
   <tr>	
     <td align="center" width="125" >글내용</td>
     <td align="left" width="375" rows="30" colspan="3"><pre>${boardList.board_content}</pre></td>
   </tr>
-  <tr>ㄴ
-  	<td align="center" width="125" >첨부파일</td>
-  	<td></td>
+ 
+ 
+ 
+ 	<!-- ---------------------------------댓글--------------------------------------- -->
+ 
+ 	<table width="800" border="1" align="center">
+  	<tr>
+  	<td>
+  	<c:forEach items="${categoryList}" var="category">
+  	</c:forEach>
+  	</td>
   	</tr>
+  	<tr>
+  	<td  align="center" width="125">댓글</td>
+  	<td colspan="3" height="3">
+  		<c:forEach  items="${reply}" var="board_reply">
+  		</c:forEach>
+  		<br/>
+  		<textarea rows ="1" cols="80" name="reply_text"
+  		placeholder="댓글을 작성하세요"></textarea>
+  		<input type="submit" value="댓글 등록">
+	 </td>
+  	</tr>
+ </table>
+ </form>
+  	<!-- ---------------------------------댓글--------------------------------------- -->	
+  
+  
   <tr height="30">      
     <td colspan="4" align="right" > 
 	  <input type="button" value="글수정" 
@@ -48,6 +96,12 @@
     </td>
   </tr>
 </table>    
+
+<table width="800"  align="center">
+	
+
+</table>
+
 </form>      
 </body>
 </html>      

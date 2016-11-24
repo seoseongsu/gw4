@@ -5,6 +5,7 @@
 	<typeAlias alias="Iboard_categoryVO" type="gw.board.Iboard_categoryVO"/>
 	<typeAlias alias="BoardVO" type="gw.board.BoardVO"/>
 	<typeAlias alias="BcommentVO" type="gw.board.BcommentVO"/>
+	<typeAlias alias="Board_replyVO" type="gw.board.Board_replyVO"/>
 				<!-- board_List 게시물 번호 -->
 		<select id="boardCount" resultClass="int">
 			select count(*) from board
@@ -64,5 +65,9 @@
 			update board set board_num=#board_num#,category_code=#category_code#,board_subject=#board_subject#,board_passwd=#board_passwd#,board_content=#board_content# where board_num=#board_num#
 		</update>
 
-		
+
+		<insert id="board_replyInsert" parameterClass="board_replyVO">
+		insert into board_reply (reply_num,board_num,reply_text)
+						values (reply_seq.nextval,#board_num#,#reply_text#)
+		</insert>		
 </sqlMap>

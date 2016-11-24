@@ -221,16 +221,22 @@ import org.springframework.web.servlet.view.AbstractView;
 	
 	
 	@RequestMapping("board_Content.do")
-		public String board_Content(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		public String board_Content(Map<String, Object> model, HttpServletRequest request, 
+				HttpServletResponse response) throws Exception {
 		
 		
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
         String pageNum = request.getParameter("pageNum");
 
+        
+        
+        
         sqlMap.update("gboard.boardReadcount", num);
         BoardVO boardList =  (BoardVO)sqlMap.queryForObject("gboard.boardSelectNum", num);
   
+      
+        
         request.setAttribute("board_num", num);
         request.setAttribute("pageNum", pageNum);
         request.setAttribute("boardList", boardList);
@@ -354,15 +360,26 @@ import org.springframework.web.servlet.view.AbstractView;
 
 
 		
+	
+
+	
+/*--------------------- Board_reply 작업중 --------------------------------------------------------------*/	
+	
+	@RequestMapping("replyInsert.do")
+	public String ReplyInsert(HttpServletRequest request, BoardVO boardVO, 
+			Board_replyVO board_replyVO, Model model)throws Exception{
+		int num = Integer.parseInt(request.getParameter("board_num"));
+		
+		model.addAttribute("boardVO" , boardVO);
+		model.addAttribute("board_replyVO" , board_replyVO);
+		
+		sqlMap.insert("gboard.board_replyInsert", board_replyVO);
+		
+		request.setAttribute("board_num", num);
+		
+		return "/gboard/board_List";
+		}
 	}
-
-
-	
-	
-	
-	
-	
-	
 	
 	
 	
