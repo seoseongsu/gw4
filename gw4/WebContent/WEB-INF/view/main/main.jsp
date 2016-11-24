@@ -28,10 +28,11 @@
 	#nav{
 		list-style-type:none;
 		height:45px;
-		padding:6px 7px;
-		margin:0;
+		padding:6px 385px;
+		margin:0 auto;
 		background:#7d7d7d;
 		border-radius:0em;
+		text-align:center
 	}
 	
 	#nav li{
@@ -65,7 +66,7 @@
 	}
 	
 	#nav ul{
-	  margin:0; 
+	  margin:0 auto; 
 	  padding:0;
 	  list-style:none; 
 	  position: absolute; 
@@ -89,7 +90,7 @@
 	
 	#nav ul li{
 		float:none;
-		margin:0;
+		margin:0 auto;
 		padding:0;
 	}
 	
@@ -134,6 +135,7 @@
 	}
 	#mainLoginForm{
 	padding-top: 17px;
+
 </style>
 
 
@@ -161,8 +163,8 @@
                         	<font size="5" color="white">${sessionScope.memId}</font></td>
                         </tr>
                         <tr>
-                        	<td colspan="2" bgcolor="171717" align="right">
-                        	<input type="submit" value="로그아웃"></td>
+                        	<td colspan="2" bgcolor="171717" align="center" style="width=20px; height=10px">
+                        	<a href="/gw4/main/logout.do" class="myButton">로그아웃</a>
                         </tr>
                         </table>
 						</form>
