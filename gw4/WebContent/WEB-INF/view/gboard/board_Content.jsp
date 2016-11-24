@@ -60,16 +60,23 @@ function onDownload(board_num){
  
  	<!-- ---------------------------------댓글--------------------------------------- -->
  
- 	<table width="800" border="1" align="center">
+ 	<table width="800"   align="center">
   	<tr>
+  	<input type="hidden" name="pageNum" value="${pageNum}">
   	<td>
-  	<c:forEach items="${categoryList}" var="category">
+  	<c:forEach items="${replyList}"  var="replyView">
+
+  			
+  			<tr>
+  			<td align="center" width="125"  > 작성자 </td>
+  			<td align="left" >${replyView.reply_text}
+  			</td>
+  			</tr>	
   	</c:forEach>
   	</td>
   	</tr>
   	<tr>
-  	<td  align="center" width="125">댓글</td>
-  	<td colspan="3" height="3">
+  	<td colspan="4" align="center">
   		<c:forEach  items="${reply}" var="board_reply">
   		</c:forEach>
   		<br/>

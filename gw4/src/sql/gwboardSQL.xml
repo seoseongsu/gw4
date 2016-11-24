@@ -6,68 +6,103 @@
 	<typeAlias alias="BoardVO" type="gw.board.BoardVO"/>
 	<typeAlias alias="BcommentVO" type="gw.board.BcommentVO"/>
 	<typeAlias alias="Board_replyVO" type="gw.board.Board_replyVO"/>
-				<!-- board_List 게시물 번호 -->
-		<select id="boardCount" resultClass="int">
-			select count(*) from board
-		</select>
+
+	<!-- board_List 게시물 번호 -->
+	
+			<select id="boardCount" resultClass="int">
+				select count(*) from board
+			</select>
 		
-		<!-- board_List 게시물 내용 -->
+	<!-- board_List 게시물 내용 -->
+	
+			<select id="boardAll" resultClass="BoardVO" parameterClass="java.util.HashMap">
+				<![CDATA[
+				select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
+				from 
+				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,rownum r
+				from 
+				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
+				from board order by board_num desc) ) where r >= #start# and r <= #end#
+				]]>
+			</select>
+
 		
-		<select id="boardAll" resultClass="BoardVO" parameterClass="java.util.HashMap">
-			<![CDATA[
-			select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
-			from 
-			(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,rownum r
-			from 
-			(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
-			from board order by board_num desc) ) where r >= #start# and r <= #end#
-			]]>
-		</select>
-		<!-- board_WriteForm 카테고리 -->
-		<select id="categorySelect" resultClass="Iboard_categoryVO">
-			select * from Iboard_category 
-		</select>
 		
-		<!-- 넘버 -->
-		<select id="boardSelectMaxNum" resultClass="int">
-			select max(board_num) from board
-		</select>
-		<!-- board_WritePro 내용 삽입 -->
-		<insert id="boardInsert" parameterClass="BoardVo">
-			insert into board
-			(board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname) 
-			values
-			(board_seq.NEXTVAL,#category_code#,#board_subject#,#board_content#,#board_passwd#,sysdate,#board_readcount#,#board_file_orgname#,#board_file_savname#)
-		</insert>
+	<!-- board_WriteForm 카테고리 -->
+	
+			<select id="categorySelect" resultClass="Iboard_categoryVO">
+				select * from Iboard_category 
+			</select>
 		
-		<!-- baord_Content -->
-		<update id="boardReadcount" parameterClass="int">
-			update board set board_readcount=board_readcount+1 where board_num = #board_num#
-		</update>
+	<!-- 넘버 -->
+	
+			<select id="boardSelectMaxNum" resultClass="int">
+				select max(board_num) from board
+			</select>
 		
-		<!-- baord_Content -->
-		<select id="boardSelectNum" resultClass="boardVO" parameterClass="int">
-			select * from board where board_num = #board_num#
-		</select>
-		
-		<!-- board_DeletePro , board_ModifyPro board_passwd 가져오는-->
-		<select id="boardSelectPasswd" resultClass="String" parameterClass="int">
-			select board_passwd from board where board_num = #board_num#
-		</select>
-		
-		<!-- board_DeletePro 글 삭제-->
-		<delete id="boardDelete" parameterClass="int">
-			delete from board where board_num=#board_num#
-		</delete>
-		
-		<!-- board_ModifyPro 글 수정 -->
-		<update id="boardModify" parameterClass="boardVO">
-			update board set board_num=#board_num#,category_code=#category_code#,board_subject=#board_subject#,board_passwd=#board_passwd#,board_content=#board_content# where board_num=#board_num#
-		</update>
+	<!-- board_WritePro 내용 삽입 -->
+	
+			<insert id="boardInsert" parameterClass="BoardVo">
+				insert into board
+				(board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname) 
+				values
+				(board_seq.NEXTVAL,#category_code#,#board_subject#,#board_content#,#board_passwd#,sysdate,#board_readcount#,#board_file_orgname#,#board_file_savname#)
+			</insert>
 
 
-		<insert id="board_replyInsert" parameterClass="board_replyVO">
-		insert into board_reply (reply_num,board_num,reply_text)
-						values (reply_seq.nextval,#board_num#,#reply_text#)
-		</insert>		
+		
+	<!-- baord_Content -->
+	
+			<update id="boardReadcount" parameterClass="int">
+				update board set board_readcount=board_readcount+1 where board_num = #board_num#
+			</update>
+			
+	<!-- baord_Content -->
+	
+			<select id="boardSelectNum" resultClass="boardVO" parameterClass="int">
+				select * from board where board_num = #board_num#
+			</select>
+
+
+		
+	<!-- board_DeletePro , board_ModifyPro board_passwd 가져오는-->
+	
+			<select id="boardSelectPasswd" resultClass="String" parameterClass="int">
+				select board_passwd from board where board_num = #board_num#
+			</select>
+		
+	<!-- board_DeletePro 글 삭제-->
+	
+			<delete id="boardDelete" parameterClass="int">
+				delete from board where board_num=#board_num#
+			</delete>
+
+
+
+	<!-- board_ModifyPro 글 수정 -->
+	
+			<update id="boardModify" parameterClass="boardVO">
+				update board set board_num=#board_num#,category_code=#category_code#,board_subject=#board_subject#,board_passwd=#board_passwd#,board_content=#board_content# where board_num=#board_num#
+			</update>
+
+
+
+		<!-- board_reply(replyInsert) 댓글 삽입 -->
+		
+			<insert id="board_replyInsert" parameterClass="board_replyVO">
+			insert into board_reply (reply_num,board_num,reply_text,pageNum)
+							values (reply_seq.nextval,#board_num#,#reply_text#,#pageNum#)
+			</insert>	
+		
+			<select id="board_replyView" resultClass="board_replyVO" parameterClass="board_replyVO">
+				<![CDATA[			
+			    select reply_num,board_num,reply_text
+			    from
+			    (select reply_num,board_num,reply_text,rownum r
+			     from
+			    (select reply_num,board_num,reply_text
+			    from board_reply where board_num =#board_num# order by reply_num ) ) 
+			    ]]>
+			</select>	
+			
 </sqlMap>

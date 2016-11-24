@@ -7,6 +7,13 @@ public class Board_replyVO {
 	private int reply_num;
 	private int board_num;
 	private String reply_text;
+	public int getPageNum() {
+		return pageNum;
+	}
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+	private int pageNum;
 	
 	public int getReply_num() {
 		return reply_num;

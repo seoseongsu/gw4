@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Redirect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.AbstractView;
+import org.springframework.web.servlet.view.RedirectView;
+
+
 
 
 
@@ -112,7 +116,7 @@ import org.springframework.web.servlet.view.AbstractView;
 
 	
 	
-/*---------------------------- Write -------------------------------------------------------*/	
+/*---------------------------- WriteForm -------------------------------------------------------*/	
 
 	
 	
@@ -140,6 +144,8 @@ import org.springframework.web.servlet.view.AbstractView;
 			return "/gboard/board_WriteForm";
 		}
 
+	
+/*---------------------------- WritePro -------------------------------------------------------*/	
 	
 	
 	@RequestMapping("board_WritePro.do")
@@ -222,25 +228,31 @@ import org.springframework.web.servlet.view.AbstractView;
 	
 	@RequestMapping("board_Content.do")
 		public String board_Content(Map<String, Object> model, HttpServletRequest request, 
-				HttpServletResponse response) throws Exception {
+				HttpServletResponse response, Board_replyVO board_replyVO) 
+						throws Exception {
 		
 		
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
         String pageNum = request.getParameter("pageNum");
+        
+        
 
-        
-        
-        
         sqlMap.update("gboard.boardReadcount", num);
         BoardVO boardList =  (BoardVO)sqlMap.queryForObject("gboard.boardSelectNum", num);
-  
-      
         
+        List replyList = sqlMap.queryForList("gboard.board_replyView", board_replyVO);
+         
+        
+        System.out.println(board_replyVO);
+        System.out.println(request.getAttribute("board_num"));
+        
+	        	
         request.setAttribute("board_num", num);
         request.setAttribute("pageNum", pageNum);
         request.setAttribute("boardList", boardList);
-		
+        request.setAttribute("replyList", replyList);
+        
 		
         
 		return "/gboard/board_Content";
@@ -249,7 +261,7 @@ import org.springframework.web.servlet.view.AbstractView;
 	
 
 
-/*------------------------------Delete-----------------------------------------------------*/	
+/*------------------------------DeleteForm-----------------------------------------------------*/	
 
 	
 	
@@ -266,7 +278,8 @@ import org.springframework.web.servlet.view.AbstractView;
 		return "/gboard/board_DeleteForm";
 		}
 
-	
+/*------------------------------DeletePro-----------------------------------------------------*/	
+                                  
 	
 	@RequestMapping("board_DeletePro.do")
 		public String board_DeletePro(HttpServletRequest request) throws Exception{
@@ -297,7 +310,7 @@ import org.springframework.web.servlet.view.AbstractView;
 	
 	
 
-/*--------------------- Modify --------------------------------------------------------------*/	
+/*--------------------------------- ModifyForm --------------------------------------------------------------*/	
 	
 
 	
@@ -325,7 +338,7 @@ import org.springframework.web.servlet.view.AbstractView;
 
 	
 	
-/*--------------------- Modify 작업중 --------------------------------------------------------------*/	
+/*-------------------------------- ModifyPro  --------------------------------------------------------------*/	
 	
 	
 	
@@ -363,7 +376,7 @@ import org.springframework.web.servlet.view.AbstractView;
 	
 
 	
-/*--------------------- Board_reply 작업중 --------------------------------------------------------------*/	
+/*--------------------- Board_reply(Insert)  --------------------------------------------------------------*/	
 	
 	@RequestMapping("replyInsert.do")
 	public String ReplyInsert(HttpServletRequest request, BoardVO boardVO, 
@@ -377,15 +390,31 @@ import org.springframework.web.servlet.view.AbstractView;
 		
 		request.setAttribute("board_num", num);
 		
-		return "/gboard/board_List";
+		return "/gboard/board_ReplyPro";
+		}
+	
+	
+/*--------------------- Board_reply(View)  --------------------------------------------------------------*/	
+		
+	
+	@RequestMapping("replyView.do")
+	public String ReplyView( HttpServletRequest request , BoardVO boardVO, 
+			Board_replyVO board_replyVO, Model model) throws Exception{
+		
+		int num = Integer.parseInt(request.getParameter("board_num"));
+
+		model.addAttribute("boardVO" , boardVO);
+		model.addAttribute("board_replyVO" , board_replyVO);
+		
+		
+		
+		System.out.println(board_replyVO);
+		request.setAttribute("board_num", num);
+		
+		return "/gboard/board_ReplyPro";
+	
 		}
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	
