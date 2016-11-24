@@ -3,23 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>테이블에 동적으로 TR 추가 /삭제 하기</title>
+    <title>업무명세표등록</title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
         $(function() {
-        	var count = 1;
+        	var count = 0;
             $("#btnAddRow").on("click",function() {
                 // clone
                 $.trClone = $("#memberTable tr:last").clone().html();
                 $.newTr = $("<tr>"+$.trClone+"</tr>");
  
                 // append
-                $("#bb_main1").attr("value", "bb_main1"+count);
-                $("#bb_status1").attr("value", "bb_status1"+count);
-                $("#bb_time1").attr("value", "bb_time1"+count);
-                $("#bb_product1").attr("value", "bb_product1"+count);
-                $("#memberTable").append($.newTr);
+               $("#memberTable").append($.newTr);
                 
  				count++;
                 
@@ -70,12 +66,8 @@
  			
             //삭제
              $("#btnDelRow").on("click",function(){ 
-            	/*if( $("#example tr:eq(1)").is($(this).parents("tr")) ){
-            		alert("처음 업무내역은 삭제 할 수 없습니다.");
-         			return false;
-         		}*/
-            	 if(count <= 1){
-            		 alert("처음 업무내용은 삭제 할 수 없습니다.");
+            	 if(count <= 0){
+            		 alert("삭제 할 행이 없습니다.");
             	 }else{
             		 $("#memberTable tr:last").remove();
             		 count--;
@@ -83,22 +75,72 @@
             });
         });
     </script>
+    <style type="text/css">
+    	.a{width:200px; height:20px; text-align:left; padding-bottom:5px; float:left; margin:left:5px; layout:fixed;}
+    	.b{width:520px; height:20px; text-align:right; padding-bottom:5px; float:left; margin:left:5px; layout:fixed;}
+    </style>
 </head>
  
-<body >﻿
-<div style="width:500px;text-align:right;">
-    <input type="button" value="행추가"  id="btnAddRow" />
-    <input type="button" value="행삭제"  id="btnDelRow" />
-</div>
-<form method="post" id="frmTest">
-<table id="memberTable" border="1" style="width:500px;">
-    <tr>
-        <td style="width:50px;"></td>
-        <td style="width:50px;"></td>
-        <td style="width:50px;"></td>
-        <td style="width:50px;"></td>
-    </tr>
-</table>
+<body>
+<form method="post" action="#" id="bs">
+	<table border="1" style="width:720px;">
+		<tr><td colspan="6"><strong>기본정보</strong></td></tr>
+		<tr>
+			<td>사원</td>
+			<td><input type="text" name="emp_name" size="20" value="" readonly/></td>
+			<td>부서</td>
+			<td><input type="text" name="dept_name" value="" readonly/></td>
+			<td>직급</td>
+			<td><input type="text" name="po_name" value="" readonly/></td>
+		</tr>
+		<tr>
+			<td>실행년도</td>
+			<td>
+				<select name="bs_date" style="width:60px;height:23px;">
+					<option value="2016">2016</option>
+					<option value="2017">2017</option>
+					<option value="2018">2018</option>
+				</select>
+			</td>
+			<td>평가자</td>
+			<td><input type="text" name="" value=""/></td>
+			<td>상태</td>
+			<td>
+				<select name="bs_st" style="width:100px;height:23px;">
+					<option value="임시저장">임시저장</option>
+					<option value="검토요청">검토요청</option>
+					<option value="검토완료">검토완료</option>
+				</select>
+			</td>
+		</tr>
+		<tr><td colspan="6"><strong>업무목표</strong></td></tr>
+	    <tr>
+	    	<td colspan="6"><textarea style="resize: none;" rows="10" cols="98"></textarea></td>
+	    </tr>
+	</table>
+</form>﻿
+    <div class="a">
+    	<strong>업무내역</strong>
+    </div>
+    <div class="b">
+	    <input type="button" value="행추가"  id="btnAddRow"/>
+	    <input type="button" value="행삭제"  id="btnDelRow"/>
+    </div>
+<form method="post" action="#" id="frmTest">
+	<table id="memberTable" border="1" style="width:720px;">
+	    <tr>
+	        <td style="width:180px;">주요업무</td>
+	        <td style="width:180px;">중요도</td>
+	        <td style="width:180px;">시간비중</td>
+	        <td style="width:180px;">결과물</td>
+	    </tr>
+	    <tr>
+	        <td style="width:180px;"></td>
+	        <td style="width:180px;"></td>
+	        <td style="width:180px;"></td>
+	        <td style="width:180px;"></td>
+	    </tr>
+	</table>
 </form>
 </body>
 </html>

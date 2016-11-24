@@ -1,6 +1,9 @@
 package gw.bstatement;
 
 
+import java.util.Collections;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +18,22 @@ public class BstatementController {
 	
 	@RequestMapping("/bs/bsList.do")
 	public String bsList(HttpServletRequest request){
-		
+		int count = 0;
+		List articleList = null;
+		count = (Integer)sqlMap.queryForObject("bs.bsSelectCount", null);
+		if (count > 0) {
+            articleList = sqlMap.queryForList("bs.bsSelectAll", null);
+        } else {
+            articleList = Collections.EMPTY_LIST;
+        }
+		request.setAttribute("count", new Integer(count));
+		request.setAttribute("articleList", articleList);
 		return "/bs/bsList";
 	}
 	
 	@RequestMapping("/bs/bsInsert.do")
 	public String bsInsert(HttpServletRequest request){
-		
+			
 		return "/bs/bsInsert";
 	}
 	
