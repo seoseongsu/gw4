@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+	<typeAlias alias="salaryVo" type="gw.salary.SalaryVO" />
+	
+	<select id="salarySelectList" resultClass="gw.salary.SalaryJoinVO">
+		select salary_code,s.dept_code,dept_name,s.po_code,po_name,s.emp_code,
+		emp_name,emp_career,emp_bank,emp_acnum,salary_normal,salary_bonus,salary_pay,
+		salary_pension,salary_health,salary_nursing,salary_employ,salary_income,
+		salary_resident,salary_deduction,salary_acpay
+		from department d, employee e, position p, salary s
+		where s.dept_code = d.dept_code
+		and s.po_code = p.po_code
+		and s.emp_code = e.emp_code
+	</select>
+</sqlMap>

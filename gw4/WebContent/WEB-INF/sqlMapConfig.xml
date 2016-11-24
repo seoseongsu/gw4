@@ -11,4 +11,5 @@
 	<sqlMap resource="/sql/positionSQL.xml"/>
 	<sqlMap resource="/sql/fundSQL.xml"/>
 	<sqlMap resource="/sql/mainSQL.xml"/>
+	<sqlMap resource="/sql/salarySQL.xml"/>
 </sqlMapConfig>
