@@ -90,7 +90,14 @@
 			<td>사원</td>
 			<td><input type="text" name="emp_name" size="20" value="${bsInVo.emp_name }" readonly/></td>
 			<td>부서</td>
-			<td><input type="text" name="dept_name" value="${bsInVo.dept_name }" readonly/></td>
+			<td>
+				<c:if test="${bsInVo.dept_higher eq null }">
+					<input type="text" name="dept_name" value="${bsInVo.dept_name }" readonly/>
+				</c:if>
+				<c:if test="${bsInVo.dept_higher ne null }">
+					<input type="text" name="dept_name" value="${bsInVo.dept_higher }>${bsInVo.dept_name }" readonly/>
+				</c:if>
+			</td>
 			<td>직급</td>
 			<td><input type="text" name="po_name" value="${bsInVo.po_name }" readonly/></td>
 		</tr>
@@ -104,7 +111,13 @@
 				</select>
 			</td>
 			<td>평가자</td>
-			<td><input type="text" name="" value=""/></td>
+			<td>
+				<select name="bs_ap" style="width:80px;height:23px;">
+					<c:forEach var="bsApList" items="${bsApList }">
+						<option value="${bsApList.emp_code }">${bsApList.emp_name }</option>	
+					</c:forEach>
+				</select>
+			</td>
 			<td>상태</td>
 			<td>
 				<select name="bs_st" style="width:100px;height:23px;">
@@ -138,6 +151,14 @@
 	        <td style="width:180px;"></td>
 	        <td style="width:180px;"></td>
 	        <td style="width:180px;"></td>
+	    </tr>
+	</table>
+	<table border="1" style="width:720px;">
+		<tr>
+	    	<td align="right">
+	    		<input type="button" value="저장" onclick="javascript:window.location='bsInsertPro.do'"/>
+	    		<input type="button" value="취소" onclick="javascript:window.location='bsList.do'"/>
+	    	</td>
 	    </tr>
 	</table>
 </form>

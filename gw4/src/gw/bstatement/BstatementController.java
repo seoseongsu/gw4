@@ -1,6 +1,5 @@
 package gw.bstatement;
 
-
 import java.util.Collections;
 import java.util.List;
 
@@ -33,12 +32,14 @@ public class BstatementController {
 	
 	@RequestMapping("/bs/bsInsert.do")
 	public String bsInsert(HttpServletRequest request){
-		String emp_code = request.getParameter("emp_code");
+		String emp_code = (String) request.getParameter("emp_code");
+		List bsApList = null;
 		BstatementInVO bsInVo = (BstatementInVO) sqlMap.queryForObject("bs.bsSelectIn", emp_code);
-		System.out.println(emp_code);
-	//	System.out.println(bsInVo.);
+		
+		bsApList = sqlMap.queryForList("bs.bsSelectAp", bsInVo.getDept_code());
 		
 		request.setAttribute("bsInVo", bsInVo);
+		request.setAttribute("bsApList", bsApList);
 		return "/bs/bsInsert";
 	}
 	

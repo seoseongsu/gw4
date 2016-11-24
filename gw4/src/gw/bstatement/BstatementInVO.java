@@ -3,7 +3,6 @@ package gw.bstatement;
 import java.sql.Timestamp;
 
 public class BstatementInVO {
-	public class BstatementVO {
 		private String bs_code;				//업무명세서번호
 		private String emp_code;			//사원번호
 		private String emp_name;			//사원이름
@@ -95,5 +94,4 @@ public class BstatementInVO {
 		public void setBs_date(Timestamp bs_date) {
 			this.bs_date = bs_date;
 		}
-	}
 }

@@ -3,6 +3,7 @@
 <sqlMap namespace="bs">
 	<typeAlias alias="bsVo" type="gw.bstatement.BstatementVO"/>
 	<typeAlias alias="bsInVo" type="gw.bstatement.BstatementInVO"/>
+	<typeAlias alias="empVo" type="gw.employee.EmployeeVO"/>
 		<select id="bsSelectAll" resultClass="bsVo">
 			select * from bstatement
 		</select>
@@ -17,6 +18,9 @@
 			 and bs.dept_code = d.dept_code
 			 and bs.po_code = p.po_code
 			 and bs.emp_code = #emp_code#
+		</select>
+		<select id="bsSelectAp" resultClass="empVo" parameterClass="String">
+			select * from employee where dept_code=#dept_code#
 		</select>
 </sqlMap>
 
