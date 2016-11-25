@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <title>자금등록</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
@@ -47,6 +48,7 @@ function change(style){
 	</table>
 	<form method="get" action="fundAddPro.do" name="fundinput" onSubmit="return checkIt()">
 	<table>
+		<tr>집행자 : ${fundVo.dept_name } - ${fundVo.po_name} - ${fundVo.emp_name}
 		<tr>집행일<input type="text" id="fund_days" name="fund_days" placeholder="일자를 선택하세요"></tr>
 		<tr>구분
 			<select onChange="change(this.options[this.selectedIndex].value)" id="fund_division" name="fund_division" >

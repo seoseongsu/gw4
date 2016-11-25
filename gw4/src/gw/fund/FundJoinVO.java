@@ -1,11 +1,14 @@
 package gw.fund;
 
-public class FundVO {
+public class FundJoinVO {
 
 	private String fund_code;
 	private String po_code;
+	private String po_name;
 	private String dept_code;
+	private String dept_name;
 	private String emp_code;
+	private String emp_name;
 	private String fund_division;
 	private String fund_days;
 	private String fund_day;
@@ -28,17 +31,35 @@ public class FundVO {
 	public void setPo_code(String po_code) {
 		this.po_code = po_code;
 	}
+	public String getPo_name() {
+		return po_name;
+	}
+	public void setPo_name(String po_name) {
+		this.po_name = po_name;
+	}
 	public String getDept_code() {
 		return dept_code;
 	}
 	public void setDept_code(String dept_code) {
 		this.dept_code = dept_code;
 	}
+	public String getDept_name() {
+		return dept_name;
+	}
+	public void setDept_name(String dept_name) {
+		this.dept_name = dept_name;
+	}
 	public String getEmp_code() {
 		return emp_code;
 	}
 	public void setEmp_code(String emp_code) {
 		this.emp_code = emp_code;
+	}
+	public String getEmp_name() {
+		return emp_name;
+	}
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
 	}
 	public String getFund_division() {
 		return fund_division;
@@ -94,6 +115,4 @@ public class FundVO {
 	public void setFund_balance(String fund_balance) {
 		this.fund_balance = fund_balance;
 	}
-	
-	
 }

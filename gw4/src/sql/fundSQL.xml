@@ -8,8 +8,13 @@
 		select * from fund
 	</select>
 	
-	<select id="fundAdd" resultClass="fundVo">
-		select * from fund
+	<select id="fundSelect" resultClass="gw.employee.EmployeeJoinVO">
+		select emp_code,e.dept_code,dept_name,e.po_code,po_name,emp_name,emp_jumin,
+		emp_birth,emp_phone,emp_email,emp_acability,emp_career,emp_join,emp_bank,emp_acnum
+		from department d, employee e, position p
+		where e.dept_code = d.dept_code
+		and e.po_code = p.po_code
+		and emp_code = #emp_code#
 	</select>
 	
 	<insert id="fundAddPro" parameterClass="fundVo">

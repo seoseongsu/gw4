@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import gw.employee.EmployeeJoinVO;
+
 @Controller
 public class FundController{
 	@Autowired SqlMapClientTemplate sqlMap;
@@ -25,9 +27,10 @@ public class FundController{
 	@RequestMapping("/fund/fundAdd.do")
 	public String fundAdd(HttpServletRequest request){
 		
-		List fundAdd = sqlMap.queryForList("fundAdd", null);
-		
-		request.setAttribute("fundAdd", fundAdd);
+		String emp_code = request.getParameter("emp_code");
+		EmployeeJoinVO employeeJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("fundSelect", emp_code);
+			
+		request.setAttribute("fundVo", employeeJoinVo);
 		
 		return "/fund/fundAdd";
 	}
