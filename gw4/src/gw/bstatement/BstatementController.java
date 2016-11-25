@@ -64,19 +64,21 @@ public class BstatementController {
 		bsVo.setBs_year(request.getParameter("bs_year"));
 		bsVo.setBs_ap(request.getParameter("bs_ap"));
 		sqlMap.insert("bs.bsInsert", bsVo);
-		for(int i=1; i<=count; i++){
-			System.out.println("bb_main="+request.getParameter("bb_main"+i));
-			System.out.println("bb_status="+request.getParameter("bb_status"+i));
-			System.out.println("bb_time="+request.getParameter("bb_time"+i));
-			System.out.println("bb_product="+request.getParameter("bb_product"+i));
-			int bs_code = (int) sqlMap.queryForObject("bs.bsSelectCode", null);
-			bbVo.setBs_code(Integer.toString(bs_code));
-			bbVo.setBb_main(request.getParameter("bb_main"+i));
-			bbVo.setBb_status(Integer.parseInt(request.getParameter("bb_status"+i)));
-			bbVo.setBb_time(Integer.parseInt(request.getParameter("bb_time"+i)));
-			bbVo.setBb_product(request.getParameter("bb_product"+i));
-			sqlMap.insert("bs.bbInsert", bbVo);
-		}
+//		if(count > 0){
+			for(int i=1; i<=count; i++){
+				System.out.println("bb_main="+request.getParameter("bb_main"+i));
+				System.out.println("bb_status="+request.getParameter("bb_status"+i));
+				System.out.println("bb_time="+request.getParameter("bb_time"+i));
+				System.out.println("bb_product="+request.getParameter("bb_product"+i));
+				int bs_code = (int) sqlMap.queryForObject("bs.bsSelectCode", null);
+				bbVo.setBs_code(Integer.toString(bs_code));
+				bbVo.setBb_main(request.getParameter("bb_main"+i));
+				bbVo.setBb_status(Integer.parseInt(request.getParameter("bb_status"+i)));
+				bbVo.setBb_time(Integer.parseInt(request.getParameter("bb_time"+i)));
+				bbVo.setBb_product(request.getParameter("bb_product"+i));
+				sqlMap.insert("bs.bbInsert", bbVo);
+			}
+//		}
 		return "/bs/bsInsertPro";
 	}
 	

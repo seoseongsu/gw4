@@ -48,7 +48,7 @@ function deleteEvent(a){
 			<c:forEach var="bsList" items="${bsList }">
 			<tr align="center">
 				<td>${bsList.bs_year }</td>
-				<td>${bsList.dept_code }</td>
+				<td>${bsList.dept_name }</td>
 				<td>${bsList.bs_ap }</td>
 				<td>${bsList.bs_date }</td>
 				<td>${bsList.bs_st }</td>
