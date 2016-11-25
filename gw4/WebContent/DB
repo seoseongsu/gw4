@@ -77,7 +77,10 @@ create sequence po_code_seq nocache
 
 #fund
 create table fund(
-fund_code number,
+fund_code varchar2(20),
+po_code varchar2(20),
+dept_code varchar2(20),
+emp_cde varchar2(20),
 fund_division varchar2(100),	
 fund_days varchar2(100),	
 fund_day varchar2(100), 
