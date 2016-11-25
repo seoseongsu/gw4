@@ -15,6 +15,7 @@ public class BstatementInVO {
 		private String bs_st;				//업무상태(임시저장,검토요청,검토완료)
 		private String bs_year;				//작성일
 		private String bs_goal;				//업무실행년도
+		private String bs_ap;				//평가자
 		private Timestamp bs_date;			//업무목표
 		public String getBs_code() {
 			return bs_code;
@@ -87,6 +88,12 @@ public class BstatementInVO {
 		}
 		public void setBs_goal(String bs_goal) {
 			this.bs_goal = bs_goal;
+		}
+		public String getBs_ap() {
+			return bs_ap;
+		}
+		public void setBs_ap(String bs_ap) {
+			this.bs_ap = bs_ap;
 		}
 		public Timestamp getBs_date() {
 			return bs_date;

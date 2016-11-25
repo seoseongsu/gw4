@@ -45,13 +45,13 @@ function deleteEvent(a){
 				<td width="150">상태</td>
 				<td width="100">&nbsp;</td>		
 			</tr>
-			<c:forEach var="article" items="${articleList }">
+			<c:forEach var="bsList" items="${bsList }">
 			<tr align="center">
-				<td>${article.bs_year }</td>
-				<td>${article.dept_code }</td>
-				<td>평가자</td>
-				<td>${article.bs_date }</td>
-				<td>${article.bs_st }</td>
+				<td>${bsList.bs_year }</td>
+				<td>${bsList.dept_code }</td>
+				<td>${bsList.bs_ap }</td>
+				<td>${bsList.bs_date }</td>
+				<td>${bsList.bs_st }</td>
 				<td><input type="button" value="수정" onclick="location='empUpdate.do?emp_code=${article.emp_code }'"/>
 				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
 			</tr>
@@ -74,13 +74,13 @@ function deleteEvent(a){
 			<td width="150">상태</td>
 			<td width="100">&nbsp;</td>			
 		</tr>
-		<c:forEach var="article" items="${articleList }">
+		<c:forEach var="bsList" items="${bsList }">
 		<tr align="center">
-			<td>${article.bs_year }</td>
-			<td>${article.dept_code }</td>
-			<td>${article.emp_code }</td>
-			<td>${article.bs_date }</td>
-			<td>${article.bs_st }</td>
+			<td>${bsList.bs_year }</td>
+			<td>${bsList.dept_name }</td>
+			<td>${bsList.emp_name }</td>
+			<td>${bsList.bs_date }</td>
+			<td>${bsList.bs_st }</td>
 			<td align="left">
 				<input type="button" value="검토" onclick="location='empUpdate.do?emp_code=${article.emp_code }'"/>
 			</td>

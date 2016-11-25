@@ -63,6 +63,7 @@
                 });
                 $("#memberTable tr:last td:eq(3)").html("");
                 $("#memberTable tr:last td:eq(3)").append($.inputText);
+                document.bs.count.value=count;
             });
  			
             //삭제
@@ -74,7 +75,9 @@
             		 count--;
             	 }
             });
+          	//document.bs.count.value=count;
         });
+        
     </script>
     <style type="text/css">
     	.a{width:200px; height:20px; text-align:left; padding-bottom:5px; float:left; margin:left:5px; layout:fixed;}
@@ -83,28 +86,32 @@
 </head>
  
 <body>
-<form method="post" action="#" id="bs">
+<form method="get" action="bsInsertPro.do" name="bs">
 	<table border="1" style="width:720px;">
 		<tr><td colspan="6"><strong>기본정보</strong></td></tr>
 		<tr>
-			<td>사원</td>
-			<td><input type="text" name="emp_name" size="20" value="${bsInVo.emp_name }" readonly/></td>
-			<td>부서</td>
-			<td>
+			<td width="70">사원</td>
+			<td width="170">${bsInVo.emp_name }
+			<input type="hidden" name="emp_code" value="${bsInVo.emp_code }"/></td>
+			<td width="70">부서</td>
+			<td width="170">
 				<c:if test="${bsInVo.dept_higher eq null }">
-					<input type="text" name="dept_name" value="${bsInVo.dept_name }" readonly/>
+					${bsInVo.dept_name }
+					<input type="hidden" name="dept_code" value="${bsInVo.dept_code }"/>
 				</c:if>
 				<c:if test="${bsInVo.dept_higher ne null }">
-					<input type="text" name="dept_name" value="${bsInVo.dept_higher }>${bsInVo.dept_name }" readonly/>
+					${bsInVo.dept_higher }>${bsInVo.dept_name }
+					<input type="hidden" name="dept_code" value="${bsInVo.dept_code }"/>
 				</c:if>
 			</td>
-			<td>직급</td>
-			<td><input type="text" name="po_name" value="${bsInVo.po_name }" readonly/></td>
+			<td width="70">직급</td>
+			<td width="170">${bsInVo.po_name }
+			<input type="hidden" name="po_code" value="${bsInVo.po_code }"/></td>
 		</tr>
 		<tr>
 			<td>실행년도</td>
 			<td>
-				<select name="bs_date" style="width:60px;height:23px;">
+				<select name="bs_year" style="width:60px;height:23px;">
 					<option value="2016">2016</option>
 					<option value="2017">2017</option>
 					<option value="2018">2018</option>
@@ -114,7 +121,7 @@
 			<td>
 				<select name="bs_ap" style="width:80px;height:23px;">
 					<c:forEach var="bsApList" items="${bsApList }">
-						<option value="${bsApList.emp_code }">${bsApList.emp_name }</option>	
+						<option value="${bsApList.emp_name }">${bsApList.emp_name }</option>	
 					</c:forEach>
 				</select>
 			</td>
@@ -129,7 +136,7 @@
 		</tr>
 		<tr><td colspan="6"><strong>업무목표</strong></td></tr>
 	    <tr>
-	    	<td colspan="6"><textarea style="resize: none;" rows="10" cols="98"></textarea></td>
+	    	<td colspan="6"><textarea name="bs_goal" style="resize: none;" rows="10" cols="98"></textarea></td>
 	    </tr>
 	</table>﻿
     <div class="a">
@@ -153,10 +160,11 @@
 	        <td style="width:180px;"></td>
 	    </tr>
 	</table>
+	<input type="hidden" name="count" value="" />
 	<table border="1" style="width:720px;">
 		<tr>
 	    	<td align="right">
-	    		<input type="button" value="저장" onclick="javascript:window.location='bsInsertPro.do'"/>
+	    		<input type="submit" value="저장" onsubmit='return countCk();'/>
 	    		<input type="button" value="취소" onclick="javascript:window.location='bsList.do'"/>
 	    	</td>
 	    </tr>

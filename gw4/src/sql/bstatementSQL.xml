@@ -3,6 +3,7 @@
 <sqlMap namespace="bs">
 	<typeAlias alias="bsVo" type="gw.bstatement.BstatementVO"/>
 	<typeAlias alias="bsInVo" type="gw.bstatement.BstatementInVO"/>
+	<typeAlias alias="bbVo" type="gw.bstatement.BbreakdownVO"/>
 	<typeAlias alias="empVo" type="gw.employee.EmployeeVO"/>
 		<select id="bsSelectAll" resultClass="bsVo">
 			select * from bstatement
@@ -12,15 +13,39 @@
 		</select>
 		<select id="bsSelectIn" resultClass="bsInVo" parameterClass="String">
 			select bs_code, bs.emp_code, emp_name, bs.dept_code, dept_name, dept_higher,
-			 dept_leader, bs.po_code, po_name, bs_st, bs_year, bs_goal, bs_date
+			 dept_leader, bs.po_code, po_name, bs_st, bs_year, bs_goal, bs_ap, bs_date
 			 from bstatement bs, employee e, department d, position p
 			 where bs.emp_code = e.emp_code
 			 and bs.dept_code = d.dept_code
 			 and bs.po_code = p.po_code
 			 and bs.emp_code = #emp_code#
+			 and rownum = 1
+		</select>
+		<select id="bsSelectList" resultClass="bsInVo" parameterClass="String">
+			select bs_code, bs.emp_code, emp_name, bs.dept_code, dept_name, dept_higher,
+			 dept_leader, bs.po_code, po_name, bs_st, bs_year, bs_goal, bs_ap, bs_date
+			 from bstatement bs, employee e, department d, position p
+			 where bs.emp_code = e.emp_code
+			 and bs.dept_code = d.dept_code
+			 and bs.po_code = p.po_code
 		</select>
 		<select id="bsSelectAp" resultClass="empVo" parameterClass="String">
 			select * from employee where dept_code=#dept_code#
 		</select>
+		<select id="bsSelectCode" resultClass="int">
+			select MAX(bs_code) from bstatement
+		</select>
+		<insert id="bsInsert" parameterClass="bsVo">
+			insert into bstatement(bs_code,emp_code,dept_code,po_code,
+			bs_st,bs_year,bs_goal,bs_ap,bs_date) 
+			values(bs_code_seq.nextval,#emp_code#,#dept_code#,#po_code#,
+			#bs_st#,#bs_year#,#bs_goal#,#bs_ap#,sysdate)
+		</insert>
+		<insert id="bbInsert" parameterClass="bbVo">
+			insert into bbreakdown(bb_code,bs_code,bb_main,bb_status,
+			bb_time,bb_product) 
+			values(bb_code_seq.nextval,#bs_code#,#bb_main#,#bb_status#,
+			#bb_time#,#bb_product#)
+		</insert>
 </sqlMap>
 
