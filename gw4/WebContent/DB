@@ -113,15 +113,16 @@ salary_acpay varchar2(100)
 );
 create sequence salary_code_seq nocache;
 
-
-
-
-
-
-
-
-
-
-
-
+#schedule
+create table schedule(
+sc_id varchar2(20) not null,
+emp_code varchar2(20) not null,
+emp_name varchar2(50),
+st_date date,
+en_date date,
+constraint pk_sc primary key(sc_id),
+constraint fk_sc foreign key(emp_code)
+references employee(emp_code)
+);
+create sequence salary_code_seq nocache;
 
