@@ -69,7 +69,15 @@ function onDownload(board_num){
   			
   			<tr>
   			<td align="center" width="125"  > 작성자 </td>
-  			<td align="left" >${replyView.reply_text}
+  			<td align="left" width="569"  >${replyView.reply_text}
+  			</td>
+  			<td>
+  			<input type="button" value="수정"
+  			onclick="document.location.href='reply_DeletePro.do?reply_num=${reply_num}'">
+  			
+  			<input type="button" value="삭제"  
+  			onclick="document.location.href='reply_DeletePro.do'">
+  			<input type="text" name="reply_num" value="${replyView.reply_num}">
   			</td>
   			</tr>	
   	</c:forEach>
@@ -99,7 +107,7 @@ function onDownload(board_num){
        onclick="document.location.href='board_DeleteForm.do?board_num=${boardList.board_num}&pageNum=${pageNum}'">
 	   &nbsp;&nbsp;&nbsp;&nbsp;
        <input type="button" value="글목록" 
-       onclick="document.location.href='board_List.do?pageNum=${pageNum}'">
+       onclick="document.location.href='board_List.do'">
     </td>
   </tr>
 </table>    

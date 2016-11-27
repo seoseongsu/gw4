@@ -414,11 +414,19 @@ import org.springframework.web.servlet.view.RedirectView;
 		return "/gboard/board_ReplyPro";
 	
 		}
+	
+
+	
+/*--------------------- Board_reply(Delete)  --------------------------------------------------------------*/		
+	
+	@RequestMapping("reply_DeletePro.do")
+		public String reply_Delete(){
+		
+
+		return "/gboard/reply_DeletePro";
+	
+		}
 	}
-	
-	
-	
-	
 	
 	
 	
