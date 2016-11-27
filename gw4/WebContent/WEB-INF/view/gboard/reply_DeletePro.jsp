@@ -9,6 +9,7 @@
 <script language="JavaScript">      
 
 alert("삭제하시겠습니까?");
+
     
       
 </script>

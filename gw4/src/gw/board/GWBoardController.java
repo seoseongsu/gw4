@@ -381,15 +381,18 @@ import org.springframework.web.servlet.view.RedirectView;
 	@RequestMapping("replyInsert.do")
 	public String ReplyInsert(HttpServletRequest request, BoardVO boardVO, 
 			Board_replyVO board_replyVO, Model model)throws Exception{
-		int num = Integer.parseInt(request.getParameter("board_num"));
 		
-		model.addAttribute("boardVO" , boardVO);
+		int num = Integer.parseInt(request.getParameter("board_num"));
+		String pageNum = request.getParameter("pageNum");
+		
+		 model.addAttribute("boardVO" , boardVO);
 		model.addAttribute("board_replyVO" , board_replyVO);
 		
 		sqlMap.insert("gboard.board_replyInsert", board_replyVO);
 		
 		request.setAttribute("board_num", num);
-		
+		request.setAttribute("pageNum", pageNum);
+		System.out.println(pageNum);
 		return "/gboard/board_ReplyPro";
 		}
 	
@@ -401,8 +404,10 @@ import org.springframework.web.servlet.view.RedirectView;
 	public String ReplyView( HttpServletRequest request , BoardVO boardVO, 
 			Board_replyVO board_replyVO, Model model) throws Exception{
 		
+		String pageNum = request.getParameter("pageNum");
 		int num = Integer.parseInt(request.getParameter("board_num"));
-
+		
+		
 		model.addAttribute("boardVO" , boardVO);
 		model.addAttribute("board_replyVO" , board_replyVO);
 		
@@ -410,8 +415,10 @@ import org.springframework.web.servlet.view.RedirectView;
 		
 		System.out.println(board_replyVO);
 		request.setAttribute("board_num", num);
+		request.setAttribute("pageNum", pageNum);
+		System.out.println(pageNum);
 		
-		return "/gboard/board_ReplyPro";
+		 return "/gboard/board_ReplyPro";
 	
 		}
 	

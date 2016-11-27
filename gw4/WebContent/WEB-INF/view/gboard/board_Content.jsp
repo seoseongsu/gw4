@@ -29,8 +29,9 @@ function onDownload(board_num){
 <body >  
 <center><b>공지 사항</b>
 <br>
-	<form method="post" action="replyInsert.do" name="Board_reply">
-<input type="hidden" name="board_num" value="${boardList.board_num}">
+	<form method="post" action="replyInsert.do?board_num=${boardList.board_num}&pageNum=${pageNum}" name="Board_reply">
+<input type="hidden" name="pageNum" value="${pageNum}">	
+
 <!-- <iframe id="ifrm_filedown" style="position:absolute; z-index:1; visivility : hidden;"></iframe>  -->
 <table width="800" border="1" align="center">  
   <tr height="30">
@@ -62,7 +63,7 @@ function onDownload(board_num){
  
  	<table width="800"   align="center">
   	<tr>
-  	<input type="hidden" name="pageNum" value="${pageNum}">
+  
   	<td>
   	<c:forEach items="${replyList}"  var="replyView">
 
@@ -77,7 +78,7 @@ function onDownload(board_num){
   			
   			<input type="button" value="삭제"  
   			onclick="document.location.href='reply_DeletePro.do'">
-  			<input type="text" name="reply_num" value="${replyView.reply_num}">
+  			
   			</td>
   			</tr>	
   	</c:forEach>
@@ -94,7 +95,7 @@ function onDownload(board_num){
 	 </td>
   	</tr>
  </table>
- </form>
+
   	<!-- ---------------------------------댓글--------------------------------------- -->	
   
   
@@ -116,7 +117,7 @@ function onDownload(board_num){
 	
 
 </table>
-
-</form>      
+ </form>
+     
 </body>
 </html>      
