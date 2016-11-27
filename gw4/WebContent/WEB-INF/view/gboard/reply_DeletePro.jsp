@@ -8,9 +8,10 @@
 
 <script language="JavaScript">      
 
-alert("삭제하시겠습니까?");
+alert("삭제되었습니다");
 
     
       
 </script>
 </head>
+<meta http-equiv="Refresh" content="0;url=board_Content.do?board_num=${board_num}&pageNum=${pageNum}" >

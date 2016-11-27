@@ -30,8 +30,6 @@ function onDownload(board_num){
 <center><b>공지 사항</b>
 <br>
 	<form method="post" action="replyInsert.do?board_num=${boardList.board_num}&pageNum=${pageNum}" name="Board_reply">
-<input type="hidden" name="pageNum" value="${pageNum}">	
-
 <!-- <iframe id="ifrm_filedown" style="position:absolute; z-index:1; visivility : hidden;"></iframe>  -->
 <table width="800" border="1" align="center">  
   <tr height="30">
@@ -71,13 +69,15 @@ function onDownload(board_num){
   			<tr>
   			<td align="center" width="125"  > 작성자 </td>
   			<td align="left" width="569"  >${replyView.reply_text}
+  			<input type="text" value="${replyView.reply_num}">
+  			
   			</td>
   			<td>
   			<input type="button" value="수정"
-  			onclick="document.location.href='reply_DeletePro.do?reply_num=${reply_num}'">
+  			onclick="document.location.href='reply_DeletePro.do?reply_num=${reply_num}&board_num'">
   			
   			<input type="button" value="삭제"  
-  			onclick="document.location.href='reply_DeletePro.do'">
+  			onclick="document.location.href='reply_DeletePro.do?reply_num=${replyView.reply_num}&board_num=${replyView.board_num}&pageNum=${pageNum}'">
   			
   			</td>
   			</tr>	

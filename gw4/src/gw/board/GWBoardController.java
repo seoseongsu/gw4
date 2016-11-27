@@ -129,7 +129,7 @@ import org.springframework.web.servlet.view.RedirectView;
 	          if(request.getParameter("board_num") != null) {
 		         num=Integer.parseInt(request.getParameter("board_num"));
 		      }
-	          System.out.println(board_num);
+	         
 	       
 			}catch(Exception e){
 				e.printStackTrace();
@@ -166,26 +166,24 @@ import org.springframework.web.servlet.view.RedirectView;
 			ModelAndView mav = new ModelAndView();
 			
 		
-			System.out.println(num);
+		
 		
 			
 			req.setAttribute("board_file_orgname", board_file_orgname);
 			req.setAttribute("board_file_savname", board_file_savname);
-			System.out.println(board_file_savname);
+			
 			try {
 				
 				
 				byte[] b = f.getBytes();
 				File file = new File("d:\\file\\"+board_file_orgname);
-				System.out.println(file.lastModified());
-				System.out.println(new java.sql.Date(file.lastModified()));
-				System.out.println(new java.util.Date(file.lastModified()));
+				
 				//파일에 바이트 배열을 기록할 수 있는 스트림 생성
 				FileOutputStream fos = new FileOutputStream(file);
 				fos.write(b);
 				fos.close();
 			} catch(IOException e){
-				System.out.println(e.getMessage());
+				
 			}
 			req.setAttribute("board_num", num);
 			mav.setViewName("/gboard/board_WritePro");
@@ -244,8 +242,8 @@ import org.springframework.web.servlet.view.RedirectView;
         List replyList = sqlMap.queryForList("gboard.board_replyView", board_replyVO);
          
         
-        System.out.println(board_replyVO);
-        System.out.println(request.getAttribute("board_num"));
+        
+        
         
 	        	
         request.setAttribute("board_num", num);
@@ -288,7 +286,7 @@ import org.springframework.web.servlet.view.RedirectView;
 	
 	    int num = Integer.parseInt(request.getParameter("board_num"));
 	    String pageNum = request.getParameter("pageNum");
-	    System.out.println(pageNum);
+	    
 	    String passwd = request.getParameter("board_passwd");
 	    
 	    int check = 0;
@@ -392,7 +390,7 @@ import org.springframework.web.servlet.view.RedirectView;
 		
 		request.setAttribute("board_num", num);
 		request.setAttribute("pageNum", pageNum);
-		System.out.println(pageNum);
+		
 		return "/gboard/board_ReplyPro";
 		}
 	
@@ -406,30 +404,44 @@ import org.springframework.web.servlet.view.RedirectView;
 		
 		String pageNum = request.getParameter("pageNum");
 		int num = Integer.parseInt(request.getParameter("board_num"));
-		
+		int reply_num = Integer.parseInt(request.getParameter("reply_num"));
 		
 		model.addAttribute("boardVO" , boardVO);
 		model.addAttribute("board_replyVO" , board_replyVO);
 		
 		
 		
-		System.out.println(board_replyVO);
 		request.setAttribute("board_num", num);
 		request.setAttribute("pageNum", pageNum);
-		System.out.println(pageNum);
-		
-		 return "/gboard/board_ReplyPro";
+		request.setAttribute("reply_num", reply_num);
+
+		return "/gboard/board_ReplyPro";
 	
 		}
 	
-
+	
 	
 /*--------------------- Board_reply(Delete)  --------------------------------------------------------------*/		
 	
 	@RequestMapping("reply_DeletePro.do")
-		public String reply_Delete(){
-		
+		public String reply_Delete(HttpServletRequest request, BoardVO boardVO, 
+				Board_replyVO board_replyVO ) throws Exception{
+		int num = Integer.parseInt(request.getParameter("board_num"));
+	    int reply_num = Integer.parseInt(request.getParameter("reply_num"));
+	    String pageNum = request.getParameter("pageNum");
+	    
+	
+	    
+	    
+	    sqlMap.delete("gboard.replyDelete", reply_num);
+	    
+	    
+	    request.setAttribute("pageNum", pageNum);
+		request.setAttribute("reply_num", reply_num);
+		request.setAttribute("board_num", num);
 
+		System.out.println(reply_num);
+		
 		return "/gboard/reply_DeletePro";
 	
 		}
