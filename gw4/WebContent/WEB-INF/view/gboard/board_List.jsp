@@ -13,14 +13,15 @@
 	
 			<script>
 			function categoryChange(category){
-				window.location="/gw4/board_List.do?category_code="+category;
+				window.location="/gw4/board_ListPro.do?category_code="+category;
+	
 			}
 		</script>
 	
 	<table width="1000" align="center">
 		<tr>
 			<td align="center">
-			<b>[${category_name}]</b><br />
+			<b></b><br />
 			</td>
 		</tr>
 		</table>
@@ -30,7 +31,7 @@
 			<select  id ="category" name="category" onchange="categoryChange(this.value)">
 				<option>통합게시판</option>
 			<c:forEach items="${categoryList}" var="category" >
-					<option value="${category.category_code}">${category.category_name}</option>		
+					<option value="${category.category_code}">${category.category_code}</option>		
 			</c:forEach>
 			</select>
 			</td>	
@@ -48,7 +49,7 @@
 			<c:forEach var="boardList" items="${boardList}">
 				<tr align="center">
 					<td>
-					<a href="board_Content.do?board_num=${boardList.board_num}&pageNum=${currentPage}">${boardList.board_subject}</a></td>
+					<a href="board_Content.do?board_num=${boardList.board_num}&pageNum=${currentPage}">[${boardList.category_code}]${boardList.board_subject}</a></td>
 					<td>작성자</td>
 					<td>${boardList.board_date}</td>
 					<td>${boardList.board_readcount}</td>

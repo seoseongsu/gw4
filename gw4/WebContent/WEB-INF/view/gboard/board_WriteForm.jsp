@@ -7,7 +7,10 @@
 
 <title>writeForm</title>
 </head>
-<script src="/gw4/ckeditor/ckeditor.js"></script>
+<script src="/gw4/ckeditor/ckeditor.js">
+
+
+</script>
 
 
 <body>
@@ -20,9 +23,9 @@
 		<th width ="100">카테고리</th>
 		<td>
 		<select id ="category" name="category_code"  >
-			<option value="vacuum" >----------</option>
+			<option>--------------</option>
 			<c:forEach items="${categoryList}" var="category">
-				<option value="${category.category_code}">${category.category_name}</option>		
+				<option value="${category.category_code}">${category.category_code}</option>		
 			</c:forEach>
 		</select>		
 	</tr>

@@ -64,9 +64,7 @@ import org.springframework.web.servlet.view.RedirectView;
 		public String board_List(HttpServletRequest request, Iboard_categoryVO category) throws Exception{
 	   
 			List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
-	           
 	        String pageNum = request.getParameter("pageNum");
-	        
 	        String category_code = request.getParameter("category_code");
 	        
 	        
@@ -105,15 +103,71 @@ import org.springframework.web.servlet.view.RedirectView;
 	        request.setAttribute("count", new Integer(count));
 	        request.setAttribute("pageSize", new Integer(pageSize));
 			request.setAttribute("number", new Integer(number));
-	        request.setAttribute("category_name", "통합 게시판");
+	
 			request.setAttribute("categoryList", categoryList);  
 			request.setAttribute("boardList", boardList);
 			request.setAttribute("pageNum", pageNum);
-			
+			request.setAttribute("category_code", category_code);
 	
 			return "/gboard/board_List";
 		}
 
+
+/*--------------------------------ListPro---------------------------------------------------*/		
+	
+	@RequestMapping("board_ListPro.do")
+		public String board_ListPro(HttpServletRequest request, Model model, Iboard_categoryVO category) throws Exception{
+		
+		List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
+        
+        String pageNum = request.getParameter("pageNum");
+        
+        String category_code = request.getParameter("category_code");
+        
+        
+        if (pageNum == null) {
+            pageNum = "1";
+        }
+        int pageSize = 10;
+        int currentPage = Integer.parseInt(pageNum);
+        int startRow = (currentPage - 1) * pageSize + 1;
+        int endRow = currentPage * pageSize;
+        int count = 0;
+        int number=0;
+
+        List boardList = null;
+        
+        if (category_code == null) {
+           
+        	count = (Integer)sqlMap.queryForObject("gboard.boardCount", null);
+	        HashMap map = new HashMap();
+	        map.put("start", startRow);
+	        map.put("end", endRow);
+	        if (count > 0) {
+	        	boardList = sqlMap.queryForList("gboard.boardAll", map);
+	        } else {
+	        	category_code = request.getParameter("category_code");
+	        	}
+	        } else {
+	        	boardList = Collections.EMPTY_LIST;
+	        	
+	        	}
+       
+		number=count-(currentPage-1)*pageSize;
+        request.setAttribute("currentPage", new Integer(currentPage));
+        request.setAttribute("startRow", new Integer(startRow));
+        request.setAttribute("endRow", new Integer(endRow));
+        request.setAttribute("count", new Integer(count));
+        request.setAttribute("pageSize", new Integer(pageSize));
+		request.setAttribute("number", new Integer(number));
+     
+		request.setAttribute("categoryList", categoryList);  
+		request.setAttribute("boardList", boardList);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("category_code", category_code);
+		
+		return "/gboard/board_List";
+	}
 	
 	
 /*---------------------------- WriteForm -------------------------------------------------------*/	

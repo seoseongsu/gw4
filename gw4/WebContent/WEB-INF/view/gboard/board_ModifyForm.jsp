@@ -42,7 +42,7 @@ function categorycheck(c)
 		<select id ="category" name="category_code"  onchange="categorycheck(this.value)">
 			<option value="vacuum" >----------</option>
 			<c:forEach items="${categoryList}" var="category">
-				<option value="${category.category_code}">${category.category_name}</option>		
+				<option value="${category.category_code}">${category.category_code}</option>		
 			</c:forEach>
 		</select>		
 	</tr>
