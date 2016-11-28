@@ -81,7 +81,7 @@ function show(a){
 	  			</td>
 	  			<td>
 	  			<input type="button" value="수정" 
-	  			onclick="document.location.href='reply_ModifyPro.do?reply_num=${replyView.reply_num}&board_num=${replyView.board_num}&pageNum=${pageNum}'">
+	  			onclick="document.location.href='reply_ModifyForm.do?reply_num=${replyView.reply_num}&board_num=${replyView.board_num}&pageNum=${pageNum}'">
 	  		
 	  			
 	  			

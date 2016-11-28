@@ -6,6 +6,7 @@ public class Board_replyVO {
 
 	private int reply_num;
 	private int board_num;
+	
 	private String reply_text;
 	private String pageNum;
 

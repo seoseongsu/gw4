@@ -505,8 +505,8 @@ import org.springframework.web.servlet.view.RedirectView;
 /*--------------------- Board_reply(ModifyPro)  --------------------------------------------------------------*/			
 	
 	
-	@RequestMapping("reply_ModifyPro.do")
-		public String reply_ModifyPro(HttpServletRequest request, Board_replyVO board_replyVO) throws Exception{
+	@RequestMapping("reply_ModifyForm.do")
+		public String reply_ModifyForm(HttpServletRequest request, Board_replyVO board_replyVO) throws Exception{
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
 	    int reply_num = Integer.parseInt(request.getParameter("reply_num"));
@@ -514,21 +514,41 @@ import org.springframework.web.servlet.view.RedirectView;
 	    
 	    
 	    Board_replyVO replyList =  (Board_replyVO)sqlMap.queryForObject("gboard.replySelectNum", reply_num);
-         
-	    
+	  
         request.setAttribute("replyList", replyList);
 	    request.setAttribute("pageNum", pageNum);
 		request.setAttribute("reply_num", reply_num);
 		request.setAttribute("board_num", num);
+		request.setAttribute("board_replyVO", board_replyVO);
 		
+		
+		
+		return "/gboard/reply_ModifyForm";
+		}
+	
+	
+/*--------------------- Board_reply(ModifyPro)  --------------------------------------------------------------*/			
+		
+	@RequestMapping("reply_ModifyPro.do")
+		public String reply_ModifyPro(HttpServletRequest request,Model model, Board_replyVO board_replyVO) throws Exception{
+		
+		int num = Integer.parseInt(request.getParameter("board_num"));
+	    int reply_num = Integer.parseInt(request.getParameter("reply_num"));
+	    String pageNum = request.getParameter("pageNum");
+	    
+	    model.addAttribute("board_replyVO" , board_replyVO);
+	    sqlMap.update("gboard.replyModify", reply_num);
+	    
+	    request.setAttribute("pageNum", pageNum);
+		request.setAttribute("reply_num", reply_num);
+		request.setAttribute("board_num", num);
+		request.setAttribute("board_replyVO", board_replyVO);
 		
 		
 		return "/gboard/reply_ModifyPro";
-		}
 	}
 	
-	
-	
+	}
 	
 	
 	

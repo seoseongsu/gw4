@@ -112,12 +112,16 @@
 				delete from board_reply where reply_num = #reply_num#
 			</delete>	
 			
-		<!--  -->	
-			
+		<!-- reply_ModifyForm -->	
 			
 			<select id="replySelectNum" resultClass="board_replyVO" parameterClass="int">
 				select * from board_reply where reply_num = #reply_num#
 			</select>
+			
+			<update id="replyModify" parameterClass="Board_replyVO">
+				update board_reply set reply_num=#reply_num#,board_num=#board_num#,reply_text=#reply_text#,pageNum=#pageNum#
+			</update>
+			
 			
 			
 </sqlMap>
