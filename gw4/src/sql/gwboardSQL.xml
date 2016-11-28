@@ -22,7 +22,8 @@
 				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,rownum r
 				from 
 				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
-				from board order by board_num desc) ) where r >= #start# and r <= #end#
+				from board order by board_num desc) 
+				order by decode(category_code,#aa#,0)  ) where r >= #start# and r <= #end#
 				]]>
 			</select>
 
@@ -110,6 +111,17 @@
 			<delete id="replyDelete" parameterClass="int">
 				delete from board_reply where reply_num = #reply_num#
 			</delete>	
+			
+		<!-- reply_ModifyForm -->	
+			
+			<select id="replySelectNum" resultClass="board_replyVO" parameterClass="int">
+				select * from board_reply where reply_num = #reply_num#
+			</select>
+			
+			<update id="replyModify" parameterClass="Board_replyVO">
+				update board_reply set reply_num=#reply_num#,board_num=#board_num#,reply_text=#reply_text#,pageNum=#pageNum#
+			</update>
+			
 			
 			
 </sqlMap>

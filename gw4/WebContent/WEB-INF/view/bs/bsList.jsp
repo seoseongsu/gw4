@@ -9,7 +9,7 @@
 <script>
 function deleteEvent(a){
 	if(confirm("정말 삭제하시겠습니까??")==true){
-		location.href="empDeletePro.do?emp_code="+a
+		location.href="bsDeletePro.do?bs_code="+a
 	}else{
 		return;
 	}
@@ -43,7 +43,7 @@ function deleteEvent(a){
 				<td width="100">평가자</td>
 				<td width="200">작성일</td>
 				<td width="150">상태</td>
-				<td width="100">&nbsp;</td>		
+				<td width="100">&nbsp;</td>	
 			</tr>
 			<c:forEach var="bsList" items="${bsList }">
 			<tr align="center">
@@ -52,8 +52,8 @@ function deleteEvent(a){
 				<td>${bsList.bs_ap }</td>
 				<td>${bsList.bs_date }</td>
 				<td>${bsList.bs_st }</td>
-				<td><input type="button" value="수정" onclick="location='empUpdate.do?emp_code=${article.emp_code }'"/>
-				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
+				<td><input type="button" value="수정" onclick="location='bsUpdate.do?emp_code=${bsList.emp_code }&bs_code=${bsList.bs_code }'"/>
+				<input type="button" value="삭제" onclick="deleteEvent(${bsList.bs_code})"/></td>
 			</tr>
 			</c:forEach>
 			<tr>

@@ -74,6 +74,7 @@
             		 $("#memberTable tr:last").remove();
             		 count--;
             	 }
+            	 document.bs.count.value=count;
             });
           	//document.bs.count.value=count;
         });
@@ -160,7 +161,7 @@
 	        <td style="width:180px;"></td>
 	    </tr>
 	</table>
-	<input type="hidden" name="count" value="" />
+	<input type="hidden" name="count" value="0" />
 	<table border="1" style="width:720px;">
 		<tr>
 	    	<td align="right">
