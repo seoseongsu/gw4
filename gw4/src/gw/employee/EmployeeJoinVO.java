@@ -4,6 +4,7 @@ public class EmployeeJoinVO {
 	private String emp_code;		//사원번호
 	private String dept_code;		//부서코드
 	private String dept_name;		//부서이름
+	private String dept_higher;		//부서이름
 	private String po_code;			//직급코드
 	private String po_name;			//직급이름
 	private String emp_passwd;		//비밀번호
@@ -47,6 +48,12 @@ public class EmployeeJoinVO {
 	}
 	public void setPo_name(String po_name) {
 		this.po_name = po_name;
+	}
+	public String getDept_higher() {
+		return dept_higher;
+	}
+	public void setDept_higher(String dept_higher) {
+		this.dept_higher = dept_higher;
 	}
 	public String getEmp_passwd() {
 		return emp_passwd;

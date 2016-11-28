@@ -91,22 +91,22 @@
 		<tr><td colspan="6"><strong>기본정보</strong></td></tr>
 		<tr>
 			<td width="70">사원</td>
-			<td width="170">${bsInVo.emp_name }
-			<input type="hidden" name="emp_code" value="${bsInVo.emp_code }"/></td>
+			<td width="170">${empJoinVo.emp_name }
+			<input type="hidden" name="emp_code" value="${empJoinVo.emp_code }"/></td>
 			<td width="70">부서</td>
 			<td width="170">
-				<c:if test="${bsInVo.dept_higher eq null }">
-					${bsInVo.dept_name }
-					<input type="hidden" name="dept_code" value="${bsInVo.dept_code }"/>
+				<c:if test="${empJoinVo.dept_higher eq null }">
+					${empJoinVo.dept_name }
+					<input type="hidden" name="dept_code" value="${empJoinVo.dept_code }"/>
 				</c:if>
-				<c:if test="${bsInVo.dept_higher ne null }">
-					${bsInVo.dept_higher }>${bsInVo.dept_name }
-					<input type="hidden" name="dept_code" value="${bsInVo.dept_code }"/>
+				<c:if test="${empJoinVo.dept_higher ne null }">
+					${empJoinVo.dept_higher }>${empJoinVo.dept_name }
+					<input type="hidden" name="dept_code" value="${empJoinVo.dept_code }"/>
 				</c:if>
 			</td>
 			<td width="70">직급</td>
-			<td width="170">${bsInVo.po_name }
-			<input type="hidden" name="po_code" value="${bsInVo.po_code }"/></td>
+			<td width="170">${empJoinVo.po_name }
+			<input type="hidden" name="po_code" value="${empJoinVo.po_code }"/></td>
 		</tr>
 		<tr>
 			<td>실행년도</td>

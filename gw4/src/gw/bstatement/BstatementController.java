@@ -10,6 +10,9 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import gw.employee.EmployeeJoinVO;
+import gw.employee.EmployeeVO;
+
 @Controller
 public class BstatementController {
 	@Autowired
@@ -34,10 +37,12 @@ public class BstatementController {
 	public String bsInsert(HttpServletRequest request){
 		String emp_code = (String) request.getParameter("emp_code");
 		List bsApList = null;
+		EmployeeJoinVO empJoinVo = new EmployeeJoinVO();
+		empJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
 		BstatementInVO bsInVo = (BstatementInVO) sqlMap.queryForObject("bs.bsSelectIn", emp_code);
-		bsApList = sqlMap.queryForList("bs.bsSelectAp", bsInVo.getDept_code());
+		bsApList = sqlMap.queryForList("bs.bsSelectAp", empJoinVo.getDept_code());
 		
-		request.setAttribute("bsInVo", bsInVo);
+		request.setAttribute("empJoinVo", empJoinVo);
 		request.setAttribute("bsApList", bsApList);
 		return "/bs/bsInsert";
 	}
