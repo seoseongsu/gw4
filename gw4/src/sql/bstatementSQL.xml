@@ -45,6 +45,13 @@
 			values(bs_code_seq.nextval,#emp_code#,#dept_code#,#po_code#,
 			#bs_st#,#bs_year#,#bs_goal#,#bs_ap#,sysdate)
 		</insert>
+		<update id="bsUpdate" parameterClass="bsVo">
+			update bstatement set emp_code=#emp_code#,dept_code=#dept_code#,po_code=#po_code#,
+			bs_st=#bs_st#,bs_year=#bs_year#,bs_goal=#bs_goal#,bs_ap=#bs_ap#,bs_date=sysdate where bs_code=#bs_code#
+		</update>
+		<delete id="bsDelete" parameterClass="String">
+			delete from bstatement where bs_code=#bs_code#
+		</delete>
 		
 		<select id="bbSelectBs" resultClass="bbVo" parameterClass="String">
 			select * from bbreakdown where bs_code=#bs_code#
@@ -52,11 +59,21 @@
 		<select id="bbSelectCountBs" resultClass="int" parameterClass="String">
 			select count(*) from bbreakdown where bs_code=#bs_code#
 		</select>
+		<select id="bbSelectUp" resultClass="bbVo" parameterClass="String">
+			select * from bbreakdown where bs_code=#bs_code#
+		</select>
 		<insert id="bbInsert" parameterClass="bbVo">
 			insert into bbreakdown(bb_code,bs_code,bb_main,bb_status,
 			bb_time,bb_product) 
 			values(bb_code_seq.nextval,#bs_code#,#bb_main#,#bb_status#,
 			#bb_time#,#bb_product#)
 		</insert>
+		<update id="bbUpdate" parameterClass="bbVo">
+			update bbreakdown set bs_code=#bs_code#,bb_main=#bb_main#,bb_status=#bb_status#,
+			bb_time=#bb_time#,bb_product=#bb_product# where bb_code=#bb_code#
+		</update>
+		<delete id="bbDelete" parameterClass="String">
+			delete from bbreakdown where bb_code=#bb_code#
+		</delete>
 </sqlMap>
 
