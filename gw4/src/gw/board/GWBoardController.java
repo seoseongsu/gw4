@@ -86,6 +86,7 @@ import org.springframework.web.servlet.view.RedirectView;
 		        HashMap map = new HashMap();
 		        map.put("start", startRow);
 		        map.put("end", endRow);
+		        map.put("aa", "공지사항");
 		        if (count > 0) {
 		        	boardList = sqlMap.queryForList("gboard.boardAll", map);
 		        } else {

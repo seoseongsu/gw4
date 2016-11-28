@@ -39,8 +39,9 @@
 	
 	</table>
 		<table border="1"  width="1000" align="center">
-		<tr>
-				<th width="650">제목</th>
+		<tr>	
+				<th width="50">글번호</th>
+				<th width="600">제목</th>
 				<th width="100">작성자</th>
 				<th width="150">작성날짜</th>
 				<th width="100">조회</th>
@@ -48,6 +49,7 @@
 			
 			<c:forEach var="boardList" items="${boardList}">
 				<tr align="center">
+					<td>${boardList.board_num}</td>
 					<td>
 					<a href="board_Content.do?board_num=${boardList.board_num}&pageNum=${currentPage}">[${boardList.category_code}]${boardList.board_subject}</a></td>
 					<td>작성자</td>
