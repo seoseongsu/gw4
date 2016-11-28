@@ -74,6 +74,7 @@
             		 $("#memberTable tr:last").remove();
             		 count--;
             	 }
+            	 document.bs.count.value=count;
             });
           	//document.bs.count.value=count;
         });

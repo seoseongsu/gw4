@@ -52,8 +52,8 @@ function deleteEvent(a){
 				<td>${bsList.bs_ap }</td>
 				<td>${bsList.bs_date }</td>
 				<td>${bsList.bs_st }</td>
-				<td><input type="button" value="수정" onclick="location='empUpdate.do?emp_code=${article.emp_code }'"/>
-				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
+				<td><input type="button" value="수정" onclick="location='bsUpdate.do?emp_code=${bsList.emp_code }&bs_code=${bsList.bs_code }'"/>
+				<input type="button" value="삭제" onclick="deleteEvent(${bsList.emp_code})"/></td>
 			</tr>
 			</c:forEach>
 			<tr>

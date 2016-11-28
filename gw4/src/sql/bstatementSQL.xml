@@ -28,12 +28,16 @@
 			 where bs.emp_code = e.emp_code
 			 and bs.dept_code = d.dept_code
 			 and bs.po_code = p.po_code
+			 order by bs_date desc
 		</select>
 		<select id="bsSelectAp" resultClass="empVo" parameterClass="String">
 			select * from employee where dept_code=#dept_code#
 		</select>
 		<select id="bsSelectCode" resultClass="int">
-			select MAX(bs_code) from bstatement
+			select MAX(to_number(bs_code)) from bstatement
+		</select>
+		<select id="bsSelectUp" resultClass="bsVo" parameterClass="String">
+			select * from bstatement where bs_code=#bs_code#
 		</select>
 		<insert id="bsInsert" parameterClass="bsVo">
 			insert into bstatement(bs_code,emp_code,dept_code,po_code,
@@ -41,6 +45,13 @@
 			values(bs_code_seq.nextval,#emp_code#,#dept_code#,#po_code#,
 			#bs_st#,#bs_year#,#bs_goal#,#bs_ap#,sysdate)
 		</insert>
+		
+		<select id="bbSelectBs" resultClass="bbVo" parameterClass="String">
+			select * from bbreakdown where bs_code=#bs_code#
+		</select>
+		<select id="bbSelectCountBs" resultClass="int" parameterClass="String">
+			select count(*) from bbreakdown where bs_code=#bs_code#
+		</select>
 		<insert id="bbInsert" parameterClass="bbVo">
 			insert into bbreakdown(bb_code,bs_code,bb_main,bb_status,
 			bb_time,bb_product) 
