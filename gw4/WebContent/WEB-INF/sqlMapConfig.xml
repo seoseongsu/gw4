@@ -13,4 +13,5 @@
 	<sqlMap resource="/sql/mainSQL.xml"/>
 	<sqlMap resource="/sql/salarySQL.xml"/>
 	<sqlMap resource="/sql/commuteSQL.xml"/>
+	<sqlMap resource="/sql/productSQL.xml"/>
 </sqlMapConfig>

@@ -34,15 +34,17 @@ import org.springframework.web.servlet.view.RedirectView;
 
 
 
-
-
-
-
 	@Controller
 	public class GWBoardController implements ServletContextAware {
 		@Autowired
 		private SqlMapClientTemplate sqlMap;
 		private Object servletContext;
+		@Override
+		public void setServletContext(ServletContext arg0){
+			this.servletContext = servletContext;
+		}
+	
+		
 		
 		@RequestMapping("board_Main.do")
 		public String board_Main(HttpServletRequest request)throws Exception{
@@ -50,12 +52,7 @@ import org.springframework.web.servlet.view.RedirectView;
 			return "/gboard/board_Main";
 		}
 
-		@Override
-		public void setServletContext(ServletContext arg0){
-			this.servletContext = servletContext;
-		}
 	
-		
 /*--------------------------------List---------------------------------------------------*/	
 		
 		
