@@ -8,13 +8,38 @@
 <title>물품 관리</title>
 </head>
 <body>
-<b><center/>물품 등록</b>
-<table border ="1" width="1000" align="center">
-<tr>
-<th width="100">물품 코드</th>
-<td><input type="text" name=""></td>
-<th>물품 이름</th>
-<td><input type="text" name=""></td>
+<b><center/>물품 등록</b><br /><br />
+<form>
+	<table border ="1" width="500" align="center">
+		<tr>
+			<th width="100">물품 코드</th>
+			<td width="200"><input  size="25"  type="text" name=""></td>
+		
+			<th width="100">물품 분류</th>
+			<td> 	<select>
+			<option>HardWare</option>
+			<option>SoftWare</option>
+			</select></td>
+		
+		<tr>
+			<th>물품 이름</th>
+			<td colspan="3"><input size="53" type="text" name=""></td>
+		</tr>
+		
+		<tr>
+		<th>비고</th>
+		<td colspan="3">
+			<textarea ></textarea>
+			</td>
+			</tr>
+		<tr>
+			<td colspan="4" align="right" >
+			<input align="right" type="submit"  value="전송" >
+			<input type="button" value="취소">
+			</td>
+		</tr>
+</table>
+</form>
 </tr>
 </body>
 </html>
