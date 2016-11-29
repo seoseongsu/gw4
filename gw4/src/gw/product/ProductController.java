@@ -13,11 +13,17 @@ public class ProductController {
 	@Autowired
 	private SqlMapClientTemplate sqlMap;
 
-	@RequestMapping("/product/product_List.do")
+	@RequestMapping("product_List.do")
 	
-	public String product_List(){
-		return "/product/product_List";
+		public String product_List(){
+			return "/product/product_List";
 	}
+		
+	@RequestMapping("product_Insert.do")
 	
+		public String product_Insert(){
 	
-}
+			return "/product/product_Insert";
+	}
+		
+	}

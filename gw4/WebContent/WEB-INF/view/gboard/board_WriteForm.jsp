@@ -5,7 +5,7 @@
 <html>
 <head>
 
-<title>writeForm</title>
+<title>게시판</title>
 </head>
 <script src="/gw4/ckeditor/ckeditor.js">
 
