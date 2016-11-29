@@ -2,10 +2,17 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 
 <sqlMap>
+
 	<typeAlias alias="fundVo" type="gw.fund.FundVO" />
 	
-	<select id="fundList" resultClass="fundVo">
-		select * from fund
+	<select id="fundList" resultClass="gw.fund.FundJoinVO">
+		select fund_code,f.dept_code,dept_name,f.po_code,po_name,f.emp_code,emp_name,
+		fund_division,fund_days,fund_day,fund_item,fund_briefs,fund_account,fund_deposit,
+		fund_withdraw,fund_balance
+		from department d, employee e, position p, fund f
+		where f.dept_code = d.dept_code
+		and f.po_code = p.po_code
+		and f.emp_code = e.emp_code
 	</select>
 	
 	<select id="fundSelect" resultClass="gw.employee.EmployeeJoinVO">
@@ -18,9 +25,9 @@
 	</select>
 	
 	<insert id="fundAddPro" parameterClass="fundVo">
-		insert into fund(fund_code,fund_division,fund_days,fund_item,fund_briefs,
-		fund_account,fund_deposit,fund_withdraw,fund_balance)
-		values(fund_code_seq.nextval,#fund_division#,#fund_days#,
+		insert into fund(fund_code,emp_code,dept_code,po_code,
+		fund_division,fund_days,fund_item,fund_briefs,fund_account,fund_deposit,fund_withdraw,fund_balance)
+		values(fund_code_seq.nextval,#emp_code#,#dept_code#,#po_code#,#fund_division#,#fund_days#,
 		#fund_item#,#fund_briefs#,#fund_account#,#fund_deposit#,#fund_withdraw#,#fund_balance#)
 	</insert>
 	
@@ -28,8 +35,15 @@
 		delete from fund where fund_code=#fund_code#
 	</delete>
 	
-	<select id="fundSelectUpdate" resultClass="fundVo" parameterClass="String">
-		select * from fund where fund_code=#fund_code#
+	<select id="fundSelectUpdate" resultClass="gw.fund.FundJoinVO" parameterClass="String">
+		select fund_code,f.dept_code,dept_name,f.po_code,po_name,f.emp_code,emp_name,
+		fund_division,fund_days,fund_day,fund_item,fund_briefs,fund_account,fund_deposit,
+		fund_withdraw,fund_balance
+		from department d, employee e, position p, fund f
+		where f.dept_code = d.dept_code
+		and f.po_code = p.po_code
+		and f.emp_code = e.emp_code
+		and fund_code = #fund_code#
 	</select>
 	
 	<update id="fundUpdate" parameterClass="fundVo">

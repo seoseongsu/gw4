@@ -113,16 +113,35 @@ salary_acpay varchar2(100)
 );
 create sequence salary_code_seq nocache;
 
-#schedule
-create table schedule(
-sc_id varchar2(20) not null,
+create table calendar(
+calendarno varchar2(20) not null,
+calendarname varchar2(20),
+calendarcont varchar2(50),
+calendarbegindate date,
+calendarenddate date,
+calendarregdate date default sysdate,
+calendarplace varchar2(50),
+calendarurl varchar2(50),
+calendaryn varchar2(10),
 emp_code varchar2(20) not null,
 emp_name varchar2(50),
-st_date date,
-en_date date,
-constraint pk_sc primary key(sc_id),
+constraint pk_sc primary key(calendarno),
 constraint fk_sc foreign key(emp_code)
 references employee(emp_code)
 );
-create sequence salary_code_seq nocache;
+create sequence calendarno_seq nocache;
+
+create table schedule(
+schedule_id number(20) not null,
+schedule_date_time date,
+schedule_subject varchar2(100),
+schedule_content varchar2(100),
+emp_code varchar2(20) not null,
+emp_name varchar2(50),
+constraint pk_sc primary key(schedule_id),
+constraint fk_sc foreign key(emp_code)
+references employee(emp_code)
+);
+create sequence schedule_id_seq nocache;
+
 

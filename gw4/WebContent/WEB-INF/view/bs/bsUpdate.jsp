@@ -9,9 +9,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
         $(function() {
-        	var count = document.getElementByName('count')[0].value;
-        	var test = 100;
-        	document.bs.test.value=test;
+        	var count = parseInt('${bbCount}');
             $("#btnAddRow").on("click",function() {
                 // clone
                 $.trClone = $("#memberTable tr:last").clone().html();
@@ -92,6 +90,7 @@
 	<table border="1" style="width:720px;">
 		<tr><td colspan="6"><strong>기본정보</strong></td></tr>
 		<tr>
+			<input type="hidden" name="bs_code" value="${bs_code }"/>
 			<td width="70">사원</td>
 			<td width="170">${empJoinVo.emp_name }
 			<input type="hidden" name="emp_code" value="${empJoinVo.emp_code }"/></td>
@@ -161,18 +160,18 @@
 	        <td style="width:180px;"></td>
 	        <td style="width:180px;"></td>
 	    </tr>
-	    
+	    <c:forEach var="bbList" items="${bbList }" varStatus="status">
+	    	<tr>
+		        <td style="width:180px;"><input name="bb_main${status.count}" type="text" id="bb_main${status.count}" value="${bbList.bb_main }" /></td>
+		        <td style="width:180px;"><input name="bb_status${status.count}" type="text" id="bb_status${status.count}" value="${bbList.bb_status }" /></td>
+		        <td style="width:180px;"><input name="bb_time${status.count}" type="text" id="bb_time${status.count}" value="${bbList.bb_time }" /></td>
+		        <td style="width:180px;"><input name="bb_product${status.count}" type="text" id="bb_product${status.count}" value="${bbList.bb_product }" /></td>
+	    	</tr>
+	    </c:forEach>
 	</table>
 	<input type="hidden" name="count" value="${bbCount }" />
 	<table border="1" style="width:720px;">
-		<c:forEach var="bbList" items="${bbList }">
-	    	<tr>
-		        <td style="width:180px;"><input name="bb_main" type="text" id="bb_main" value="${bbList.bb_main }" /></td>
-		        <td style="width:180px;"><input name="bb_status" type="text" id=""bb_status"" value="${bbList.bb_status }" /></td>
-		        <td style="width:180px;"><input name="bb_time" type="text" id="bb_time" value="${bbList.bb_time }" /></td>
-		        <td style="width:180px;"><input name="bb_product" type="text" id="bb_product" value="${bbList.bb_product }" /></td>
-	    	</tr>
-	    </c:forEach>
+		
 		<tr>
 	    	<td align="right" colspan="4">
 	    		<input type="submit" value="저장" onsubmit='return countCk();'/>
@@ -181,13 +180,6 @@
 	    </tr>
 	</table>
 	${bbCount}
-	<input type="button" value="test" onclick="test();"/>
 </form>
 </body>
-<script type="text/javascript">
-	function test() {
-		var test = document.getElementByName('count').value;;
-    	alert(test);
-	}
-</script>
 </html>

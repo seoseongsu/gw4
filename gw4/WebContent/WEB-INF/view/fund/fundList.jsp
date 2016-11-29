@@ -52,12 +52,14 @@ function fundDelete(a){
 			<tr><input type="submit" value="조회하기"></tr>
 		</form>
 	</table>
-	<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do?emp_code=7','_self')"></span>
+	<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do?emp_code=7&dept_code=1&po_code=1','_self')"></span>
 	<table border="1" width="100%">
 	<form>
 		<tr>
 			<td align="center" width="50">집행일</td>
-			<td align="center" width="120">집행자</td>
+			<td align="center" width="50">집행부서</td>
+			<td align="center" width="50">집행직급</td>
+			<td align="center" width="50">집행자</td>
 			<td align="center" width="50">구분</td>
 			<td align="center" width="80">자금항목</td>
 			<td align="center" width="120">적요</td>
@@ -76,15 +78,17 @@ function fundDelete(a){
 				<c:set var="withdraw" value="${withdraw + fund.fund_withdraw}"/>
 				<c:set var="balance" value="${deposit - withdraw }"/>
 				<td align="center" width="50">${fund.fund_days}</td>
+				<td align="center" width="50">${fund.dept_name }</td>
+				<td align="center" width="50">${fund.po_name }</td>
+				<td align="center" width="50">${fund.emp_name }</td>
 				<td align="center" width="50">${fund.fund_division}</td>
-				<td align="center" width="120">${fund.dept_name} - ${fund.po_name} - ${fund.emp_name}</td>
 				<td align="center" width="80">${fund.fund_item}</td>
 				<td align="center" width="120">${fund.fund_briefs}</td>
 				<td align="center" width="50">${fund.fund_account}</td>
 				<td align="center" width="50">${fund.fund_deposit}</td>
 				<td align="center" width="50">${fund.fund_withdraw}</td>
 				<td align="center" width="50"><c:out value="${balance }"/></td>
-				<td align="center" width="50">				
+				<td align="center" width="50">
 				<input type="button" value="수정" onclick="location='fundUpdate.do?fund_code=${fund.fund_code }'"/>
 				<input type="button" value="삭제" onclick="fundDelete(${fund.fund_code})"/>
 				</td>
@@ -92,7 +96,7 @@ function fundDelete(a){
 
 			</c:forEach>
 		<tr>
-			<td colspan="6" align="center">합계</td>
+			<td colspan="8" align="center">합계</td>
 			<td align="center" width="50"><c:out value="${deposit}"/></td>
 			<td align="center" width="50"><c:out value="${withdraw}"/></td>
 			<td align="center" width="50"><c:out value="${balance }"/></td>
