@@ -12,4 +12,5 @@
 	<sqlMap resource="/sql/fundSQL.xml"/>
 	<sqlMap resource="/sql/mainSQL.xml"/>
 	<sqlMap resource="/sql/salarySQL.xml"/>
+	<sqlMap resource="/sql/commuteSQL.xml"/>
 </sqlMapConfig>
