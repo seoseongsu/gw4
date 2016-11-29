@@ -3,5 +3,21 @@
 <sqlMap namespace="com">
 	<typeAlias alias="comVo" type="gw.commute.CommuteVO"/>
 	
+	<select id="comSelectToday" resultClass="comVo" parameterClass="java.util.HashMap">
+		select * from commute where emp_code=#emp_code# and com_go>=#checkDay#
+	</select>
+	<select id="comSelectTodayCount" resultClass="int" parameterClass="java.util.HashMap">
+		select count(*) from commute where emp_code=#emp_code# and com_go>=#checkDay#
+	</select>
+	<select id="comSelectTodayOff" resultClass="comVo" parameterClass="String">
+		select * from commute where com_code=#com_code#
+	</select>
+	<insert id="comInsertGo" parameterClass="comVo">
+		insert into commute(com_code, emp_code, com_go, com_off, com_status, com_ip) 
+		values(com_code_seq.nextval, #emp_code#, sysdate, #com_off#, #com_status#, #com_ip#)
+	</insert>
+	<update id="comUpdateOff" parameterClass="comVo">
+		update commute set com_off=sysdate, com_status=#com_status# where com_code=#com_code#
+	</update>
 </sqlMap>
 
