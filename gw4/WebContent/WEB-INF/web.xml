@@ -20,12 +20,14 @@
   	<init-param>
   		<param-name>contextConfigLocation</param-name>
   		<param-value>
+  			commute
   			/WEB-INF/bstatement-servlet.xml
   			/WEB-INF/employee-servlet.xml
   			/WEB-INF/board-servlet.xml
   			/WEB-INF/fund-servlet.xml
   			/WEB-INF/main-servlet.xml
   			/WEB-INF/salary-servlet.xml
+  			/WEB-INF/commute-servlet.xml
   		</param-value>
   	</init-param>
   </servlet>
