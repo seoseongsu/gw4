@@ -14,12 +14,11 @@ import gw.employee.EmployeeJoinVO;
 @Controller
 public class FundController{
 	@Autowired SqlMapClientTemplate sqlMap;
-	
+
 	@RequestMapping("/fund/fundList.do")
-	public String fundList(HttpServletRequest request)throws Exception{
+	public String fundList(HttpServletRequest request){
 		
 		List fundList = sqlMap.queryForList("fundList", null);
-		
 		request.setAttribute("fundList", fundList);
 		return "/fund/fundList";
 	}
@@ -29,7 +28,7 @@ public class FundController{
 		
 		String emp_code = request.getParameter("emp_code");
 		EmployeeJoinVO employeeJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("fundSelect", emp_code);
-			
+
 		request.setAttribute("fundVo", employeeJoinVo);
 		
 		return "/fund/fundAdd";
@@ -37,7 +36,11 @@ public class FundController{
 	
 	@RequestMapping("/fund/fundAddPro.do")
 	public String fundAddPro(HttpServletRequest request, FundVO vo) throws Exception{
+		
+		String emp_code = request.getParameter("emp_code");
+		
 		sqlMap.insert("fundAddPro", vo);
+		
 		return "/fund/fundAddPro";
 	}
 	
@@ -52,8 +55,8 @@ public class FundController{
 	public String fundUpdate(HttpServletRequest request){
 		String fund_code = (String) request.getParameter("fund_code");
 		
-		FundVO fundVo = (FundVO) sqlMap.queryForObject("fundSelectUpdate", fund_code);
-		request.setAttribute("fundVo", fundVo);
+		FundJoinVO fundJoinVo = (FundJoinVO) sqlMap.queryForObject("fundSelectUpdate", fund_code);
+		request.setAttribute("fundJoinVo", fundJoinVo);
 		
 		return "/fund/fundUpdate";
 	}
@@ -79,4 +82,3 @@ public class FundController{
 		return "/fund/fundDays";
 	}
 }
-
