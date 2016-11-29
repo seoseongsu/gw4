@@ -537,7 +537,7 @@ import org.springframework.web.servlet.view.RedirectView;
 	    String pageNum = request.getParameter("pageNum");
 	    
 	    model.addAttribute("board_replyVO" , board_replyVO);
-	    sqlMap.update("gboard.replyModify", reply_num);
+	    sqlMap.update("gboard.replyModify", board_replyVO);
 	    
 	    request.setAttribute("pageNum", pageNum);
 		request.setAttribute("reply_num", reply_num);

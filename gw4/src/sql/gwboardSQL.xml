@@ -119,7 +119,7 @@
 			</select>
 			
 			<update id="replyModify" parameterClass="Board_replyVO">
-				update board_reply set reply_num=#reply_num#,board_num=#board_num#,reply_text=#reply_text#,pageNum=#pageNum#
+				update board_reply set reply_text=#reply_text# where reply_num=#reply_num#
 			</update>
 			
 			
