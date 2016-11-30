@@ -34,7 +34,7 @@
 			
 			
 			<update id="productModify" parameterClass="productVO">
-				update hw_product set product_num=#product_num#,product_name=#product_name#,product_divide=#product_divide#,product_note=#product_note#,product_posesion=#product_posesion# 
+				update hw_product set product_num=#product_num#,hw_product_code=#hw_product_code#,product_name=#product_name#,product_divide=#product_divide#,product_note=#product_note#,product_posesion=#product_posesion# 
 				,product_type=#product_type#,product_quantity=#product_quantity#,product_in=#product_in#,product_out=#product_out# where product_num=#product_num#
 			</update>
 			

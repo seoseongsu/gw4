@@ -47,7 +47,7 @@
 			
 			<th >재고 수량</th>
 				<td width="100" ><input style="width:99%" type="text" 
-				name="product_quantity" value="${productList.product_in}">
+				name="product_in" value="${productList.product_in}">
 				
 				</td>
 		</tr>
@@ -57,7 +57,7 @@
 			<th width="100">비고</th>
 			<td width="400" colspan="4">
 				<textarea rows="5" style="width:99%" name="product_note" 
-				value="${productList.product_note}">
+				>${productList.product_note}
 				</textarea>
 				</td>
 		</tr>
