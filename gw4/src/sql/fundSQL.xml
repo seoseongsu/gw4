@@ -47,9 +47,9 @@
 	</select>
 	
 	<update id="fundUpdate" parameterClass="fundVo">
-		update fund set fund_code=#fund_code#,fund_division=#fund_division#,fund_days=#fund_days#,
+		update fund set fund_division=#fund_division#,fund_days=#fund_days#,
 		fund_item=#fund_item#,fund_briefs=#fund_briefs#,fund_account=#fund_account#,fund_deposit=#fund_deposit#,
-		fund_withdraw=#fund_withdraw#,fund_balance=#fund_balance#
+		fund_withdraw=#fund_withdraw#,fund_balance=#fund_balance# where fund_code=#fund_code#
 	</update>
 	
 	<select id="fundSelectDays" resultClass="fundVo" parameterClass="java.util.HashMap">

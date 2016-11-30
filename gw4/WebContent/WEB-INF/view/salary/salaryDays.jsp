@@ -51,7 +51,7 @@ function salaryDelete(a){
 			<tr><input type="submit" value="조회하기"></tr>
 		</form>
 	</table>
-	<span style="float:right"><input type="button" value="급여등록" onclick="window.open('/gw4/salary/salaryAdd.do','_self')"></span>
+	<span style="float:right"><input type="button" value="급여등록" onclick="window.open('/spring/salary/salaryAdd.do','_self')"></span>
 	<table border="1" width="100%">
 	<form>
 		<tr>
@@ -74,7 +74,7 @@ function salaryDelete(a){
 			<td align="center">계좌번호</td>
 			<td align="center">비고</td>
 		</tr>
-		<c:forEach var="salary" items="${salaryList }">
+		<c:forEach var="salary" items="${salaryDays }">
 		<tr>
 			
 			<c:set var="pay" value="${salary.salary_normal+salary.salary_bonus }"/>
@@ -119,5 +119,6 @@ function salaryDelete(a){
 		</tr>
 
 	</form>
+		<input type="button" value="전체보기" onclick="window.open('/gw4/salary/salaryList.do','_self')">
 	</table>
 </body>

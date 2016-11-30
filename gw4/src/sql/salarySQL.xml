@@ -6,12 +6,48 @@
 	
 	<select id="salarySelectList" resultClass="gw.salary.SalaryJoinVO">
 		select salary_code,s.dept_code,dept_name,s.po_code,po_name,s.emp_code,
-		emp_name,emp_career,emp_bank,emp_acnum,salary_normal,salary_bonus,salary_pay,
-		salary_pension,salary_health,salary_nursing,salary_employ,salary_income,
-		salary_resident,salary_deduction,salary_acpay
+		emp_name,emp_career,emp_bank,emp_acnum,salary_normal,salary_bonus,salary_days
 		from department d, employee e, position p, salary s
 		where s.dept_code = d.dept_code
 		and s.po_code = p.po_code
 		and s.emp_code = e.emp_code
+	</select>
+	
+	<select id="empSelectAll" resultClass="gw.employee.EmployeeVO">
+		select * from employee
+	</select>
+	
+	<insert id="salaryAddPro" parameterClass="salaryVo">
+		insert into salary(salary_code,dept_code,po_code,emp_code,salary_normal,salary_bonus,salary_days)
+		values(salary_code_seq.nextval,#dept_code#,#po_code#,#emp_code#,#salary_normal#,#salary_bonus#,#salary_days#)
+	</insert>
+	
+	<delete id="salaryDeletePro" parameterClass="String">
+		delete from salary where salary_code=#salary_code#
+	</delete>
+	
+	<select id="salarySelectUpdate" resultClass="gw.salary.SalaryJoinVO" parameterClass="String">
+		select salary_code,s.dept_code,dept_name,s.po_code,po_name,s.emp_code,emp_name,emp_bank,emp_acnum,
+		salary_normal,salary_bonus,salary_days
+		from department d, employee e, position p, salary s
+		where s.dept_code = d.dept_code
+		and s.po_code = p.po_code
+		and s.emp_code = e.emp_code
+		and salary_code = #salary_code#
+	</select>
+	
+	<update id="salaryUpdate" parameterClass="gw.salary.SalaryJoinVO">
+		update salary set salary_normal=#salary_normal#,salary_bonus=#salary_bonus#,
+		salary_days=#salary_days# where salary_code=#salary_code#
+	</update>
+	
+	<select id="salaryDays" resultClass="gw.salary.SalaryJoinVO" parameterClass="java.util.HashMap">
+		<![CDATA[select salary_code,s.dept_code,dept_name,s.po_code,po_name,s.emp_code,
+		emp_name,emp_career,emp_bank,emp_acnum,salary_normal,salary_bonus,salary_days
+		from department d, employee e, position p, salary s
+		where s.dept_code = d.dept_code
+		and s.po_code = p.po_code
+		and s.emp_code = e.emp_code
+		and salary_days >= #salary_days# and salary_days <= #salary_day#]]>
 	</select>
 </sqlMap>

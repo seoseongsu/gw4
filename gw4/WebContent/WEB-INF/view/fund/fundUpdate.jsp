@@ -46,16 +46,18 @@ function change(style){
 			<td align="left">기등록자금 수정</td>
 		</tr>
 	</table>
-<table>	
+<table border="1">	
 <form method="get" action="fundUpdatePro.do" name="fundinput" onSubmit="return checkIt()">
 	
 		<input type="hidden" name="fund_code" value="${fundJoinVo.fund_code }" />
-		<tr>집행부서 : ${fundJoinVo.dept_name }
+		<tr>
+			<td>집행부서 : ${fundJoinVo.dept_name }</td>
 			<td>집행직금 : ${fundJoinVo.po_name }</td>
 			<td>집행자 : ${fundJoinVo.emp_name}</td>
 		</tr>
 		
-		<tr>집행일<input type="text" id="fund_days" name="fund_days" value="${fundJoinVo.fund_days }">
+		<tr>
+			<td>집행일<input type="text" id="fund_days" name="fund_days" value="${fundJoinVo.fund_days }">
 			<td>구분
 				<select onChange="change(this.options[this.selectedIndex].value)" id="fund_division" name="fund_division">
 					<option value="">선택</option>
@@ -63,11 +65,14 @@ function change(style){
 					<option value="출금">출금</option>
 				</select>
 			</td>
-			<td><input type="text" id="fund_deposit" name="fund_deposit" placeholder="입금액을 입력하세요" style="display:none;" value="${fundJoinVo.fund_deposit }">
-			<input type="text" id="fund_withdraw" name="fund_withdraw" placeholder="출금액을 입력하세요" style="display:none; value="${fundJoinVo.fund_withdraw }"></td>
+			<td>
+				<input type="text" id="fund_deposit" name="fund_deposit" placeholder="입금액을 입력하세요" style="display:none;" value="${fundJoinVo.fund_deposit }">
+				<input type="text" id="fund_withdraw" name="fund_withdraw" placeholder="출금액을 입력하세요" style="display:none; value="${fundJoinVo.fund_withdraw }">
+			</td>
 		</tr>
 		
-		<tr>적요<input type="text" id="fund_briefs" name="fund_briefs" value="${fundJoinVo.fund_briefs }">
+		<tr>
+			<td>적요<input type="text" id="fund_briefs" name="fund_briefs" value="${fundJoinVo.fund_briefs }">
 			<td>자금항목
 				<select id="fund_item" name="fund_item">
 					<option value="">선택</option>
@@ -98,7 +103,7 @@ function change(style){
 				</select>
 			</td>
 		</tr>
-		
+		</table>
 		<tr>
 			<td>
 				<input type="submit" name="confirm" value="수정">
@@ -106,8 +111,5 @@ function change(style){
 				<input type="button" value="취소" onclick="javascript:window.location='fundList.do'">
 			</td>
 		</tr>
-	
-
 	</form>
-</table>
 </body>

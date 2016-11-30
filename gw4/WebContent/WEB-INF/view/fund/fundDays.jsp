@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <title>자금관리</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
@@ -10,7 +12,7 @@
 
 $(function(){
 	$("#fund_days").datepicker({
-		dateFormat: 'yymmdd',
+		dateFormat: 'yy - mm - dd',
 		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
 		dayNameMin: ['일','월','화','수','목','금','토'],
 		changeMonth: true,	//월변경가능
@@ -20,7 +22,7 @@ $(function(){
 });
 $(function(){
 	$("#fund_day").datepicker({
-		dateFormat: 'yymmdd',
+		dateFormat: 'yy - mm - dd',
 		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
 		dayNameMin: ['일','월','화','수','목','금','토'],
 		changeMonth: true,	//월변경가능
@@ -52,12 +54,15 @@ function fundDelete(a){
 			<tr><input type="submit" value="조회하기"></tr>
 		</form>
 	</table>
-		<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do','_self')"></span>
+		<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/spring/fund/fundAdd.do','_self')"></span>
 
 	<table border="1" width="100%">
 	<form>
 		<tr>
 			<td align="center" width="50">집행일</td>
+			<td align="center" width="50">집행부서</td>
+			<td align="center" width="50">집행직급</td>
+			<td align="center" width="50">집행자</td>
 			<td align="center" width="50">구분</td>
 			<td align="center" width="80">자금항목</td>
 			<td align="center" width="120">적요</td>
@@ -68,21 +73,22 @@ function fundDelete(a){
 			<td align="center" width="50">비고</td>
 
 		</tr>
-			<c:set var="deposit" value="0"/>
-			<c:set var="withdraw" value="0"/>
 			<c:forEach var="fund" items="${fundDays}">
 			<tr>
 				<c:set var="deposit" value="${deposit + fund.fund_deposit}"/>
 				<c:set var="withdraw" value="${withdraw + fund.fund_withdraw}"/>
 				<c:set var="balance" value="${deposit - withdraw }"/>
 				<td align="center" width="50">${fund.fund_days}</td>
+				<td align="center" width="50">${fund.dept_name }</td>
+				<td align="center" width="50">${fund.po_name }</td>
+				<td align="center" width="50">${fund.emp_name }</td>
 				<td align="center" width="50">${fund.fund_division}</td>
 				<td align="center" width="80">${fund.fund_item}</td>
 				<td align="center" width="120">${fund.fund_briefs}</td>
 				<td align="center" width="50">${fund.fund_account}</td>
-				<td align="center" width="50">${fund.fund_deposit}</td>
-				<td align="center" width="50">${fund.fund_withdraw}</td>
-				<td align="center" width="50"><c:out value="${balance }"/></td>
+				<td align="center" width="50"><fmt:formatNumber value="${fund.fund_deposit }" type="number"/></td>
+				<td align="center" width="50"><fmt:formatNumber value="${fund.fund_withdraw }" type="number"/></td>
+				<td align="center" width="50"><fmt:formatNumber value="${balance }" type="number"/></td>
 				<td align="center" width="50">				
 				<input type="button" value="수정" onclick="location='fundUpdate.do?fund_code=${fund.fund_code }'"/>
 				<input type="button" value="삭제" onclick="fundDelete(${fund.fund_code})"/>
@@ -90,15 +96,16 @@ function fundDelete(a){
 			</tr>
 
 			</c:forEach>
+
 		<tr>
 			<td colspan="5" align="center">합계</td>
-			<td align="center" width="50"><c:out value="${deposit}"/></td>
-			<td align="center" width="50"><c:out value="${withdraw}"/></td>
-			<td align="center" width="50"><c:out value="${balance }"/></td>
+			<td align="center" width="50"><fmt:formatNumber value="${deposit }" type="number"/></td>
+			<td align="center" width="50"><fmt:formatNumber value="${withdraw }" type="number"/></td>
+			<td align="center" width="50"><fmt:formatNumber value="${balance }" type="number"/></td>
 			<td align="center" width="50"></td>
 		</tr>
 	</table>
-
+		<input type="button" value="전체보기" onclick="window.open('/gw4/fund/fundList.do','_self')">
 	</form>
 	
 </body>
