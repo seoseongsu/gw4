@@ -8,40 +8,64 @@
 <title>물품 관리</title>
 </head>
 <body>
-<table align="center"  width="1000" border="1">
+<table align="center"  width="1150" border="1">
 <b><center>물품 관리</center></b><br />
-<tr>
-<th width="100">분류</th>
-<th width="250">물품(코드)번호</th>
-<th width="250">물품명</th>
-<th width="150">재고</th>
-<td width="100">총수량</td>
-<th width="150">상태</th>
-</tr>
-	<tr>
-		<td width="100">h/w</td>
-		<td width="250">S_00123457MGH</td>
-		<td width="250">문근혁의 가슴근육</td>
-		<td width="100">0</td>
-		<td width="100">2</td>
-		<td width="100">출고</td>
-	</tr>
-	
-	<tr>
-		<td width="100">h/w</td>
-		<td width="250">S_0014457MGH</td>
-		<td width="250">문근혁의 심장</td>
-		<td width="100">0</td>
-		<td width="100">2</td>
-		<td width="100">출고</td>
-	</tr>
+				<tr>
+					<th width="100">분류</th>
+					<th width="250">물품(코드)번호</th>
+					<th width="250">물품명</th>
+					<th width="150">재고</th>
+					<th width="100">총수량</th>
+					<th width="150">상태</th>
+					<th></th>
+					
+				</tr>
+	<c:forEach var="productList" items="${productList}">
+				<tr align="center">
+					<td>${productList.product_type}</td>
+					<td>${productList.hw_product_code}</td>
+					<td>${productList.product_name}</td>
+					<td>${productList.product_in}</td>
+					<td>${productList.product_quantity}</td>
+					<td>${productList.product_divide}</td>	
+					<td style="width:8%">
+					<input type="button" value="수정" >
+					<input type="button" value="삭제">
+					</td>							
+				</tr>			
+			 </c:forEach>	
+			 
 	</table>
+
+	
 	<br />
-<table table align="center"  width="1000" >
+<table align="center"  width="1150" >
 <tr>
 <td align="right" colspan="5">
 <input type="button" value="등록"	 onclick="document.location.href='product_Insert.do'"></td>
 </tr>
 </table>
+<c:if test="${count > 0}">
+   <c:set var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}"/>
+   <c:set var="pageBlock" value="${10}"/>
+   <fmt:parseNumber var="result" value="${currentPage / 10}" integerOnly="true" />
+   <c:set var="startPage" value="${result * 10 + 1}" />
+   <c:set var="endPage" value="${startPage + pageBlock-1}"/>
+   <c:if test="${endPage > pageCount}">
+        <c:set var="endPage" value="${pageCount}"/>
+   </c:if> 
+          
+   <c:if test="${startPage > 10}">
+        <a href="board_List.do?pageNum=${startPage - 10 }">[이전]</a>
+   </c:if>
+
+   <c:forEach var="i" begin="${startPage}" end="${endPage}">
+       <a href="board_List.do?pageNum=${i}">[${i}]</a>
+   </c:forEach>
+
+   <c:if test="${endPage < pageCount}">
+        <a href="board_List.do?pageNum=${startPage + 10}">[다음]</a>
+   </c:if>
+</c:if>
 </body>
 </html>

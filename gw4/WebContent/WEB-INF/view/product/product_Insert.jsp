@@ -9,33 +9,35 @@
 </head>
 <body>
 <b><center/>물품 등록</b><br /><br />
-<form>
+<form method="post" name="productInsert" action="product_InsertPro.do">
 	<table border ="1" width="500" align="center">
+	
+	
 		<tr>
 			
 			<th width="100">물품 분류</th>
-			<td> 	<select>
+			<td> <select name="product_type">
 			<option>Hard Ware</option>
 			<option>Soft Ware</option>
 			</select></td>
 		
 			
 			<th width="100">시리얼 번호</th>
-			<td colspan="2"width="300"><input style="width:99%" type="text" name=""></td>
+			<td colspan="2"width="300"><input style="width:99%" type="text" name="hw_product_code"></td>
 			
 		
 		<tr>
 			<th>물품 이름</th>
-			<td colspan="2"><input style="width:99%" type="text" name=""></td>
+			<td colspan="2"><input style="width:99%" type="text" name="product_name"></td>
 			<th >수 량</th>
-			<td width="100" ><input style="width:99%" type="text" name=""></td>
+			<td width="100" ><input style="width:99%" type="text" name="product_quantity"></td>
 			
 		</tr>
 		
 		<tr>
 		<th width="100">비고</th>
 		<td width="400" colspan="4">
-			<textarea rows="5" style="width:99%"></textarea>
+			<textarea rows="5" style="width:99%" name="product_note"></textarea>
 			</td>
 			</tr>
 		<tr>
