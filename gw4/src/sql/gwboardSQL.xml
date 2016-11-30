@@ -58,7 +58,7 @@
 				update board set board_readcount=board_readcount+1 where board_num = #board_num#
 			</update>
 			
-	<!-- baord_Content -->
+	<!-- baord_Content board_ModifyForm -->
 	
 			<select id="boardSelectNum" resultClass="boardVO" parameterClass="int">
 				select * from board where board_num = #board_num#

@@ -13,12 +13,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import gw.board.BoardVO;
+
 @Controller
 public class ProductController {
 	
 	@Autowired
 	private SqlMapClientTemplate sqlMap;
 	
+	
+	@RequestMapping("Product_Main.do")
+	public String Product_Main(HttpServletRequest request)throws Exception{
+	
+		return "/product/product_Main";
+	}
 	
 /* ----------------------List----------------------------------------------------------------------------- */	
 	
@@ -81,6 +89,59 @@ public class ProductController {
 		
 			return "/product/product_InsertPro";
 		}
+
+	
+/* ----------------------Modify----------------------------------------------------------------------------- */		
+	
+	@RequestMapping("product_Modify.do")
+		public String product_Modify(HttpServletRequest request)throws Exception{
 		
+		int num = Integer.parseInt(request.getParameter("product_num"));
+		ProductVO productList = (ProductVO) sqlMap.queryForObject("product.productNum", num);
 		
+		request.setAttribute("product_num", num);
+		request.setAttribute("productList", productList);
+		return "/product/product_Modify";
 	}
+	
+	@RequestMapping("Product_ModifyPro.do")
+		public String product_ModifyPro(HttpServletRequest request, ProductVO productVO, Model model){
+		
+		int num = Integer.parseInt(request.getParameter("product_num"));
+		
+		model.addAttribute("productList" , productVO);
+		sqlMap.update("product.productModify", productVO);
+		
+		
+		request.setAttribute("product_num", num);
+		
+		return "/product/product_ModifyPro";
+	
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

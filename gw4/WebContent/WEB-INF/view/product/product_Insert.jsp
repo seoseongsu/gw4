@@ -8,7 +8,7 @@
 <title>물품 관리</title>
 </head>
 <body>
-<b><center/>물품 등록</b><br /><br />
+<b><center/>Hard Ware 등록</b><br /><br />
 <form method="post" name="productInsert" action="product_InsertPro.do">
 	<table border ="1" width="500" align="center">
 	
@@ -16,10 +16,7 @@
 		<tr>
 			
 			<th width="100">물품 분류</th>
-			<td> <select name="product_type">
-			<option>Hard Ware</option>
-			<option>Soft Ware</option>
-			</select></td>
+			<td><input type="text"  style="width:99%" value="Hard Ware" name="product_type"> </td>
 		
 			
 			<th width="100">시리얼 번호</th>

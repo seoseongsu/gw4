@@ -29,12 +29,12 @@
 					<td>${productList.product_quantity}</td>
 					<td>${productList.product_divide}</td>	
 					<td style="width:8%">
-					<input type="button" value="수정" >
+					<input type="button" value="수정" 
+						 onclick="document.location.href='product_Modify.do?product_num=${productList.product_num}'">
 					<input type="button" value="삭제">
 					</td>							
 				</tr>			
-			 </c:forEach>	
-			 
+			 </c:forEach>		 
 	</table>
 
 	
