@@ -101,15 +101,8 @@ dept_code varchar2(20),
 po_code varchar2(20),
 salary_normal varchar2(100),
 salary_bonus varchar2(100),
-salary_pay varchar2(100),
-salary_pension varchar2(100),
-salary_health varchar2(100),
-salary_nursing varchar2(100),
-salary_employ varchar2(100),
-salary_income varchar2(100),
-salary_resident varchar2(100),
-salary_deduction varchar2(100),
-salary_acpay varchar2(100)
+salary_days varchar2(100),
+salary_day varchar2(100),
 );
 create sequence salary_code_seq nocache;
 
