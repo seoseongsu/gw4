@@ -11,6 +11,24 @@
 		<select id="bsSelectCount" resultClass="int">
 			select count(*) from bstatement
 		</select>
+		<select id="bsSelectMyCount" resultClass="int" parameterClass="String">
+			select count(*) from bstatement where emp_code=#emp_code#
+		</select>
+		<select id="bsSelectDeptCount" resultClass="int" parameterClass="String">
+			select count(*) from bstatement where dept_code=#dept_code#
+		</select>
+		<select id="bsSelectDeptPoCount" resultClass="int" parameterClass="java.util.HashMap">
+			<![CDATA[
+			select count(*)
+			 from bstatement bs, employee e, department d, position p
+			 where bs.emp_code = e.emp_code
+			 and bs.dept_code = d.dept_code
+			 and bs.po_code = p.po_code
+			 and bs.dept_code = #dept_code# 
+			 and bs.po_code < #po_code#
+			 order by bs_date desc
+			 ]]>
+		</select>
 		<select id="bsSelectIn" resultClass="bsInVo" parameterClass="String">
 			select bs_code, bs.emp_code, emp_name, bs.dept_code, dept_name, dept_higher,
 			 dept_leader, bs.po_code, po_name, bs_st, bs_year, bs_goal, bs_ap, bs_date
@@ -21,7 +39,7 @@
 			 and bs.emp_code = #emp_code#
 			 and rownum = 1
 		</select>
-		<select id="bsSelectList" resultClass="bsInVo" parameterClass="String">
+		<select id="bsSelectList" resultClass="bsInVo">
 			select bs_code, bs.emp_code, emp_name, bs.dept_code, dept_name, dept_higher,
 			 dept_leader, bs.po_code, po_name, bs_st, bs_year, bs_goal, bs_ap, bs_date
 			 from bstatement bs, employee e, department d, position p
@@ -29,6 +47,39 @@
 			 and bs.dept_code = d.dept_code
 			 and bs.po_code = p.po_code
 			 order by bs_date desc
+		</select>
+		<select id="bsSelectMyList" resultClass="bsInVo" parameterClass="String">
+			select bs_code, bs.emp_code, emp_name, bs.dept_code, dept_name, dept_higher,
+			 dept_leader, bs.po_code, po_name, bs_st, bs_year, bs_goal, bs_ap, bs_date
+			 from bstatement bs, employee e, department d, position p
+			 where bs.emp_code = e.emp_code
+			 and bs.dept_code = d.dept_code
+			 and bs.po_code = p.po_code
+			 and bs.emp_code = #emp_code# 
+			 order by bs_date desc
+		</select>
+		<select id="bsSelectDeptList" resultClass="bsInVo" parameterClass="String">
+			select bs_code, bs.emp_code, emp_name, bs.dept_code, dept_name, dept_higher,
+			 dept_leader, bs.po_code, po_name, bs_st, bs_year, bs_goal, bs_ap, bs_date
+			 from bstatement bs, employee e, department d, position p
+			 where bs.emp_code = e.emp_code
+			 and bs.dept_code = d.dept_code
+			 and bs.po_code = p.po_code
+			 and bs.dept_code = #dept_code# 
+			 order by bs_date desc
+		</select>
+		<select id="bsSelectDeptPoList" resultClass="bsInVo" parameterClass="java.util.HashMap">
+			<![CDATA[
+			select bs_code, bs.emp_code, emp_name, bs.dept_code, dept_name, dept_higher,
+			 dept_leader, bs.po_code, po_name, bs_st, bs_year, bs_goal, bs_ap, bs_date
+			 from bstatement bs, employee e, department d, position p
+			 where bs.emp_code = e.emp_code
+			 and bs.dept_code = d.dept_code
+			 and bs.po_code = p.po_code
+			 and bs.dept_code = #dept_code# 
+			 and bs.po_code < #po_code#
+			 order by bs_date desc
+			 ]]>
 		</select>
 		<select id="bsSelectAp" resultClass="empVo" parameterClass="String">
 			select * from employee where dept_code=#dept_code#

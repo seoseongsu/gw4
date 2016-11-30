@@ -22,16 +22,39 @@ public class BstatementController {
 	
 	@RequestMapping("/bs/bsList.do")
 	public String bsList(HttpServletRequest request){
-		int count = 0;
-		List bsList = null;
-		count = (Integer)sqlMap.queryForObject("bs.bsSelectCount", null);
-		if (count > 0) {
-			bsList = sqlMap.queryForList("bs.bsSelectList", null);
+		String emp_code = request.getParameter("emp_code");
+		int countMy = 0;
+		int countDept = 0;
+		List bsMyList = null;
+		List bsDeptList = null;
+		
+		EmployeeVO leaderCk = (EmployeeVO) sqlMap.queryForObject("emp.empSelectUp", emp_code);
+		
+		String dept_code = leaderCk.getDept_code();
+		String po_code = leaderCk.getPo_code();
+		
+		HashMap map = new HashMap();
+		map.put("dept_code", dept_code);
+		map.put("po_code", po_code);
+		
+		countMy = (Integer)sqlMap.queryForObject("bs.bsSelectMyCount", emp_code);
+		if (countMy > 0) {
+			bsMyList = sqlMap.queryForList("bs.bsSelectMyList", emp_code);
         } else {
-        	bsList = Collections.EMPTY_LIST;
+        	bsMyList = Collections.EMPTY_LIST;
         }
-		request.setAttribute("count", new Integer(count));
-		request.setAttribute("bsList", bsList);
+		
+		countDept = (Integer)sqlMap.queryForObject("bs.bsSelectDeptPoCount", map);
+		if (countDept > 0) {
+			bsDeptList = sqlMap.queryForList("bs.bsSelectDeptPoList", map);
+        } else {
+        	bsDeptList = Collections.EMPTY_LIST;
+        }
+		request.setAttribute("leaderCk", leaderCk);
+		request.setAttribute("countMy", new Integer(countMy));
+		request.setAttribute("countDept", new Integer(countDept));
+		request.setAttribute("bsMyList", bsMyList);
+		request.setAttribute("bsDeptList", bsDeptList);
 		return "/bs/bsList";
 	}
 	
