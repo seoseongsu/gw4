@@ -66,7 +66,6 @@ $(function(){
 		      			<option value ="${deptList.dept_code }">${deptList.dept_higher }>${deptList.dept_name }</option>
 		      		</c:otherwise>
 	      		</c:choose>
-	      		
 	      	</c:forEach>
 	      </select>
       </td>

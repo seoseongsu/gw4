@@ -35,45 +35,34 @@ $(function(){
 	});
 });
 </script>
-<script language="JavaScript">
-    function checkIt() {
-        if(!document.comListSh.searchDate1.value) {
-            alert("기간을 선택하세요");
-            return false;
-        }
-        if(!document.comListSh.searchDate2.value) {
-            alert("기간을 선택하세요");
-            return false;
-        }
-    }
-</script>
 </head>
 <body>
-<h2>근태 현황 :</h2>
-<form method="get" action="/gw4/commute/comListSearch.do" name="comListSh" onSubmit="return checkIt()">
+<h2>근태 현황 검색 : ${checkDay1 } ~ ${checkDay2 }</h2>
+<form name="comSearch" action="/gw4/commute/comListSearch.do" >
 <table border="1" width="80%">
 	<tr>
 		<td>
 			* 기간별검색 &nbsp;&nbsp;&nbsp;
-			<input type="text" name="searchDate1" id="searchDate1"/>~
-			<input type="text" name="searchDate2" id="searchDate2"/>
+			<input type="text" name="searchDate1" id="searchDate1" value="${checkDay1 }"/>~
+			<input type="text" name="searchDate2" id="searchDate2" value="${checkDay2 }"/>
 		</td>
 		<td>
 			<select name="dept_code" style="width:120px;height:23px;">
-				<c:forEach var="deptList" items="${deptList }">
+		      	<c:forEach var="deptList" items="${deptList }">
 		      		<c:choose>
 			      		<c:when test="${deptList.dept_higher eq null}">
-			      			<option value ="${deptList.dept_code }">${deptList.dept_name }</option>
+			      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_name }</option>
 			      		</c:when>
 			      		<c:otherwise>
-			      			<option value ="${deptList.dept_code }">${deptList.dept_higher }>${deptList.dept_name }</option>
+			      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_name }</option>
 			      		</c:otherwise>
 		      		</c:choose>
 		      	</c:forEach>
 	    	</select>
 		</td> 
 		<td>
-			<input type="submit" name="confirm" value="검색" />
+			<input type="submit" value="검색" />
+			<input type="button" value="전체" onclick="window.location='/gw4/commute/comList.do'"/>
 		</td>
 	</tr>
 </table>

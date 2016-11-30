@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="#" />
 <script>
 $(function(){
-	$("#searchDate1").datepicker({
+	$("#searchDate").datepicker({
 		dateFormat: 'yy-mm-dd',
 		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
 		dayNameMin: ['일','월','화','수','목','금','토'],
@@ -22,58 +22,21 @@ $(function(){
 		showMonthAfterYear: true	//년 뒤에 월표시
 	});
 });
-</script>
-<script>
-$(function(){
-	$("#searchDate2").datepicker({
-		dateFormat: 'yy-mm-dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
-</script>
-<script language="JavaScript">
-    function checkIt() {
-        if(!document.comListSh.searchDate1.value) {
-            alert("기간을 선택하세요");
-            return false;
-        }
-        if(!document.comListSh.searchDate2.value) {
-            alert("기간을 선택하세요");
-            return false;
-        }
-    }
 </script>
 </head>
 <body>
-<h2>근태 현황 :</h2>
-<form method="get" action="/gw4/commute/comListSearch.do" name="comListSh" onSubmit="return checkIt()">
+<h2>나의 일일 근태 검색 : ${checkDay }</h2>
+<form name="comSearch" action="/gw4/commute/comSearch.do" >
 <table border="1" width="80%">
+<input type="hidden" name="emp_code" value="${emp_code }" />
 	<tr>
 		<td>
-			* 기간별검색 &nbsp;&nbsp;&nbsp;
-			<input type="text" name="searchDate1" id="searchDate1"/>~
-			<input type="text" name="searchDate2" id="searchDate2"/>
-		</td>
-		<td>
-			<select name="dept_code" style="width:120px;height:23px;">
-				<c:forEach var="deptList" items="${deptList }">
-		      		<c:choose>
-			      		<c:when test="${deptList.dept_higher eq null}">
-			      			<option value ="${deptList.dept_code }">${deptList.dept_name }</option>
-			      		</c:when>
-			      		<c:otherwise>
-			      			<option value ="${deptList.dept_code }">${deptList.dept_higher }>${deptList.dept_name }</option>
-			      		</c:otherwise>
-		      		</c:choose>
-		      	</c:forEach>
-	    	</select>
+			* 근무일자 &nbsp;&nbsp;&nbsp;
+			<input type="text" name="searchDate" id="searchDate" value="${checkDay }"/>
 		</td> 
 		<td>
-			<input type="submit" name="confirm" value="검색" />
+			<input type="submit" value="검색" />
+			<input type="button" value="근태등록"  onclick="window.location='/gw4/commute/comDay.do?emp_code=${emp_code}'" />
 		</td>
 	</tr>
 </table>

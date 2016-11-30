@@ -2,12 +2,16 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="com">
 	<typeAlias alias="comVo" type="gw.commute.CommuteVO"/>
+	<typeAlias alias="comSearchVo" type="gw.commute.CommuteSearchVO"/>
 	
 	<select id="comSelectToday" resultClass="comVo" parameterClass="java.util.HashMap">
 		select * from commute where emp_code=#emp_code# and com_go>=#checkDay#
 	</select>
 	<select id="comSelectTodayCount" resultClass="int" parameterClass="java.util.HashMap">
 		select count(*) from commute where emp_code=#emp_code# and com_go>=#checkDay#
+	</select>
+	<select id="comSelectTodayOffCode" resultClass="String" parameterClass="String">
+		select MAX(to_number(com_code)) from commute where emp_code=#emp_code#
 	</select>
 	<select id="comSelectTodayOff" resultClass="comVo" parameterClass="String">
 		select * from commute where com_code=#com_code#
@@ -19,5 +23,34 @@
 	<update id="comUpdateOff" parameterClass="comVo">
 		update commute set com_off=sysdate, com_status=#com_status# where com_code=#com_code#
 	</update>
+	
+	<select id="comSelectSearch" resultClass="comSearchVo" parameterClass="java.util.HashMap">
+		select com_code, e.emp_code, emp_name, d.dept_code, dept_name, p.po_code, po_name, com_go, com_off, com_status, com_ip
+		 from commute c, employee e, department d, position p
+		 where e.emp_code = c.emp_code
+		 and d.dept_code = e.dept_code
+		 and e.po_code = p.po_code
+		 and to_char(to_date(#checkDay#),'yyyy-mm-dd') = to_char(com_go,'yyyy-mm-dd')
+		  and c.emp_code = #emp_code#
+	</select>
+	
+	<select id="comList" resultClass="comSearchVo">
+		select com_code, e.emp_code, emp_name, d.dept_code, dept_name, p.po_code, po_name, com_go, com_off, com_status, com_ip
+		 from commute c, employee e, department d, position p
+		 where e.emp_code = c.emp_code
+		 and d.dept_code = e.dept_code
+		 and e.po_code = p.po_code
+	</select>
+	<select id="comListSearch" resultClass="comSearchVo" parameterClass="java.util.HashMap">
+		select com_code, e.emp_code, emp_name, d.dept_code, dept_name, p.po_code, po_name, com_go, com_off, com_status, com_ip
+		 from commute c, employee e, department d, position p
+		 where e.emp_code = c.emp_code
+		 and d.dept_code = e.dept_code
+		 and e.po_code = p.po_code
+		 and com_go between to_date(#checkDay1#,'yyyy-mm-dd')
+		 and to_date(#checkDay2#,'yyyy-mm-dd') + 0.99999
+		 and d.dept_code=#dept_code#
+	</select>
+	
 </sqlMap>
 

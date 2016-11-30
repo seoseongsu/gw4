@@ -13,7 +13,7 @@
 <script>
 function confirmLeaveToWork(){
 	if(confirm("퇴근처리 하시겠습니까?") == true){
-		document.location="/gw4/commute/comOffPro.do?com_code=${com_code}";
+		document.location="/gw4/commute/comOffPro.do?emp_code=${emp_code}";
 	}else{
 	 	history.go(-1);
 	}
