@@ -97,7 +97,7 @@ function show(a){
 	  		<c:forEach  items="${reply}" var="board_reply">
 	  		</c:forEach>
 	  		<br/>
-	  		<textarea rows ="1" cols="80" name="reply_text"
+	  		<textarea rows ="2" cols="80" name="reply_text"
 	  		placeholder="댓글을 작성하세요"></textarea>
 	  		<input type="submit" value="댓글 등록">
 		 </td>

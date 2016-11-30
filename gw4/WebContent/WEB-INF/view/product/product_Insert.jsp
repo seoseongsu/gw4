@@ -12,30 +12,36 @@
 <form>
 	<table border ="1" width="500" align="center">
 		<tr>
-			<th width="100">물품 코드</th>
-			<td width="200"><input  size="25"  type="text" name=""></td>
-		
+			
 			<th width="100">물품 분류</th>
 			<td> 	<select>
-			<option>HardWare</option>
-			<option>SoftWare</option>
+			<option>Hard Ware</option>
+			<option>Soft Ware</option>
 			</select></td>
+		
+			
+			<th width="100">시리얼 번호</th>
+			<td colspan="2"width="300"><input style="width:99%" type="text" name=""></td>
+			
 		
 		<tr>
 			<th>물품 이름</th>
-			<td colspan="3"><input size="53" type="text" name=""></td>
+			<td colspan="2"><input style="width:99%" type="text" name=""></td>
+			<th >수 량</th>
+			<td width="100" ><input style="width:99%" type="text" name=""></td>
+			
 		</tr>
 		
 		<tr>
-		<th>비고</th>
-		<td colspan="3">
-			<textarea ></textarea>
+		<th width="100">비고</th>
+		<td width="400" colspan="4">
+			<textarea rows="5" style="width:99%"></textarea>
 			</td>
 			</tr>
 		<tr>
-			<td colspan="4" align="right" >
+			<td colspan="5" align="right" >
 			<input align="right" type="submit"  value="전송" >
-			<input type="button" value="취소">
+			<input type="button" value="취소"  onclick="javascript:history.go(-1)">
 			</td>
 		</tr>
 </table>
