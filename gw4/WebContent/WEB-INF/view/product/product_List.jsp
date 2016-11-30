@@ -31,7 +31,8 @@
 					<td style="width:8%">
 					<input type="button" value="수정" 
 						 onclick="document.location.href='product_Modify.do?product_num=${productList.product_num}'">
-					<input type="button" value="삭제">
+					<input type="button" value="삭제"
+						 onclick="document.location.href='product_Delete.do?product_num=${productList.product_num}'">
 					</td>							
 				</tr>			
 			 </c:forEach>		 

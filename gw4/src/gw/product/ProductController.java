@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class ProductController {
 	private SqlMapClientTemplate sqlMap;
 	
 	
-	@RequestMapping("Product_Main.do")
+	@RequestMapping("product_Main.do")
 	public String Product_Main(HttpServletRequest request)throws Exception{
 	
 		return "/product/product_Main";
@@ -81,7 +82,7 @@ public class ProductController {
 		
 	}
 	
-	@RequestMapping("product_InsertPro.do")
+	@RequestMapping("Product_InsertPro.do")
 		public String product_InsertPro( Model model, HttpServletRequest request, ProductVO productVO)throws Exception{
 		
 		model.addAttribute("ProductVO" , productVO);
@@ -104,8 +105,9 @@ public class ProductController {
 		return "/product/product_Modify";
 	}
 	
-	@RequestMapping("Product_ModifyPro.do")
-		public String product_ModifyPro(HttpServletRequest request, ProductVO productVO, Model model){
+	@RequestMapping("product_ModifyPro.do")
+		public String product_ModifyPro(HttpServletRequest request, 
+				ProductVO productVO, Model model)throws Exception{
 		
 		int num = Integer.parseInt(request.getParameter("product_num"));
 		
@@ -118,10 +120,22 @@ public class ProductController {
 		return "/product/product_ModifyPro";
 	
 		}
+	
+
+/* ----------------------Delete----------------------------------------------------------------------------- */		
+
+	@RequestMapping("product_Delete.do")
+		
+		public String product_Delete(HttpServletRequest request)throws Exception{
+		
+		int num = Integer.parseInt(request.getParameter("product_num"));
+		
+		
+		request.setAttribute("product_num", num);
+		return "/product/product_Delete";
 	}
-
-
-
+	
+}
 
 
 
