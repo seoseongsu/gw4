@@ -7,7 +7,7 @@
 
 <form method="post" name="replyModify"  action="reply_ModifyPro.do?reply_num=${reply_num}&board_num=${board_num}&pageNum=${pageNum}">
 <center><b>댓글 수정</b>
-<table width="800"  align="center">
+<table width="800"  align="center" cellspacing="0" cellpadding="0">
 	<tr>
 	<th  align="center" width="125">작성자</th> 
 	<td align="left" width="500">작성자</td>	

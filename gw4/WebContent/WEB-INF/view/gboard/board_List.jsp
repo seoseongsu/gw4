@@ -17,15 +17,10 @@
 	
 			}
 		</script>
+		
+	<b><center>통합 게시판</b>	
 	
-	<table width="1000" align="center">
-		<tr>
-			<td align="center">
-			<b></b><br />
-			</td>
-		</tr>
-		</table>
-	<table width="1000" align="center">
+	<table cellspacing="0" cellpadding="0" width="1000" align="center">
 		<tr>
 			<td colspan"4" align="right">
 			<select  id ="category" name="category" onchange="categoryChange(this.value)">
@@ -36,12 +31,12 @@
 			</select>
 			</td>	
 		</tr>
-	
 	</table>
-		<table border="1"  width="1000" align="center">
+	<br />
+		<table cellspacing="0" cellpadding="0" border="1"  width="1000" align="center">
 		<tr>	
-				<th width="50">글번호</th>
-				<th width="600">제목</th>
+		
+				<th  height="40" width="600">제목</th>
 				<th width="100">작성자</th>
 				<th width="150">작성날짜</th>
 				<th width="100">조회</th>
@@ -49,8 +44,8 @@
 			
 			<c:forEach var="boardList" items="${boardList}">
 				<tr align="center">
-					<td>${boardList.board_num}</td>
-					<td>
+			
+					<td  height="40">
 					<a href="board_Content.do?board_num=${boardList.board_num}&pageNum=${currentPage}">[${boardList.category_code}]${boardList.board_subject}</a></td>
 					<td>작성자</td>
 					<td>${boardList.board_date}</td>
@@ -59,8 +54,10 @@
 				</tr>			
 			 </c:forEach>	
 			</table>
+			
+			<br />
 		
-		<table  width="1000" align="center">
+		<table cellspacing="0" cellpadding="0" width="1000" align="center">
 			<tr>
 			<td colspan="4" align="right">
 				<input  type="button" value="글등록" OnClick="window.location='board_WriteForm.do'">

@@ -5,6 +5,10 @@
 <head>
 <title>게시판</title>
 </head>
+<b><center>글 수정</b>
+ <br />	
+ 
+ 
 <script src="/gw4/ckeditor/ckeditor.js"></script>
 <script language="javascript">
 
@@ -31,11 +35,13 @@ function categorycheck(c)
 	
 <br>
 
- <form method="get" name="ModifyForm" action="board_ModifyPro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
-<input type="hidden" name="board_num" value="${board_num}">
+
 <!-- <input type="text" name="board_readcount"> -->
 
-<table width="900" border ="1">
+
+ <form method="get" name="ModifyForm" action="board_ModifyPro.do?pageNum=${pageNum}" onsubmit="return writeSave()">
+<input type="hidden" name="board_num" value="${board_num}">
+<table align="center" width="900" border ="1" cellspacing="0" cellpadding="0">
 	<tr>
 		<th width ="100">카테고리</th>
 		<td>

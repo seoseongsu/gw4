@@ -37,7 +37,7 @@ function show(a){
 <br>
 	<form method="post" action="replyInsert.do?board_num=${boardList.board_num}&pageNum=${pageNum}" name="Board_reply">
 	
-	<table width="800" border="1" align="center">  
+	<table width="800" cellspacing="0" cellpadding="0" border="1" align="center">  
 	  <tr height="30">
 	    <td align="center" width="125">조회수</td>
 	    <td align="center" width="125" >${boardList.board_readcount}</td>
@@ -54,7 +54,7 @@ function show(a){
 	  </tr>
 	   <tr>
 	  	<td align="center" width="125" >첨부파일</td>
-	  	<td><a href="#" onclick="onDownload('${boardList.board_num}')">${boardList.board_file_orgname}</a></td>
+	  	<td colspan="3"><a href="#" onclick="onDownload('${boardList.board_num}')">${boardList.board_file_orgname}</a></td>
 	  	</tr>
 	  <tr>	
 	    <td align="center" width="125" >글내용</td>
@@ -65,12 +65,9 @@ function show(a){
 	 
 	 	<!-- ---------------------------------댓글--------------------------------------- -->
 	 
-	 	<table width="800"  align="center">
-	  	<tr>
-	  
-	  	<td>
+	 	<table width="800"  align="center" >
 	  	<c:forEach items="${replyList}"  var="replyView">
-	
+		
 	  			
 	  			<tr>
 	  			<td align="center" width="125"  > 작성자 </td>
@@ -79,7 +76,7 @@ function show(a){
 	  			<input type="text" id="replytext" style="display:none;">  			
 	  			
 	  			</td>
-	  			<td>
+	  			<td style="width:100" align="right">
 	  			<input type="button" value="수정" 
 	  			onclick="document.location.href='reply_ModifyForm.do?reply_num=${replyView.reply_num}&board_num=${replyView.board_num}&pageNum=${pageNum}'">
 	  		

@@ -5,11 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Hard Ware 삭제</title>
-</head>
-<b><center>물품 삭</b>
-<body>
-
-
-
+<form method="post" name="delForm"  action="product_DeletePro.do?product_Num=${product_Num}" >
+ <table border="1" align="center" cellspacing="0" cellpadding="0" width="500">
+  <tr height="30">
+     <td align=center  >
+       <b>{productList.product_name}{productList}개를 삭제 하시 겠습니까?</b></td>
+  </tr>
+ <tr height="30">
+    <td align=center >
+      <input type="submit" value="삭제" >
+      <input type="button" value="취소" 
+       onclick="document.location.href='product_List.do'">     
+   </td>
+ </tr>  
+</table> 
+</form>
 </body>
-</html>
+</html> 

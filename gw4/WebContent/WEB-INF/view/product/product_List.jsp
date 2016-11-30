@@ -8,7 +8,7 @@
 <title>물품 관리</title>
 </head>
 <body>
-<table align="center"  width="1150" border="1">
+<table align="center" cellspacing="0" cellpadding="0"  width="1150" border="1">
 <b><center>물품 관리</center></b><br />
 				<tr>
 					<th width="100">분류</th>

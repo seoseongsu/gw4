@@ -11,7 +11,7 @@
 <b><center/>Hard Ware 정보 수정</b><br /><br />
 <form method="post" name="modify" action="Product_ModifyPro.do?product_num=${productList.product_num}">
 
-	<table border ="1" width="800" align="center">
+	<table border ="1" cellspacing="0" cellpadding="0" width="800" align="center">
 	
 	
 	

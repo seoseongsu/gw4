@@ -7,6 +7,8 @@
 
 <title>게시판</title>
 </head>
+
+<b><center>글 작성</b><br />
 <script src="/gw4/ckeditor/ckeditor.js">
 
 
@@ -18,7 +20,7 @@
 <input type="hidden" name="board_num" value="${board_num}">
 <!-- <input type="text" name="board_readcount"> -->
 
-<table width="900" border ="1">
+<table width="900" border ="1" align="center" cellspacing="0" cellpadding="0">
 	<tr>
 		<th width ="100">카테고리</th>
 		<td>

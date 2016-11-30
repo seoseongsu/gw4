@@ -24,7 +24,7 @@
 <br>
 <form method="post" name="delForm"  action="board_DeletePro.do?pageNum=${pageNum}" 
    onsubmit="return deleteSave()"> 
- <table border="1" align="center" cellspacing="0" cellpadding="0" width="360">
+ <table border="1" cellspacing="0" cellpadding="0" align="center" cellspacing="0" cellpadding="0" width="360">
   <tr height="30">
      <td align=center  >
        <b>비밀번호를 입력해 주세요.</b></td>
