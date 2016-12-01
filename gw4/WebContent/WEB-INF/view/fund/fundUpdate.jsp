@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <title>자금수정</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
@@ -66,8 +68,10 @@ function change(style){
 				</select>
 			</td>
 			<td>
-				<input type="text" id="fund_deposit" name="fund_deposit" placeholder="입금액을 입력하세요" style="display:none;" value="${fundJoinVo.fund_deposit }">
-				<input type="text" id="fund_withdraw" name="fund_withdraw" placeholder="출금액을 입력하세요" style="display:none; value="${fundJoinVo.fund_withdraw }">
+				<fmt:formatNumber value="${fundJoinVo.fund_deposit }" type="number" maxFractionDigits="0" var="deposit"/>
+				<input type="text" id="fund_deposit" name="fund_deposit" placeholder="입금액을 입력하세요" style="display:none;" value="${deposit }">
+				<fmt:formatNumber value="${fundJoinVo.fund_withdraw }" type="number" maxFractionDigits="0" var="withdraw"/>
+				<input type="text" id="fund_withdraw" name="fund_withdraw" placeholder="출금액을 입력하세요" style="display:none; value="${withdraw }">
 			</td>
 		</tr>
 		
