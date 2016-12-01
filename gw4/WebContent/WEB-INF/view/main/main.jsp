@@ -151,21 +151,21 @@
                         <c:if test="${sessionScope.memId != null}">
                         <div id="mainLoginForm">
                         <form name="inform" method="post" action="/gw4/main/logout.do" >
-                        <table width=250 cellpadding="0" cellspacing="0"  align="right" border="0" >
-                        <tr>
-                        	<td rowspan="2" bgcolor="171717" width="125" align="center">
-                        	<img src="/gw4/images/employee.jpg" width="75"></td>
-                        	<td width="100" bgcolor="171717" align="center" >
-                        	<font size="5" color="white">사원코드</font></td>
-                        </tr>
-                        <tr>
-                        	<td bgcolor="171717" width="100" align="center">
-                        	<font size="5" color="white">${sessionScope.memId}</font></td>
-                        </tr>
-                        <tr>
-                        	<td colspan="2" bgcolor="171717" align="center" style="width=20px; height=10px">
-                        	<a href="/gw4/main/logout.do" class="myButton">로그아웃</a>
-                        </tr>
+                       <table width=250 cellpadding="0" cellspacing="0"  align="right" border="1">
+	                        <tr>
+	                        	<td bgcolor="171717" width="125px" align="center">
+	                        	<img src="/gw4/images/employee.jpg" width="75px"></td>
+	                        	<td width="100" bgcolor="171717" align="center" >
+	                        	<font size="5" color="white">사원코드</font>
+	                        	<br />
+	                        	<br />
+	                        	<font size="5" color="white">${sessionScope.memId}</font>
+	                        	</td>
+	                        </tr>
+	                        <tr>
+	                        	<td colspan="2" bgcolor="171717" align="center" style="width=20px; height=10px">
+	                        	<a href="/gw4/main/logout.do" class="myButton">로그아웃</a></td>
+	                        </tr>
                         </table>
 						</form>
 						</div>

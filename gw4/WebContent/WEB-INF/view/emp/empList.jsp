@@ -152,12 +152,13 @@ function deleteEvent(a){
 	이렇게 해서 맘에 들런지 모르겠당~ 힘내~ */
 	#border_table{
 	border: 1px solid;
+	margin: auto;
 	}
 	
-	#border_table tr, #border_table td{
+	#border_table tr, #border_table td, #border_table th{
 	border: 1px solid;
 	text-align:center;
-	padding: 3px;
+	padding: 1px;
 	/*여기에 padding:3px주면, 표가 보기좋게 넓어지는데, 줄바꿈이 되는 것 같아~ */
 	}
 
@@ -175,16 +176,16 @@ function deleteEvent(a){
                         <c:if test="${sessionScope.memId != null}">
                         <div id="mainLoginForm">
                         <form name="inform" method="post" action="/gw4/main/logout.do" >
-                        <table width=250 cellpadding="0" cellspacing="0"  align="right" border="1" >
+                        <table width=250 cellpadding="0" cellspacing="0"  align="right" border="1">
 	                        <tr>
-	                        	<td rowspan="2" bgcolor="171717" width="125" align="center">
-	                        	<img src="/gw4/images/employee.jpg" width="75"></td>
+	                        	<td bgcolor="171717" width="125px" align="center">
+	                        	<img src="/gw4/images/employee.jpg" width="75px"></td>
 	                        	<td width="100" bgcolor="171717" align="center" >
-	                        	<font size="5" color="white">사원코드</font></td>
-	                        </tr>
-	                        <tr>
-	                        	<td bgcolor="171717" width="100" align="center">
-	                        	<font size="5" color="white">${sessionScope.memId}</font></td>
+	                        	<font size="5" color="white">사원코드</font>
+	                        	<br />
+	                        	<br />
+	                        	<font size="5" color="white">${sessionScope.memId}</font>
+	                        	</td>
 	                        </tr>
 	                        <tr>
 	                        	<td colspan="2" bgcolor="171717" align="center" style="width=20px; height=10px">
@@ -243,15 +244,6 @@ function deleteEvent(a){
 					 <div class="container_12">
 					 	<div class="wrapper">
 					 		 	<h3>사원정보관리</h3>
-		
-	<table align="center" >
-		<tr>
-			<td>
-				<button type="button" onclick="location.href='empInsert.do'">사원등록</button>
-			</td>
-		</tr>
-	</table>
-	
 	<c:if test="${count == 0 }">
 	<table align="center">
 		<tr>
@@ -263,25 +255,28 @@ function deleteEvent(a){
 	</c:if>
 	
 	<c:if test="${count > 0 }">
-		<table id="border_table" align="center">
-			<tr align="center">
-				<td>사원번호</td>
-				<td>성명</td>
-				<td>부서(조직)</td>
-				<td>직급</td>
-				<td>주민번호</td>
-				<td>생년월일</td>
-				<td>연락처</td>
-				<td>이메일</td>
-				<td>최종학력</td>
-				<td>경력</td>		
-				<td>입사일자</td>
-				<td>은행명</td>
-				<td>계좌번호</td>
-				<td>&nbsp;</td>					
+		<table id="border_table">
+			<tr style="border:none;">
+				<td colspan="14" style="text-align:right; border:none;"><button type="button" onclick="location.href='empInsert.do'">사원등록</button></td>
+			</tr>
+			<tr style="background-color:#B7B7B7;">
+				<th>사원번호</th>
+				<th>성명</th>
+				<th>부서(조직)</th>
+				<th>직급</th>
+				<th>주민번호</th>
+				<th>생년월일</th>
+				<th>연락처</th>
+				<th>이메일</th>
+				<th>최종학력</th>
+				<th>경력</th>		
+				<th>입사일자</th>
+				<th>은행명</th>
+				<th>계좌번호</th>
+				<th>&nbsp;</th>					
 			</tr>
 			<c:forEach var="article" items="${articleList }">
-			<tr align="center">
+			<tr>
 				<td>${article.emp_code }</td>
 				<td>${article.emp_name }</td>
 				<td>${article.dept_name }</td>
