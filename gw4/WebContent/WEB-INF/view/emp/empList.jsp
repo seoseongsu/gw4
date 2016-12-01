@@ -153,11 +153,13 @@ function deleteEvent(a){
 	#border_table{
 	border: 1px solid;
 	margin: auto;
+	line-height: auto;
 	}
 	
 	#border_table tr, #border_table td, #border_table th{
 	border: 1px solid;
 	text-align:center;
+	vertical-align:middle;
 	padding: 1px;
 	/*여기에 padding:3px주면, 표가 보기좋게 넓어지는데, 줄바꿈이 되는 것 같아~ */
 	}
@@ -221,7 +223,7 @@ function deleteEvent(a){
 					</ul></li>
 				<li><a href='#'>인사관리</a>
 					<ul>
-						<li><a href='#'>사원정보관리</a></li>
+						<li><a href='/gw4/emp/empList.do'>사원정보관리</a></li>
 						<li><a href='#'>급여관리</a></li>
 						<li><a href='#'>회계관리</a></li>
 						<li><a href='#'>장비관리</a></li>
@@ -256,7 +258,7 @@ function deleteEvent(a){
 	
 	<c:if test="${count > 0 }">
 		<table id="border_table">
-			<tr style="border:none;">
+			<tr style="border:none;border:hidden;border-bottom:1px solid;">
 				<td colspan="14" style="text-align:right; border:none;"><button type="button" onclick="location.href='empInsert.do'">사원등록</button></td>
 			</tr>
 			<tr style="background-color:#B7B7B7;">
