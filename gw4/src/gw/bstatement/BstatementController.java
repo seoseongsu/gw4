@@ -22,6 +22,7 @@ public class BstatementController {
 	
 	@RequestMapping("/bs/bsList.do")
 	public String bsList(HttpServletRequest request){
+//		String emp_code = (String)session.getAttribute("memId");
 		String emp_code = request.getParameter("emp_code");
 		int countMy = 0;
 		int countDept = 0;
@@ -55,6 +56,7 @@ public class BstatementController {
 		request.setAttribute("countDept", new Integer(countDept));
 		request.setAttribute("bsMyList", bsMyList);
 		request.setAttribute("bsDeptList", bsDeptList);
+		request.setAttribute("emp_code", emp_code);
 		return "/bs/bsList";
 	}
 	

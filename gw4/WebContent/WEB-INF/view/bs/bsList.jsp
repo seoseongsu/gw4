@@ -73,11 +73,6 @@ function deleteEvent(a){
 				등록된 업무명세표가 없습니다.
 			</td>
 		</tr>
-		<tr>
-			<td>
-				<input type="button" value="등록" onclick="location='bsInsert.do?emp_code=${emp_code}'"/>
-			</td>
-		</tr>
 	</table>
 	</c:if>
 	<c:if test="${countDept > 0 }">
@@ -104,11 +99,6 @@ function deleteEvent(a){
 					</td>
 				</tr>
 				</c:forEach>
-				<tr>
-					<td colspan="6" align="right">
-						<input type="button" value="등록" onclick="location='bsInsert.do?emp_code=${emp_code}'"/>
-					</td>
-				</tr>
 			</table>
 		</c:if>
 	</c:if>

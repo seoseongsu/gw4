@@ -23,7 +23,7 @@ public class CommuteController {
 	
 	@RequestMapping("/commute/comDay.do")
 	public String comDay(HttpServletRequest request, HttpSession session, CommuteVO comVo){
-//		String emp_code = (String)session.getAttribute("emp_code");
+//		String emp_code = (String)session.getAttribute("memId");
 		String emp_code = request.getParameter("emp_code");
 		String ip = (String)request.getRemoteAddr();
 		int count = 0;
