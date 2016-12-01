@@ -77,32 +77,32 @@ create sequence po_code_seq nocache
 
 #fund
 create table fund(
-fund_code varchar2(20),
-po_code varchar2(20),
-dept_code varchar2(20),
-emp_cde varchar2(20),
-fund_division varchar2(100),	
-fund_days varchar2(100),	
-fund_day varchar2(100), 
-fund_item varchar2(100),	
-fund_briefs varchar2(100),	
-fund_account varchar2(100),	
-fund_deposit varchar2(100),	
-fund_withdraw varchar2(100),	
-fund_balance varchar2(100)	
+fund_code varchar2(20), 자금코드
+po_code varchar2(20), 직급코드
+dept_code varchar2(20), 부서코드
+emp_cde varchar2(20), 사원코드
+fund_division varchar2(100), 구분
+fund_days varchar2(100), 일정
+fund_day varchar2(100), 일정조회
+fund_item varchar2(100), 자금항목
+fund_briefs varchar2(100), 적요
+fund_account varchar2(100),	거래처
+fund_deposit varchar2(100),	입금액
+fund_withdraw varchar2(100), 출금액
+fund_balance varchar2(100)	잔액
 );
 create sequence fund_code_seq nocache
 
 #salary
 create table salary(
-salary_code varchar2(20),
-emp_code varchar2(20),
-dept_code varchar2(20),
-po_code varchar2(20),
-salary_normal varchar2(100),
-salary_bonus varchar2(100),
-salary_days varchar2(100),
-salary_day varchar2(100),
+salary_code varchar2(20), 금여코드
+emp_code varchar2(20), 사원코드
+dept_code varchar2(20), 부서코드
+po_code varchar2(20), 직급코드
+salary_normal varchar2(100), 기본급
+salary_bonus varchar2(100), 상여금
+salary_days varchar2(100), 일정
+salary_day varchar2(100), 일정조회
 );
 create sequence salary_code_seq nocache;
 
