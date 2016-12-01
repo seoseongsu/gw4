@@ -33,7 +33,11 @@
 						 onclick="document.location.href='product_Modify.do?product_num=${productList.product_num}'">
 					<input type="button" value="삭제"
 						 onclick="document.location.href='product_Delete.do?product_num=${productList.product_num}'">
-					</td>							
+					</td>						
+					<td>
+					<input type="button" value="물품 신청"  
+						onclick="document.location.href='product_Apply.do?product_num=${productList.product_num}'">
+					</td>	
 				</tr>			
 			 </c:forEach>		 
 	</table>
@@ -43,7 +47,6 @@
 <table align="center"  width="1300" >
 <tr>
 <td align="right" colspan="5">
-<input type="button" value="물품 신청"  onclick="document.location.href='product_Apply.do'">
 <input type="button" value="물품 등록"	 onclick="document.location.href='product_Insert.do'"></td>
 </tr>
 </table>

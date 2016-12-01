@@ -78,6 +78,7 @@ public class ProductController {
 	
 		public String product_Insert( Model model, HttpServletRequest request, ProductVO productVO)throws Exception{
 	
+				
 			return "/product/product_Insert";
 		
 	}
@@ -154,19 +155,31 @@ public class ProductController {
 			return"/product/product_DeletePro";
 	}
 
-/* ----------------------Apply_List----------------------------------------------------------------------------- */		
+/* ----------------------Apply----------------------------------------------------------------------------- */		
 	
 	
 	@RequestMapping("product_Apply.do")
-		public String product_Apply(){
-		
+		public String product_Apply(HttpServletRequest request)throws Exception{
+			
+			int num = Integer.parseInt(request.getParameter("product_num"));
+			ProductVO productList = (ProductVO) sqlMap.queryForObject("product.productNum", num);
+			
+			request.setAttribute("product_num", num);
+			request.setAttribute("productList", productList);
 		return "/product/product_Apply";
 	}
-}
 
 
 
+/* ----------------------apply_List----------------------------------------------------------------------------- */		
 
+
+	@RequestMapping("aplly_List.do")
+		public String aplly_list(){
+		
+		return "/product/aplly_List";
+		}
+	}
 
 
 

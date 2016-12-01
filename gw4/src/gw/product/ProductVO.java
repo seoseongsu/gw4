@@ -15,9 +15,24 @@ public class ProductVO {
 	private String product_in;// 재고량
  	private String product_out; // 출고량
  	private Timestamp product_register_day; //등록날짜
+ 	private String product_rona_day; // 출고 날짜
+ 	private String product_return_day; // 입고 날짜
+
 	
  	
- 	public int getProduct_num() {
+ 	public String getProduct_rona_day() {
+		return product_rona_day;
+	}
+	public void setProduct_rona_day(String product_rona_day) {
+		this.product_rona_day = product_rona_day;
+	}
+	public String getProduct_return_day() {
+		return product_return_day;
+	}
+	public void setProduct_return_day(String product_return_day) {
+		this.product_return_day = product_return_day;
+	}
+	public int getProduct_num() {
 		return product_num;
 	}
 	public void setProduct_num(int product_num) {

@@ -5,19 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title></title>
+<title>물품 신청 내역</title>
 </head>
+<b><center>물품 신청 내역</b>
 <body>
-	<table>
-		<tr>
-			<td><a href="board_List.do">게시판</a></td>
-			</tr>
-		<tr>
-			<td><a href="product_List.do">물품 리스트</a></td>
-		</tr>
-		<tr>
-			<td><a href="aplly_List.do">신청 물품 내역</a></td>
-		</tr>
-	</table>
+
 </body>
 </html>
