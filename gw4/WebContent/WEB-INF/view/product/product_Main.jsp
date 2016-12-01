@@ -10,6 +10,9 @@
 <body>
 	<table>
 		<tr>
+			<td><a href="product_Apply.do">물품 신청</a></td>
+			</tr>
+		<tr>
 			<td><a href="product_List.do">하드웨어 물품 리스트</a></td>
 		</tr>
 	</table>

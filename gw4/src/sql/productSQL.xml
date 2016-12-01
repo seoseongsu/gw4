@@ -39,6 +39,11 @@
 			</update>
 			
 			
+			<delete id="productDelete" parameterClass="int">
+				delete from hw_product where product_num=#product_num#
+			</delete>
+			
+			
 	
 </sqlMap>
 

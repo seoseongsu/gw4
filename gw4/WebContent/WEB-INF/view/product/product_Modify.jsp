@@ -9,7 +9,7 @@
 </head>
 <body>
 <b><center/>Hard Ware 정보 수정</b><br /><br />
-<form method="post" name="modify" action="Product_ModifyPro.do?product_num=${productList.product_num}">
+<form method="post" name="modify" action="product_ModifyPro.do?product_num=${productList.product_num}">
 
 	<table border ="1" cellspacing="0" cellpadding="0" width="800" align="center">
 	
@@ -63,7 +63,7 @@
 		</tr>
 		<tr>
 			<td colspan="5" align="right" >
-			<input align="right" type="submit"  value="전송" >
+			<input align="right" type="submit"  value="수정" >
 			<input type="button" value="취소"  onclick="javascript:history.go(-1)">
 			</td>
 		</tr>

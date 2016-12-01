@@ -82,7 +82,7 @@ public class ProductController {
 		
 	}
 	
-	@RequestMapping("Product_InsertPro.do")
+	@RequestMapping("product_InsertPro.do")
 		public String product_InsertPro( Model model, HttpServletRequest request, ProductVO productVO)throws Exception{
 		
 		model.addAttribute("ProductVO" , productVO);
@@ -129,12 +129,39 @@ public class ProductController {
 		public String product_Delete(HttpServletRequest request)throws Exception{
 		
 		int num = Integer.parseInt(request.getParameter("product_num"));
+		ProductVO productList = (ProductVO) sqlMap.queryForObject("product.productNum", num);
 		
-		
-		request.setAttribute("product_num", num);
+		request.setAttribute("productList", productList);
+		request.setAttribute("product_num", num);;
 		return "/product/product_Delete";
 	}
 	
+	
+	@RequestMapping("product_DeletePro.do")
+	
+		public String product_DeletePro(HttpServletRequest request)throws Exception{
+			
+		int num = Integer.parseInt(request.getParameter("product_num"));
+		ProductVO productList = (ProductVO) sqlMap.queryForObject("product.productNum", num);
+		
+		sqlMap.delete("product.productDelete", num);
+		
+		request.setAttribute("productList", productList);
+		request.setAttribute("product_num", num);;
+			
+		
+		
+			return"/product/product_DeletePro";
+	}
+
+/* ----------------------Apply_List----------------------------------------------------------------------------- */		
+	
+	
+	@RequestMapping("product_Apply.do")
+		public String product_Apply(){
+		
+		return "/product/product_Apply";
+	}
 }
 
 

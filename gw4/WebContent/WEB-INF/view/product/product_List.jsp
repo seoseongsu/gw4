@@ -8,7 +8,7 @@
 <title>물품 관리</title>
 </head>
 <body>
-<table align="center" cellspacing="0" cellpadding="0"  width="1150" border="1">
+<table align="center" cellspacing="0" cellpadding="0"  width="1300" border="1">
 <b><center>물품 관리</center></b><br />
 				<tr>
 					<th width="100">분류</th>
@@ -16,7 +16,7 @@
 					<th width="250">물품명</th>
 					<th width="150">재고</th>
 					<th width="100">총수량</th>
-					<th width="150">상태</th>
+					<th width="200">상태</th>
 					<th></th>
 					
 				</tr>
@@ -40,10 +40,11 @@
 
 	
 	<br />
-<table align="center"  width="1150" >
+<table align="center"  width="1300" >
 <tr>
 <td align="right" colspan="5">
-<input type="button" value="등록"	 onclick="document.location.href='product_Insert.do'"></td>
+<input type="button" value="물품 신청"  onclick="document.location.href='product_Apply.do'">
+<input type="button" value="물품 등록"	 onclick="document.location.href='product_Insert.do'"></td>
 </tr>
 </table>
 <c:if test="${count > 0}">
