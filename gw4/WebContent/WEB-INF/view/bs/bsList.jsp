@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title>사원목록</title>
+<title>업무명세서목록</title>
 <script>
 function deleteEvent(a){
 	if(confirm("정말 삭제하시겠습니까??")==true){
@@ -21,6 +21,7 @@ function deleteEvent(a){
 <div>
 	<c:if test="${countMy == 0 }">
 	<table align="center" border="1" width="720">
+		<tr><td colspan="6"><strong>나의 업무명세표</strong></td></tr>
 		<tr>
 			<td>
 				등록된 업무명세표가 없습니다.
@@ -66,6 +67,7 @@ function deleteEvent(a){
 	<br>
 	<c:if test="${countDept == 0 }">
 	<table align="center" border="1" width="720">
+		<tr><td colspan="6"><strong>부서원의 업무명세표</strong></td></tr>
 		<tr>
 			<td>
 				등록된 업무명세표가 없습니다.

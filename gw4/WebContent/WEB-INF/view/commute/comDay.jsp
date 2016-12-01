@@ -61,8 +61,8 @@ $(function(){
 
 <c:if test="${count == 0 }">
 	<tr>
-		<td>${emp_code }</td>
-		<td>${emp_name }</td>
+		<td>${empVo.emp_code }</td>
+		<td>${empVo.emp_name }</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
@@ -72,8 +72,8 @@ $(function(){
 
 <c:if test="${count != 0 }">
 	<tr>
-		<td>${emp_code }</td>
-		<td>${emp_name }</td>
+		<td>${empVo.emp_code }</td>
+		<td>${empVo.emp_name }</td>
 		<td><fmt:formatDate pattern="HH:mm" value="${comVo.com_go }" /></td>
 		<td><fmt:formatDate pattern="HH:mm" value="${comVo.com_off }" /></td>
 		<td>${comVo.com_status }</td>

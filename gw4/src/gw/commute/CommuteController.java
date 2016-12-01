@@ -14,30 +14,34 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import gw.employee.EmployeeVO;
+
 @Controller
 public class CommuteController {
 	@Autowired
 	private SqlMapClientTemplate sqlMap;
 	
 	@RequestMapping("/commute/comDay.do")
-	public String comDay(HttpServletRequest request, CommuteVO comVo){
+	public String comDay(HttpServletRequest request, HttpSession session, CommuteVO comVo){
+//		String emp_code = (String)session.getAttribute("emp_code");
 		String emp_code = request.getParameter("emp_code");
 		String ip = (String)request.getRemoteAddr();
 		int count = 0;
+		EmployeeVO empVo = new EmployeeVO();
 		
 		Date currentDay = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String checkDay = sdf.format(currentDay);
-//		System.out.println("List"+checkDay);
+
 		HashMap map = new HashMap();
 		map.put("emp_code", emp_code);
 		map.put("checkDay", checkDay);
-//		System.out.println("List"+map);
+		
+		empVo = (EmployeeVO) sqlMap.queryForObject("emp.empSelectUp", emp_code);
 		count = (int) sqlMap.queryForObject("com.comSelectTodayCount", map);
 		comVo = (CommuteVO) sqlMap.queryForObject("com.comSelectToday", map);
-//		System.out.println("List"+count);
-//		System.out.println("List"+comVo);
 	
+		request.setAttribute("empVo", empVo);
 		request.setAttribute("emp_code", emp_code);
 		request.setAttribute("count", new Integer(count));
 		request.setAttribute("comVo", comVo);
@@ -72,6 +76,7 @@ public class CommuteController {
 //			System.out.println("comGoPro"+map);
 			int checkCount = (Integer) sqlMap.queryForObject("com.comSelectTodayCount", map);
 			System.out.println(checkCount);
+			request.setAttribute("emp_code", emp_code);
 			if(checkCount == 0){
 				comVo.setEmp_code(emp_code);
 				comVo.setCom_status("출근");
