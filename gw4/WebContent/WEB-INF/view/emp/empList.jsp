@@ -145,6 +145,21 @@ function deleteEvent(a){
 	}
 	#mainLoginForm{
 	padding-top: 17px;
+	}
+	
+	
+	/*성수야, 아까 말한게~ line 266번째에 테이블 class지정하고, tr이랑 td에 해당하는 CSS를 지정해주면 가능하다는 건뎅
+	이렇게 해서 맘에 들런지 모르겠당~ 힘내~ */
+	#border_table{
+	border: 1px solid;
+	}
+	
+	#border_table tr, #border_table td{
+	border: 1px solid;
+	text-align:center;
+	padding: 3px;
+	/*여기에 padding:3px주면, 표가 보기좋게 넓어지는데, 줄바꿈이 되는 것 같아~ */
+	}
 
 </style>
 </head>
@@ -160,7 +175,7 @@ function deleteEvent(a){
                         <c:if test="${sessionScope.memId != null}">
                         <div id="mainLoginForm">
                         <form name="inform" method="post" action="/gw4/main/logout.do" >
-                        <table width=250 cellpadding="0" cellspacing="0"  align="right" border="0" >
+                        <table width=250 cellpadding="0" cellspacing="0"  align="right" border="1" >
 	                        <tr>
 	                        	<td rowspan="2" bgcolor="171717" width="125" align="center">
 	                        	<img src="/gw4/images/employee.jpg" width="75"></td>
@@ -173,7 +188,7 @@ function deleteEvent(a){
 	                        </tr>
 	                        <tr>
 	                        	<td colspan="2" bgcolor="171717" align="center" style="width=20px; height=10px">
-	                        	<a href="/gw4/main/logout.do" class="myButton">로그아웃</a>
+	                        	<a href="/gw4/main/logout.do" class="myButton">로그아웃</a></td>
 	                        </tr>
                         </table>
 						</form>
@@ -222,15 +237,14 @@ function deleteEvent(a){
 			</ul>
 		</div>
 		<!--==============================main=================================-->
-		<section id="content"><div class="ic"></div>
+		<section id="content">
 			<div class="content-bg">
 				<div class="main">
 					 <div class="container_12">
 					 	<div class="wrapper">
-					 		 <article class="grid_12">
 					 		 	<h3>사원정보관리</h3>
 		
-	<table align="center">
+	<table align="center" >
 		<tr>
 			<td>
 				<button type="button" onclick="location.href='empInsert.do'">사원등록</button>
@@ -239,7 +253,7 @@ function deleteEvent(a){
 	</table>
 	
 	<c:if test="${count == 0 }">
-	<table align="center" border="1">
+	<table align="center">
 		<tr>
 			<td>
 				등록된 사원 정보가 없습니다.
@@ -249,7 +263,7 @@ function deleteEvent(a){
 	</c:if>
 	
 	<c:if test="${count > 0 }">
-		<table align="center" border="1">
+		<table id="border_table" align="center">
 			<tr align="center">
 				<td>사원번호</td>
 				<td>성명</td>
@@ -288,7 +302,6 @@ function deleteEvent(a){
 		</table>
 	</c:if>	
 	
-					</article>
 						</div>
 					</div>
 				</div>
