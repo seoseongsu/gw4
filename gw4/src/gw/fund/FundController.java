@@ -17,6 +17,7 @@ public class FundController{
 
 	@RequestMapping("/fund/fundList.do")
 	public String fundList(HttpServletRequest request){
+		//String emp_code = (String)session.getAttribute("emp_code");
 		
 		List fundList = sqlMap.queryForList("fundList", null);
 		request.setAttribute("fundList", fundList);

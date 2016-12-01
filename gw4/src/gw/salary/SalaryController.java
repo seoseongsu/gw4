@@ -17,6 +17,7 @@ public class SalaryController {
 	
 	@RequestMapping("/salary/salaryList.do")
 	public String salaryList(HttpServletRequest request){
+		//String emp_code = (String)session.getAttribute("emp_code");
 		List salaryList = null;
 		
 		salaryList = sqlMap.queryForList("salarySelectList", null);
