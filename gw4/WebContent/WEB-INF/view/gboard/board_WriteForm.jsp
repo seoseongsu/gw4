@@ -56,7 +56,7 @@
 		<select id ="category" name="category_code"  >
 			<option>--------------</option>
 			<c:forEach items="${categoryList}" var="category">
-				<option value="${category.category_code}">${category.category_code}</option>		
+				<option  value="${category.category_code}">${category.category_name}</option>		
 			</c:forEach>
 		</select>		
 	</tr>

@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class BoardVO {
 
 	private String category_code;
+	private String category_name;
 	private int board_num;	
 	private String board_subject;
 	private String board_content;
@@ -18,6 +19,12 @@ public class BoardVO {
 	private MultipartFile file;
 	
 	
+	public String getCategory_name() {
+		return category_name;
+	}
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
 	public MultipartFile getFile() {
 		return file;
 	}

@@ -56,7 +56,7 @@
 		<tr>
 			<td colspan"4" align="right">
 			<select  id ="category" name="category" onchange="categoryChange(this.value)">
-				<option>통합게시판</option>
+				<option>---------</option>
 			<c:forEach items="${categoryList}" var="category" >
 					<option value="${category.category_code}">${category.category_name}</option>		
 			</c:forEach>
@@ -78,7 +78,7 @@
 				<tr align="center">
 			
 					<td  height="40">
-					<a href="board_Content.do?board_num=${boardList.board_num}&pageNum=${currentPage}">[${boardList.category_code}]${boardList.board_subject}</a></td>
+					<a href="board_Content.do?board_num=${boardList.board_num}&pageNum=${currentPage}">${boardList.board_subject}</a></td>
 					<td>작성자</td>
 					<td>${boardList.board_date}</td>
 					<td>${boardList.board_readcount}</td>

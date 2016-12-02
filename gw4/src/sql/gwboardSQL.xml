@@ -23,7 +23,7 @@
 				from 
 				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
 				from board order by board_num desc) 
-				order by decode(category_code,#aa#,0)  ) where r >= #start# and r <= #end#
+				order by decode(category_code,#C001#,0) desc ) where r >= #start# and r <= #end#
 				]]>
 			</select>
 
@@ -49,9 +49,9 @@
 	
 			<insert id="boardInsert" parameterClass="BoardVo">
 				insert into board
-				(board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname) 
+				(board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,category_name) 
 				values
-				(board_seq.NEXTVAL,#category_code#,#board_subject#,#board_content#,#board_passwd#,sysdate,#board_readcount#,#board_file_orgname#,#board_file_savname#)
+				(board_seq.NEXTVAL,#category_code#,#board_subject#,#board_content#,#board_passwd#,sysdate,#board_readcount#,#board_file_orgname#,#board_file_savname#,#category_name#)
 			</insert>
 
 
