@@ -29,6 +29,7 @@
   			/WEB-INF/salary-servlet.xml
   			/WEB-INF/commute-servlet.xml
   			/WEB-INF/product-servlet.xml
+  			/WEB-INF/approval-servlet.xml
   		</param-value>
   	</init-param>
   </servlet>

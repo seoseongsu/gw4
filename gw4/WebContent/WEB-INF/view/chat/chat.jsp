@@ -7,9 +7,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>메신저</title>
 <script src="/gw4/js/jquery-1.10.2.min.js"></script>
 <script src="/gw4/js/socket.io.js"></script>
+<link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
+<link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
+<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
 <style>
 #mainContent{
 	width: 100%;
@@ -25,13 +29,6 @@
     border:1px solid #ccc;
 }
 </style>
-
-
-<c:if test="${sessionScope.memId == null }">
-            <script> alert('로그인을 먼저 하세요');
-             location.href = "/gw/main/main.do";
-              </script>          
-</c:if>
 <script>
 
 var xmlHttp;
@@ -173,9 +170,34 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<!-- mainContent 시작 본문 내용 삽입-->
-	<div id="mainContent">
-		<table border="1">
+<jsp:include page="/layout/header.jsp" />  
+ <div id="sub_wrapper">
+      <div id="sub_con_wrapper">
+         <div id="left_wrapper">
+            <div id="left_title">
+               <span>
+                  고객과의 신뢰를<br>최고로 여기는 기업
+               </span>
+               <h2>
+                  회사소개
+               </h2>
+            </div>
+            
+            <ul>
+               <a class="active" href="#">메일<i class="fa fa-chevron-right"></i></a>   
+               <a href="/gw4/chat/chat.do">메신저<i class="fa fa-chevron-right"></i></a>          
+            </ul>
+         </div>
+         <div id="right_wrapper">
+            <div id="right_path">
+               <h5><i class="fa fa-home"></i>&nbsp; > 커뮤니티 > 메신저</h5>
+            </div>
+            
+            <div id="right_header">
+               <h1>메신저</h1>
+            </div>
+            <!-- mainContent 시작 본문 내용 삽입-->
+            <table border="1">
 			<tr>
 				<td>
 					<textarea  name="massage" id="masseage"   cols="100"  rows="15" onKeyDown="setLine( this )"  readonly="readonly"  class="textarea_size"  ></textarea> <br />
@@ -193,10 +215,16 @@ $(document).ready(function(){
 				</td>
 			</tr>
 		</table>
+			<!-- mainContent 끝 -->
+         </div>
 	</div>
-	<!-- mainContent 끝 -->
-
 </div>
+
+<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>
-	
+<c:if test="${sessionScope.memId == null }">
+            <script> alert('로그인을 먼저 하세요');
+             location.href = "/gw4/main/logout.do";
+              </script>          
+</c:if>	
