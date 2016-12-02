@@ -20,6 +20,7 @@
   	<init-param>
   		<param-name>contextConfigLocation</param-name>
   		<param-value>
+  			/WEB-INF/vertx-servlet.xml
 			/WEB-INF/bstatement-servlet.xml
   			/WEB-INF/employee-servlet.xml
   			/WEB-INF/board-servlet.xml

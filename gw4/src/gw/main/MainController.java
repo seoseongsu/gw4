@@ -46,7 +46,7 @@ public class MainController{
         		application.setAttribute("appId", emp_code);
         		String id = (String)application.getAttribute("appId");
         		
-        		//dto = (EmployeeVO)sqlMap.queryForObject("getMemberlist", id);
+        		dto = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
         		
         		String name = (String)sqlMap.queryForObject("nameCheck", dto.getEmp_code());
         		session.setAttribute("emp_name", name);

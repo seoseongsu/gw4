@@ -19,8 +19,6 @@
 			<a href="http://dropbox.com"><i class="fa fa-dropbox" aria-hidden="true"></i> Dropbox</a><span> | </span>
 			<i class="fa fa-html5" aria-hidden="true"></i> HTML5<span> | </span>
 			<i class="fa fa-css3" aria-hidden="true"></i> CSS3
-
-
 		</div>
 	</div>
 
@@ -35,9 +33,7 @@
 				</address>
 				<p>COPYRIGHT ⓒ 2016 EYTime COMPANY / ALL RIGHTS RESERVED.</p>			
 			</div>
-
 			<div id="footer_right">
-
 			</div>
 		</div><!-- End #footer_con_wrapper -->
 	</div><!-- End #footer_wrapper -->

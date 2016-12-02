@@ -6,7 +6,7 @@
 	<select id="userCheck" resultClass="int" parameterClass="java.util.HashMap">
 		select count(*) from employee where	emp_code = #emp_code# and emp_passwd = #emp_passwd#
 	</select>
-	<select id="getMemberlist" resultClass="String" parameterClass="String">
+	<select id="getMemberlist" resultClass="dto" parameterClass="String">
 		select * from employee where emp_code = #emp_code#
 	</select>
 	<select id="nameCheck" resultClass="string" parameterClass="string">

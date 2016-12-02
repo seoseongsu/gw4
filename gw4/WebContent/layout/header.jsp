@@ -108,7 +108,7 @@ $(document).ready(function(){
 							</ul>						
 							<ul>
 								<a href="#">메일</a>
-								<a href="#">메신저</a>
+								<a href="/gw4/chat/chat.do">메신저</a>
 							</ul>
 							<ul style="border-right:1px solid #ccc;">
 								<a href="#">찾아오시는 길</a>
