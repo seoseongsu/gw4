@@ -9,7 +9,7 @@
 </head>
 <body>
 <table align="center" cellspacing="0" cellpadding="0"  width="1200" border="1">
-<b><center>Hard ware 관리</center></b><br />
+<b><center>Soft ware 관리</center></b><br />
 				<tr>
 					<th width="100">분류</th>
 					<th width="250">물품(코드)번호</th>
@@ -20,19 +20,19 @@
 					<th></th>
 					
 				</tr>
-	<c:forEach var="productList" items="${productList}">
+	<c:forEach var="productSoftList" items="${productSoftList}">
 				<tr align="center">
-					<td>${productList.product_type}</td>
-					<td>${productList.hw_product_code}</td>
-					<td>${productList.product_name}</td>
-					<td>${productList.product_in}</td>
-					<td>${productList.product_quantity}</td>
+					<td>${productSoftList.product_type}</td>
+					<td>${productSoftList.sw_product_code}</td>
+					<td>${productSoftList.product_name}</td>
+					<td>${productSoftList.product_in}</td>
+					<td>${productSoftList.product_quantity}</td>
 				
 					<td style="width:8%">
 					<input type="button" value="수정" 
-						 onclick="document.location.href='product_Modify.do?product_num=${productList.product_num}'">
+						 onclick="document.location.href='productSoft_Modify.do?product_num=${productSoftList.product_num}'">
 					<input type="button" value="삭제"
-						 onclick="document.location.href='product_Delete.do?product_num=${productList.product_num}'">
+						 onclick="document.location.href='productSoft_Delete.do?product_num=${productSoftList.product_num}'">
 					</td>						
 
 				</tr>			
@@ -44,10 +44,9 @@
 <table align="center"  width="1200" >
 <tr>
 <td align="right" colspan="5">
-<input type="button" value="물품 등록"	 onclick="document.location.href='product_Insert.do'"></td>
+<input type="button" value="물품 등록"	 onclick="document.location.href='productSoft_Insert.do'"></td>
 </tr>
 </table>
-
 <c:if test="${count > 0}">
    <c:set var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}"/>
    <c:set var="pageBlock" value="${10}"/>
@@ -59,15 +58,15 @@
    </c:if> 
           
    <c:if test="${startPage > 10}">
-        <a href="product_List.do?pageNum=${startPage - 10 }">[이전]</a>
+        <a href="board_List.do?pageNum=${startPage - 10 }">[이전]</a>
    </c:if>
 
    <c:forEach var="i" begin="${startPage}" end="${endPage}">
-       <a href="product_List.do?pageNum=${i}">[${i}]</a>
+       <a href="board_List.do?pageNum=${i}">[${i}]</a>
    </c:forEach>
 
    <c:if test="${endPage < pageCount}">
-        <a href="product_List.do?pageNum=${startPage + 10}">[다음]</a>
+        <a href="board_List.do?pageNum=${startPage + 10}">[다음]</a>
    </c:if>
 </c:if>
 </body>

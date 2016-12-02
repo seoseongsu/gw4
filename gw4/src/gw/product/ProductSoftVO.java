@@ -2,10 +2,10 @@ package gw.product;
 
 import java.sql.Timestamp;
 
-public class ProductVO {
+public class ProductSoftVO {
 	
 	private int product_num; // 장비 번호(시퀀스)
- 	private String hw_product_code; // 하드웨어 장비 코드 (시리얼 넘버)
+ 	private String sw_product_code; // 소프트웨어 장비 코드 (시리얼 넘버)
  	private String product_name; // 장비 이름
  	private String product_divide; // 장비 구분 (입/출 고)
  	private String product_note;  // 비고
@@ -17,17 +17,20 @@ public class ProductVO {
  	private String product_register_day; //등록날짜
  	private String product_rona_day; // 출고 날짜
  	private String product_return_day; // 입고 날짜
-	public int getProduct_num() {
+
+ 	
+ 	
+ 	public int getProduct_num() {
 		return product_num;
 	}
 	public void setProduct_num(int product_num) {
 		this.product_num = product_num;
 	}
-	public String getHw_product_code() {
-		return hw_product_code;
+	public String getSw_product_code() {
+		return sw_product_code;
 	}
-	public void setHw_product_code(String hw_product_code) {
-		this.hw_product_code = hw_product_code;
+	public void setSw_product_code(String sw_product_code) {
+		this.sw_product_code = sw_product_code;
 	}
 	public String getProduct_name() {
 		return product_name;
@@ -95,10 +98,6 @@ public class ProductVO {
 	public void setProduct_return_day(String product_return_day) {
 		this.product_return_day = product_return_day;
 	}
-
 	
- 	
- 	
- 	
  	
 }

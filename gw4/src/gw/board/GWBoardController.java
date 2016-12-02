@@ -61,9 +61,8 @@ import org.springframework.web.servlet.view.RedirectView;
 		public String board_List(HttpServletRequest request, Iboard_categoryVO category) throws Exception{
 	   
 			List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
-	        String pageNum = request.getParameter("pageNum");
 	        String category_code = request.getParameter("category_code");
-	        
+	        String pageNum = request.getParameter("pageNum");
 	        
 	        if (pageNum == null) {
 	            pageNum = "1";

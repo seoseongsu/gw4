@@ -6,6 +6,22 @@
 <head>
 
 <title>물품 관리</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="#" />
+<script>
+$(function(){
+	$("#salary_days").datepicker({
+		dateFormat: 'yy - mm - dd',
+		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
+		dayNameMin: ['일','월','화','수','목','금','토'],
+		changeMonth: true,	//월변경가능
+		changeYear: true,	//일변경가능
+		showMonthAfterYear: true	//년 뒤에 월표시
+	});
+});
+</script>
 </head>
 <body>
 <b><center/>Hard Ware 등록</b><br /><br />
@@ -20,15 +36,24 @@
 		
 			
 			<th width="100">시리얼 번호</th>
-			<td colspan="2"width="300"><input style="width:97%" type="text" name="hw_product_code"></td>
+			<td ><input style="width:97%" type="text" name="hw_product_code"></td>
 			
 		
 		<tr>
 			<th>물품 이름</th>
-			<td colspan="2"><input style="width:97%" type="text" name="product_name"></td>
-			<th >수 량</th>
-			<td width="100" ><input style="width:97%" type="text" name="product_quantity"></td>
+			<td ><input style="width:97%" type="text" name="product_name"></td>
 			
+			<th>물품 등록일</th>
+			<td ><input type="text"  id="salary_days"  style="width:98%" name="product_register_day"></td>
+			
+		</tr>
+		
+		<tr>
+			<th >총 수 량</th>
+			<td ><input style="width:97%" type="text" name="product_quantity"></td>
+			
+			<th >재 고 량</th>
+			<td ><input style="width:97%" type="text" name="product_in"></td>
 		</tr>
 		
 		<tr>

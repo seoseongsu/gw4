@@ -119,7 +119,7 @@
         <a href="board_List.do?pageNum=${startPage + 10}">[다음]</a>
    </c:if>
 </c:if>
-</table>
+
 		 </div>
       </div>
    </div>
