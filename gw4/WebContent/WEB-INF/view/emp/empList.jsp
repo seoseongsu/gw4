@@ -121,6 +121,7 @@ function deleteEvent(a){
 			</c:forEach>
 		</table>
 	</c:if>	
+	
          </div>
       </div>
    </div>
