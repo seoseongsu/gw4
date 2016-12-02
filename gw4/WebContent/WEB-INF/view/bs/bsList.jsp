@@ -15,9 +15,46 @@ function deleteEvent(a){
 	}
 }
 </script>
+<link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
+<link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
+<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
 </head>
 
 <body>
+<jsp:include page="/layout/header.jsp" />  
+
+   <div id="sub_wrapper">
+      <div id="sub_con_wrapper">
+         <div id="left_wrapper">
+            <div id="left_title">
+               <span>
+                  고객과의 신뢰를<br>최고로 여기는 기업
+               </span>
+               <h2>
+                  회사소개
+               </h2>
+            </div>
+            
+            <ul>
+               <a href="/gw4/emp/empList.do">정보조회<i class="fa fa-chevron-right"></i></a>   
+               <a href="/gw4/salary/salaryList.do">정보수정<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/fund/fundList.do">근태현황<i class="fa fa-chevron-right"></i></a>
+               <a href="/gw4/commute/comList.do">일정관리<i class="fa fa-chevron-right"></i></a>         
+               <a class="active" href="/gw4/product_List.do">업무관리<i class="fa fa-chevron-right"></i></a>          
+               <a href="#">조직도<i class="fa fa-chevron-right"></i></a>         
+            </ul>
+         </div>
+         <div id="right_wrapper">
+            <div id="right_path">
+               <h5><i class="fa fa-home"></i>&nbsp; > 개인정보 > 업무관리</h5>
+            </div>
+            
+            <div id="right_header">
+               <h1>업무 관리</h1>
+            </div>
+
+
+
 <div>
 	<c:if test="${countMy == 0 }">
 	<table align="center" border="1" width="720">
@@ -103,5 +140,12 @@ function deleteEvent(a){
 		</c:if>
 	</c:if>
 </div>
+
+
+		</div>
+      </div>
+   </div>
+	
+<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>

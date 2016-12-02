@@ -6,6 +6,9 @@
 <head>
     <title>업무명세표등록</title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
+	<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -84,11 +87,57 @@
     	.a{width:200px; height:20px; text-align:left; padding-bottom:5px; float:left; margin:left:5px; layout:fixed;}
     	.b{width:520px; height:20px; text-align:right; padding-bottom:5px; float:left; margin:left:5px; layout:fixed;}
     </style>
+    <style>
+		#border_table, #memberTable{
+		border: 1px solid;
+		margin: auto;
+		line-height: auto;
+		}
+		
+		#border_table tr, #border_table td, #border_table th, #memberTable tr, #memberTable td, #memberTable th{
+		border: 1px solid;
+		padding: 1px;
+		}
+</style>
 </head>
  
 <body>
+<jsp:include page="/layout/header.jsp" />  
+
+   <div id="sub_wrapper">
+      <div id="sub_con_wrapper">
+         <div id="left_wrapper">
+            <div id="left_title">
+               <span>
+                  고객과의 신뢰를<br>최고로 여기는 기업
+               </span>
+               <h2>
+                  회사소개
+               </h2>
+            </div>
+            
+            <ul>
+                <a href="/gw4/emp/empList.do">정보조회<i class="fa fa-chevron-right"></i></a>   
+               <a href="/gw4/salary/salaryList.do">정보수정<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/fund/fundList.do">근태현황<i class="fa fa-chevron-right"></i></a>
+               <a href="/gw4/commute/comList.do">일정관리<i class="fa fa-chevron-right"></i></a>         
+               <a class="active" href="/gw4/product_List.do">업무관리<i class="fa fa-chevron-right"></i></a>          
+               <a href="#">조직도<i class="fa fa-chevron-right"></i></a>      
+            </ul>
+         </div>
+         <div id="right_wrapper">
+            <div id="right_path">
+               <h5><i class="fa fa-home"></i>&nbsp; > 개인정보 > 업무관리</h5>
+            </div>
+            
+            <div id="right_header">
+               <h1>업무 관리</h1>
+            </div>
+
+
+
 <form method="get" action="bsInsertPro.do" name="bs">
-	<table border="1" style="width:720px;">
+	<table id="border_table" border="1" style="width:720px;">
 		<tr><td colspan="6"><strong>기본정보</strong></td></tr>
 		<tr>
 			<td width="70">사원</td>
@@ -139,14 +188,18 @@
 	    <tr>
 	    	<td colspan="6"><textarea name="bs_goal" style="resize: none;" rows="10" cols="98"></textarea></td>
 	    </tr>
-	</table>﻿
-    <div class="a">
-    	<strong>업무내역</strong>
-    </div>
-    <div class="b">
-	    <input type="button" value="행추가"  id="btnAddRow"/>
-	    <input type="button" value="행삭제"  id="btnDelRow"/>
-    </div>
+	</table>
+	<table id="border_table" border="1" style="width:720px;" style=border:hidden;>
+    	<tr>
+	    	<td>
+	    		<strong>업무내역</strong>
+	    	</td>
+	    	<td style="text-align:right;">
+			    <input type="button" value="행추가"  id="btnAddRow"/>
+			    <input type="button" value="행삭제"  id="btnDelRow"/>
+		    </td>
+    	</tr>
+    </table>
 	<table id="memberTable" border="1" style="width:720px;">
 	    <tr>
 	        <td style="width:180px;">주요업무</td>
@@ -162,14 +215,21 @@
 	    </tr>
 	</table>
 	<input type="hidden" name="count" value="0" />
-	<table border="1" style="width:720px;">
+	<table id="border_table" border="1" style="width:720px;">
 		<tr>
 	    	<td align="right">
 	    		<input type="submit" value="저장" onsubmit='return countCk();'/>
-	    		<input type="button" value="취소" onclick="javascript:window.location='bsList.do'"/>
+	    		<input type="button" value="취소" onclick="javascript:window.location='bsList.do?emp_code=${emp_code}'"/>
 	    	</td>
 	    </tr>
 	</table>
 </form>
+
+
+         </div>
+      </div>
+   </div>
+	
+<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>

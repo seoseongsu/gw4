@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -21,9 +22,8 @@ public class BstatementController {
 	private SqlMapClientTemplate sqlMap;
 	
 	@RequestMapping("/bs/bsList.do")
-	public String bsList(HttpServletRequest request){
-//		String emp_code = (String)session.getAttribute("memId");
-		String emp_code = request.getParameter("emp_code");
+	public String bsList(HttpServletRequest request, HttpSession session){
+		String emp_code = (String)session.getAttribute("memId");
 		int countMy = 0;
 		int countDept = 0;
 		List bsMyList = null;
@@ -71,6 +71,7 @@ public class BstatementController {
 		
 		request.setAttribute("empJoinVo", empJoinVo);
 		request.setAttribute("bsApList", bsApList);
+		request.setAttribute("emp_code", emp_code);
 		return "/bs/bsInsert";
 	}
 	
