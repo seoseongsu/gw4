@@ -118,12 +118,13 @@ $(function(){
     </tr>
     <tr> 
       <td colspan="2" align="center"> 
-          <input type="submit" name="confirm" value="등록" >
+          <input type="submit" name="empSet" value="등록" onclick="javascript:self.colse();parent.opener.location.reload();">
           <input type="reset" name="reset" value="다시입력">
-          <input type="button" value="취소" onclick="javascript:window.location='empList.do'">
+          <input type="button" value="취소" onclick="javascript:self.close()">
       </td>
     </tr>
   </table>
 </form>
 </body>
+
 </html>

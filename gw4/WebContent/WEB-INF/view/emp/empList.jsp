@@ -20,8 +20,6 @@ function deleteEvent(a){
 </script>
 
 <style>
-	/*성수야, 아까 말한게~ line 266번째에 테이블 class지정하고, tr이랑 td에 해당하는 CSS를 지정해주면 가능하다는 건뎅
-	이렇게 해서 맘에 들런지 모르겠당~ 힘내~ */
 	#border_table{
 	border: 1px solid;
 	margin: auto;
@@ -33,9 +31,7 @@ function deleteEvent(a){
 	text-align:center;
 	vertical-align:middle;
 	padding: 1px;
-	/*여기에 padding:3px주면, 표가 보기좋게 넓어지는데, 줄바꿈이 되는 것 같아~ */
 	}
-
 </style>
 </head>
 
@@ -71,8 +67,10 @@ function deleteEvent(a){
             <div id="right_header">
                <h1>사원 관리</h1>
             </div>
+            
+            
             <c:if test="${count == 0 }">
-	<table align="center">
+	<table id="border_table">
 		<tr>
 			<td>
 				등록된 사원 정보가 없습니다.
@@ -84,7 +82,7 @@ function deleteEvent(a){
 	<c:if test="${count > 0 }">
 		<table id="border_table">
 			<tr style="border:none;border:hidden;border-bottom:1px solid;">
-				<td colspan="14" style="text-align:right; border:none;"><button type="button" onclick="location.href='empInsert.do'">사원등록</button></td>
+				<td colspan="14" style="text-align:right; border:none;"><button type="button" onclick="javascript:window.open('empInsert.do','new','left=50, top=50, width=700, height=500')">사원등록</button></td>
 			</tr>
 			<tr style="background-color:#B7B7B7;">
 				<th>사원번호</th>

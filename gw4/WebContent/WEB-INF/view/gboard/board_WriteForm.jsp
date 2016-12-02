@@ -6,16 +6,45 @@
 <head>
 
 <title>게시판</title>
+<link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
+<link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
+<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
+<script src="/gw4/ckeditor/ckeditor.js"></script>
+
 </head>
-
-<b><center>글 작성</b><br />
-<script src="/gw4/ckeditor/ckeditor.js">
-
-
-</script>
 
 
 <body>
+<jsp:include page="/layout/header.jsp" />  
+
+   <div id="sub_wrapper">
+      <div id="sub_con_wrapper">
+         <div id="left_wrapper">
+            <div id="left_title">
+               <span>
+                  고객과의 신뢰를<br>최고로 여기는 기업
+               </span>
+               <h2>
+                  회사소개
+               </h2>
+            </div>
+            
+            <ul>
+               <a class="active" href="/gw4/board_List.do">게시판<i class="fa fa-chevron-right"></i></a>   
+               </ul>
+         </div>
+         <div id="right_wrapper">
+            <div id="right_path">
+               <h5><i class="fa fa-home"></i>&nbsp; > 게시판</h5>
+            </div>
+            
+            <div id="right_header">
+               <h1>게시판</h1>
+            </div>
+     
+
+
+<b><center>글 작성</b><br />
 <form method="post" name="writeform" action="board_WritePro.do" enctype="multipart/form-data" > 
 <input type="hidden" name="board_num" value="${board_num}">
 <!-- <input type="text" name="board_readcount"> -->
@@ -80,5 +109,12 @@
 var editor = CKEDITOR.replace('board_content');
 </script>
 	</form>
+	
+	
+		</div>
+      </div>
+   </div>
+	
+	<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>

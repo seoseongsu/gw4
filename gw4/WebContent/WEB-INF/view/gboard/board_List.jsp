@@ -7,17 +7,49 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
-</head>
-	
-			<script>
+<link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
+<link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
+<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
+<script>
 			function categoryChange(category){
 				window.location="/gw4/board_List.do?category_code="+category;
 	
 			}
 		</script>
+</head>
 		
+<body>
+<jsp:include page="/layout/header.jsp" />  
+
+   <div id="sub_wrapper">
+      <div id="sub_con_wrapper">
+         <div id="left_wrapper">
+            <div id="left_title">
+               <span>
+                  고객과의 신뢰를<br>최고로 여기는 기업
+               </span>
+               <h2>
+                  회사소개
+               </h2>
+            </div>
+            
+            <ul>
+               <a class="active" href="/gw4/board_List.do">게시판<i class="fa fa-chevron-right"></i></a>   
+               </ul>
+         </div>
+         <div id="right_wrapper">
+            <div id="right_path">
+               <h5><i class="fa fa-home"></i>&nbsp; > 게시판</h5>
+            </div>
+            
+            <div id="right_header">
+               <h1>게시판</h1>
+            </div>
+     
+     
+     
 	<b><center>통합 게시판</b>	
 	
 	<table cellspacing="0" cellpadding="0" width="1000" align="center">
@@ -88,6 +120,11 @@
    </c:if>
 </c:if>
 </table>
+		 </div>
+      </div>
+   </div>
+	
+	<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>
  
