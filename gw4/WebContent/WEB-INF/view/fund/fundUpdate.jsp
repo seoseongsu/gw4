@@ -68,10 +68,8 @@ function change(style){
 				</select>
 			</td>
 			<td>
-				<fmt:formatNumber value="${fundJoinVo.fund_deposit }" type="number" maxFractionDigits="0" var="deposit"/>
-				<input type="text" id="fund_deposit" name="fund_deposit" placeholder="입금액을 입력하세요" style="display:none;" value="${deposit }">
-				<fmt:formatNumber value="${fundJoinVo.fund_withdraw }" type="number" maxFractionDigits="0" var="withdraw"/>
-				<input type="text" id="fund_withdraw" name="fund_withdraw" placeholder="출금액을 입력하세요" style="display:none; value="${withdraw }">
+				<input type="text" id="fund_deposit" name="fund_deposit" placeholder="입금액을 입력하세요" style="display:none;" value="${fundJoinVo.fund_deposit }">
+				<input type="text" id="fund_withdraw" name="fund_withdraw" placeholder="출금액을 입력하세요" style="display:none; value="${fundJoinVo.fund_withdraw }">
 			</td>
 		</tr>
 		

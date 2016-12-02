@@ -45,12 +45,9 @@ $(function(){
 					${salaryJoinVo.emp_name }
 				</td>
 	  		   <td>
-	  		   <fmt:formatNumber value="${salaryJoinVo.salary_normal }" type="number" maxFractionDigits="0" var="normal"/>
-	 		   <input type="text" id="salary_normal" name="salary_normal" value="${normal }"/>
+	 		   <input type="text" id="salary_normal" name="salary_normal" value="${salaryJoinVo.salary_normal }"/>
 			   </td>
-			   <td>
-			   <fmt:formatNumber value="${salaryJoinVo.salary_bonus }" type="number" maxFractionDigits="0" var="bonus"/>
-			   <input type="text" id="salary_bonus" name="salary_bonus" value="${bonus }"/>
+			   <input type="text" id="salary_bonus" name="salary_bonus" value="${salaryJoinVo.salary_bonus }"/>
 			   </td>
 			</tr>
 		</table>
