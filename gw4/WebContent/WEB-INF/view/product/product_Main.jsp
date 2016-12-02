@@ -13,10 +13,10 @@
 			<td><a href="board_List.do">게시판</a></td>
 			</tr>
 		<tr>
-			<td><a href="product_List.do">물품 리스트</a></td>
+			<td><a href="product_List.do">Hard Ware 물품 리스트</a></td>
 		</tr>
 		<tr>
-			<td><a href="aplly_List.do">신청 물품 내역</a></td>
+			<td><a href="productSoft_List.do">Sodft Ware 물품 리스트</a></td>
 		</tr>
 	</table>
 </body>

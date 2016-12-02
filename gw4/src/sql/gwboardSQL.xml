@@ -28,7 +28,7 @@
 			</select>
 
 	<!--  boardLIst Onchage -->
-		<select id ="boardOnchange" parameterClass="BoardVo">
+		<select id ="boardOnchage"  resultClass="BoardVO"  parameterClass="java.util.HashMap">
 			select * from board where category_code = #category_code#
 		</select>
 		

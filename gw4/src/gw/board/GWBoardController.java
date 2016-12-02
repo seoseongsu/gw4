@@ -78,23 +78,21 @@ import org.springframework.web.servlet.view.RedirectView;
 	        
 	        
 	        List boardList = null;
-	        
+	        HashMap map = new HashMap();
+        	map.put("start", startRow);
+		    map.put("end", endRow);
+		    map.put("aa", "공지사항");
 	        if (category_code == null) {
-	           
 	        	count = (Integer)sqlMap.queryForObject("gboard.boardCount", null);
-		        HashMap map = new HashMap();
-		        map.put("start", startRow);
-		        map.put("end", endRow);
-		        map.put("aa", "공지사항");
 		        if (count > 0) {
 		        	boardList = sqlMap.queryForList("gboard.boardAll", map);
 		        } else {
-		        	boardList = sqlMap.queryForList("gboard.boardOnchage", map);
-		        	}
-		        } else {
 		        	boardList = Collections.EMPTY_LIST;
-		        	
-		        	}
+		        }
+	        } else {
+	        	map.put("category_code",category_code);
+	        	boardList = sqlMap.queryForList("gboard.boardOnchage", map);
+	        }
 	       
 			number=count-(currentPage-1)*pageSize;
 	        request.setAttribute("currentPage", new Integer(currentPage));

@@ -58,7 +58,7 @@
 			<select  id ="category" name="category" onchange="categoryChange(this.value)">
 				<option>통합게시판</option>
 			<c:forEach items="${categoryList}" var="category" >
-					<option value="${category.category_code}">${category.category_code}</option>		
+					<option value="${category.category_code}">${category.category_name}</option>		
 			</c:forEach>
 			</select>
 			</td>	
