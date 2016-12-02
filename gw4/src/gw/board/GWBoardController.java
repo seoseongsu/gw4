@@ -74,7 +74,9 @@ import org.springframework.web.servlet.view.RedirectView;
 	        int endRow = currentPage * pageSize;
 	        int count = 0;
 	        int number=0;
-	
+	        
+	        
+	        
 	        List boardList = null;
 	        
 	        if (category_code == null) {
@@ -87,7 +89,7 @@ import org.springframework.web.servlet.view.RedirectView;
 		        if (count > 0) {
 		        	boardList = sqlMap.queryForList("gboard.boardAll", map);
 		        } else {
-		        	category_code = request.getParameter("category_code");
+		        	boardList = sqlMap.queryForList("gboard.boardOnchage", map);
 		        	}
 		        } else {
 		        	boardList = Collections.EMPTY_LIST;

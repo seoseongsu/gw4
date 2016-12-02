@@ -179,6 +179,51 @@ public class ProductController {
 		
 		return "/product/aplly_List";
 		}
+	
+	
+/* ----------------------SoftList----------------------------------------------------------------------------- */	
+	
+	
+	@RequestMapping("productSoft_List.do")
+	
+		public String productSoft_List(HttpServletRequest request)throws Exception{
+		
+			String pageNum = request.getParameter("pageNum");
+	        
+	        if (pageNum == null) {
+	            pageNum = "1";
+	        }
+	        int pageSize = 10;
+	        int currentPage = Integer.parseInt(pageNum);
+	        int startRow = (currentPage - 1) * pageSize + 1;
+	        int endRow = currentPage * pageSize;
+	        int count = 0;
+	        int number=0;
+			
+			List productList= null; 
+			HashMap map = new HashMap();
+	        map.put("start", startRow);
+	        map.put("end", endRow);
+	   
+	       	productList = sqlMap.queryForList("product.productdAll", map);
+	    
+			System.out.println(productList);
+			System.out.println(request.getAttribute("product_code"));
+		       
+				number=count-(currentPage-1)*pageSize;
+		        request.setAttribute("currentPage", new Integer(currentPage));
+		        request.setAttribute("startRow", new Integer(startRow));
+		        request.setAttribute("endRow", new Integer(endRow));
+		        request.setAttribute("count", new Integer(count));
+		        request.setAttribute("pageSize", new Integer(pageSize));
+				request.setAttribute("number", new Integer(number));
+				request.setAttribute("productList", productList);
+				request.setAttribute("pageNum", pageNum);
+			
+			return "/productSoft/productSoft_List";
+	}
+	
+	
 	}
 
 

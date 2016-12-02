@@ -13,7 +13,7 @@
 	
 			<script>
 			function categoryChange(category){
-				window.location="/gw4/board_ListPro.do?category_code="+category;
+				window.location="/gw4/board_List.do?category_code="+category;
 	
 			}
 		</script>
