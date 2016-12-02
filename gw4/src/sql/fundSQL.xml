@@ -52,7 +52,14 @@
 		fund_withdraw=#fund_withdraw#,fund_balance=#fund_balance# where fund_code=#fund_code#
 	</update>
 	
-	<select id="fundSelectDays" resultClass="fundVo" parameterClass="java.util.HashMap">
-		<![CDATA[select * from fund where fund_days >= #fund_days# and fund_days <= #fund_day#]]>
+	<select id="fundSelectDays" resultClass="gw.fund.FundJoinVO" parameterClass="java.util.HashMap">
+		<![CDATA[select fund_code,f.dept_code,dept_name,f.po_code,po_name,f.emp_code,emp_name,
+			fund_division,fund_days,fund_day,fund_item,fund_briefs,fund_account,fund_deposit,
+			fund_withdraw,fund_balance
+			from department d, employee e, position p, fund f
+			where f.dept_code = d.dept_code
+			and f.po_code = p.po_code
+			and f.emp_code = e.emp_code
+			and fund_days >= #fund_days# and fund_days <= #fund_day#]]>
 	</select>
 </sqlMap>
