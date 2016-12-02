@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+
+	<typeAlias alias="approvalVo" type="gw.approval.ApprovalVO" />
+	
+	<select id="approvalList" resultClass="gw.approval.ApprovalJoinVO">
+		select approval_code,a.dept_code,dept_name,a.po_code,po_name,a.emp_code,emp_name,
+		approval_title,approval_content,approval_days,approval_member,approval_day
+		from department d, position p, employee e, approval a
+		where a.dept_code = d.dept_code
+		and a.po_code = p.po_code
+		and a.emp_code = e.emp_code
+	</select>
+	
+	<select id="approvalSelectAll" resultClass="gw.employee.EmployeeVO">
+		select * from employee
+	</select>
+	
+	<select id="approvalSelect" resultClass="gw.employee.EmployeeJoinVO">
+		select emp_code,e.dept_code,dept_name,e.po_code,po_name,emp_name,emp_jumin,
+		emp_birth,emp_phone,emp_email,emp_acability,emp_career,emp_join,emp_bank,emp_acnum
+		from department d, employee e, position p
+		where e.dept_code = d.dept_code
+		and e.po_code = p.po_code
+		and emp_code = #emp_code#
+	</select>
+	
+	<insert id="approvalDiningPro" parameterClass="approvalVo">
+		insert into approval(approval_code,dept_code,po_code,emp_code,
+		approval_title,approval_content,approval_days,approval_member,approval_day)
+		values(approval_code_seq.nextval,#dept_code#,#po_code#,#emp_code#,
+		#approval_title#,#approval_content#,#approval_days#,#approval_member#,#approval_day#)
+	</insert>
+	
+	<select id="approvalSelectDining" resultClass="gw.approval.ApprovalJoinVO" parameterClass="String">
+		select approval_code,a.dept_code,dept_name,a.po_code,po_name,a.emp_code,emp_name,
+		approval_title,approval_content,approval_days,approval_member,approval_day
+		from department d, position p, employee e, approval a
+		where a.dept_code = d.dept_code
+		and a.po_code = p.po_code
+		and a.emp_code = e.emp_code
+		and approval_code = #approval_code#
+	</select>
+	
+	<delete id="approvalDelete" parameterClass="String">
+		delete from approval where approval_code=#approval_code#
+	</delete>
+</sqlMap>
