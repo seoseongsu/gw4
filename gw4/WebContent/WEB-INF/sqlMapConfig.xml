@@ -15,5 +15,5 @@
 	<sqlMap resource="/sql/commuteSQL.xml"/>
 	<sqlMap resource="/sql/productSQL.xml"/>
 	<sqlMap resource="/sql/approvalSQL.xml"/>
-	<sqlMap resource="/sql/ProductSoftSQL.xml"/>
+
 </sqlMapConfig>

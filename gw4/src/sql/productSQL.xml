@@ -42,18 +42,7 @@
 			<delete id="productDelete" parameterClass="int">
 				delete from hw_product where product_num=#product_num#
 			</delete>
-		
-		<!--  soft 소프트 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ    -->	
 
-	
-	
-	<insert id="SW_productSoftInsert" parameterClass="productSoftVO">
-				insert into sw_product
-				(product_num,sw_product_code,product_name,product_divide,product_note,product_posesion,product_type,product_quantity,product_in,product_out,product_register_day) 
-				values
-				(SWproduct_seq.NEXTVAL,#sw_product_code#,#product_name#,#product_divide#,#product_note#,#product_posesion#,#product_type#,#product_quantity#,#product_in#,#product_out#,sysdate)
-			</insert>
-			
 
 			
 			
