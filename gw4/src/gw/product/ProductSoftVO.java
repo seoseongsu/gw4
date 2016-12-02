@@ -17,7 +17,9 @@ public class ProductSoftVO {
  	private Timestamp product_register_day; //등록날짜
  	private String product_rona_day; // 출고 날짜
  	private String product_return_day; // 입고 날짜
-	public int getProduct_num() {
+	
+ 	
+ 	public int getProduct_num() {
 		return product_num;
 			}
 			public void setProduct_num(int product_num) {

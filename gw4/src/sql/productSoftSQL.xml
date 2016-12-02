@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="productSoft">
+	
+	<typeAlias alias="productSoftVO" type="gw.product.ProductSoftVO"/>
+	
+	
+		<select id="productdSoftAll" resultClass="productSoftVO" parameterClass="java.util.HashMap">
+		<![CDATA[
+			select product_num,hw_product_code,product_name,product_divide,product_note,product_posesion,product_type,product_quantity,product_in,product_out,product_register_day,product_rona_day,product_return_day
+			from 
+			(select product_num,hw_product_code,product_name,product_divide,product_note,product_posesion,product_type,product_quantity,product_in,product_out,product_register_day,product_rona_day,product_return_day,rownum r
+			from 
+			(select product_num,hw_product_code,product_name,product_divide,product_note,product_posesion,product_type,product_quantity,product_in,product_out,product_register_day,product_rona_day,product_return_day
+			from hw_product order by product_num desc) ) where r >= #start# and r <= #end#
+			]]>
+			</select>
+	
+	
+	
+	<insert id="SW_productSoftInsert" parameterClass="productSoftVO">
+				insert into sw_product
+				(product_num,hw_product_code,product_name,product_divide,product_note,product_posesion,product_type,product_quantity,product_in,product_out,product_register_day) 
+				values
+				(SWproduct_seq.NEXTVAL,#hw_product_code#,#product_name#,#product_divide#,#product_note#,#product_posesion#,#product_type#,#product_quantity#,#product_in#,#product_out#,sysdate)
+			</insert>
+
+	
+	
+</sqlMap>

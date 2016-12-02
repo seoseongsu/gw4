@@ -20,19 +20,19 @@
 					<th></th>
 					
 				</tr>
-	<c:forEach var="productList" items="${productList}">
+	<c:forEach var="productList" items="${productSoftList}">
 				<tr align="center">
-					<td>${productList.product_type}</td>
-					<td>${productList.hw_product_code}</td>
-					<td>${productList.product_name}</td>
-					<td>${productList.product_in}</td>
-					<td>${productList.product_quantity}</td>
+					<td>${productSoftList.product_type}</td>
+					<td>${productSoftList.hw_product_code}</td>
+					<td>${productSoftList.product_name}</td>
+					<td>${productSoftList.product_in}</td>
+					<td>${productSoftList.product_quantity}</td>
 				
 					<td style="width:8%">
 					<input type="button" value="수정" 
-						 onclick="document.location.href='product_Modify.do?product_num=${productList.product_num}'">
+						 onclick="document.location.href='product_Modify.do?product_num=${productSoftList.product_num}'">
 					<input type="button" value="삭제"
-						 onclick="document.location.href='product_Delete.do?product_num=${productList.product_num}'">
+						 onclick="document.location.href='product_Delete.do?product_num=${productSoftList.product_num}'">
 					</td>						
 
 				</tr>			

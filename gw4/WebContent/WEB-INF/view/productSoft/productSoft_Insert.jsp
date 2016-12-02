@@ -8,33 +8,33 @@
 <title>물품 관리</title>
 </head>
 <body>
-<b><center/>Hard Ware 등록</b><br /><br />
-<form method="post" name="productInsert" action="product_InsertPro.do">
+<b><center/>Soft Ware 등록</b><br /><br />
+<form method="post" name="productInsert" action="productSoft_InsertPro.do">
 	<table border ="1" cellspacing="0" cellpadding="0" width="500" align="center">
 	
 	
 		<tr>
 			
 			<th width="100">물품 분류</th>
-			<td><input type="text"  style="width:97%" value="Hard Ware" name="product_type"> </td>
+			<td><input type="text"  style="width:97%" value="Soft Ware" name="productSoft_type"> </td>
 		
 			
 			<th width="100">시리얼 번호</th>
-			<td colspan="2"width="300"><input style="width:97%" type="text" name="hw_product_code"></td>
+			<td colspan="2"width="300"><input style="width:97%" type="text" name="sw_product_code"></td>
 			
 		
 		<tr>
 			<th>물품 이름</th>
-			<td colspan="2"><input style="width:97%" type="text" name="product_name"></td>
+			<td colspan="2"><input style="width:97%" type="text" name="productSoft_name"></td>
 			<th >수 량</th>
-			<td width="100" ><input style="width:97%" type="text" name="product_quantity"></td>
+			<td width="100" ><input style="width:97%" type="text" name="productSoft_quantity"></td>
 			
 		</tr>
 		
 		<tr>
 		<th width="100">비고</th>
 		<td width="400" colspan="4">
-			<textarea rows="5" style="width:98%" name="product_note"></textarea>
+			<textarea rows="5" style="width:98%" name="productSoft_note"></textarea>
 			</td>
 			</tr>
 		<tr>
