@@ -304,11 +304,10 @@ div, section { display:block; }
 	width:100%;
 	height:auto;
 	overflow:hidden;
-	background:url(images/sub_bg.jpg) center 0 no-repeat;
+	background:url(/gw4/images/sub_bg.jpg) center 0 no-repeat;
 }
-
 #sub_con_wrapper {
-	width:1552px;
+	width:1544px;
 	height:auto;
 	min-height:700px;      /*    좌우 border를 넣기 위해 최소 높이값 설정    */ 
 	overflow:hidden;
@@ -329,7 +328,7 @@ div, section { display:block; }
 	width:180px;
 	height:170px;
 	padding:50px 0 0 20px;
-	background:url(images/left_title_bg.jpg) no-repeat;
+	background:url(/gw4/images/left_title_bg.jpg) no-repeat;
 }
 
 #left_title > span {
@@ -400,7 +399,7 @@ div, section { display:block; }
 }
 
 #right_header {
-	height:120px;
+	height:130px;
 	padding-top:40px;
 	border-bottom:2px solid #ccc;
 }

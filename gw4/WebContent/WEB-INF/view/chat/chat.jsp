@@ -33,7 +33,7 @@
 
 var xmlHttp;
 	$(document).ready(function() {
-		var socket = io.connect("http://192.168.10.156:12345");  //서버연결 
+		var socket = io.connect("http://192.168.0.2:12345");  //서버연결 (서버연결한 ip를 적는다)
 		
 		socket.on('in',function(inmsg){
 			
@@ -179,13 +179,13 @@ $(document).ready(function(){
                   고객과의 신뢰를<br>최고로 여기는 기업
                </span>
                <h2>
-                  회사소개
+              메신저
                </h2>
             </div>
             
             <ul>
-               <a class="active" href="#">메일<i class="fa fa-chevron-right"></i></a>   
-               <a href="/gw4/chat/chat.do">메신저<i class="fa fa-chevron-right"></i></a>          
+               <a href="#">메일<i class="fa fa-chevron-right"></i></a>   
+               <a class="active" href="/gw4/chat/chat.do">메신저<i class="fa fa-chevron-right"></i></a>          
             </ul>
          </div>
          <div id="right_wrapper">
