@@ -8,8 +8,21 @@
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <link rel="stylesheet" href="#" />
+<script language="javaScript">
+function checkIt(){
+	var days = eval("document.fundDays");
+	var str = days.fund_days.value;
+	var fund_days = str.charAt(str.length - 1);
+	if(!days.fund_days.value){
+		alert("처음 조회날짜를 정해주세요");
+		return false;
+	}else if(!days.fund_day.value){
+		alert("마지막 조회날짜를 정해주세요");
+		return false;
+	}
+}
+</script>
 <script>
-
 $(function(){
 	$("#fund_days").datepicker({
 		dateFormat: 'yy - mm - dd',
@@ -49,7 +62,7 @@ function fundDelete(a){
 		</tr>
 	</table>
 	<table>
-		<form method="get" action="fundDays.do" name="fundDays" >
+		<form method="get" action="fundDays.do" name="fundDays" onSubmit="return checkIt()">
 			<tr><input type="text" id="fund_days" name="fund_days"> 일정별 조회<input type="text" id="fund_day" name="fund_day"></tr>
 			<tr><input type="submit" value="조회하기"></tr>
 		</form>

@@ -8,6 +8,20 @@
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <link rel="stylesheet" href="#" />
+<script language="javaScript">
+function checkIt(){
+	var days = eval("document.salaryDays");
+	var str = days.salary_days.value;
+	var salary_days = str.charAt(str.length - 1);
+	if(!days.salary_days.value){
+		alert("처음 조회날짜를 정해주세요");
+		return false;
+	}else if(!days.salary_day.value){
+		alert("마지막 조회날짜를 정해주세요");
+		return false;
+	}
+}
+</script>
 <script>
 $(function(){
 	$("#salary_days").datepicker({
@@ -46,7 +60,7 @@ function salaryDelete(a){
 		</tr>
 	</table>
 	<table>
-		<form method="get" action="salaryDays.do" name="salaryDays" >
+		<form method="get" action="salaryDays.do" name="salaryDays" onSubmit="return checkIt()">
 			<tr><input type="text" id="salary_days" name="salary_days"> 일정별 조회<input type="text" id="salary_day" name="salary_day"></tr>
 			<tr><input type="submit" value="조회하기"></tr>
 		</form>
