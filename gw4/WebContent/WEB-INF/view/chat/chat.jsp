@@ -179,8 +179,8 @@ $(document).ready(function(){
 			<tr>
 				<td>
 					<textarea  name="massage" id="masseage"   cols="100"  rows="15" onKeyDown="setLine( this )"  readonly="readonly"  class="textarea_size"  ></textarea> <br />
-					<input type="hidden" name="userin" value="${list.dto.emp_name}"/>
-					<input type="hidden" name="userout" value="${list.dto.emp_name}"/>
+					<input type="hidden" name="userin" value="${list.emp_name}"/>
+					<input type="hidden" name="userout" value="${list.emp_name}"/>
 					<input type="text" name="uesrid" id="id" size="7"   readonly="readonly"  value="${sessionScope.emp_name}" onkeydown="chkEnter()"/>
 					<input type="text"  name="chat" id="chat"  value="" onkeydown="chkEnter()" onfocus="sa();"/>
 					<input type="button"  value="전송" id="sendBtn" />
