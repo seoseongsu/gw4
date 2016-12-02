@@ -93,17 +93,17 @@ $(document).ready(function(){
 							<ul>
 								<a href="#">정보조회</a>
 								<a href="#">정보수정</a>
-								<a href="#">근태현황</a>
+								<a href="/gw4/commute/comDay.do">근태현황</a>
 								<a href="#">일정관리</a>
-								<a href="#">업무관리</a>
-								<a href="#">조직도</a>
+								<a href="/gw4/bs/bsList.do">업무관리</a>
+								<a href="/gw4/dept/deptList.do">조직도</a>
 							</ul>
 							<ul>
-								<a href="#">사원관리</a>
-								<a href="#">급여관리</a>
-								<a href="#">회계장부</a>
-								<a href="#">근태관리</a>
-								<a href="#">H/W관리</a>
+								<a href="/gw4/emp/empList.do">사원관리</a>
+								<a href="/gw4/salary/salaryList.do">급여관리</a>
+								<a href="/gw4/fund/fundList.do">회계장부</a>
+								<a href="/gw4/commute/comList.do">근태관리</a>
+								<a href="/gw4/product_List.do">H/W관리</a>
 								<a href="#">S/W관리</a>
 							</ul>						
 							<ul>

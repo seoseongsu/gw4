@@ -308,7 +308,7 @@ div, section { display:block; }
 }
 
 #sub_con_wrapper {
-	width:1000px;
+	width:1552px;
 	height:auto;
 	min-height:700px;      /*    좌우 border를 넣기 위해 최소 높이값 설정    */ 
 	overflow:hidden;
@@ -382,7 +382,7 @@ div, section { display:block; }
 
 #right_wrapper {        /*     서브페이지의 컨텐츠 영역    */
 	float:right;
-	width:818px;
+	width:1362px;
 	height:auto;
 	min-height:700px;   /*    좌측 border를 넣기 위해 최소 높이값 설정    */ 
 	overflow:hidden;
@@ -400,7 +400,7 @@ div, section { display:block; }
 }
 
 #right_header {
-	height:240px;
+	height:120px;
 	padding-top:40px;
 	border-bottom:2px solid #ccc;
 }
