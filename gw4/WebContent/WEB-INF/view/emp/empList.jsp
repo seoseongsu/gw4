@@ -3,12 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]--> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>사원목록</title>
+<link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
+<link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
+<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
 <script>
 function deleteEvent(a){
 	if(confirm("정말 삭제하시겠습니까??")==true){
@@ -18,136 +18,8 @@ function deleteEvent(a){
 	}
 }
 </script>
-<link rel="stylesheet" href="/gw4/css/reset.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/gw4/css/style.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/gw4/css/grid.css" type="text/css" media="screen">  
-    <script src="js/jquery-1.6.3.min.js" type="text/javascript"></script>
-    <script src="js/cufon-yui.js" type="text/javascript"></script>
-    <script src="js/cufon-replace.js" type="text/javascript"></script>
-    <script src="js/NewsGoth_400.font.js" type="text/javascript"></script>
-	<script src="js/NewsGoth_700.font.js" type="text/javascript"></script>
-    <script src="js/NewsGoth_Lt_BT_italic_400.font.js" type="text/javascript"></script>
-    <script src="js/Vegur_400.font.js" type="text/javascript"></script> 
-    <script src="js/FF-cash.js" type="text/javascript"></script>
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js" ></script>
-<style>
-	@media screen and (max-width:700px){
-	 body{background-color:purple}
-	}
 
-	#nav{
-		list-style-type:none;
-		height:45px;
-		padding:6px 385px;
-		margin:0 auto;
-		background:#7d7d7d;
-		border-radius:0em;
-		text-align:center
-	}
-	
-	#nav li{
-		float:left;
-		position:relative;
-		margin:5px 10px;
-		padding:0;
-		margin-left:100px;
-	}
-	
-	#nav li a{
-		display:block;
-		font-family:"굴림";
-		font-weight: 600;
-		font-size: 1em;
-		padding:10px 20px;
-		color:#e7e5e5;
-		text-decoration:none;
-		margin:0;
-		border-radius:1.4em;
-		text-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
-	}
-	
-	#nav li:hover > a{
-		background:#ebebeb;
-		color:#444;
-		text-shadow:0 1px rgba(255,255,255,1);
-		border-radius:1.4em;
-		-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.2);
-		-moz-box-shadow:0 1px 1px rgba(0,0,0,0.2);
-	}
-	
-	#nav ul{
-	  margin:0 auto; 
-	  padding:0;
-	  list-style:none; 
-	  position: absolute; 
-	  left: 0; 
-	  top:45px;  
-	  width: 150px; 
-	  background:#ddd; 
-	  border:1px solid #b4b4b4; 
-	  border-radius:8px; 
-	  -webkit-box-shadow:0 1px 3px rgba(0,0,0,.3); 
-	  -moz-box-shadow:0 1px 3px rgba(0,0,0,.3);
-	  box-shadow:0 1px 3px rgba(0,0,0,.3);
-	  opacity: 0; 
-	  z-index:9999;
-	}
-	
-	#nav li:hover ul { 
-	opacity: 1; 
-  	}
-  
-	
-	#nav ul li{
-		float:none;
-		margin:0 auto;
-		padding:0;
-	}
-	
-	#nav ul a{
-		font-weight:normal;
-		text-shadow:0 1px 0 #fff;
-		color:#333;
-	}
-	
-	#nav ul li:hover a{
-		background:#0078ff;
-		color:#fff;
-		text-shadow:0 1px 1px rgba(0,0,0,0.1);
-		border-radius:0;
-	}
-	
-	#nav ul li:first-child > a{
-	-webkit-border-top-left-radius:8px;   
-	-moz-border-radius-topleft:8px;   
-	-webkit-border-top-right-radius:8px;
-	-moz-border-radius-topright:8px;
-	}
-	
-	#nav ul li:last-child > a{
-	-webkit-border-bottom-left-radius:8px;   
-  	-moz-border-radius-bottomleft:8px;   
-  	-webkit-border-bottom-right-radius:px;
-  	-moz-border-radius-bottomright:8px;
-	}
-	#box {
-    position: relative;
-    height: auto;
-    margin: auto; <!-- 레이아웃을 싸고 있는 box의 margin을 auto로 주면 중앙정렬 효과-->
-    background-color: #F90;
-	}
-	#main2 {
-    background-color: white;
-    float: left;
-    height: 700px;
-    width: 90%;
-    position: relative;
-	}
-	#mainLoginForm{
-	padding-top: 17px;
-	}
-	
-	
+<style>
 	/*성수야, 아까 말한게~ line 266번째에 테이블 class지정하고, tr이랑 td에 해당하는 CSS를 지정해주면 가능하다는 건뎅
 	이렇게 해서 맘에 들런지 모르겠당~ 힘내~ */
 	#border_table{
@@ -168,84 +40,55 @@ function deleteEvent(a){
 </head>
 
 <body>
-<div class="extra">
-    	<!--==============================header=================================-->
-        <header>
-        	<div class="row-top">
-            	<div class="main">
-                	<div class="wrapper">
-                    	<h1><a href="http://localhost:8080/gw4/main/main.do"></a></h1>
-                        <c:if test="${sessionScope.memId != null}">
-                        <div id="mainLoginForm">
-                        <form name="inform" method="post" action="/gw4/main/logout.do" >
-                        <table width=250 cellpadding="0" cellspacing="0"  align="right" border="1">
-	                        <tr>
-	                        	<td bgcolor="171717" width="125px" align="center">
-	                        	<img src="/gw4/images/employee.jpg" width="75px"></td>
-	                        	<td width="100" bgcolor="171717" align="center" >
-	                        	<font size="5" color="white">사원코드</font>
-	                        	<br />
-	                        	<br />
-	                        	<font size="5" color="white">${sessionScope.memId}</font>
-	                        	</td>
-	                        </tr>
-	                        <tr>
-	                        	<td colspan="2" bgcolor="171717" align="center" style="width=20px; height=10px">
-	                        	<a href="/gw4/main/logout.do" class="myButton">로그아웃</a></td>
-	                        </tr>
-                        </table>
-						</form>
-						</div>
-               			</c:if>
-           			</div>
-				</div>
-			</div>
-		</header>
-		<!--==============================menu=================================-->
-	<div>
-		<ul id="nav">
-			<li><a href='#'>전자결재</a>
-				<ul>
-					<li><a href="#">기안서작성</a></li>
-					<li><a href="#">올린결재</a></li>
-					<li><a href="#">받은결재</a></li>
-					<li><a href="#">양식관리</a></li>
-				</ul></li>
+<jsp:include page="/layout/header.jsp" />  
 
-				<li><a href='#'>개인정보</a>
-					<ul>
-						<li><a href='#'>정보조회</a></li>
-						<li><a href='#'>정보수정</a></li>
-						<li><a href='#'>근태현황</a></li>
-						<li><a href='#'>일정관리</a></li>
-						<li><a href='#'>조직도</a></li>
-						<li><a href='#'>업무관리</a></li>
-					</ul></li>
-				<li><a href='#'>인사관리</a>
-					<ul>
-						<li><a href='/gw4/emp/empList.do'>사원정보관리</a></li>
-						<li><a href='#'>급여관리</a></li>
-						<li><a href='#'>회계관리</a></li>
-						<li><a href='#'>장비관리</a></li>
-						<li><a href='#'>S/W관리</a></li>
-						<li><a href='#'>근태관리</a></li>
-					</ul></li>
-				<li><a href='#'>커뮤니티</a>
-					<ul>
-						<li><a href='#'>메일</a></li>
-						<li><a href='#'>쪽지</a></li>
-						<li><a href='#'>메신저</a></li>
-					</ul></li>
-				<li><a href='#'>게시판</a></li>
-			</ul>
-		</div>
-		<!--==============================main=================================-->
-		<section id="content">
-			<div class="content-bg">
-				<div class="main">
-					 <div class="container_12">
-					 	<div class="wrapper">
-					 		 	<h3>사원정보관리</h3>
+   <div id="sub_wrapper">
+      <div id="sub_con_wrapper">
+         <div id="left_wrapper">
+            <div id="left_title">
+               <span>
+                  고객과의 신뢰를<br>최고로 여기는 기업
+               </span>
+               <h2>
+                  회사소개
+               </h2>
+            </div>
+            
+            <ul>
+               <a class="active" href="sub0101.html">CEO인사말<i class="fa fa-chevron-right"></i></a>   
+               <a href="#">회사연혁<i class="fa fa-chevron-right"></i></a>         
+               <a href="#">경영이념<i class="fa fa-chevron-right"></i></a>
+               <a href="#">조직도<i class="fa fa-chevron-right"></i></a>         
+               <a href="#">협력업체<i class="fa fa-chevron-right"></i></a>         
+            </ul>
+         </div>
+         <div id="right_wrapper">
+            <div id="right_path">
+               <h5><i class="fa fa-home"></i>&nbsp; > 회사소개 > CEO Message</h5>
+            </div>
+            
+            <div id="right_header">
+               <h1>CEO Message</h1>
+               <h2>앞선 기술력과 뛰어난 혁신으로<br>고객 여러분께 최고의 경험을 선물합니다.</h2>
+            </div>
+            
+            <p>
+               고객 여러분 안녕하십니까? <br>
+               저희 홈페이지를 방문해주셔서 감사합니다. <br><br>
+               저희 DAVE COMPANY 주식회사는 지난 수년간의 노력과 시행착오를 통해 고객님들과 더불어 성장하였습니다.<br><br>
+               관련업계의 경쟁이 점점 더 격화되고 있는 상황에서도 고객을 먼저 생각하는 정신을 바탕으로 성공하여 이목을 집중시켰습니다.<br><br>
+               DAVE COMPAN 주식회사는 선진화된 기술과 장비로 국내는 물론 세계를 무대로 발전해 나갈것이며, 항상 최고의 품질과 서비스 정신을 최우선으로 남보다 한걸음 더 앞서 나갈것을 약속드립니다. <br><br>
+
+            </p>
+            <p>
+               DAVE COMPANY 주식회사는 미래 사업들을 선도적으로 수행하는 자회사들의 시너지 효과가 극대화될 수 있도록 효과적으로 관리하고 긴밀히 지원하면서 그룹 전체의 안정 기틀을 다졌습니다.<br><br>
+               지금까지 DAVE COMPANY 주식회사를 믿고 성원해주신 고객 여러분께 진심으로 감사드리며, 앞으로도 우리 DAVE COMPANY 주식회사는 여러분과 함께 국가산업 발전과 인류의 번영에 지속적으로 공헌하는 기업이 될 것을 약속드립니다. <br><br>
+               고객 여러분의 지속적인 격려와 성원을 부탁드립니다.<br><br>
+               감사합니다.<br><br>
+            </p>
+         </div>
+      </div>
+   </div>
 	<c:if test="${count == 0 }">
 	<table align="center">
 		<tr>
@@ -298,30 +141,6 @@ function deleteEvent(a){
 			</c:forEach>
 		</table>
 	</c:if>	
-	
-						</div>
-					</div>
-				</div>
-				<div class="block"></div>
-			</div>
-		</section>
-	</div>
-	<!--==============================footer=================================-->
-    <footer>
-        <div class="padding">
-            <div class="main">
-                <div class="container_12">
-                    <div class="wrapper">
-                        <article class="grid_8">
-
-                            <p class="p1">EYTime.com &copy; 2016 </p>
-                            <p class="p1"><a class="link" target="_blank" href="#" rel="nofollow">groupware Website </a></p>
-                            <p class="p1">Professional groupware website <a href="#" target="_blank"></a>.- groupware for websites. </p>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+	<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>

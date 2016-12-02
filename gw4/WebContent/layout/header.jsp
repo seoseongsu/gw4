@@ -63,7 +63,7 @@ $(document).ready(function(){
 	
 	<div id="header_wrapper">
 		<div id="header_con_wrapper">
-			<a id="logo" href="main.do">
+			<a id="logo" href="../main/main.do">
 				<span>EYTime</span>COMPANY
 			</a>
 			

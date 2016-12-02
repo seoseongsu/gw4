@@ -10,7 +10,7 @@
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="/layout/header.jsp" /> 
 
 <div id="main_wrapper">
 		<!-- 메인 슬라이드 시작 -->
@@ -44,6 +44,6 @@
 		</div><!-- End #bottom_con_wrapper -->
 	</div><!-- End #bottom_wrapper -->
 
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>
