@@ -105,40 +105,6 @@
 </head>
  
 <body>
-<jsp:include page="/layout/header.jsp" />  
-
-   <div id="sub_wrapper">
-      <div id="sub_con_wrapper">
-         <div id="left_wrapper">
-            <div id="left_title">
-               <span>
-                  고객과의 신뢰를<br>최고로 여기는 기업
-               </span>
-               <h2>
-                  회사소개
-               </h2>
-            </div>
-            
-            <ul>
-                <a href="/gw4/emp/empList.do">정보조회<i class="fa fa-chevron-right"></i></a>   
-               <a href="/gw4/salary/salaryList.do">정보수정<i class="fa fa-chevron-right"></i></a>         
-               <a href="/gw4/fund/fundList.do">근태현황<i class="fa fa-chevron-right"></i></a>
-               <a href="/gw4/commute/comList.do">일정관리<i class="fa fa-chevron-right"></i></a>         
-               <a class="active" href="/gw4/product_List.do">업무관리<i class="fa fa-chevron-right"></i></a>          
-               <a href="#">조직도<i class="fa fa-chevron-right"></i></a>      
-            </ul>
-         </div>
-         <div id="right_wrapper">
-            <div id="right_path">
-               <h5><i class="fa fa-home"></i>&nbsp; > 개인정보 > 업무관리</h5>
-            </div>
-            
-            <div id="right_header">
-               <h1>업무 관리</h1>
-            </div>
-
-
-
 <form method="get" action="bsInsertPro.do" name="bs">
 	<table id="border_table" border="1" style="width:720px;">
 		<tr><td colspan="6"><strong>기본정보</strong></td></tr>
@@ -227,12 +193,5 @@
 	    </tr>
 	</table>
 </form>
-
-
-         </div>
-      </div>
-   </div>
-	
-<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>

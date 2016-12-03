@@ -24,7 +24,6 @@
             
             <ul>
                <a class="active" href="/gw4/my/myView.do">정보조회<i class="fa fa-chevron-right"></i></a>   
-               <a href="/gw4/my/myUpdate.do">정보수정<i class="fa fa-chevron-right"></i></a>         
                <a href="/gw4/commute/comDay.do">근태현황<i class="fa fa-chevron-right"></i></a>
                <a href="#">일정관리<i class="fa fa-chevron-right"></i></a>         
                <a href="/gw4/bs/bsList.do">업무관리<i class="fa fa-chevron-right"></i></a>          
@@ -43,95 +42,66 @@
 
 
   <table width="600" border="1" cellspacing="0" cellpadding="3" align="center" >
+  	<tr>
+  	<td colspan="2">
+  		<input type="button" value="수정" onclick="javascript:window.open('myUpdate.do?','new','left=50, top=50, width=700, height=500')">
+  	</td>
+  	</tr>
     <tr> 
     <td colspan="2" height="39" align="center">
        <font size="+1" ><b>나의 사원 정보</b></font></td>
     </tr>
     <tr> 
-      <td width="200"> 사원번호</td>
-      <td width="400" > 
-        ${empVo.emp_code }
-      </td>
+      <td> 사원번호</td>
+      <td>${empVo.emp_code }</td>
     </tr>
     <tr> 
-      <td width="200"> 비밀번호</td>
-      <td width="400" > 
-        <input type="password" name="emp_passwd" size="15" maxlength="12" value="${empVo.emp_passwd }">
-      </td>
-    </tr>
-    <tr> 
-      <td width="200">이름</td>
-      <td width="400"> 
-        <input type="text" name="emp_name" size="15" maxlength="10" value="${empVo.emp_name }">
-      </td>
+      <td>이름</td>
+      <td>${empVo.emp_name }</td>
     </tr>
     <tr>
       <td>부서</td>
-      <td>
-	      <select name="dept_code">
-	      	<c:forEach var="deptList" items="${deptList }">
-	      		<c:choose>
-		      		<c:when test="${deptList.dept_higher eq null}">
-		      			<option value ="${deptList.dept_code }" ${deptList.dept_code == empVo.dept_code ? 'selected="selected"' : '' }>${deptList.dept_name }</option>
-		      		</c:when>
-		      		<c:otherwise>
-		      			<option value ="${deptList.dept_code }" ${deptList.dept_code == empVo.dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_name }</option>
-		      		</c:otherwise>
-	      		</c:choose>
-	      	</c:forEach>
-	      </select>
-      </td>
+      <td>${empVo.dept_name}</td>
     </tr>
     <tr>
       <td>직급</td>
-      <td><select name="po_code">
-	      	<c:forEach var="poList" items="${poList }">
-	      		<option value ="${poList.po_code }"${poList.po_code == empVo.po_code ? 'selected="selected"' : '' }>${poList.po_name }</option>
-		    </c:forEach>
-	      </select></td>
+      <td>${empVo.po_name}</td>
     </tr>
     <tr>
       <td>주민번호</td>
-      <td><input type="text" name="emp_jumin" value="${empVo.emp_jumin }"><font size="2" color="red">*</font></td>
+      <td>${empVo.emp_jumin }</td>
     </tr>
     <tr>
       <td>생년월일</td>
-      <td><input type="text" id="emp_birth" name="emp_birth" value="${empVo.emp_birth }"></td>
+      <td>${empVo.emp_birth }</td>
     </tr>
     <tr>
       <td>연락처</td>
-      <td><input type="text" name="emp_phone" value="${empVo.emp_phone }"></td>
+      <td>${empVo.emp_phone }</td>
     </tr>
     <tr>
       <td>이메일</td>
-      <td>
-        <input type="text" name="emp_email" value="${empVo.emp_email }">
-      </td>
+      <td>${empVo.emp_email }</td>
     </tr>
     <tr>
       <td>최종학력</td>
-      <td><input type="text" name="emp_acability" value="${empVo.emp_acability }"></td>
+      <td>${empVo.emp_acability}</td>
     </tr>
     <tr>
       <td>경력</td>
-      <td><input type="text" name="emp_career" value="${empVo.emp_career }"></td>
+      <td>${empVo.emp_career }년</td>
     </tr>
     <tr>
       <td>입사일자</td>
-      <td><input type="text" id="emp_join" name="emp_join" value="${empVo.emp_join }"></td>
+      <td>${empVo.emp_join }</td>
     </tr>
     <tr>
       <td>은행명</td>
-      <td><input type="text" name="emp_bank" value="${empVo.emp_bank }"></td>
+      <td>${empVo.emp_bank }은행</td>
     </tr>
     <tr>
       <td>계좌번호</td>
-      <td><input type="text" name="emp_acnum" value="${empVo.emp_acnum }"></td>
-    </tr>
-    <tr> 
-      <td colspan="2" align="center"> 
-          <input type="submit" value="수정">
-      </td>
+      <td>${empVo.emp_acnum }</td>
     </tr>
   </table>
   

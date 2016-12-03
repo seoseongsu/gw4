@@ -80,7 +80,7 @@ $(function(){
     </tr>
     <tr>
       <td>주민번호</td>
-      <td><input type="text" name="emp_jumin"><font size="2" color="red">*</font></td>
+      <td><input type="text" name="emp_jumin"></td>
     </tr>
     <tr>
       <td>생년월일</td>

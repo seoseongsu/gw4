@@ -35,7 +35,7 @@ $(function(){
 </script>
 </head>
 <body>
-<form method="get" action="empUpdatePro.do" name="userinput" onSubmit="return checkIt()">
+<form method="get" action="myUpdatePro.do" name="userinput" onSubmit="return checkIt()">
   <table width="600" border="1" cellspacing="0" cellpadding="3" align="center" >
     <input type="hidden" name="emp_code" value="${empVo.emp_code }" />
     <tr> 
@@ -87,7 +87,7 @@ $(function(){
     </tr>
     <tr>
       <td>주민번호</td>
-      <td><input type="text" name="emp_jumin" value="${empVo.emp_jumin }"><font size="2" color="red">*</font></td>
+      <td><input type="text" name="emp_jumin" value="${empVo.emp_jumin }"></td>
     </tr>
     <tr>
       <td>생년월일</td>
@@ -136,7 +136,7 @@ $(function(){
 function goSubmit() {
     window.opener.name = "parentPage"; // 부모창의 이름 설정
     document.userinput.target = "parentPage"; // 타켓을 부모창으로 설정
-    document.userinput.action = "/gw4/emp/empUpdatePro.do";
+    document.userinput.action = "/gw4/my/myUpdatePro.do";
     document.userinput.submit();
     self.close();
 }

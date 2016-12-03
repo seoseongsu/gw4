@@ -37,14 +37,13 @@ $(function(){
                   회사소개
                </h2>
             </div>
-            
             <ul>
-               <a href="/gw4/emp/empList.do">사원관리<i class="fa fa-chevron-right"></i></a>   
-               <a href="/gw4/salary/salaryList.do">급여관리<i class="fa fa-chevron-right"></i></a>         
-               <a href="/gw4/fund/fundList.do">회계장부<i class="fa fa-chevron-right"></i></a>
-               <a class="active" href="/gw4/commute/comList.do">근태관리<i class="fa fa-chevron-right"></i></a>         
-               <a href="/gw4/product_List.do">H/W관리<i class="fa fa-chevron-right"></i></a>          
-               <a href="#">S/W관리<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/my/myView.do">정보조회<i class="fa fa-chevron-right"></i></a>   
+               <a href="/gw4/my/myUpdate.do">정보수정<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/commute/comDay.do">근태현황<i class="fa fa-chevron-right"></i></a>
+               <a href="#">일정관리<i class="fa fa-chevron-right"></i></a>         
+               <a class="active" href="/gw4/bs/bsList.do">업무관리<i class="fa fa-chevron-right"></i></a>          
+               <a href="/gw4/dept/deptList.do">조직도<i class="fa fa-chevron-right"></i></a>   
             </ul>
          </div>
          <div id="right_wrapper">

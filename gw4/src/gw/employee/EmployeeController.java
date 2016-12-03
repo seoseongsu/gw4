@@ -84,16 +84,36 @@ public class EmployeeController {
 	@RequestMapping("/my/myView.do")
 	public String myView(HttpServletRequest request, HttpSession session){
 		String emp_code = (String)session.getAttribute("memId");
+		
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+
+		request.setAttribute("empVo", empVo);
+		return "/my/myView";
+	}
+	
+	@RequestMapping("/my/myUpdate.do")
+	public String myUpdate(HttpServletRequest request, HttpSession session){
+		String emp_code = (String)session.getAttribute("memId");
 		List deptList = null; 
 		List poList = null; 
 		
 		EmployeeVO empVo = (EmployeeVO) sqlMap.queryForObject("emp.empSelectUp", emp_code);
+		EmployeeJoinVO empJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+		
 		deptList = sqlMap.queryForList("dept.deptSelectAll", null);
 		poList = sqlMap.queryForList("po.poSelectAll", null);
 
+		
 		request.setAttribute("empVo", empVo);
+		request.setAttribute("empJoinVo", empJoinVo);
 		request.setAttribute("deptList", deptList);
 		request.setAttribute("poList", poList);
-		return "/my/myView";
+		return "/my/myUpdate";
+	}
+	
+	@RequestMapping("/my/myUpdatePro.do")
+	public String myUpdatePro(HttpServletRequest request, EmployeeVO vo){
+		sqlMap.update("emp.empUpdate", vo);
+		return "/my/myUpdatePro";
 	}
 }

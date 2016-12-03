@@ -92,7 +92,6 @@ $(document).ready(function(){
 							</ul>
 							<ul>
 								<a href="/gw4/my/myView.do"">정보조회</a>
-								<a href="/gw4/my/myUpdate.do"">정보수정</a>
 								<a href="/gw4/commute/comDay.do">근태현황</a>
 								<a href="#">일정관리</a>
 								<a href="/gw4/bs/bsList.do">업무관리</a>
