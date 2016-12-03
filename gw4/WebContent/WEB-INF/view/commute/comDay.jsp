@@ -6,21 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>근태등록</title>
-
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-<script>
-$(function(){
-	$("#searchDate").datepicker({
-		dateFormat: 'yy-mm-dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
+<script language="JavaScript">
+    function checkIt() {
+        if(!document.comSearch.searchDate.value) {
+            alert("기간을 선택하세요");
+            return false;
+        }
+    }
 </script>
 </head>
 <body>
@@ -39,10 +32,9 @@ $(function(){
             </div>
             <ul>
                <a href="/gw4/my/myView.do">정보조회<i class="fa fa-chevron-right"></i></a>   
-               <a href="/gw4/my/myUpdate.do">정보수정<i class="fa fa-chevron-right"></i></a>         
-               <a href="/gw4/commute/comDay.do">근태현황<i class="fa fa-chevron-right"></i></a>
+               <a class="active" href="/gw4/commute/comDay.do">근태현황<i class="fa fa-chevron-right"></i></a>
                <a href="#">일정관리<i class="fa fa-chevron-right"></i></a>         
-               <a class="active" href="/gw4/bs/bsList.do">업무관리<i class="fa fa-chevron-right"></i></a>          
+               <a href="/gw4/bs/bsList.do">업무관리<i class="fa fa-chevron-right"></i></a>          
                <a href="/gw4/dept/deptList.do">조직도<i class="fa fa-chevron-right"></i></a>   
             </ul>
          </div>
@@ -56,13 +48,13 @@ $(function(){
             </div><br><br>
 
 <h2>일일근태등록</h2>
-<form name="comSearch" action="/gw4/commute/comSearch.do" >
+<form name="comSearch" action="/gw4/commute/comSearch.do" onSubmit="return checkIt()">
 <table border="1" width="80%">
 	<input type="hidden" name="emp_code" value="${emp_code }" />
 	<tr>
 		<td>
 			* 근무일자 &nbsp;&nbsp;&nbsp;
-			<input type="text" name="searchDate" id="searchDate"/>
+			<input type="text" name="searchDate" id="searchDate"  onclick="fnPopUpCalendar(searchDate,searchDate,'yyyy-mm-dd')"/>
 		</td> 
 		<td>
 			<input type="submit" value="검색" />

@@ -6,35 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>근태검색</title>
-<link href="style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-<link rel="stylesheet" href="#" />
-<script>
-$(function(){
-	$("#searchDate1").datepicker({
-		dateFormat: 'yy-mm-dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
-</script>
-<script>
-$(function(){
-	$("#searchDate2").datepicker({
-		dateFormat: 'yy-mm-dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
-</script>
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 <script language="JavaScript">
     function checkIt() {
         if(!document.comListSh.searchDate1.value) {
@@ -88,8 +60,8 @@ $(function(){
 	<tr>
 		<td>
 			* 기간별검색 &nbsp;&nbsp;&nbsp;
-			<input type="text" name="searchDate1" id="searchDate1"/>~
-			<input type="text" name="searchDate2" id="searchDate2"/>
+			<input type="text" name="searchDate1" id="searchDate1" onclick="fnPopUpCalendar(searchDate1,searchDate1,'yyyy-mm-dd')"/>~
+			<input type="text" name="searchDate2" id="searchDate2" onclick="fnPopUpCalendar(searchDate2,searchDate2,'yyyy-mm-dd')"/>
 		</td>
 		<td>
 			<select name="dept_code" style="width:120px;height:23px;">

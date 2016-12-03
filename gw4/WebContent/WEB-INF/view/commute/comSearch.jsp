@@ -6,22 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>근태검색</title>
-<link href="style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-<link rel="stylesheet" href="#" />
-<script>
-$(function(){
-	$("#searchDate").datepicker({
-		dateFormat: 'yy-mm-dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
+<script language="JavaScript">
+    function checkIt() {
+        if(!document.comSearch.searchDate.value) {
+            alert("기간을 선택하세요");
+            return false;
+        }
+    }
 </script>
 </head>
 <body>
@@ -40,12 +32,11 @@ $(function(){
             </div>
             
             <ul>
-               <a href="/gw4/emp/empList.do">사원관리<i class="fa fa-chevron-right"></i></a>   
-               <a href="/gw4/salary/salaryList.do">급여관리<i class="fa fa-chevron-right"></i></a>         
-               <a href="/gw4/fund/fundList.do">회계장부<i class="fa fa-chevron-right"></i></a>
-               <a class="active" href="/gw4/commute/comList.do">근태관리<i class="fa fa-chevron-right"></i></a>         
-               <a href="/gw4/product_List.do">H/W관리<i class="fa fa-chevron-right"></i></a>          
-               <a href="#">S/W관리<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/my/myView.do">정보조회<i class="fa fa-chevron-right"></i></a>   
+               <a class="active" href="/gw4/commute/comDay.do">근태현황<i class="fa fa-chevron-right"></i></a>
+               <a href="#">일정관리<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/bs/bsList.do">업무관리<i class="fa fa-chevron-right"></i></a>          
+               <a href="/gw4/dept/deptList.do">조직도<i class="fa fa-chevron-right"></i></a>       
             </ul>
          </div>
          <div id="right_wrapper">
@@ -60,13 +51,13 @@ $(function(){
 
 
 <h2>나의 일일 근태 검색 : ${checkDay }</h2>
-<form name="comSearch" action="/gw4/commute/comSearch.do" >
+<form name="comSearch" action="/gw4/commute/comSearch.do" onSubmit="return checkIt()">
 <table border="1" width="80%">
 <input type="hidden" name="emp_code" value="${emp_code }" />
 	<tr>
 		<td>
 			* 근무일자 &nbsp;&nbsp;&nbsp;
-			<input type="text" name="searchDate" id="searchDate" value="${checkDay }"/>
+			<input type="text" name="searchDate" id="searchDate" value="${checkDay }" onclick="fnPopUpCalendar(searchDate,searchDate,'yyyy-mm-dd')"/>
 		</td> 
 		<td>
 			<input type="submit" value="검색" />
