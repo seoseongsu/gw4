@@ -6,78 +6,73 @@
 <head>
     <title>업무명세표등록</title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
-	<link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
-	<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
-    	$.noConflict();
-    	var j = jQuert;
     	
-        j(function() {
+        $(function() {
         	var count = 0;
-            j("#btnAddRow").on("click",function() {
+            $("#btnAddRow").on("click",function() {
                 // clone
-                j.trClone = j("#memberTable tr:last").clone().html();
-                j.newTr =j("<tr>"+j.trClone+"</tr>");
+                $.trClone = $("#memberTable tr:last").clone().html();
+                $.newTr =$("<tr>"+$.trClone+"</tr>");
  
                 // append
-               j("#memberTable").append(j.newTr);
+               $("#memberTable").append($.newTr);
                 
  				count++;
                 
                 //bb_main input text 추가
-                j.inputText = j(document.createElement("input"));
-                j.inputText.attr({
+                $.inputText = $(document.createElement("input"));
+                $.inputText.attr({
                     name : "bb_main"+count,
                     type : "text" ,
                     id : "bb_main"+count,
                     value : "bb_main"+count
                 });
-                j("#memberTable tr:last td:eq(0)").html("");
-                j("#memberTable tr:last td:eq(0)").append(j.inputText);
+                $("#memberTable tr:last td:eq(0)").html("");
+                $("#memberTable tr:last td:eq(0)").append($.inputText);
                 
              	//bb_status input text 추가
-                j.inputText = j(document.createElement("input"));
-                j.inputText.attr({
+                $.inputText = $(document.createElement("input"));
+                $.inputText.attr({
                     name : "bb_status"+count,
                     type : "text" ,
                     id : "bb_status"+count,
                     value : "bb_main"+count
                 });
-                j("#memberTable tr:last td:eq(1)").html("");
-                j("#memberTable tr:last td:eq(1)").append(j.inputText);
+                $("#memberTable tr:last td:eq(1)").html("");
+                $("#memberTable tr:last td:eq(1)").append($.inputText);
                 
               	//bb_time input text 추가
-                j.inputText = j(document.createElement("input"));
-                j.inputText.attr({
+                $.inputText = $(document.createElement("input"));
+                $.inputText.attr({
                     name : "bb_time"+count,
                     type : "text" ,
                     id : "bb_time"+count,
                     value : "bb_time"+count
                 });
-                j("#memberTable tr:last td:eq(2)").html("");
-                j("#memberTable tr:last td:eq(2)").append(j.inputText);
+                $("#memberTable tr:last td:eq(2)").html("");
+                $("#memberTable tr:last td:eq(2)").append($.inputText);
                 
               	//bb_product input text 추가
-                j.inputText = j(document.createElement("input"));
-                j.inputText.attr({
+                $.inputText = $(document.createElement("input"));
+                $.inputText.attr({
                     name : "bb_product"+count,
                     type : "text" ,
                     id : "bb_product"+count,
                     value : "bb_product"+count
                 });
-                j("#memberTable tr:last td:eq(3)").html("");
-                j("#memberTable tr:last td:eq(3)").append(j.inputText);
+                $("#memberTable tr:last td:eq(3)").html("");
+                $("#memberTable tr:last td:eq(3)").append($.inputText);
                 document.bs.count.value=count;
             });
  			
             //삭제
-             j("#btnDelRow").on("click",function(){ 
+            $("#btnDelRow").on("click",function(){ 
             	 if(count <= 0){
             		 alert("삭제 할 행이 없습니다.");
             	 }else{
-            		 j("#memberTable tr:last").remove();
+            		 $("#memberTable tr:last").remove();
             		 count--;
             	 }
             	 document.bs.count.value=count;
@@ -86,10 +81,6 @@
         });
         
     </script>
-    <style type="text/css">
-    	.a{width:200px; height:20px; text-align:left; padding-bottom:5px; float:left; margin:left:5px; layout:fixed;}
-    	.b{width:520px; height:20px; text-align:right; padding-bottom:5px; float:left; margin:left:5px; layout:fixed;}
-    </style>
     <style>
 		#border_table, #memberTable{
 		border: 1px solid;
@@ -101,7 +92,7 @@
 		border: 1px solid;
 		padding: 1px;
 		}
-</style>
+	</style>
 </head>
  
 <body>
@@ -158,7 +149,8 @@
 	    	<td colspan="6"><textarea name="bs_goal" style="resize: none;" rows="10" cols="98"></textarea></td>
 	    </tr>
 	</table>
-	<table id="border_table" border="1" style="width:720px;" style=border:hidden;>
+	<br>
+	<table id="border_table" border="1" style="width:720px;border:hidden;">
     	<tr>
 	    	<td>
 	    		<strong>업무내역</strong>
@@ -187,11 +179,22 @@
 	<table id="border_table" border="1" style="width:720px;">
 		<tr>
 	    	<td align="right">
-	    		<input type="submit" value="저장" onsubmit='return countCk();'/>
-	    		<input type="button" value="취소" onclick="javascript:window.location='bsList.do?emp_code=${emp_code}'"/>
+	    		<input type="submit" value="저장" onclick="goSubmit()"/>
+	    		<input type="button" value="취소" onclick="javascript:self.close()"/>
 	    	</td>
 	    </tr>
 	</table>
 </form>
 </body>
+
+
+<script type="text/javascript">
+function goSubmit() {
+    window.opener.name = "parentPage"; // 부모창의 이름 설정
+    document.bs.target = "parentPage"; // 타켓을 부모창으로 설정
+    document.bs.action = "/gw4/bs/bsInsertPro.do";
+    document.bs.submit();
+    self.close();
+}
+</script>
 </html>

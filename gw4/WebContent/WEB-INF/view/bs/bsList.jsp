@@ -89,13 +89,13 @@ function deleteEvent(a){
 				<td>${bsMyList.bs_ap }</td>
 				<td>${bsMyList.bs_date }</td>
 				<td>${bsMyList.bs_st }</td>
-				<td><input type="button" value="수정" onclick="location='bsUpdate.do?emp_code=${bsMyList.emp_code }&bs_code=${bsMyList.bs_code }'"/>
+				<td><input type="button" value="수정" onclick="javascript:window.open('bsUpdate.do?emp_code=${bsMyList.emp_code }&bs_code=${bsMyList.bs_code }','new','left=50, top=50, width=900, height=500')"/>
 				<input type="button" value="삭제" onclick="deleteEvent(${bsMyList.bs_code})"/></td>
 			</tr>
 			</c:forEach>
 			<tr>
 				<td colspan="6" align="right">
-					<input type="button" value="등록" onclick="location='bsInsert.do?emp_code=${emp_code}'"/>
+					<input type="button" value="등록" onclick="javascript:window.open('bsInsert.do?emp_code=${emp_code}','new','left=50, top=50, width=900, height=500')"/>
 				</td>
 			</tr>
 		</table>
@@ -131,7 +131,7 @@ function deleteEvent(a){
 					<td>${bsDeptList.bs_date }</td>
 					<td>${bsDeptList.bs_st }</td>
 					<td align="left">
-						<input type="button" value="검토" onclick="location='bsUpdate.do?emp_code=${bsDeptList.emp_code }&bs_code=${bsDeptList.bs_code }'"/>
+						<input type="button" value="검토" onclick="javascript:window.open('bsUpdate.do?emp_code=${bsDeptList.emp_code }&bs_code=${bsDeptList.bs_code }','new','left=50, top=50, width=900, height=500')"/>
 					</td>
 				</tr>
 				</c:forEach>

@@ -79,15 +79,23 @@
           	//document.bs.count.value=count;
         });
     </script>
-    <style type="text/css">
-    	.a{width:200px; height:20px; text-align:left; padding-bottom:5px; float:left; margin:left:5px; layout:fixed;}
-    	.b{width:520px; height:20px; text-align:right; padding-bottom:5px; float:left; margin:left:5px; layout:fixed;}
-    </style>
+    <style>
+		#border_table, #memberTable{
+		border: 1px solid;
+		margin: auto;
+		line-height: auto;
+		}
+		
+		#border_table tr, #border_table td, #border_table th, #memberTable tr, #memberTable td, #memberTable th{
+		border: 1px solid;
+		padding: 1px;
+		}
+	</style>
 </head>
  
 <body>
-<form method="get" action="bsUpdatePro.do" name="bs">
-	<table border="1" style="width:720px;">
+<form method="get" action="bsUpdatePro.do" name="bsUp">
+	<table id="border_table" border="1" style="width:720px;">
 		<tr><td colspan="6"><strong>기본정보</strong></td></tr>
 		<tr>
 			<input type="hidden" name="bs_code" value="${bs_code }"/>
@@ -140,13 +148,17 @@
 	    	<td colspan="6"><textarea name="bs_goal" style="resize: none;" rows="10" cols="98">${bsVo.bs_goal}</textarea></td>
 	    </tr>
 	</table>﻿
-    <div class="a">
-    	<strong>업무내역</strong>
-    </div>
-    <div class="b">
-	    <input type="button" value="행추가"  id="btnAddRow"/>
-	    <input type="button" value="행삭제"  id="btnDelRow"/>
-    </div>
+    <table id="border_table" border="1" style="width:720px;border:hidden;">
+    	<tr>
+	    	<td>
+	    		<strong>업무내역</strong>
+	    	</td>
+	    	<td style="text-align:right;">
+			    <input type="button" value="행추가"  id="btnAddRow"/>
+			    <input type="button" value="행삭제"  id="btnDelRow"/>
+		    </td>
+    	</tr>
+    </table>
 	<table id="memberTable" border="1" style="width:720px;">
 	    <tr>
 	        <td style="width:180px;">주요업무</td>
@@ -170,15 +182,26 @@
 	    </c:forEach>
 	</table>
 	<input type="hidden" name="count" value="${bbCount }" />
-	<table border="1" style="width:720px;">
+	<table id="border_table" border="1" style="width:720px;">
 		
 		<tr>
 	    	<td align="right" colspan="4">
-	    		<input type="submit" value="저장" onsubmit='return countCk();'/>
-	    		<input type="button" value="취소" onclick="javascript:window.location='bsList.do'"/>
+	    		<input type="submit" value="저장" onclick="goSubmit()"/>
+	    		<input type="button" value="취소" onclick="javascript:self.close()"/>
 	    	</td>
 	    </tr>
 	</table>
 </form>
 </body>
+
+<script type="text/javascript">
+function goSubmit() {
+    window.opener.name = "parentPage"; // 부모창의 이름 설정
+    document.bsUp.target = "parentPage"; // 타켓을 부모창으로 설정
+    document.bsUp.action = "/gw4/bs/bsUpdatePro.do";
+    document.bsUp.submit();
+    self.close();
+}
+</script>
+
 </html>
