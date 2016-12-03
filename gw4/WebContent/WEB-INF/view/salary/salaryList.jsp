@@ -90,6 +90,23 @@ function salaryDelete(a){
             <div id="right_header">
                <h1>사원 관리</h1>
             </div>
+	
+	<c:if test="${memId == null }">
+		<script type="text/javascript">
+			alert("로그인을 먼저 해주세요. 로그인창으로 이동합니다.");
+			location.href='/gw4/main/login.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${memId != '20' && memId != '7' && memId != 'admin' }">
+		<script type="text/javascript">
+			alert("해당부서만 이용가능합니다. 메인으로 이동합니다.");
+			location.href='/gw4/main/main.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${memId == '20' || memId == '7' || memId == 'admin' }">
+		
 
 	<table width="110">
 		<tr>
@@ -171,7 +188,7 @@ function salaryDelete(a){
 
 	</form>
 	</table>
-
+	</c:if>
 		</div>
       </div>
    </div>

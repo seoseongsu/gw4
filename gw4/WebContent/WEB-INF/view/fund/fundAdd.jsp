@@ -102,9 +102,7 @@ function change(style){
 	</table>
 	<form method="get" action="fundAddPro.do" name="fundinput" onSubmit="return checkIt()">
 	<table border="1">
-		<input type="hidden" name="emp_code" value="7"/>
-		<input type="hidden" name="dept_code" value="1"/>
-		<input type="hidden" name="po_code" value="1"/>
+
 	<tr>
 		<td>집행부서 : ${fundVo.dept_name }</td>
 		<td>집행직금 : ${fundVo.po_name }</td>

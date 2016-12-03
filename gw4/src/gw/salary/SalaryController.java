@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -16,11 +17,11 @@ public class SalaryController {
 @Autowired SqlMapClientTemplate sqlMap;
 	
 	@RequestMapping("/salary/salaryList.do")
-	public String salaryList(HttpServletRequest request){
-		//String emp_code = (String)session.getAttribute("emp_code");
-		List salaryList = null;
+	public String salaryList(HttpServletRequest request, HttpSession session){
+		String emp_code = (String)session.getAttribute("emp_code");
 		
-		salaryList = sqlMap.queryForList("salarySelectList", null);
+		
+		List salaryList = sqlMap.queryForList("salarySelectList", emp_code);
 		request.setAttribute("salaryList", salaryList);
 		return "/salary/salaryList";
 	}

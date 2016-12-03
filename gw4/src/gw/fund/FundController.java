@@ -3,6 +3,8 @@ package gw.fund;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
@@ -16,19 +18,20 @@ public class FundController{
 	@Autowired SqlMapClientTemplate sqlMap;
 
 	@RequestMapping("/fund/fundList.do")
-	public String fundList(HttpServletRequest request){
-		//String emp_code = (String)session.getAttribute("emp_code");
+	public String fundList(HttpServletRequest request, HttpSession session){
+		String emp_code = (String)session.getAttribute("memId");
 		
-		List fundList = sqlMap.queryForList("fundList", null);
+		List fundList = sqlMap.queryForList("fundList", emp_code);
 		request.setAttribute("fundList", fundList);
 		return "/fund/fundList";
 	}
 	
 	@RequestMapping("/fund/fundAdd.do")
-	public String fundAdd(HttpServletRequest request){
+	public String fundAdd(HttpServletRequest request, HttpSession session){
 		
-		String emp_code = request.getParameter("emp_code");
-		EmployeeJoinVO employeeJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("fundSelect", emp_code);
+		//String emp_code = request.getParameter("emp_code");
+		String emp_code = (String)session.getAttribute("memId");
+		EmployeeJoinVO employeeJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
 
 		request.setAttribute("fundVo", employeeJoinVo);
 		
@@ -36,10 +39,17 @@ public class FundController{
 	}
 	
 	@RequestMapping("/fund/fundAddPro.do")
-	public String fundAddPro(HttpServletRequest request, FundVO vo) throws Exception{
+	public String fundAddPro(HttpServletRequest request, HttpSession session, FundVO vo) throws Exception{
 		
-		String emp_code = request.getParameter("emp_code");
-		
+		//String emp_code = request.getParameter("emp_code");
+		String emp_code = (String)session.getAttribute("memId");
+
+		EmployeeJoinVO employeeJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+
+		vo.setEmp_code(employeeJoinVo.getEmp_code());
+		vo.setDept_code(employeeJoinVo.getDept_code());
+		vo.setPo_code(employeeJoinVo.getPo_code());
+
 		sqlMap.insert("fundAddPro", vo);
 		
 		return "/fund/fundAddPro";

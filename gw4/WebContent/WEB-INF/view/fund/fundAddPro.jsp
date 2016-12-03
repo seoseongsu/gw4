@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 	alert('자금정보가 등록되었습니다.');
-	location.href="fundList.do?dept_code=1&po_code=1&emp_code=7"
+	location.href="fundList.do"
 </script>

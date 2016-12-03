@@ -92,8 +92,21 @@ function fundDelete(a){
                <h1>사원 관리</h1>
             </div>
 
-
-
+	<c:if test="${memId == null}">
+		<script type="text/javascript">
+			alert("로그인을 먼저 해주세요. 로그인창으로 이동합니다.");
+			location.href='/gw4/main/login.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${memId != '20' && memId != '7' && memId != 'admin'}">
+		<script type="text/javascript">
+			alert("해당부서만 이용가능합니다. 메인으로 이동합니다.");
+			location.href='/gw4/main/main.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${memId == '20' || memId == '7' || memId == 'admin' }">
 	<table width="110">
 		<tr>
 			<td align="center">자금수지 목록</td>
@@ -105,7 +118,7 @@ function fundDelete(a){
 			<tr><input type="submit" value="조회하기"></tr>
 		</form>
 	</table>
-	<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do?emp_code=7&dept_code=1&po_code=1','_self')"></span>
+	<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do','_self')"></span>
 	<table border="1" width="100%">
 	<form>
 		<tr>
@@ -154,7 +167,7 @@ function fundDelete(a){
 		</tr>
 	</table>
 	</form>
-
+	</c:if>
 
 	
          </div>
