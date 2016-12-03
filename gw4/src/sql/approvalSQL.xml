@@ -45,6 +45,6 @@
 	</select>
 	
 	<delete id="approvalDelete" parameterClass="String">
-		delete from approval where approval_code=#approval_code#
+		delete from approval where approval_code = #approval_code#
 	</delete>
 </sqlMap>

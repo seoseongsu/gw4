@@ -71,15 +71,11 @@ public class ApprovalController {
 	}
 	
 	@RequestMapping("/approval/approvalDelete.do")
-	public String approvalDelete(HttpServletRequest request){
+	public String approvalDelete(HttpServletRequest request, ApprovalVO vo){
 		String approval_code = (String) request.getParameter("approval_code");
 		sqlMap.delete("approvalDelete", approval_code);
 		return "/approval/approvalDelete";
 	}
 	
-	@RequestMapping("/approval/approvalVacation")
-	public String approvalVacation(){
-		
-		return "/approval/approvalVacation";
-	}
+	
 }

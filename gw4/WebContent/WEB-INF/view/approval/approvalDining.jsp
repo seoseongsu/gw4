@@ -6,6 +6,29 @@
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <link rel="stylesheet" href="#" />
+<script language="javaScript">
+	function checkIt(){
+		var dininginput = eval("document.dininginput");
+		var str = dininginput.approval_title.value;
+		var dining = str.charAt(str.length - 1);
+		if(!dininginput.approval_title.value){
+			alert("제목을 입력하세요");
+			return false;
+		}if(!dininginput.approval_day.value){
+			alert("경재상신일자를 입력하세요");
+			return false;
+		}if(!dininginput.approval_days.value){
+			alert("회식요청일자를 입력하세요");
+			return false;
+		}if(!dininginput.approval_member.value){
+			alert("회식인원을 입력하세요");
+			return false;
+		}if(!dininginput.approval_content.value){
+			alert("회식목적을 입력하세요");
+			return false;
+		}
+	}
+</script>
 <script>
 $(function(){
 	$("#approval_days").datepicker({
@@ -59,7 +82,7 @@ $(function(){
 			</tr>
 			<tr>
 				<td>결재상신일자<input type="text" id="approval_day" name="approval_day"></td>
-				<td>회식신청일자<input type="text" id="approval_days" name="approval_days"></td>
+				<td>회식요청일자<input type="text" id="approval_days" name="approval_days"></td>
 			</tr>
 			<tr>
 				<td colspan="2">회식참여인원<input type="text"  id="approval_member" name="approval_member"/>명</td>

@@ -11,6 +11,20 @@
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
+<script language="javaScript">
+	function checkIt(){
+		var salaryinput = eval("document.salaryinput");
+		var str = salaryinput.salary_days.value;
+		var salary = str.charAt(str.length - 1);
+		if(!salaryinput.salary_days.value){
+			alert("등록일자를 입력하세요");
+			return false;
+		}if(!salaryinput.salary_normal.value){
+			alert("기본급을 입력하세요");
+			return false;
+		}
+	}
+</script>
 <script>
 $(function(){
 	$("#salary_days").datepicker({

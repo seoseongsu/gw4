@@ -10,7 +10,23 @@
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
-
+<script language="javaScript">
+	function checkIt(){
+		var fundinput = eval("document.fundinput");
+		var str = fundinput.fund_days.value;
+		var fund = str.charAt(str.length - 1);
+		if(!fundinput.fund_days.value){
+			alert("등록일자를 입력하세요");
+			return false;
+		}if(!fundinput.fund_briefs.value){
+			alert("상세내용을 입력하세요");
+			return false;
+		}if(!fundinput.fund_deposit.value && !fundinput.fund_withdraw.value){
+			alert("입금액 또는 출금액을 입력하세요");
+			return false;
+		}
+	}
+</script>
 <script>
 $(function(){
 	$("#fund_days").datepicker({
