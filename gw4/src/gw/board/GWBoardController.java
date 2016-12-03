@@ -255,9 +255,12 @@ import gw.employee.EmployeeVO;
 		int num = Integer.parseInt(request.getParameter("board_num"));
         String pageNum = request.getParameter("pageNum");
         
-    	String emp_code = (String)session.getAttribute("memId");
+
+		String emp_code = (String)session.getAttribute("memId");
 		empVO = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
 		String emp_name = (String)sqlMap.queryForObject("nameCheck", empVO.getEmp_code());
+		
+		
 		
 		
         
@@ -267,9 +270,6 @@ import gw.employee.EmployeeVO;
         
         List replyList = sqlMap.queryForList("gboard.board_replyView", board_replyVO);
          
-        
-        
-        
         
 	        	
         request.setAttribute("board_num", num);
@@ -292,39 +292,39 @@ import gw.employee.EmployeeVO;
 	
 	
 	@RequestMapping("board_DeleteForm.do")
-		public String board_DeleteForm(HttpServletRequest request, HttpSession session, EmployeeVO empVO, BoardVO boardVO) throws Exception{
+		public String board_DeleteForm(HttpServletRequest request, 
+				HttpSession session, EmployeeVO empVO, BoardVO boardVO) throws Exception{
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
 	    String pageNum = request.getParameter("pageNum");
+	    String board_emp = request.getParameter("emp_code");
 	    request.setAttribute("board_num", new Integer(num));
 	    request.setAttribute("pageNum", new Integer(pageNum));
 	  
+
 		
-		String emp_code = (String)session.getAttribute("memId");
+	    String emp_code = (String)session.getAttribute("memId");
 		empVO = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
-		String emp_name = (String)sqlMap.queryForObject("nameCheck", empVO.getEmp_code());
 		
-		request.setAttribute("emp_code", emp_code);
-		request.setAttribute("emp_name", emp_name);
-		
-		
-		String emp_codeCheck = (String)sqlMap.queryForObject("emp_codecheck", boardVO.getEmp_code());
+		System.out.println(board_emp);
 		System.out.println(emp_code);
-		System.out.println(emp_code);
-		System.out.println(emp_codeCheck);
-		if(emp_code == null || (emp_code != null && !emp_code.equals(true)))
+		
+		if(emp_code == null || (emp_code != null && !emp_code.equals(board_emp)))
 		{
 			return "/gboard/noAuth";
 		}
-		else{
+			else
+		{
 		
 		
+		request.setAttribute("emp_code", emp_code);
+		request.setAttribute("board_emp", board_emp);
 	
+			System.out.println(board_emp);
+			System.out.println(emp_code);
+			return "/gboard/board_DeleteForm";
 		}
-		  
-		System.out.println(emp_code);
-		System.out.println(emp_codeCheck);
-		return "/gboard/board_DeleteForm";
+		
 	}
 	
 

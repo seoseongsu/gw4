@@ -68,6 +68,7 @@ function show(a){
 <br>
 	<form method="post" action="replyInsert.do?board_num=${boardList.board_num}&pageNum=${pageNum}" name="Board_reply">
 	
+	<input tpye="text" name="emp_code" value="${boardList.emp_code}">
 	<table width="800" cellspacing="0" cellpadding="0" border="1" align="center">  
 	  <tr height="30">
 	    <td align="center" width="125">조회수</td>
@@ -140,10 +141,10 @@ function show(a){
 	  <tr height="30">      
 	    <td colspan="4" align="right" > 
 		  <input type="button" value="글수정" 
-	       onclick="document.location.href='board_ModifyForm.do?board_num=${boardList.board_num}&pageNum=${pageNum}'">
+	       onclick="document.location.href='board_ModifyForm.do?board_num=${boardList.board_num}&pageNum=${pageNum}&emp_code=${boardList.emp_code}'">
 		   &nbsp;&nbsp;&nbsp;&nbsp;
 		  <input type="button" value="글삭제" 
-	       onclick="document.location.href='board_DeleteForm.do?board_num=${boardList.board_num}&pageNum=${pageNum}'">
+	       onclick="document.location.href='board_DeleteForm.do?board_num=${boardList.board_num}&pageNum=${pageNum}&emp_code=${boardList.emp_code}'">
 		   &nbsp;&nbsp;&nbsp;&nbsp;
 	       <input type="button" value="글목록" 
 	       onclick="document.location.href='board_List.do'">

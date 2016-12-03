@@ -21,7 +21,7 @@
 	
 	<!-- Board_Delete emp_code  -->
 		<select id="emp_codecheck"  parameterClass="String">
-			select emp_code from employee where emp_code = #emp_code#
+			select emp_code from board where board_num = #board_num#
 		</select>
 	
 
