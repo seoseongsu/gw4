@@ -1,6 +1,7 @@
 package gw.employee;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,15 +21,79 @@ public class EmployeeController {
 	public String empList(HttpServletRequest request){
 		int count = 0;
 		List articleList = null;
+		List deptList = null; 
+		List poList = null; 
+		
 		count = (Integer)sqlMap.queryForObject("emp.empSelectCount", null);
 		if (count > 0) {
             articleList = sqlMap.queryForList("emp.empSelectList", null);
         } else {
             articleList = Collections.EMPTY_LIST;
         }
+		deptList = sqlMap.queryForList("dept.deptSelectAll", null);
+		poList = sqlMap.queryForList("po.poSelectAll", null);
+		
 		request.setAttribute("count", new Integer(count));
 		request.setAttribute("articleList", articleList);
+		request.setAttribute("deptList", deptList);
+		request.setAttribute("poList", poList);
 		return "/emp/empList";
+	}
+	
+	@RequestMapping("/emp/empListSh.do")
+	public String empListSh(HttpServletRequest request){
+		int count = 0;
+		List articleList = null;
+		List deptList = null; 
+		List poList = null; 
+		String dept_code = request.getParameter("dept_code");
+		String po_code = request.getParameter("po_code");
+		if(dept_code.equals("d") && po_code.equals("p")){
+			count = (Integer)sqlMap.queryForObject("emp.empSelectCount", null);
+			System.out.println(count);
+			if (count > 0) {
+	            articleList = sqlMap.queryForList("emp.empSelectList", null);
+	        } else {
+	            articleList = Collections.EMPTY_LIST;
+	        }
+		}else if(dept_code.equals("d")){
+			count = (Integer)sqlMap.queryForObject("emp.empShCountP", po_code);
+			if (count > 0) {
+	            articleList = sqlMap.queryForList("emp.empListShP", po_code);
+	        } else {
+	            articleList = Collections.EMPTY_LIST;
+	        }
+		}else if(po_code.equals("p")){
+			count = (Integer)sqlMap.queryForObject("emp.empShCountD", dept_code);
+			if (count > 0) {
+	            articleList = sqlMap.queryForList("emp.empListShD", dept_code);
+	        } else {
+	            articleList = Collections.EMPTY_LIST;
+	        }
+		}else if(!(dept_code.equals("d") && po_code.equals("p"))){
+			HashMap map = new HashMap();
+			map.put("dept_code", dept_code);
+			map.put("po_code", po_code);
+			
+			count = (Integer)sqlMap.queryForObject("emp.empShCount", map);
+			if (count > 0) {
+	            articleList = sqlMap.queryForList("emp.empListSh", map);
+	        } else {
+	            articleList = Collections.EMPTY_LIST;
+	        }
+		}
+		
+		deptList = sqlMap.queryForList("dept.deptSelectAll", null);
+		poList = sqlMap.queryForList("po.poSelectAll", null);
+		
+		request.setAttribute("count", new Integer(count));
+		request.setAttribute("articleList", articleList);
+		request.setAttribute("deptList", deptList);
+		request.setAttribute("poList", poList);
+		request.setAttribute("dept_code", dept_code);
+		request.setAttribute("po_code", po_code);
+		
+		return "/emp/empListSh";
 	}
 	
 	@RequestMapping("/emp/empInsert.do")

@@ -67,6 +67,76 @@ function deleteEvent(a){
             
             
             <c:if test="${count == 0 }">
+            <form method="get" action="/gw4/emp/empListSh.do" name="empSh" onSubmit="return checkIt()">
+			<table id="border_table" border="1" width="80%">
+				<tr>
+					<td>부서</td>
+				    <td colspan="5">
+					    <select name="dept_code">
+					    	<option value="d">전체</option>
+					      	<c:forEach var="deptList" items="${deptList }">
+					      		<c:choose>
+						      		<c:when test="${deptList.dept_higher eq null}">
+						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_name }</option>
+						      		</c:when>
+						      		<c:otherwise>
+						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_name }</option>
+						      		</c:otherwise>
+					      		</c:choose>
+					      	</c:forEach>
+					      </select>
+				     </td>
+				     <td>직급</td>
+      				 <td colspan="5">
+      				  	<select name="po_code">
+      				  		<option value="p">전체</option>
+					      	<c:forEach var="poList" items="${poList }">
+					      		<option value ="${poList.po_code }" ${poList.po_code == po_code ? 'selected="selected"' : '' }>${poList.po_name }</option>
+						    </c:forEach>
+	      				</select>
+	      			</td>
+					<td>
+						<input type="submit" value="검색" />
+						<input type="button" value="전체보기" onclick="location.href='empList.do';"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<form method="get" action="/gw4/emp/empListSh.do" name="empSh" onSubmit="return checkIt()">
+			<table id="border_table" border="1" width="80%">
+				<tr>
+					<td>부서</td>
+				    <td colspan="5">
+					    <select name="dept_code">
+					    	<option value="d">전체</option>
+					      	<c:forEach var="deptList" items="${deptList }">
+					      		<c:choose>
+						      		<c:when test="${deptList.dept_higher eq null}">
+						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_name }</option>
+						      		</c:when>
+						      		<c:otherwise>
+						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_name }</option>
+						      		</c:otherwise>
+					      		</c:choose>
+					      	</c:forEach>
+					      </select>
+				     </td>
+				     <td>직급</td>
+      				 <td colspan="5">
+      				  	<select name="po_code">
+      				  		<option value="p">전체</option>
+					      	<c:forEach var="poList" items="${poList }">
+					      		<option value ="${poList.po_code }" ${poList.po_code == po_code ? 'selected="selected"' : '' }>${poList.po_name }</option>
+						    </c:forEach>
+	      				</select>
+	      			</td>
+					<td>
+						<input type="submit" value="검색" />
+						<input type="button" value="전체보기" onclick="location.href='empList.do';"/>
+					</td>
+				</tr>
+			</table>
+		</form>
 	<table id="border_table">
 		<tr>
 			<td>
@@ -87,10 +157,10 @@ function deleteEvent(a){
 					      	<c:forEach var="deptList" items="${deptList }">
 					      		<c:choose>
 						      		<c:when test="${deptList.dept_higher eq null}">
-						      			<option value ="${deptList.dept_code }">${deptList.dept_name }</option>
+						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_name }</option>
 						      		</c:when>
 						      		<c:otherwise>
-						      			<option value ="${deptList.dept_code }">${deptList.dept_higher }>${deptList.dept_name }</option>
+						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_name }</option>
 						      		</c:otherwise>
 					      		</c:choose>
 					      	</c:forEach>
@@ -101,12 +171,12 @@ function deleteEvent(a){
       				  	<select name="po_code">
       				  		<option value="p">전체</option>
 					      	<c:forEach var="poList" items="${poList }">
-					      		<option value ="${poList.po_code }">${poList.po_name }</option>
+					      		<option value ="${poList.po_code }" ${poList.po_code == po_code ? 'selected="selected"' : '' }>${poList.po_name }</option>
 						    </c:forEach>
 	      				</select>
 	      			</td>
 					<td>
-						<input type="submit" name="confirm" value="검색" />
+						<input type="submit" value="검색" />
 						<input type="button" value="전체보기" onclick="location.href='empList.do';"/>
 					</td>
 				</tr>

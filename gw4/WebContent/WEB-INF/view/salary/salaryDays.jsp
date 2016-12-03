@@ -49,7 +49,7 @@ function salaryDelete(a){
                   고객과의 신뢰를<br>최고로 여기는 기업
                </span>
                <h2>
-                  회사소개
+                  인사관리
                </h2>
             </div>
             
@@ -59,7 +59,7 @@ function salaryDelete(a){
                <a href="/gw4/fund/fundList.do">회계장부<i class="fa fa-chevron-right"></i></a>
                <a href="/gw4/commute/comList.do">근태관리<i class="fa fa-chevron-right"></i></a>         
                <a href="/gw4/product_List.do">H/W관리<i class="fa fa-chevron-right"></i></a>          
-               <a href="#">S/W관리<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/productSoft_List.do">S/W관리<i class="fa fa-chevron-right"></i></a>         
             </ul>
          </div>
          <div id="right_wrapper">
@@ -68,7 +68,7 @@ function salaryDelete(a){
             </div>
             
             <div id="right_header">
-               <h1>사원 관리</h1>
+               <h1>급여 관리</h1>
             </div>
 
 

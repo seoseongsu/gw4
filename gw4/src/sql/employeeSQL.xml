@@ -27,6 +27,42 @@
 		<select id="empSelectCount" resultClass="int">
 			select count(*) from employee
 		</select>
+		
+		<select id="empListSh" resultClass="gw.employee.EmployeeJoinVO" parameterClass="java.util.HashMap">
+			select emp_code,e.dept_code,dept_name,dept_higher,e.po_code,po_name,emp_name,emp_jumin,
+				emp_birth,emp_phone,emp_email,emp_acability,emp_career,emp_join,emp_bank,emp_acnum
+ 			 from department d, employee e, position p
+			 where e.dept_code = d.dept_code
+			 and e.po_code = p.po_code
+			 and d.dept_code = #dept_code#
+			 and p.po_code = #po_code#
+		</select>
+		<select id="empShCount" resultClass="int" parameterClass="java.util.HashMap">
+			select count(*) from employee where dept_code=#dept_code# and po_code=#po_code# 
+		</select>
+		<select id="empListShD" resultClass="gw.employee.EmployeeJoinVO" parameterClass="String">
+			select emp_code,e.dept_code,dept_name,dept_higher,e.po_code,po_name,emp_name,emp_jumin,
+				emp_birth,emp_phone,emp_email,emp_acability,emp_career,emp_join,emp_bank,emp_acnum
+ 			 from department d, employee e, position p
+			 where e.dept_code = d.dept_code
+			 and e.po_code = p.po_code
+			 and d.dept_code = #dept_code#
+		</select>
+		<select id="empShCountD" resultClass="int" parameterClass="String">
+			select count(*) from employee where dept_code=#dept_code# 
+		</select>
+		<select id="empListShP" resultClass="gw.employee.EmployeeJoinVO" parameterClass="String">
+			select emp_code,e.dept_code,dept_name,dept_higher,e.po_code,po_name,emp_name,emp_jumin,
+				emp_birth,emp_phone,emp_email,emp_acability,emp_career,emp_join,emp_bank,emp_acnum
+ 			 from department d, employee e, position p
+			 where e.dept_code = d.dept_code
+			 and e.po_code = p.po_code
+			 and p.po_code = #po_code#
+		</select>
+		<select id="empShCountP" resultClass="int" parameterClass="String">
+			select count(*) from employee where po_code=#po_code# 
+		</select>
+		
 		<insert id="empInsert" parameterClass="empVo">
 			insert into employee(emp_code,dept_code,po_code,emp_passwd,emp_name,
 			emp_jumin,emp_birth,emp_phone,emp_email,emp_acability,emp_career,

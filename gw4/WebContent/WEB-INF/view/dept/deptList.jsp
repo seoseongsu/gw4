@@ -67,7 +67,7 @@
                   고객과의 신뢰를<br>최고로 여기는 기업
                </span>
                <h2>
-                  회사소개
+                  개인정보
                </h2>
             </div>
             
@@ -76,8 +76,8 @@
                <a href="/gw4/salary/salaryList.do">정보수정<i class="fa fa-chevron-right"></i></a>         
                <a href="/gw4/fund/fundList.do">근태현황<i class="fa fa-chevron-right"></i></a>
                <a href="/gw4/commute/comList.do">일정관리<i class="fa fa-chevron-right"></i></a>         
-               <a class="active" href="/gw4/product_List.do">업무관리<i class="fa fa-chevron-right"></i></a>          
-               <a href="#">조직도<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/product_List.do">업무관리<i class="fa fa-chevron-right"></i></a>          
+               <a class="active" href="/gw4/dept/deptList.do">조직도<i class="fa fa-chevron-right"></i></a>         
             </ul>
          </div>
          <div id="right_wrapper">

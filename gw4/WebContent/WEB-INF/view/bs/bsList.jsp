@@ -31,7 +31,7 @@ function deleteEvent(a){
                   고객과의 신뢰를<br>최고로 여기는 기업
                </span>
                <h2>
-                  회사소개
+                  개인정보
                </h2>
             </div>
             
