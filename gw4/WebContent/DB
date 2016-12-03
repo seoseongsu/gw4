@@ -137,4 +137,16 @@ references employee(emp_code)
 );
 create sequence schedule_id_seq nocache;
 
-
+#approval
+create table approval(
+approval_code varchar2(100), 결재코드
+dept_code varchar2(100), 부서코드
+po_code varchar2(100), 직급코드
+emp_code varchar2(100), 사원코드
+approval_title varchar2(100), 결재 제목
+approval_content varchar2(100), 결재 내용
+approval_days varchar2(100), 상신일자 
+approval_member varchar2(100), 인원
+approval_day varchar2(100) 요청일자
+);
+create sequence approval_code_seq nocache;
