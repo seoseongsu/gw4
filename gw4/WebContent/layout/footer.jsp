@@ -29,7 +29,7 @@
 				<a href="#">이용약관</a><span> | </span><a href="#">개인정보취급방침</a><span> | </span><a href="#">찾아오시는 길</a>
 				<address>
 					EYTime COMPANY<br>
-					<a href="#">http://192.168.10.156:8080/gw4.com</a><span> | </span><a href="mailto:#">design</a><br>
+					<a href="#">EYTime.com</a><span> | </span><a href="mailto:#">대표이사</a><br>
 				</address>
 				<p>COPYRIGHT ⓒ 2016 EYTime COMPANY / ALL RIGHTS RESERVED.</p>			
 			</div>

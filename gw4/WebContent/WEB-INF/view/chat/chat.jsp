@@ -11,9 +11,6 @@
 <title>메신저</title>
 <script src="/gw4/js/jquery-1.10.2.min.js"></script>
 <script src="/gw4/js/socket.io.js"></script>
-<link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
-<link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
-<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
 <style>
 #mainContent{
 	width: 100%;
@@ -179,7 +176,7 @@ $(document).ready(function(){
                   고객과의 신뢰를<br>최고로 여기는 기업
                </span>
                <h2>
-              메신저
+              커뮤니티
                </h2>
             </div>
             
