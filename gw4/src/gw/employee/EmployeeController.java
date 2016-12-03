@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -76,5 +77,23 @@ public class EmployeeController {
 		String emp_code = (String) request.getParameter("emp_code");
 		sqlMap.delete("emp.empDelete", emp_code);
 		return "/emp/empDeletePro";
+	}
+	
+	
+	//개인 사원 정보
+	@RequestMapping("/my/myView.do")
+	public String myView(HttpServletRequest request, HttpSession session){
+		String emp_code = (String)session.getAttribute("memId");
+		List deptList = null; 
+		List poList = null; 
+		
+		EmployeeVO empVo = (EmployeeVO) sqlMap.queryForObject("emp.empSelectUp", emp_code);
+		deptList = sqlMap.queryForList("dept.deptSelectAll", null);
+		poList = sqlMap.queryForList("po.poSelectAll", null);
+
+		request.setAttribute("empVo", empVo);
+		request.setAttribute("deptList", deptList);
+		request.setAttribute("poList", poList);
+		return "/my/myView";
 	}
 }
