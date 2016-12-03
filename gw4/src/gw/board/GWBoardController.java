@@ -15,6 +15,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.jasper.tagplugins.jstl.core.Redirect;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.AbstractView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import gw.employee.EmployeeVO;
 
 
 
@@ -58,7 +61,13 @@ import org.springframework.web.servlet.view.RedirectView;
 		
 		
 	@RequestMapping("board_List.do")
-		public String board_List(HttpServletRequest request, Iboard_categoryVO category) throws Exception{
+		public String board_List(HttpServletRequest request, Iboard_categoryVO category,
+				HttpSession session, EmployeeVO empVO) throws Exception{
+			String emp_code = request.getParameter("emp_code");
+			String emp_passwd =request.getParameter("emp_passwd");
+			
+		
+		
 	   
 			List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
 	        String category_code = request.getParameter("category_code");
@@ -105,74 +114,29 @@ import org.springframework.web.servlet.view.RedirectView;
 			request.setAttribute("boardList", boardList);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("category_code", category_code);
-	
+			request.setAttribute("emp_code", emp_code);
+			request.setAttribute("emp_passwd", emp_passwd);
+			
 			return "/gboard/board_List";
 		}
 
 
-/*--------------------------------ListPro---------------------------------------------------*/		
-	
-	@RequestMapping("board_ListPro.do")
-		public String board_ListPro(HttpServletRequest request, Model model, Iboard_categoryVO category) throws Exception{
-		
-		List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
-        
-        String pageNum = request.getParameter("pageNum");
-        
-        String category_code = request.getParameter("category_code");
-        
-        
-        if (pageNum == null) {
-            pageNum = "1";
-        }
-        int pageSize = 10;
-        int currentPage = Integer.parseInt(pageNum);
-        int startRow = (currentPage - 1) * pageSize + 1;
-        int endRow = currentPage * pageSize;
-        int count = 0;
-        int number=0;
 
-        List boardList = null;
-        
-        if (category_code == null) {
-           
-        	count = (Integer)sqlMap.queryForObject("gboard.boardCount", null);
-	        HashMap map = new HashMap();
-	        map.put("start", startRow);
-	        map.put("end", endRow);
-	        if (count > 0) {
-	        	boardList = sqlMap.queryForList("gboard.boardAll", map);
-	        } else {
-	        	category_code = request.getParameter("category_code");
-	        	}
-	        } else {
-	        	boardList = Collections.EMPTY_LIST;
-	        	
-	        	}
-       
-		number=count-(currentPage-1)*pageSize;
-        request.setAttribute("currentPage", new Integer(currentPage));
-        request.setAttribute("startRow", new Integer(startRow));
-        request.setAttribute("endRow", new Integer(endRow));
-        request.setAttribute("count", new Integer(count));
-        request.setAttribute("pageSize", new Integer(pageSize));
-		request.setAttribute("number", new Integer(number));
-     
-		request.setAttribute("categoryList", categoryList);  
-		request.setAttribute("boardList", boardList);
-		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("category_code", category_code);
-		
-		return "/gboard/board_List";
-	}
-	
-	
 /*---------------------------- WriteForm -------------------------------------------------------*/	
 
 	
 	
 	@RequestMapping("board_WriteForm.do")
-		public String board_writeForm(HttpServletRequest request,Model model) throws Exception{
+		public String board_writeForm(HttpServletRequest request,Model model, 
+			HttpSession session, EmployeeVO empVO) throws Exception{
+		
+		
+			String emp_code = (String)session.getAttribute("memId");
+			empVO = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
+			String emp_name = (String)sqlMap.queryForObject("nameCheck", empVO.getEmp_code());
+			
+			
+			
 			
 			int num = 0 ;
 				String board_num = request.getParameter("board_num");
@@ -191,7 +155,13 @@ import org.springframework.web.servlet.view.RedirectView;
 				Iboard_categoryVO category = new Iboard_categoryVO();
 				List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
 			    request.setAttribute("categoryList", categoryList);
-			
+			    
+			    request.setAttribute("emp_code", emp_code);
+			    request.setAttribute("emp_name", emp_name);
+			    
+			    System.out.println(emp_name);
+			    System.out.println(emp_code);
+			    
 			return "/gboard/board_WriteForm";
 		}
 
@@ -201,7 +171,7 @@ import org.springframework.web.servlet.view.RedirectView;
 	
 	@RequestMapping("board_WritePro.do")
 		public ModelAndView board_writePro(MultipartHttpServletRequest req, BoardVO boardVO, 
-				Model model) throws Exception{
+				Model model, HttpSession session, EmployeeVO empVO) throws Exception{
 			
 		
 			int num = Integer.parseInt(req.getParameter("board_num"));
@@ -277,7 +247,7 @@ import org.springframework.web.servlet.view.RedirectView;
 	
 	@RequestMapping("board_Content.do")
 		public String board_Content(Map<String, Object> model, HttpServletRequest request, 
-				HttpServletResponse response, Board_replyVO board_replyVO) 
+				HttpServletResponse response, Board_replyVO board_replyVO, HttpSession session, EmployeeVO empVO) 
 						throws Exception {
 		
 		
@@ -285,6 +255,11 @@ import org.springframework.web.servlet.view.RedirectView;
 		int num = Integer.parseInt(request.getParameter("board_num"));
         String pageNum = request.getParameter("pageNum");
         
+    	String emp_code = (String)session.getAttribute("memId");
+		empVO = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
+		String emp_name = (String)sqlMap.queryForObject("nameCheck", empVO.getEmp_code());
+		
+		
         
 
         sqlMap.update("gboard.boardReadcount", num);
@@ -301,7 +276,9 @@ import org.springframework.web.servlet.view.RedirectView;
         request.setAttribute("pageNum", pageNum);
         request.setAttribute("boardList", boardList);
         request.setAttribute("replyList", replyList);
-        
+        request.setAttribute("emp_code", emp_code);
+		request.setAttribute("emp_name", emp_name);
+		
 		
         
 		return "/gboard/board_Content";
@@ -315,23 +292,47 @@ import org.springframework.web.servlet.view.RedirectView;
 	
 	
 	@RequestMapping("board_DeleteForm.do")
-		public String board_DeleteForm(HttpServletRequest request) throws Exception{
+		public String board_DeleteForm(HttpServletRequest request, HttpSession session, EmployeeVO empVO, BoardVO boardVO) throws Exception{
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
 	    String pageNum = request.getParameter("pageNum");
-	
-		
-		request.setAttribute("board_num", new Integer(num));
+	    request.setAttribute("board_num", new Integer(num));
 	    request.setAttribute("pageNum", new Integer(pageNum));
+	  
 		
-		return "/gboard/board_DeleteForm";
+		String emp_code = (String)session.getAttribute("memId");
+		empVO = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
+		String emp_name = (String)sqlMap.queryForObject("nameCheck", empVO.getEmp_code());
+		
+		request.setAttribute("emp_code", emp_code);
+		request.setAttribute("emp_name", emp_name);
+		
+		
+		String emp_codeCheck = (String)sqlMap.queryForObject("emp_codecheck", boardVO.getEmp_code());
+		System.out.println(emp_code);
+		System.out.println(emp_code);
+		System.out.println(emp_codeCheck);
+		if(emp_code == null || (emp_code != null && !emp_code.equals(true)))
+		{
+			return "/gboard/noAuth";
 		}
+		else{
+		
+		
+	
+		}
+		  
+		System.out.println(emp_code);
+		System.out.println(emp_codeCheck);
+		return "/gboard/board_DeleteForm";
+	}
+	
 
 /*------------------------------DeletePro-----------------------------------------------------*/	
                                   
 	
 	@RequestMapping("board_DeletePro.do")
-		public String board_DeletePro(HttpServletRequest request) throws Exception{
+		public String board_DeletePro(HttpServletRequest request, HttpSession session, EmployeeVO empVO) throws Exception{
 		
 	
 	
@@ -364,7 +365,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 	
 	@RequestMapping("board_ModifyForm.do")
-		public String board_ModifyForm(HttpServletRequest request)throws Exception{
+		public String board_ModifyForm(HttpServletRequest request, HttpSession session, EmployeeVO empVO)throws Exception{
 		
 		
 			int num = Integer.parseInt(request.getParameter("board_num"));
@@ -393,7 +394,8 @@ import org.springframework.web.servlet.view.RedirectView;
 	
 	
 	@RequestMapping("board_ModifyPro.do")
-	public String board_ModifyPro(HttpServletRequest request, BoardVO boardVO, Model model)throws Exception{
+	public String board_ModifyPro(HttpServletRequest request, BoardVO boardVO, Model model
+			, HttpSession session, EmployeeVO empVO)throws Exception{
 
 	    String pageNum = request.getParameter("pageNum");
 	    int num = Integer.parseInt(request.getParameter("board_num"));
@@ -429,10 +431,16 @@ import org.springframework.web.servlet.view.RedirectView;
 	
 	@RequestMapping("replyInsert.do")
 	public String ReplyInsert(HttpServletRequest request, BoardVO boardVO, 
-			Board_replyVO board_replyVO, Model model)throws Exception{
+			Board_replyVO board_replyVO, Model model, HttpSession session, 
+			EmployeeVO empVO)throws Exception{
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
 		String pageNum = request.getParameter("pageNum");
+		
+		String emp_code = (String)session.getAttribute("memId");
+		empVO = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
+		String emp_name = (String)sqlMap.queryForObject("nameCheck", empVO.getEmp_code());
+		
 		
 		 model.addAttribute("boardVO" , boardVO);
 		model.addAttribute("board_replyVO" , board_replyVO);
@@ -441,7 +449,10 @@ import org.springframework.web.servlet.view.RedirectView;
 		
 		request.setAttribute("board_num", num);
 		request.setAttribute("pageNum", pageNum);
-		
+		request.setAttribute("emp_code", emp_code);
+	    request.setAttribute("emp_name", emp_name);
+	    System.out.println(emp_code);
+	    System.out.println(emp_name);
 		return "/gboard/board_ReplyPro";
 		}
 	
@@ -451,7 +462,7 @@ import org.springframework.web.servlet.view.RedirectView;
 	
 	@RequestMapping("replyView.do")
 	public String ReplyView( HttpServletRequest request , BoardVO boardVO, 
-			Board_replyVO board_replyVO, Model model) throws Exception{
+			Board_replyVO board_replyVO, Model model, HttpSession session, EmployeeVO empVO) throws Exception{
 		
 		String pageNum = request.getParameter("pageNum");
 		int num = Integer.parseInt(request.getParameter("board_num"));
@@ -476,7 +487,7 @@ import org.springframework.web.servlet.view.RedirectView;
 	
 	@RequestMapping("reply_DeletePro.do")
 		public String reply_Delete(HttpServletRequest request, BoardVO boardVO, 
-				Board_replyVO board_replyVO ) throws Exception{
+				Board_replyVO board_replyVO, HttpSession session, EmployeeVO empVO ) throws Exception{
 		int num = Integer.parseInt(request.getParameter("board_num"));
 	    int reply_num = Integer.parseInt(request.getParameter("reply_num"));
 	    String pageNum = request.getParameter("pageNum");
@@ -502,7 +513,8 @@ import org.springframework.web.servlet.view.RedirectView;
 	
 	
 	@RequestMapping("reply_ModifyForm.do")
-		public String reply_ModifyForm(HttpServletRequest request, Board_replyVO board_replyVO) throws Exception{
+		public String reply_ModifyForm(HttpServletRequest request, Board_replyVO board_replyVO
+				, HttpSession session, EmployeeVO empVO) throws Exception{
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
 	    int reply_num = Integer.parseInt(request.getParameter("reply_num"));
@@ -512,11 +524,11 @@ import org.springframework.web.servlet.view.RedirectView;
 	    Board_replyVO replyList =  (Board_replyVO)sqlMap.queryForObject("gboard.replySelectNum", reply_num);
 	  
         request.setAttribute("replyList", replyList);
-	    request.setAttribute("pageNum", pageNum);
 		request.setAttribute("reply_num", reply_num);
-		request.setAttribute("board_num", num);
 		request.setAttribute("board_replyVO", board_replyVO);
 		
+		request.setAttribute("board_num", num);
+		request.setAttribute("pageNum", pageNum);
 		
 		
 		return "/gboard/reply_ModifyForm";
@@ -526,7 +538,8 @@ import org.springframework.web.servlet.view.RedirectView;
 /*--------------------- Board_reply(ModifyPro)  --------------------------------------------------------------*/			
 		
 	@RequestMapping("reply_ModifyPro.do")
-		public String reply_ModifyPro(HttpServletRequest request,Model model, Board_replyVO board_replyVO) throws Exception{
+		public String reply_ModifyPro(HttpServletRequest request,Model model, Board_replyVO board_replyVO
+				, HttpSession session, EmployeeVO empVO) throws Exception{
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
 	    int reply_num = Integer.parseInt(request.getParameter("reply_num"));

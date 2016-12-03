@@ -6,6 +6,24 @@
 	<typeAlias alias="BoardVO" type="gw.board.BoardVO"/>
 	<typeAlias alias="BcommentVO" type="gw.board.BcommentVO"/>
 	<typeAlias alias="Board_replyVO" type="gw.board.Board_replyVO"/>
+	<typeAlias alias="empVO" type="gw.employee.EmployeeVO"/>
+
+	<select id="userCheck" resultClass="int" parameterClass="java.util.HashMap">
+		select count(*) from employee where	emp_code = #emp_code# and emp_passwd = #emp_passwd#
+	</select>
+	<select id="getMemberlist" resultClass="empVO" parameterClass="String">
+		select * from employee where emp_code = #emp_code#
+	</select>
+	<select id="nameCheck" resultClass="string" parameterClass="string">
+		select emp_name from employee where emp_code = #emp_code# 
+	</select>
+
+	
+	<!-- Board_Delete emp_code  -->
+		<select id="emp_codecheck"  parameterClass="String">
+			select emp_code from employee where emp_code = #emp_code#
+		</select>
+	
 
 	<!-- board_List 게시물 번호 -->
 	
@@ -17,11 +35,11 @@
 	
 			<select id="boardAll" resultClass="BoardVO" parameterClass="java.util.HashMap">
 				<![CDATA[
-				select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
+				select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,emp_code,emp_name
 				from 
-				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,rownum r
+				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,emp_code,emp_name,rownum r
 				from 
-				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname
+				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,emp_code,emp_name
 				from board order by board_num desc) 
 				order by decode(category_code,#C001#,0)  ) where r >= #start# and r <= #end#
 				]]>
@@ -49,9 +67,9 @@
 	
 			<insert id="boardInsert" parameterClass="BoardVo">
 				insert into board
-				(board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,category_name) 
+				(board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,category_name,emp_code,emp_name) 
 				values
-				(board_seq.NEXTVAL,#category_code#,#board_subject#,#board_content#,#board_passwd#,sysdate,#board_readcount#,#board_file_orgname#,#board_file_savname#,#category_name#)
+				(board_seq.NEXTVAL,#category_code#,#board_subject#,#board_content#,#board_passwd#,sysdate,#board_readcount#,#board_file_orgname#,#board_file_savname#,#category_name#,#emp_code#,#emp_name#)
 			</insert>
 
 
@@ -95,17 +113,17 @@
 		<!-- board_reply(replyInsert) 댓글 삽입 -->
 		
 			<insert id="board_replyInsert" parameterClass="board_replyVO">
-			insert into board_reply (reply_num,board_num,reply_text,pageNum)
-							values (reply_seq.nextval,#board_num#,#reply_text#,#pageNum#)
+			insert into board_reply (reply_num,board_num,reply_text,pageNum,emp_code,emp_name)
+							values (reply_seq.nextval,#board_num#,#reply_text#,#pageNum#,#emp_code#,#emp_name#)
 			</insert>	
 		
 			<select id="board_replyView" resultClass="board_replyVO" parameterClass="board_replyVO">
 				<![CDATA[			
-			    select reply_num,board_num,reply_text
+			    select reply_num,board_num,reply_text,emp_code,emp_name
 			    from
-			    (select reply_num,board_num,reply_text,rownum r
+			    (select reply_num,board_num,reply_text,emp_code,emp_name,rownum r
 			     from
-			    (select reply_num,board_num,reply_text
+			    (select reply_num,board_num,reply_text,emp_code,emp_name
 			    from board_reply where board_num =#board_num# order by reply_num ) ) 
 			    ]]>
 			</select>	

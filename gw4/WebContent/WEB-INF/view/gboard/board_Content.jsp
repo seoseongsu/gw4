@@ -101,7 +101,7 @@ function show(a){
 		
 	  			
 	  			<tr>
-	  			<td align="center" width="125"  > 작성자 </td>
+	  			<td align="center" width="125"  > ${replyView.emp_name} </td>
 	  			<td align="left" width="500"  >${replyView.reply_text}
 	
 	  			<input type="text" id="replytext" style="display:none;">  			
@@ -125,6 +125,8 @@ function show(a){
 	  		<c:forEach  items="${reply}" var="board_reply">
 	  		</c:forEach>
 	  		<br/>
+	  		<input type="hidden" name="emp_code" value="${emp_code}">
+	  		<input type="hidden" name="emp_name"value="${emp_name}">
 	  		<textarea rows ="2" cols="80" name="reply_text"
 	  		placeholder="댓글을 작성하세요"></textarea>
 	  		<input type="submit" value="댓글 등록">

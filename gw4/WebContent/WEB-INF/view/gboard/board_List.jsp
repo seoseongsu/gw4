@@ -79,7 +79,7 @@
 			
 					<td  height="40">
 					<a href="board_Content.do?board_num=${boardList.board_num}&pageNum=${currentPage}">${boardList.board_subject}</a></td>
-					<td>작성자</td>
+					<td>${boardList.emp_name}</td>
 					<td>${boardList.board_date}</td>
 					<td>${boardList.board_readcount}</td>
 								

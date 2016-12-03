@@ -47,7 +47,11 @@
 <b><center>글 작성</b><br />
 <form method="post" name="writeform" action="board_WritePro.do" enctype="multipart/form-data" > 
 <input type="hidden" name="board_num" value="${board_num}">
+
 <!-- <input type="text" name="board_readcount"> -->
+
+<input type="hidden" name="emp_code" value="${emp_code}">
+
 
 <table width="900" border ="1" align="center" cellspacing="0" cellpadding="0">
 	<tr>
@@ -72,6 +76,8 @@
 	<tr>
 		<th width="100">작성자</th>
 		<td width="600">
+			<input tpye=text name="emp_name" readonly="readonly" value="${emp_name}">
+		</td>
 	</tr>
 	
 	<tr>

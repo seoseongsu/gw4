@@ -6,19 +6,35 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
 
-	private String category_code;
-	private String category_name;
-	private int board_num;	
-	private String board_subject;
-	private String board_content;
-	private String board_passwd;
-	private Timestamp board_date;
-	private int board_readcount;  
-	private String board_file_orgname;
-	private String board_file_savname;
-	private MultipartFile file;
+	private String category_code; // 카테고리 코드
+	private String category_name; // 카테고리 네임
+	private int board_num;	 // 글 번호
+	private String board_subject; // 글제목
+	private String board_content; // 글 내용
+	private String board_passwd; // 글 비밀번호
+	private Timestamp board_date; // 글 작성시간
+	private int board_readcount;   // 클릭수
+	private String board_file_orgname; // 파일 오리지널 네임
+	private String board_file_savname; // 파일 저장 이름
+	private MultipartFile file; 
+	private String emp_code; // 사원번호
+	private String emp_name; // 사원 이름
 	
 	
+	
+	
+	public String getEmp_code() {
+		return emp_code;
+	}
+	public void setEmp_code(String emp_code) {
+		this.emp_code = emp_code;
+	}
+	public String getEmp_name() {
+		return emp_name;
+	}
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
+	}
 	public String getCategory_name() {
 		return category_name;
 	}
