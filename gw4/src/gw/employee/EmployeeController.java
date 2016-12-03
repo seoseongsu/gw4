@@ -18,11 +18,14 @@ public class EmployeeController {
 	private SqlMapClientTemplate sqlMap;
 	
 	@RequestMapping("/emp/empList.do")
-	public String empList(HttpServletRequest request){
+	public String empList(HttpServletRequest request, HttpSession session){
+		String emp_code = (String)session.getAttribute("memId");
 		int count = 0;
 		List articleList = null;
 		List deptList = null; 
 		List poList = null; 
+		
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
 		
 		count = (Integer)sqlMap.queryForObject("emp.empSelectCount", null);
 		if (count > 0) {
@@ -33,6 +36,7 @@ public class EmployeeController {
 		deptList = sqlMap.queryForList("dept.deptSelectAll", null);
 		poList = sqlMap.queryForList("po.poSelectAll", null);
 		
+		request.setAttribute("empVo", empVo);
 		request.setAttribute("count", new Integer(count));
 		request.setAttribute("articleList", articleList);
 		request.setAttribute("deptList", deptList);

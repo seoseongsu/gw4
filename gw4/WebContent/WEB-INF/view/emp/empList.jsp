@@ -66,7 +66,24 @@ function deleteEvent(a){
             </div><br><br>
             
             
-            <c:if test="${count == 0 }">
+    <c:if test="${memId == null }">
+		<script type="text/javascript">
+			alert("로그인을 먼저 해주세요. 로그인창으로 이동합니다.");
+			location.href='/gw4/main/login.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${empVo.dept_name != '인사팀' && empVo.dept_name != '대표이사' && empVo.dept_name != '운영부' && memId != 'admin' }">
+		<script type="text/javascript">
+			alert("해당부서만 이용가능합니다. 메인으로 이동합니다.");
+			location.href='/gw4/main/main.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${empVo.dept_name == '인사팀' || empVo.dept_name == '대표이사' || empVo.dept_name == '운영부' || memId == 'admin' }">
+            
+            
+    <c:if test="${count == 0 }">
 	<table id="border_table">
 		<tr>
 			<td>
@@ -152,7 +169,10 @@ function deleteEvent(a){
 			</tr>
 			</c:forEach>
 		</table>
-	</c:if>	
+	</c:if>
+	
+	
+	</c:if>
 	
          </div>
       </div>
