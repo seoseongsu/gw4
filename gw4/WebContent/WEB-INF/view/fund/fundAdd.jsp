@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 <script language="javaScript">
 	function checkIt(){
 		var fundinput = eval("document.fundinput");
@@ -110,7 +111,7 @@ function change(style){
 	</tr>
 	
 	<tr>		
-		<td>집행일<input type="text" id="fund_days" name="fund_days"></td>
+		<td>집행일<input type="text" id="fund_days" name="fund_days" onclick="fnPopUpCalendar(fund_days,fund_days,'yyyy - mm - dd')"></td>
 		<td>구분
 			<select onChange="change(this.options[this.selectedIndex].value)" id="fund_division" name="fund_division">
 				<option value="">선택</option>

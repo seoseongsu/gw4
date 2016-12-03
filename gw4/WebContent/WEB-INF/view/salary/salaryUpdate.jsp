@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 <script language="javaScript">
 	function checkIt(){
 		var salaryinput = eval("document.salaryinput");
@@ -24,18 +25,6 @@
 			return false;
 		}
 	}
-</script>
-<script>
-$(function(){
-	$("#salary_days").datepicker({
-		dateFormat: 'yy - mm - dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
 </script>
 </head>
 
@@ -87,7 +76,7 @@ $(function(){
 			
 			<tr>
 				<td>
-					<input type="text" id="salary_days" name="salary_days" value="${salaryJoinVo.salary_days }">
+					<input type="text" id="salary_days" name="salary_days" value="${salaryJoinVo.salary_days }" onclick="fnPopUpCalendar(salary_days,salary_days,'yyyy - mm - dd')">
 				</td>
 				<td>
 					${salaryJoinVo.dept_name }

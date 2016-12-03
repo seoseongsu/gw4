@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 <script language="javaScript">
 	function checkIt(){
 		var salaryinput = eval("document.salaryinput");
@@ -106,7 +107,7 @@ $(function(){
 		
 		<tr>
 			<td>
-				<input type="text" id="salary_days" name="salary_days">
+				<input type="text" id="salary_days" name="salary_days" onclick="fnPopUpCalendar(salary_days,salary_days,'yyyy - mm - dd')">
 			</td>
 			<td>
 				<select name="dept_code">

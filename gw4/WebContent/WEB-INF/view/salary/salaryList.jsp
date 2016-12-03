@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 <script language="javaScript">
 function checkIt(){
 	var days = eval("document.salaryDays");
@@ -25,28 +26,6 @@ function checkIt(){
 		return false;
 	}
 }
-</script>
-<script>
-$(function(){
-	$("#salary_days").datepicker({
-		dateFormat: 'yy - mm - dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
-$(function(){
-	$("#salary_day").datepicker({
-		dateFormat: 'yy - mm - dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
 </script>
 <script>
 function salaryDelete(a){
@@ -115,7 +94,7 @@ function salaryDelete(a){
 	</table>
 	<table>
 		<form method="get" action="salaryDays.do" name="salaryDays" onSubmit="return checkIt()">
-			<tr><input type="text" id="salary_days" name="salary_days"> 일정별 조회<input type="text" id="salary_day" name="salary_day"></tr>
+			<tr><input type="text" id="salary_days" name="salary_days" onclick="fnPopUpCalendar(salary_days,salary_days,'yyyy - mm - dd')"> 일정별 조회<input type="text" id="salary_day" name="salary_day" onclick="fnPopUpCalendar(salary_day,salary_day,'yyyy - mm - dd')"></tr>
 			<tr><input type="submit" value="조회하기"></tr>
 		</form>
 	</table>

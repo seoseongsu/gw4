@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 <script language="javaScript">
 function checkIt(){
 	var days = eval("document.fundDays");
@@ -24,28 +25,6 @@ function checkIt(){
 		return false;
 	}
 }
-</script>
-<script>
-$(function(){
-	$("#fund_days").datepicker({
-		dateFormat: 'yy - mm - dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
-$(function(){
-	$("#fund_day").datepicker({
-		dateFormat: 'yy - mm - dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
 </script>
 <script>
 function fundDelete(a){
@@ -99,7 +78,7 @@ function fundDelete(a){
 	</table>
 	<table>
 		<form method="get" action="fundDays.do" name="fundDays" onSubmit="return checkIt()">
-			<tr><input type="text" id="fund_days" name="fund_days"> 일정별 조회<input type="text" id="fund_day" name="fund_day"></tr>
+			<tr><input type="text" id="fund_days" name="fund_days" onclick="fnPopUpCalendar(fund_days,fund_days,'yyyy - mm - dd')"> 일정별 조회<input type="text" id="fund_day" name="fund_day" onclick="fnPopUpCalendar(fund_day,fund_day,'yyyy - mm - dd')"></tr>
 			<tr><input type="submit" value="조회하기"></tr>
 		</form>
 	</table>

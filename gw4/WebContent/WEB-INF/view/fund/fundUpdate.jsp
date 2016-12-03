@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 <script language="javaScript">
 	function checkIt(){
 		var fundinput = eval("document.fundinput");
@@ -26,18 +27,6 @@
 			return false;
 		}
 	}
-</script>
-<script>
-$(function(){
-	$("#fund_days").datepicker({
-		dateFormat: 'yymmdd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
 </script>
 <script>
 function change(style){
@@ -111,7 +100,7 @@ function change(style){
 		</tr>
 		
 		<tr>
-			<td>집행일<input type="text" id="fund_days" name="fund_days" value="${fundJoinVo.fund_days }">
+			<td>집행일<input type="text" id="fund_days" name="fund_days" value="${fundJoinVo.fund_days }" onclick="fnPopUpCalendar(fund_days,fund_days,'yyyy - mm - dd')">
 			<td>구분
 				<select onChange="change(this.options[this.selectedIndex].value)" id="fund_division" name="fund_division">
 					<option value="">선택</option>
