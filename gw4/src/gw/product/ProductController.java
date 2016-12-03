@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import gw.board.BoardVO;
+import gw.employee.EmployeeJoinVO;
 
 			@Controller
 			public class ProductController {
@@ -34,8 +36,13 @@ import gw.board.BoardVO;
 				
 @RequestMapping("product_List.do")
 				
-public String product_List(HttpServletRequest request)throws Exception{
-    String pageNum = request.getParameter("pageNum");
+public String product_List(HttpServletRequest request, HttpSession session)throws Exception{
+	String emp_code = (String)session.getAttribute("memId");
+	EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+	request.setAttribute("empVo", empVo);
+	
+	String pageNum = request.getParameter("pageNum");
+    
     
     if (pageNum == null) {
         pageNum = "1";
@@ -181,8 +188,11 @@ public String product_DeletePro(HttpServletRequest request)throws Exception{
 
 @RequestMapping("productSoft_List.do")
 				
-public String productSoft_List(HttpServletRequest request)throws Exception{
-					
+public String productSoft_List(HttpServletRequest request, HttpSession session)throws Exception{
+	String emp_code = (String)session.getAttribute("memId");
+	EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+	request.setAttribute("empVo", empVo);
+	
 String pageNum = request.getParameter("pageNum");
 				        
 if (pageNum == null) {

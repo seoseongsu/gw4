@@ -18,7 +18,7 @@
                   고객과의 신뢰를<br>최고로 여기는 기업
                </span>
                <h2>
-                  회사소개
+                  인사관리
                </h2>
             </div>
             
@@ -39,6 +39,23 @@
             <div id="right_header">
                <h1>S/W 관리</h1>
             </div><br><br>
+            
+            <c:if test="${memId == null }">
+		<script type="text/javascript">
+			alert("로그인을 먼저 해주세요. 로그인창으로 이동합니다.");
+			location.href='/gw4/main/login.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${empVo.dept_name != '시설팀' && empVo.dept_name != '대표이사' && empVo.dept_name != '운영부' && memId != 'admin' }">
+		<script type="text/javascript">
+			alert("해당부서만 이용가능합니다. 메인으로 이동합니다.");
+			location.href='/gw4/main/main.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${empVo.dept_name == '시설팀' || empVo.dept_name == '대표이사' || empVo.dept_name == '운영부' || memId == 'admin' }">
+    
 
 
 <table align="center" cellspacing="0" cellpadding="0"  width="1200" border="1">
@@ -103,6 +120,7 @@
 </c:if>
 
 
+</c:if>
 
         </div>
       </div>
