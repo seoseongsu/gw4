@@ -4,7 +4,7 @@
 <title>신청결재</title>
 <script>
 function approvalDeletePro(a){
-	if(confirm("정말 삭제하시겠습니까??")==true){
+	if(confirm("정말 취소하시겠습니까??")==true){
 		location.href="approvalDelete.do?approval_code="+a
 	}else{
 		return;
@@ -12,6 +12,21 @@ function approvalDeletePro(a){
 }
 </script>
 <body>
+
+	<c:if test="${memId == null}">
+		<script type="text/javascript">
+			alert("로그인을 먼저 해주세요. 로그인창으로 이동합니다.");
+			location.href='/gw4/main/login.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${memId == '7'}">
+		<script type="text/javascript">
+			alert("대표이사님은 받은결재목록으로 이동합니다.");
+			location.href='/gw4/approval/approvalSend.do';
+		</script>
+	</c:if>
+	
 	<table width="150">
 		<tr>
 			<td align="center">신청중인 결재 목록</td>
@@ -31,7 +46,7 @@ function approvalDeletePro(a){
 					<td align="center" width="50">${approval.approval_day }</td>
 					<td align="center" width="50"><a href="approvalDiningContent.do?approval_code=${approval.approval_code }">${approval.approval_title }</a></td>
 					<td align="center" width="50">
-					<input type="button" value="삭제" onclick="approvalDeletePro(${approval.approval_code})"/>
+					<input type="button" value="결제취소" onclick="approvalDeletePro(${approval.approval_code})"/>
 			</c:forEach>
 		</form>
 	</table>

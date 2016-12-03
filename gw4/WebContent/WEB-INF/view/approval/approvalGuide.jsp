@@ -17,11 +17,11 @@
 			</tr>
 			<tr>
 				<td align="center">회식신청서</td>
-				<td align="center"><input type="button" value="기안서작성" onclick="location='approvalDining.do?emp_code=7'"/></td>
+				<td align="center"><input type="button" value="기안서작성" onclick="location='approvalDining.do'"/></td>
 			</tr>
 			<tr>
 				<td align="center">휴가신청서</td>
-				<td align="center"><input type="button" value="기안서작성" onclick="location='approvalGuide.do?emp_code=7'"/></td>
+				<td align="center"><input type="button" value="기안서작성" onclick="location='approvalGuide.do'"/></td>
 			</tr>
 		</form>
 	</table>

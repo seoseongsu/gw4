@@ -61,8 +61,6 @@ $(function(){
 	
 	<table border="1" width="60%" align="center">
 		<form method="get" action="approvalDiningPro.do" name="dininginput" onSubmit="return checkIt()">
-		<input type="hidden" name="dept_code" value="1"/>
-		<input type="hidden" name="po_code" value="1"/>
 			<tr>
 				<td>기안자</td>
 				<td>결재자</td>

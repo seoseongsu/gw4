@@ -3,6 +3,7 @@ package gw.approval;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -22,10 +23,10 @@ public class ApprovalController {
 	}
 	
 	@RequestMapping("/approval/approvalDining.do")
-	public String approvalDining(HttpServletRequest request){
+	public String approvalDining(HttpServletRequest request, HttpSession session){
 		List empList = null;
 		
-		String emp_code = (String) request.getParameter("emp_code");
+		String emp_code = (String)session.getAttribute("memId");
 		
 		EmployeeJoinVO employeeJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("approvalSelect", emp_code);
 		empList = sqlMap.queryForList("approvalSelectAll", null);
@@ -36,9 +37,17 @@ public class ApprovalController {
 	}
 	
 	@RequestMapping("/approval/approvalDiningPro.do")
-	public String approvalDiningPro(HttpServletRequest request, ApprovalVO vo)throws Exception{
+	public String approvalDiningPro(HttpServletRequest request, HttpSession session, ApprovalVO vo)throws Exception{
 		
-		String emp_code = request.getParameter("emp_code");
+		//String emp_code = request.getParameter("emp_code");
+		String emp_code = (String)session.getAttribute("memId");
+		
+		EmployeeJoinVO employeeJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+
+		vo.setEmp_code(employeeJoinVo.getEmp_code());
+		vo.setDept_code(employeeJoinVo.getDept_code());
+		vo.setPo_code(employeeJoinVo.getPo_code());
+		
 		sqlMap.insert("approvalDiningPro", vo);
 		
 		return "/approval/approvalDiningPro";
@@ -55,8 +64,10 @@ public class ApprovalController {
 	}
 	
 	@RequestMapping("/approval/approvalSend.do")
-	public String approvalSend(HttpServletRequest request){
-		List approvalList = sqlMap.queryForList("approvalList", null);
+	public String approvalSend(HttpServletRequest request, HttpSession session){
+		String emp_code = (String)session.getAttribute("memId");
+		
+		List approvalList = sqlMap.queryForList("approvalList", emp_code);
 		request.setAttribute("approvalList", approvalList);
 		
 		return "/approval/approvalSend";

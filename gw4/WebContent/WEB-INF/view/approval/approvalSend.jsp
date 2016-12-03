@@ -3,6 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <title>받은결재</title>
 <body>
+
+	<c:if test="${memId == null }">
+		<script type="text/javascript">
+			alert("로그인을 먼저 해주세요. 로그인창으로 이동합니다.");
+			location.href='/gw4/main/login.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${memId != '7' && memId != 'admin' }">
+		<script type="text/javascript">
+			alert("대표이사님 전용페이지입니다. 메인으로 이동합니다.");
+			location.href='/gw4/main/main.do';
+		</script>
+	</c:if>
+	
+	<c:if test="${memId == '7' || memId == 'admin' }">
 	<table width="150">
 		<tr>
 			<td align="center">내가 받은결재 목록</td>
@@ -27,4 +43,5 @@
 			</c:forEach>
 		</form>
 	</table>
+	</c:if>
 </body>
