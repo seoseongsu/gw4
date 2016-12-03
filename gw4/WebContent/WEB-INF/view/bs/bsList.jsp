@@ -50,7 +50,7 @@ function deleteEvent(a){
             
             <div id="right_header">
                <h1>업무 관리</h1>
-            </div>
+            </div><br><br>
 
 
 
@@ -65,7 +65,7 @@ function deleteEvent(a){
 		</tr>
 		<tr>
 			<td>
-				<input type="button" value="등록" onclick="location='bsInsert.do?emp_code=${emp_code }'"/>
+				<input type="button" value="등록" onclick="javascript:window.open('bsInsert.do?emp_code=${emp_code}','new','left=50, top=50, width=900, height=500')"/>
 			</td>
 		</tr>
 	</table>
@@ -101,44 +101,49 @@ function deleteEvent(a){
 		</table>
 	</c:if>	
 	<br>
-	<c:if test="${countDept == 0 }">
-	<table align="center" border="1" width="720">
-		<tr><td colspan="6"><strong>부서원의 업무명세표</strong></td></tr>
-		<tr>
-			<td>
-				등록된 업무명세표가 없습니다.
-			</td>
-		</tr>
-	</table>
-	</c:if>
-	<c:if test="${countDept > 0 }">
-		<c:if test="${leaderCk.po_code <= 2 }" >
-			<table align="center" border="1" width="720">
-				<tr><td colspan="6"><strong>부서원의 업무명세표</strong></td></tr>
-				<tr align="center">
-					<td width="100">실행년도</td>
-					<td width="70">부서</td>
-					<td width="100">작성자</td>
-					<td width="200">작성일</td>
-					<td width="150">상태</td>
-					<td width="100">&nbsp;</td>			
-				</tr>
-				<c:forEach var="bsDeptList" items="${bsDeptList }">
-				<tr align="center">
-					<td>${bsDeptList.bs_year }</td>
-					<td>${bsDeptList.dept_name }</td>
-					<td>${bsDeptList.emp_name }</td>
-					<td>${bsDeptList.bs_date }</td>
-					<td>${bsDeptList.bs_st }</td>
-					<td align="left">
-						<input type="button" value="검토" onclick="javascript:window.open('bsUpdate.do?emp_code=${bsDeptList.emp_code }&bs_code=${bsDeptList.bs_code }','new','left=50, top=50, width=900, height=500')"/>
-					</td>
-				</tr>
-				</c:forEach>
-			</table>
+	
+	<c:if test="${empVo.po_name == '대표이사' || empVo.po_name == '부장' || empVo.po_name == '차장' || memId == 'admin' }">
+	
+		<c:if test="${countDept == 0 }">
+		<table align="center" border="1" width="720">
+			<tr><td colspan="6"><strong>부서원의 업무명세표</strong></td></tr>
+			<tr>
+				<td>
+					등록된 업무명세표가 없습니다.
+				</td>
+			</tr>
+		</table>
+		</c:if>
+		<c:if test="${countDept > 0 }">
+			<c:if test="${leaderCk.po_code <= 2 }" >
+				<table align="center" border="1" width="720">
+					<tr><td colspan="6"><strong>부서원의 업무명세표</strong></td></tr>
+					<tr align="center">
+						<td width="100">실행년도</td>
+						<td width="70">부서</td>
+						<td width="100">작성자</td>
+						<td width="200">작성일</td>
+						<td width="150">상태</td>
+						<td width="100">&nbsp;</td>			
+					</tr>
+					<c:forEach var="bsDeptList" items="${bsDeptList }">
+					<tr align="center">
+						<td>${bsDeptList.bs_year }</td>
+						<td>${bsDeptList.dept_name }</td>
+						<td>${bsDeptList.emp_name }</td>
+						<td>${bsDeptList.bs_date }</td>
+						<td>${bsDeptList.bs_st }</td>
+						<td align="left">
+							<input type="button" value="검토" onclick="javascript:window.open('bsUpdate.do?emp_code=${bsDeptList.emp_code }&bs_code=${bsDeptList.bs_code }','new','left=50, top=50, width=900, height=500')"/>
+						</td>
+					</tr>
+					</c:forEach>
+				</table>
+			</c:if>
 		</c:if>
 	</c:if>
 </div>
+
 
 
 		</div>

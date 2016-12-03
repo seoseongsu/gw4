@@ -27,7 +27,7 @@
                     name : "bb_main"+count,
                     type : "text" ,
                     id : "bb_main"+count,
-                    value : "bb_main"+count
+                    value : "주요업무"
                 });
                 $("#memberTable tr:last td:eq(0)").html("");
                 $("#memberTable tr:last td:eq(0)").append($.inputText);
@@ -38,7 +38,7 @@
                     name : "bb_status"+count,
                     type : "text" ,
                     id : "bb_status"+count,
-                    value : "bb_main"+count
+                    value : "0"
                 });
                 $("#memberTable tr:last td:eq(1)").html("");
                 $("#memberTable tr:last td:eq(1)").append($.inputText);
@@ -49,7 +49,7 @@
                     name : "bb_time"+count,
                     type : "text" ,
                     id : "bb_time"+count,
-                    value : "bb_time"+count
+                    value : "0"
                 });
                 $("#memberTable tr:last td:eq(2)").html("");
                 $("#memberTable tr:last td:eq(2)").append($.inputText);
@@ -60,7 +60,7 @@
                     name : "bb_product"+count,
                     type : "text" ,
                     id : "bb_product"+count,
-                    value : "bb_product"+count
+                    value : "결과물"
                 });
                 $("#memberTable tr:last td:eq(3)").html("");
                 $("#memberTable tr:last td:eq(3)").append($.inputText);
@@ -130,6 +130,9 @@
 			<td>평가자</td>
 			<td>
 				<select name="bs_ap" style="width:80px;height:23px;">
+					<c:if test="${empVo.po_name == '대표이사' || empVo.po_name == '부장' || empVo.po_name == '차장'}">
+						<option value="문근혁">문근혁</option>
+					</c:if>
 					<c:forEach var="bsApList" items="${bsApList }">
 						<option value="${bsApList.emp_name }">${bsApList.emp_name }</option>	
 					</c:forEach>
@@ -164,8 +167,8 @@
 	<table id="memberTable" border="1" style="width:720px;">
 	    <tr>
 	        <td style="width:180px;">주요업무</td>
-	        <td style="width:180px;">중요도</td>
-	        <td style="width:180px;">시간비중</td>
+	        <td style="width:180px;">중요도(%)</td>
+	        <td style="width:180px;">시간비중(%)</td>
 	        <td style="width:180px;">결과물</td>
 	    </tr>
 	    <tr>

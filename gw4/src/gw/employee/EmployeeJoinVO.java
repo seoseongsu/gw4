@@ -4,7 +4,7 @@ public class EmployeeJoinVO {
 	private String emp_code;		//사원번호
 	private String dept_code;		//부서코드
 	private String dept_name;		//부서이름
-	private String dept_higher;		//부서이름
+	private String dept_higher;		//상위부서
 	private String po_code;			//직급코드
 	private String po_name;			//직급이름
 	private String emp_passwd;		//비밀번호

@@ -24,8 +24,9 @@
 			 where bs.emp_code = e.emp_code
 			 and bs.dept_code = d.dept_code
 			 and bs.po_code = p.po_code
-			 and bs.dept_code = #dept_code# 
-			 and bs.po_code < #po_code#
+			 and e.emp_code != #emp_code# 
+			 and bs_ap = #emp_name# 
+			 and bs_st = '검토요청' 
 			 order by bs_date desc
 			 ]]>
 		</select>
@@ -76,13 +77,16 @@
 			 where bs.emp_code = e.emp_code
 			 and bs.dept_code = d.dept_code
 			 and bs.po_code = p.po_code
-			 and bs.dept_code = #dept_code# 
-			 and bs.po_code < #po_code#
+			 and e.emp_code != #emp_code# 
+			 and bs_ap = #emp_name# 
+			 and bs_st = '검토요청' 
 			 order by bs_date desc
 			 ]]>
 		</select>
 		<select id="bsSelectAp" resultClass="empVo" parameterClass="String">
-			select * from employee where dept_code=#dept_code#
+			<![CDATA[
+			select * from employee where dept_code=#dept_code# and emp_code != 'admin' and(po_code='1' or po_code='2' or po_code='3')
+			]]>
 		</select>
 		<select id="bsSelectCode" resultClass="int">
 			select MAX(to_number(bs_code)) from bstatement

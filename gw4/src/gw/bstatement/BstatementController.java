@@ -30,13 +30,13 @@ public class BstatementController {
 		List bsDeptList = null;
 		
 		EmployeeVO leaderCk = (EmployeeVO) sqlMap.queryForObject("emp.empSelectUp", emp_code);
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);		
 		
-		String dept_code = leaderCk.getDept_code();
-		String po_code = leaderCk.getPo_code();
+		String emp_name = leaderCk.getEmp_name();
 		
 		HashMap map = new HashMap();
-		map.put("dept_code", dept_code);
-		map.put("po_code", po_code);
+		map.put("emp_code", emp_code);
+		map.put("emp_name", emp_name);
 		
 		countMy = (Integer)sqlMap.queryForObject("bs.bsSelectMyCount", emp_code);
 		if (countMy > 0) {
@@ -51,6 +51,7 @@ public class BstatementController {
         } else {
         	bsDeptList = Collections.EMPTY_LIST;
         }
+		request.setAttribute("empVo", empVo);
 		request.setAttribute("leaderCk", leaderCk);
 		request.setAttribute("countMy", new Integer(countMy));
 		request.setAttribute("countDept", new Integer(countDept));
@@ -61,7 +62,11 @@ public class BstatementController {
 	}
 	
 	@RequestMapping("/bs/bsInsert.do")
-	public String bsInsert(HttpServletRequest request){
+	public String bsInsert(HttpServletRequest request, HttpSession session){
+		String memId = (String)session.getAttribute("memId");
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", memId);
+		request.setAttribute("empVo", empVo);
+		
 		String emp_code = (String) request.getParameter("emp_code");
 		List bsApList = null;
 		EmployeeJoinVO empJoinVo = new EmployeeJoinVO();
@@ -104,7 +109,12 @@ public class BstatementController {
 	}
 	
 	@RequestMapping("/bs/bsUpdate.do")
-	public String bsUpdate(HttpServletRequest request){
+	public String bsUpdate(HttpServletRequest request, HttpSession session){
+		String memId = (String)session.getAttribute("memId");
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", memId);
+		request.setAttribute("empVo", empVo);
+		
+		
 		String emp_code = (String) request.getParameter("emp_code");
 		String bs_code = (String) request.getParameter("bs_code");
 		List bsApList = null;
