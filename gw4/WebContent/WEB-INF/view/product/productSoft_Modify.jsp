@@ -67,11 +67,21 @@ $(function(){
 		
 		<tr>
 			<td colspan="5" align="right" >
-			<input align="right" type="submit"  value="수정" >
-			<input type="button" value="취소"  onclick="javascript:history.go(-1)">
+			<input align="right" type="submit"  value="수정" onclick="goSubmit()">
+			<input type="button" value="취소"  onclick="javascript:self.close()">
 			</td>
 		</tr>
 </table>
 </form>
+
+<script type="text/javascript">
+function goSubmit() {
+    window.opener.name = "parentPage"; // 부모창의 이름 설정
+    document.modify.target = "parentPage"; // 타켓을 부모창으로 설정
+    document.modify.action = "/gw4/productSoft_ModifyPro.do?product_num=${productSoftList.product_num}";
+    document.modify.submit();
+    self.close();
+}
+</script>
 </body>
 </html>

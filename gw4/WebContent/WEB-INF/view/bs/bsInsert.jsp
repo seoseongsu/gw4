@@ -11,70 +11,73 @@
 	<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
-        $(function() {
+    	$.noConflict();
+    	var j = jQuert;
+    	
+        j(function() {
         	var count = 0;
-            $("#btnAddRow").on("click",function() {
+            j("#btnAddRow").on("click",function() {
                 // clone
-                $.trClone = $("#memberTable tr:last").clone().html();
-                $.newTr = $("<tr>"+$.trClone+"</tr>");
+                j.trClone = j("#memberTable tr:last").clone().html();
+                j.newTr =j("<tr>"+j.trClone+"</tr>");
  
                 // append
-               $("#memberTable").append($.newTr);
+               j("#memberTable").append(j.newTr);
                 
  				count++;
                 
                 //bb_main input text 추가
-                $.inputText = $(document.createElement("input"));
-                $.inputText.attr({
+                j.inputText = j(document.createElement("input"));
+                j.inputText.attr({
                     name : "bb_main"+count,
                     type : "text" ,
                     id : "bb_main"+count,
                     value : "bb_main"+count
                 });
-                $("#memberTable tr:last td:eq(0)").html("");
-                $("#memberTable tr:last td:eq(0)").append($.inputText);
+                j("#memberTable tr:last td:eq(0)").html("");
+                j("#memberTable tr:last td:eq(0)").append(j.inputText);
                 
              	//bb_status input text 추가
-                $.inputText = $(document.createElement("input"));
-                $.inputText.attr({
+                j.inputText = j(document.createElement("input"));
+                j.inputText.attr({
                     name : "bb_status"+count,
                     type : "text" ,
                     id : "bb_status"+count,
                     value : "bb_main"+count
                 });
-                $("#memberTable tr:last td:eq(1)").html("");
-                $("#memberTable tr:last td:eq(1)").append($.inputText);
+                j("#memberTable tr:last td:eq(1)").html("");
+                j("#memberTable tr:last td:eq(1)").append(j.inputText);
                 
               	//bb_time input text 추가
-                $.inputText = $(document.createElement("input"));
-                $.inputText.attr({
+                j.inputText = j(document.createElement("input"));
+                j.inputText.attr({
                     name : "bb_time"+count,
                     type : "text" ,
                     id : "bb_time"+count,
                     value : "bb_time"+count
                 });
-                $("#memberTable tr:last td:eq(2)").html("");
-                $("#memberTable tr:last td:eq(2)").append($.inputText);
+                j("#memberTable tr:last td:eq(2)").html("");
+                j("#memberTable tr:last td:eq(2)").append(j.inputText);
                 
               	//bb_product input text 추가
-                $.inputText = $(document.createElement("input"));
-                $.inputText.attr({
+                j.inputText = j(document.createElement("input"));
+                j.inputText.attr({
                     name : "bb_product"+count,
                     type : "text" ,
                     id : "bb_product"+count,
                     value : "bb_product"+count
                 });
-                $("#memberTable tr:last td:eq(3)").html("");
-                $("#memberTable tr:last td:eq(3)").append($.inputText);
+                j("#memberTable tr:last td:eq(3)").html("");
+                j("#memberTable tr:last td:eq(3)").append(j.inputText);
                 document.bs.count.value=count;
             });
  			
             //삭제
-             $("#btnDelRow").on("click",function(){ 
+             j("#btnDelRow").on("click",function(){ 
             	 if(count <= 0){
             		 alert("삭제 할 행이 없습니다.");
             	 }else{
-            		 $("#memberTable tr:last").remove();
+            		 j("#memberTable tr:last").remove();
             		 count--;
             	 }
             	 document.bs.count.value=count;

@@ -6,9 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>사원목록</title>
-<link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
-<link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
-<script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
 <script>
 function deleteEvent(a){
 	if(confirm("정말 삭제하시겠습니까??")==true){
@@ -66,7 +63,7 @@ function deleteEvent(a){
             
             <div id="right_header">
                <h1>사원 관리</h1>
-            </div>
+            </div><br><br>
             
             
             <c:if test="${count == 0 }">
@@ -115,7 +112,7 @@ function deleteEvent(a){
 				<td>${article.emp_join }</td>
 				<td>${article.emp_bank }</td>
 				<td>${article.emp_acnum }</td>
-				<td><input type="button" value="수정" onclick="location='empUpdate.do?emp_code=${article.emp_code }'"/>
+				<td><input type="button" value="수정" onclick="javascript:window.open('empUpdate.do?emp_code=${article.emp_code }','new','left=50, top=50, width=700, height=500')"/>
 				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
 			</tr>
 			</c:forEach>
@@ -126,6 +123,6 @@ function deleteEvent(a){
       </div>
    </div>
 	
-	<jsp:include page="/layout/footer.jsp" />
+<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>

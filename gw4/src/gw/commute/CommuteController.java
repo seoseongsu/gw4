@@ -23,8 +23,7 @@ public class CommuteController {
 	
 	@RequestMapping("/commute/comDay.do")
 	public String comDay(HttpServletRequest request, HttpSession session, CommuteVO comVo){
-//		String emp_code = (String)session.getAttribute("memId");
-		String emp_code = request.getParameter("emp_code");
+		String emp_code = (String)session.getAttribute("memId");
 		String ip = (String)request.getRemoteAddr();
 		int count = 0;
 		EmployeeVO empVo = new EmployeeVO();
@@ -51,9 +50,8 @@ public class CommuteController {
 	}
 	
 	@RequestMapping("/commute/comGo.do")
-	public String comGo(HttpServletRequest request){
-		String emp_code = request.getParameter("emp_code");
-//		System.out.println("comGo"+emp_code);
+	public String comGo(HttpServletRequest request, HttpSession session){
+		String emp_code = (String)session.getAttribute("memId");
 		request.setAttribute("emp_code", emp_code);
 		return "/commute/comGo";
 	}

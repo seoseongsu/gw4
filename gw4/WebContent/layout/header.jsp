@@ -104,7 +104,7 @@ $(document).ready(function(){
 								<a href="/gw4/fund/fundList.do">회계장부</a>
 								<a href="/gw4/commute/comList.do">근태관리</a>
 								<a href="/gw4/product_List.do">H/W관리</a>
-								<a href="#">S/W관리</a>
+								<a href="/gw4/productSoft_List.do">S/W관리</a>
 							</ul>						
 							<ul>
 								<a href="#">메일</a>

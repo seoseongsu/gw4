@@ -64,12 +64,20 @@ $(function(){
 			</tr>
 		<tr>
 			<td colspan="5" align="right" >
-			<input align="right" type="submit"  value="전송" >
-			<input type="button" value="취소"  onclick="javascript:history.go(-1)">
+			<input align="right" type="submit"  value="전송" onclick="goSubmit()">
+			<input type="button" value="취소"  onclick="javascript:self.close()">
 			</td>
 		</tr>
 </table>
 </form>
-</tr>
+<script type="text/javascript">
+function goSubmit() {
+    window.opener.name = "parentPage"; // 부모창의 이름 설정
+    document.productInsert.target = "parentPage"; // 타켓을 부모창으로 설정
+    document.productInsert.action = "/gw4/product_InsertPro.do";
+    document.productInsert.submit();
+    self.close();
+}
+</script>
 </body>
 </html>

@@ -11,6 +11,7 @@
  			 from department d, employee e, position p
 			 where e.dept_code = d.dept_code
 			 and e.po_code = p.po_code
+			 and emp_code != 'admin'
 		</select>
 		<select id="empSelect" resultClass="gw.employee.EmployeeJoinVO" parameterClass="String">
 			select emp_code,e.dept_code,dept_name,dept_higher,e.po_code,po_name,emp_name,emp_jumin,

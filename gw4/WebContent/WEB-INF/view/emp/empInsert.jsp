@@ -118,13 +118,22 @@ $(function(){
     </tr>
     <tr> 
       <td colspan="2" align="center"> 
-          <input type="submit" name="empSet" value="등록" onclick="javascript:self.colse();parent.opener.location.reload();">
+          <input type="submit" value="등록" onclick="goSubmit()">
           <input type="reset" name="reset" value="다시입력">
           <input type="button" value="취소" onclick="javascript:self.close()">
       </td>
     </tr>
   </table>
 </form>
+<script type="text/javascript">
+function goSubmit() {
+    window.opener.name = "parentPage"; // 부모창의 이름 설정
+    document.userinput.target = "parentPage"; // 타켓을 부모창으로 설정
+    document.userinput.action = "/gw4/emp/empInsertPro.do";
+    document.userinput.submit();
+    self.close();
+}
+</script>
 </body>
 
 </html>
