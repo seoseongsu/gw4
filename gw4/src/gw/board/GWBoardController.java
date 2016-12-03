@@ -301,7 +301,7 @@ import gw.employee.EmployeeVO;
 	    request.setAttribute("board_num", new Integer(num));
 	    request.setAttribute("pageNum", new Integer(pageNum));
 	  
-
+ /* --------------------------------권한 설정 부분-------------------------------------------------*/
 		
 	    String emp_code = (String)session.getAttribute("memId");
 		empVO = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
@@ -316,7 +316,7 @@ import gw.employee.EmployeeVO;
 			else
 		{
 		
-		
+	/*----------------------------------------------------------------------------------------*/	
 		request.setAttribute("emp_code", emp_code);
 		request.setAttribute("board_emp", board_emp);
 	
