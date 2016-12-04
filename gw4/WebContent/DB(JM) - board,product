@@ -71,11 +71,108 @@ product_return_day; // 입고 날짜
 
 
 
+<---------- 테이블 정의서 ---------->
+
+
+카테고리(게시판)
+
+create table Ibaord_category
+(
+	category_code varchar2(100) primary key,
+	category_name varchar2(100) 
+
+);
 
 
 
 
 
+사내게시판
+create table BOARD
+(   
+	BOARD_NUM NUMBER primary key,
+	CATEGORY_CODE VARCHAR2(100),
+	BOARD_SUBJECT VARCHAR2(100),
+	BOARD_CONTENT CLOB,
+	BOARD_PASSWD VARCHAR2(100),
+	BOARD_DATE DATE,
+	BOARD_READCOUNT NUMBER,
+	BOARD_FILE_ORGNAME VARCHAR2(100),
+	BOARD_FILE_SAVNAME VARCHAR2(100)
+);
+
+
+게시판 댓글
+
+create table board_reply
+(
+    reply_num number primary key,
+    board_num number,
+    reply_text varchar2(1000),
+    reply_date date 
+    
+);
+
+
+create sequence reply_seq
+start with 1
+increment by 1 ;
+
+alter table board_reply add constraint fk_board
+foreign key(board_num) references board(board_num);
+
+
+
+<---------- 테이블 정의서 ---------->
+
+Hare ware
+
+create table HW_product
+(
+ product_num number primary key,  
+ hw_product_code varchar2(100),
+ product_divide varchar2(100),
+ product_name varchar2(100),
+ product_note varchar2(100),
+ product_posesion varchar2(100),
+ product_type varchar2(100),
+ product_quantity varchar2(100),
+ product_in varchar2(100),
+ product_out varchar2(100),
+ product_register_day varchar2(100),
+ product_rona_dat varchar2(100),
+ product_return_day varchar2(100)
+    
+);
+
+create sequence HWproduct_seq
+start with 1
+increment by 1 ;
+
+
+Soft Ware
+
+create table SW_product
+(
+ product_num number primary key,  
+ sw_product_code varchar2(100),
+ product_divide varchar2(100),
+ product_name varchar2(100),
+ product_note varchar2(100),
+ product_posesion varchar2(100),
+ product_type varchar2(100),
+ product_quantity varchar2(100),
+ product_in varchar2(100),
+ product_out varchar2(100),
+ product_register_day varchar2(100),
+ product_rona_day varchar2(100),
+ product_return_day varchar2(100)
+  
+);
+
+create sequence SWproduct_seq
+start with 1
+increment by 1 ;
 
 
 
