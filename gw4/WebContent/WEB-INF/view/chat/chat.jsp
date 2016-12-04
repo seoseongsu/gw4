@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>메신저</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
 <script src="/gw4/js/jquery-1.10.2.min.js"></script>
 <script src="/gw4/js/socket.io.js"></script>
 <style>
@@ -202,8 +203,8 @@ $(document).ready(function(){
 					<input type="hidden" name="userout" value="${list.emp_name}"/>
 					<input type="text" name="uesrid" id="id" size="7"   readonly="readonly"  value="${sessionScope.emp_name}" onkeydown="chkEnter()"/>
 					<input type="text"  name="chat" id="chat"  value="" onkeydown="chkEnter()" onfocus="sa();"/>
-					<input type="button"  value="전송" id="sendBtn" />
-					<input type="button"  id="exitBtn"  value="채팅방 나가기" onclick="javascript:window.location='/gw4/chat/chatExit.do'"/><br>		
+					<input type="button"  class="button" value="전송" id="sendBtn" />
+					<input type="button"  class="button" id="exitBtn"  value="채팅방 나가기" onclick="javascript:window.location='/gw4/chat/chatExit.do'"/><br>		
 				</td>
 				<td>
 					<div id="listmember">
