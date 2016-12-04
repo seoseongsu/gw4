@@ -3,6 +3,33 @@
 <html>
 <head>
 <title>기안서작성</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 </head>
 <body>
 <jsp:include page="/layout/header.jsp" />  
@@ -37,25 +64,20 @@
 
 
 
-	<table width="110">
-		<tr>
-			<td align="center">기안서작성</td>
-		</tr>
-	</table>
 	
-	<table border="1" width="50%" align="center">
+	<table id="border_table" border="1" width="50%" align="left">
 		<form>
 			<tr>
-				<td align="center">결재양식명</td>
-				<td align="center">해당결재작성</td>
+				<th align="center">결재양식명</th>
+				<th align="center">해당결재작성</th>
 			</tr>
 			<tr>
 				<td align="center">회식신청서</td>
-				<td align="center"><input type="button" value="기안서작성" onclick="location='approvalDining.do'"/></td>
+				<td align="center"><input type="button" class="button" value="기안서작성" onclick="javascript:window.open('approvalDining.do','new','left=50, top=50, width=700, height=500')"/></td>
 			</tr>
 			<tr>
 				<td align="center">휴가신청서</td>
-				<td align="center"><input type="button" value="기안서작성" onclick="location='approvalGuide.do'"/></td>
+				<td align="center"><input type="button" class="button" value="기안서작성" onclick="location='approvalGuide.do'"/></td>
 			</tr>
 		</form>
 	</table>
