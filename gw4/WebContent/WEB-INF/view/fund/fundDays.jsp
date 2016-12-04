@@ -106,10 +106,12 @@ function fundDelete(a){
 	<tableid="border_table" border="1" align="left">
 		<form method="get" action="fundDays.do" name="fundDays" onSubmit="return checkIt()">
 			<tr><input type="text" id="fund_days" style="border: 1px solid;" name="fund_days" onclick="fnPopUpCalendar(fund_days,fund_days,'yyyy - mm - dd')"> 일정별 조회<input type="text" style="border: 1px solid;" id="fund_day" name="fund_day" onclick="fnPopUpCalendar(fund_day,fund_day,'yyyy - mm - dd')"></tr>
-			<tr><input type="submit" class="button" value="조회하기"></tr>
+			<tr><input type="submit" class="button" value="조회하기">
+			<input type="button" class="button" value="전체보기" onclick="window.open('/gw4/fund/fundList.do','_self')">
+	</tr>
 		</form>
 	</table>
-		<span style="float:right"><input type="button" class="button" value="자금등록" onclick="window.open('/spring/fund/fundAdd.do','_self')"></span>
+		<span style="float:right"><input type="button" class="button" value="자금등록" onclick="window.open('/gw4/fund/fundAdd.do','_self')"></span>
 
 	<table id="border_table" border="1" align="left" width="100%">
 	<form>
@@ -153,15 +155,14 @@ function fundDelete(a){
 			</c:forEach>
 
 		<tr>
-			<td colspan="5" align="center">합계</td>
+			<td colspan="8" align="center">합계</td>
 			<td align="center" width="50"><fmt:formatNumber value="${deposit }" type="number"/></td>
 			<td align="center" width="50"><fmt:formatNumber value="${withdraw }" type="number"/></td>
 			<td align="center" width="50"><fmt:formatNumber value="${balance }" type="number"/></td>
 			<td align="center" width="50"></td>
 		</tr>
 	</table>
-		<input type="button" value="전체보기" onclick="window.open('/gw4/fund/fundList.do','_self')">
-	</form>
+		</form>
 	
 	
 	         </div>

@@ -3,6 +3,33 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <title>자금수정</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:left;
+	vertical-align:left;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
@@ -77,7 +104,7 @@ function change(style){
          </div>
          <div id="right_wrapper">
             <div id="right_path">
-               <h5><i class="fa fa-home"></i>&nbsp; > 인사관리 > 사원관리</h5>
+               <h5><i class="fa fa-home"></i>&nbsp; > 인사관리 > 회계 장부</h5>
             </div>
             
             <div id="right_header">
@@ -89,20 +116,20 @@ function change(style){
 			<td align="left">기등록자금 수정</td>
 		</tr>
 	</table>
-<table border="1">	
+<table id="border_table" border="1" align="left">	
 <form method="get" action="fundUpdatePro.do" name="fundinput" onSubmit="return checkIt()">
 	
 		<input type="hidden" name="fund_code" value="${fundJoinVo.fund_code }" />
 		<tr>
-			<td>집행부서 : ${fundJoinVo.dept_name }</td>
-			<td>집행직금 : ${fundJoinVo.po_name }</td>
-			<td>집행자 : ${fundJoinVo.emp_name}</td>
+			<th>집행부서 : ${fundJoinVo.dept_name }</th>
+			<th>집행직금 : ${fundJoinVo.po_name }</th>
+			<th>집행자 : ${fundJoinVo.emp_name}</th>
 		</tr>
 		
 		<tr>
-			<td>집행일<input type="text" id="fund_days" name="fund_days" value="${fundJoinVo.fund_days }" onclick="fnPopUpCalendar(fund_days,fund_days,'yyyy - mm - dd')">
+			<td>집행일<input type="text" style="border: 1px solid;" id="fund_days" name="fund_days" value="${fundJoinVo.fund_days }" onclick="fnPopUpCalendar(fund_days,fund_days,'yyyy - mm - dd')">
 			<td>구분
-				<select onChange="change(this.options[this.selectedIndex].value)" id="fund_division" name="fund_division">
+				<select onChange="change(this.options[this.selectedIndex].value)" style="border: 1px solid;" id="fund_division" name="fund_division">
 					<option value="">선택</option>
 					<option value="입금">입금</option>
 					<option value="출금">출금</option>
@@ -115,9 +142,9 @@ function change(style){
 		</tr>
 		
 		<tr>
-			<td>적요<input type="text" id="fund_briefs" name="fund_briefs" value="${fundJoinVo.fund_briefs }">
+			<td>적요<input type="text" style="border: 1px solid;" id="fund_briefs" name="fund_briefs" value="${fundJoinVo.fund_briefs }">
 			<td>자금항목
-				<select id="fund_item" name="fund_item">
+				<select id="fund_item" style="border: 1px solid;" name="fund_item">
 					<option value="">선택</option>
 					<option value="물품구매">물품구매</option>
 					<option value="학원비">학원비</option>
@@ -128,7 +155,7 @@ function change(style){
 				</select>
 			</td>
 			<td>거래처
-				<select id="fund_account" name ="fund_account">
+				<select id="fund_account" style="border: 1px solid;" name ="fund_account">
 					<option value="거래처외">거래처외</option>
 					<option value="국제상사">국제상사</option>
 					<option value="남성">남성</option>
@@ -146,14 +173,15 @@ function change(style){
 				</select>
 			</td>
 		</tr>
-		</table>
+		
 		<tr>
-			<td>
-				<input type="submit" name="confirm" value="수정">
-				<input type="reset" name="reset" value="다시입력">
-				<input type="button" value="취소" onclick="javascript:window.location='fundList.do'">
+			<td colspan="3" style="text-align:right;border-right: hidden; border-bottom: hidden; border-left: hidden;">
+				<input type="submit" class="button" name="confirm" value="수정">
+				<input type="reset" class="button" name="reset" value="다시입력">
+				<input type="button" class="button" value="취소" onclick="javascript:window.location='fundList.do'">
 			</td>
 		</tr>
+		</table>
 	</form>
 	
 	
