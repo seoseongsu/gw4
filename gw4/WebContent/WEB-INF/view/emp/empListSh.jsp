@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>사원목록</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+
 <script>
 function deleteEvent(a){
 	if(confirm("정말 삭제하시겠습니까??")==true){
@@ -16,19 +18,31 @@ function deleteEvent(a){
 }
 </script>
 
-<style>
-	#border_table{
-	border: 1px solid;
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
 	margin: auto;
 	line-height: auto;
-	}
+	width: 1222px;
+	border-collapse: collapse;
+}
 	
-	#border_table tr, #border_table td, #border_table th{
-	border: 1px solid;
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
 	text-align:center;
 	vertical-align:middle;
 	padding: 1px;
-	}
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+}
 </style>
 </head>
 
@@ -53,7 +67,7 @@ function deleteEvent(a){
                <a href="/gw4/fund/fundList.do">회계장부<i class="fa fa-chevron-right"></i></a>
                <a href="/gw4/commute/comList.do">근태관리<i class="fa fa-chevron-right"></i></a>         
                <a href="/gw4/product_List.do">H/W관리<i class="fa fa-chevron-right"></i></a>          
-               <a href="#">S/W관리<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/productSoft_List.do">S/W관리<i class="fa fa-chevron-right"></i></a>         
             </ul>
          </div>
          <div id="right_wrapper">
@@ -66,14 +80,13 @@ function deleteEvent(a){
             </div><br><br>
             
             
-            <c:if test="${count == 0 }">
-           
-		<form method="get" action="/gw4/emp/empListSh.do" name="empSh" onSubmit="return checkIt()">
-			<table id="border_table" border="1" width="80%">
-				<tr>
-					<td>부서</td>
-				    <td colspan="5">
-					    <select name="dept_code">
+       <c:if test="${count == 0 }">
+       <table id="border_table">
+		<tr style="border-bottom:1px solid;">
+			<form method="get" action="/gw4/emp/empListSh.do" name="empSh" onSubmit="return checkIt()">
+				<th style="background-color:#3e779d;width:5%;">부서</th>
+				    <td colspan="2" style="width:10%;">
+					    <select name="dept_code" style="width:125px;">
 					    	<option value="d">전체</option>
 					      	<c:forEach var="deptList" items="${deptList }">
 					      		<c:choose>
@@ -81,32 +94,30 @@ function deleteEvent(a){
 						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_name }</option>
 						      		</c:when>
 						      		<c:otherwise>
-						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_name }</option>
+						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_higher }>${deptList.dept_name }</option>
 						      		</c:otherwise>
 					      		</c:choose>
 					      	</c:forEach>
 					      </select>
 				     </td>
-				     <td>직급</td>
-      				 <td colspan="5">
-      				  	<select name="po_code">
+				     <th style="background-color:#3e779d;width:5%;">직급</th>
+      				 <td style="width:125px;">
+      				  	<select name="po_code" style="width:125px;">
       				  		<option value="p">전체</option>
 					      	<c:forEach var="poList" items="${poList }">
 					      		<option value ="${poList.po_code }" ${poList.po_code == po_code ? 'selected="selected"' : '' }>${poList.po_name }</option>
 						    </c:forEach>
 	      				</select>
 	      			</td>
-					<td>
-						<input type="submit" value="검색" />
-						<input type="button" value="전체보기" onclick="location.href='empList.do';"/>
+					<td style="border-right: hidden; border-top: hidden;text-align:left">
+						<input type="submit" class="button" value="검색" />
+						<input type="button" class="button" value="전체보기" onclick="location.href='empList.do';"/>
 					</td>
-				</tr>
-			</table>
-		</form>
-		<br>
-	<table id="border_table">
+			</form>
+				<td colspan="8" style="text-align:right;border-right: hidden; border-top: hidden; border-bottom: hidden;"><button type="button" class="button" onclick="javascript:window.open('empInsert.do','new','left=50, top=50, width=700, height=500')">사원등록</button></td>
+		</tr>
 		<tr>
-			<td>
+			<td colspan="14">	
 				등록된 사원 정보가 없습니다.
 			</td>
 		</tr>
@@ -114,12 +125,12 @@ function deleteEvent(a){
 	</c:if>
 	
 	<c:if test="${count > 0 }">
-		<form method="get" action="/gw4/emp/empListSh.do" name="empSh" onSubmit="return checkIt()">
-			<table id="border_table" border="1" width="80%">
-				<tr>
-					<td>부서</td>
-				    <td colspan="5">
-					    <select name="dept_code">
+		<table id="border_table">
+			<tr style="border-bottom:1px solid;">
+			<form method="get" action="/gw4/emp/empListSh.do" name="empSh" onSubmit="return checkIt()">
+				<th style="background-color:#3e779d;">부서</th>
+				    <td colspan="2">
+					    <select name="dept_code" style="width:125px;">
 					    	<option value="d">전체</option>
 					      	<c:forEach var="deptList" items="${deptList }">
 					      		<c:choose>
@@ -127,33 +138,33 @@ function deleteEvent(a){
 						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_name }</option>
 						      		</c:when>
 						      		<c:otherwise>
-						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_name }</option>
+						      			<option value ="${deptList.dept_code }" ${deptList.dept_code == dept_code ? 'selected="selected"' : '' }>${deptList.dept_higher }>${deptList.dept_higher }>${deptList.dept_name }</option>
 						      		</c:otherwise>
 					      		</c:choose>
 					      	</c:forEach>
 					      </select>
 				     </td>
-				     <td>직급</td>
-      				 <td colspan="5">
-      				  	<select name="po_code">
+				     <th style="background-color:#3e779d;">직급</th>
+      				 <td>
+      				  	<select name="po_code" style="width:125px;">
       				  		<option value="p">전체</option>
 					      	<c:forEach var="poList" items="${poList }">
 					      		<option value ="${poList.po_code }" ${poList.po_code == po_code ? 'selected="selected"' : '' }>${poList.po_name }</option>
 						    </c:forEach>
 	      				</select>
 	      			</td>
-					<td>
-						<input type="submit" value="검색" />
-						<input type="button" value="전체보기" onclick="location.href='empList.do';"/>
+					<td style="border-right: hidden; border-top: hidden;">
+						<input type="submit" class="button" name="confirm" value="검색" />
+						<input type="button" class="button" value="전체보기" onclick="location.href='empList.do';"/>
 					</td>
-				</tr>
-			</table>
-		</form>
-		<table id="border_table">
-			<tr style="border:none;border:hidden;border-bottom:1px solid;">
-				<td colspan="14" style="text-align:right; border:none;"><button type="button" onclick="javascript:window.open('empInsert.do','new','left=50, top=50, width=700, height=500')">사원등록</button></td>
+			</form>
+				<td colspan="8" style="text-align:right;border-right: hidden; border-top: hidden; border-bottom: hidden;"><button type="button" class="button" onclick="javascript:window.open('empInsert.do','new','left=50, top=50, width=700, height=500')">사원등록</button></td>
 			</tr>
-			<tr style="background-color:#B7B7B7;">
+			<tr>
+				<td colspan="5" style="border-left:hidden; border-right: hidden"></td>
+				<td colspan="9" style="border-left:hidden; border-top: hidden; border-right: hidden">&nbsp;</td>
+			</tr>
+			<tr style="background-color:#3e779d;">
 				<th>사원번호</th>
 				<th>성명</th>
 				<th>부서(조직)</th>
@@ -184,8 +195,8 @@ function deleteEvent(a){
 				<td>${article.emp_join }</td>
 				<td>${article.emp_bank }</td>
 				<td>${article.emp_acnum }</td>
-				<td><input type="button" value="수정" onclick="javascript:window.open('empUpdate.do?emp_code=${article.emp_code }','new','left=50, top=50, width=700, height=500')"/>
-				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
+				<td><input type="button" class="buttonS" value="수정" onclick="javascript:window.open('empUpdate.do?emp_code=${article.emp_code }','new','left=50, top=50, width=700, height=500')"/>
+				<input type="button" class="buttonS" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
 			</tr>
 			</c:forEach>
 		</table>
