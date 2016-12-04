@@ -6,27 +6,39 @@
 <head>
 
 <title>물품 관리</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
+<script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 </head>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-<link rel="stylesheet" href="#" />
-<script>
-$(function(){
-	$("#salary_days").datepicker({
-		dateFormat: 'yy - mm - dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});	
-</script>
 <body>
 <b><center/>Soft Ware 등록</b><br /><br />
 <form method="post" name="productSoftInsert" action="productSoft_InsertPro.do">
-	<table border ="1" cellspacing="0" cellpadding="0" width="500" align="center">
+	<table  id="border_table" border="1" cellspacing="0" cellpadding="0" width="500" align="center">
 	
 		<tr>
 			<th width="100">물품 분류</th>
@@ -40,7 +52,7 @@ $(function(){
 			<td ><input style="width:97%" type="text" name="product_name"></td>
 			
 			<th>물품 등록일</th>
-			<td ><input type="text"  id="salary_days"  style="width:98%" name="product_register_day"></td>
+			<td ><input type="text"  id="product_register_day"  style="width:98%" name="product_register_day" onclick="fnPopUpCalendar(product_register_day,product_register_day,'yyyy-mm-dd')"></td>
 			
 		</tr>
 		
@@ -60,9 +72,9 @@ $(function(){
 		</tr>
 	
 		<tr>
-			<td colspan="5" align="right" >
-			<input align="right" type="submit"  value="전송" onclick="goSubmit()">
-			<input type="button" value="취소"  onclick="javascript:self.close()">
+			<td colspan="5" align="right" style="text-align:right;border-right: hidden; border-bottom: hidden; border-left: hidden;">
+			<input align="right" class="button" type="submit"  value="전송" onclick="goSubmit()">
+			<input type="button" class="button" value="취소"  onclick="javascript:self.close()">
 			</td>
 		</tr>
 </table>

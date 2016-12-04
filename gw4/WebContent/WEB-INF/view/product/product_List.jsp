@@ -6,6 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>물품 관리</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 </head>
 <body>
 <jsp:include page="/layout/header.jsp" />  
@@ -59,7 +86,7 @@
 
 
 
-<table align="center" cellspacing="0" cellpadding="0"  width="1200" border="1">
+<table id="border_table" border="1" align="left" width="1200">
 				<tr>
 					<th width="100">분류</th>
 					<th width="250">물품(코드)번호</th>
@@ -79,9 +106,9 @@
 					<td>${productList.product_quantity}</td>
 				
 					<td style="width:8%">
-					<input type="button" value="수정" 
+					<input type="button" class="buttonS" value="수정" 
 						onclick="javascript:window.open('product_Modify.do?product_num=${productList.product_num}','new','left=50, top=50, width=1000, height=500')">
-					<input type="button" value="삭제"
+					<input type="button" class="buttonS" value="삭제"
 						 onclick="document.location.href='product_Delete.do?product_num=${productList.product_num}'">
 					</td>						
 
@@ -94,7 +121,7 @@
 <table align="center"  width="1200" >
 <tr>
 <td align="right" colspan="5">
-<input type="button" value="물품 등록"	 onclick="javascript:window.open('product_Insert.do','new','left=50, top=50, width=1000, height=500')"></td>
+<input type="button" value="물품 등록"	class="button" onclick="javascript:window.open('product_Insert.do','new','left=50, top=50, width=1000, height=500')"></td>
 </tr>
 </table>
 

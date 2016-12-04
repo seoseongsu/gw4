@@ -80,7 +80,7 @@ function checkIt(){
          </div>
          <div id="right_wrapper">
             <div id="right_path">
-               <h5><i class="fa fa-home"></i>&nbsp; > 인사관리 > 사원관리</h5>
+               <h5><i class="fa fa-home"></i>&nbsp; > 인사관리 > 회계 장부</h5>
             </div>
             
             <div id="right_header">
