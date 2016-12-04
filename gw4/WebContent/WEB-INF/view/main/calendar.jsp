@@ -309,9 +309,7 @@ $(document).ready(function(){
 	 */
 	$("#BtnICalTest").button();
 	$("#BtnICalTest").click(function() {
-		// Please note that in Google Chrome this will not work with a local file. Chrome prevents AJAX calls
-		// from reading local files on disk.		
-		jfcalplugin.loadICalSource("#mycal",$("#iCalSource").val(),"html");	
+		history.go(-1); 
 		return false;
 	});	
 
@@ -572,7 +570,8 @@ $(document).ready(function(){
 			&nbsp;&nbsp;&nbsp;
 			Date: <input type="text" id="dateSelect" size="20"/>
 			&nbsp;&nbsp;&nbsp;
-			<button id="BtnDeleteAll">Delete All</button>
+			<button id="BtnDeleteAll">전체 삭제</button>
+			<button id="BtnICalTest">메인으로 돌아가기</button>
 		</div>
 
 		<br>
