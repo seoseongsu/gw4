@@ -71,7 +71,7 @@ $(document).ready(function(){
 			<!-- 상단 메뉴 시작 -->			
 			<div id="main_nav">
 				<ul>
-					<li><a href="#">전자결재</a></li>
+					<li><a href="/gw4/approval/approvalGuide.do">전자결재</a></li>
 					<li><a href="/gw4/my/myView.do">개인정보</a></li>
 					<li><a href="/gw4/emp/empList.do">인사관리</a></li>
 					<li><a href="/gw4/chat/chat.do">커뮤니티</a></li>
@@ -86,9 +86,9 @@ $(document).ready(function(){
 						</div>
 						<div id="slide_right">
 							<ul>
-								<a href="#">기안서작성</a>
-								<a href="#">올린결재</a>
-								<a href="#">받은결재</a>
+								<a href="/gw4/approval/approvalGuide.do">기안서작성</a>
+								<a href="/gw4/approval/approvalUp.do">올린결재</a>
+								<a href="/gw4/approval/approvalSend.do">받은결재</a>
 								<a href="#">양식관리</a>
 							</ul>
 							<ul>
