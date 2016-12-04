@@ -4,6 +4,33 @@
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>부서등록</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:left;
+	vertical-align:left;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <script language="JavaScript">
     function checkIt() {
         var userinput = eval("document.userinput");
@@ -39,42 +66,42 @@
 </head>
 <body>
 <form method="get" action="deptInsertPro.do" name="userinput" onSubmit="return checkIt()">
-  <table width="600" border="1" cellspacing="0" cellpadding="3" align="center" >
+  <table id="border_table" width="600" cellspacing="0" cellpadding="3" align="center" >
     <tr> 
-    <td colspan="2" height="39" align="center">
-       <font size="+1" ><b>부서등록</b></font></td>
+    <th colspan="2" height="39" align="center">
+       <font size="+1" ><b>부서등록</b></font></th>
     </tr>
     <tr> 
-      <td width="200"> 부서이름</td>
+      <th width="200"> 부서이름</th>
       <td width="400" > 
         <input type="text" name="dept_name" size="15" maxlength="15">
         <font size="1" color="red">*부서순서(대표이사->OO부->OO팀).</font>
       </td>
     </tr>
     <tr> 
-      <td width="200"> 상위부서</td>
+      <th width="200"> 상위부서</th>
       <td width="400"> 
         <input type="text" name="dept_higher" size="15" maxlength="15">
        
       </td>
     </tr>
     <tr> 
-      <td width="200"> 부서장이름</td>
+      <th width="200"> 부서장이름</th>
       <td width="400"> 
         <input type="text" name="dept_leader" size="15" maxlength="10">
       </td>
     </tr>
      <tr> 
-      <td width="200"> 부서연락처</td>
+      <th width="200"> 부서연락처</th>
       <td width="400"> 
         <input type="text" name="dept_phone" size="15" maxlength="30">
       </td>
     </tr>
     <tr> 
-      <td colspan="2" align="center"> 
-          <input type="submit" name="confirm" value="등록" >
-          <input type="reset" name="reset" value="다시입력">
-          <input type="button" value="취소" onclick="javascript:window.location='deptList.do'">
+      <td colspan="2" align="center" style="text-align:right;border-right: hidden; border-bottom: hidden; border-left: hidden;"> 
+          <input type="submit" class="button" name="confirm" value="등록" >
+          <input type="reset" class="button" name="reset" value="다시입력">
+          <input type="button" class="button" value="취소" onclick="javascript:window.location='deptList.do'">
       </td>
     </tr>
   </table>

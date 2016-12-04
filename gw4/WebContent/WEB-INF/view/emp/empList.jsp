@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>사원목록</title>
-<link rel="stylesheet" href="/gw4/css/styleS.css">
+
 
 <script>
 function deleteEvent(a){
@@ -17,7 +17,7 @@ function deleteEvent(a){
 	}
 }
 </script>
-
+<link rel="stylesheet" href="/gw4/css/styleS.css">
 <style type="text/css">
 #border_table{
 	border: 1px solid #32607F;
