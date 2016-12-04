@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>header</title>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">  <!-- font-awesome  플러그인 -->
 <link rel="stylesheet" href="/gw4/css/style.css">  <!--  전체 스타일시트  -->
 <link rel="stylesheet" href="/gw4/css/flexslider.css" type="text/css">  <!-- flex slider 스타일시트 -->

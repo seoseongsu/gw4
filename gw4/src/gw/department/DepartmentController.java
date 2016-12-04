@@ -30,6 +30,20 @@ public class DepartmentController {
 		return "/dept/deptList";
 	}
 	
+	@RequestMapping("/dept/deptList2.do")
+	public String deptList2(HttpServletRequest request){
+		List treeList = null;
+		List treeListD = null;
+		List treeListT = null;
+		treeList = sqlMap.queryForList("dept.deptSelectAll", null);
+		treeListD = sqlMap.queryForList("dept.deptSelectTreeD", null);
+		treeListT = sqlMap.queryForList("dept.deptSelectTreeT", null);
+		request.setAttribute("treeList", treeList);
+		request.setAttribute("treeListD", treeListD);
+		request.setAttribute("treeListT", treeListT);
+		return "/dept/deptList2";
+	}
+	
 	@RequestMapping("/dept/deptInsert.do")
 	public String deptInsert(HttpServletRequest request){
 		
