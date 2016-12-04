@@ -6,6 +6,33 @@
 <head>
     <title>업무명세표등록</title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table, #memberTable{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td, #memberTable tr, #memberTable td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th, #memberTable th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
     	
@@ -81,29 +108,17 @@
         });
         
     </script>
-    <style>
-		#border_table, #memberTable{
-		border: 1px solid;
-		margin: auto;
-		line-height: auto;
-		}
-		
-		#border_table tr, #border_table td, #border_table th, #memberTable tr, #memberTable td, #memberTable th{
-		border: 1px solid;
-		padding: 1px;
-		}
-	</style>
 </head>
  
 <body>
 <form method="get" action="bsInsertPro.do" name="bs">
 	<table id="border_table" border="1" style="width:720px;">
-		<tr><td colspan="6"><strong>기본정보</strong></td></tr>
+		<tr><th colspan="6"><strong>기본정보</strong></th></tr>
 		<tr>
-			<td width="70">사원</td>
+			<th width="70">사원</th>
 			<td width="170">${empJoinVo.emp_name }
 			<input type="hidden" name="emp_code" value="${empJoinVo.emp_code }"/></td>
-			<td width="70">부서</td>
+			<th width="70">부서</th>
 			<td width="170">
 				<c:if test="${empJoinVo.dept_higher eq null }">
 					${empJoinVo.dept_name }
@@ -114,12 +129,12 @@
 					<input type="hidden" name="dept_code" value="${empJoinVo.dept_code }"/>
 				</c:if>
 			</td>
-			<td width="70">직급</td>
+			<th width="70">직급</th>
 			<td width="170">${empJoinVo.po_name }
 			<input type="hidden" name="po_code" value="${empJoinVo.po_code }"/></td>
 		</tr>
 		<tr>
-			<td>실행년도</td>
+			<th>실행년도</th>
 			<td>
 				<select name="bs_year" style="width:60px;height:23px;">
 					<option value="2016">2016</option>
@@ -127,7 +142,7 @@
 					<option value="2018">2018</option>
 				</select>
 			</td>
-			<td>평가자</td>
+			<th>평가자</th>
 			<td>
 				<select name="bs_ap" style="width:80px;height:23px;">
 					<c:if test="${empVo.po_name == '대표이사' || empVo.po_name == '부장' || empVo.po_name == '차장'}">
@@ -138,7 +153,7 @@
 					</c:forEach>
 				</select>
 			</td>
-			<td>상태</td>
+			<th>상태</th>
 			<td>
 				<select name="bs_st" style="width:100px;height:23px;">
 					<option value="임시저장">임시저장</option>
@@ -147,7 +162,10 @@
 				</select>
 			</td>
 		</tr>
-		<tr><td colspan="6"><strong>업무목표</strong></td></tr>
+		<tr>
+		<td style="border-left:hidden; border-right: hidden;">&nbsp;</td>
+		</tr>
+		<tr><th colspan="6"><strong>업무목표</strong></th></tr>
 	    <tr>
 	    	<td colspan="6"><textarea name="bs_goal" style="resize: none;" rows="10" cols="98"></textarea></td>
 	    </tr>
@@ -155,21 +173,21 @@
 	<br>
 	<table id="border_table" border="1" style="width:720px;border:hidden;">
     	<tr>
-	    	<td>
+	    	<th>
 	    		<strong>업무내역</strong>
-	    	</td>
+	    	</th>
 	    	<td style="text-align:right;">
-			    <input type="button" value="행추가"  id="btnAddRow"/>
-			    <input type="button" value="행삭제"  id="btnDelRow"/>
+			    <input type="button" class="button" value="행추가"  id="btnAddRow"/>
+			    <input type="button" class="button" value="행삭제"  id="btnDelRow"/>
 		    </td>
     	</tr>
     </table>
-	<table id="memberTable" border="1" style="width:720px;">
+	<table id="memberTable" border="1" style="width:720px;text-align:center;vertical-align:middle;">
 	    <tr>
-	        <td style="width:180px;">주요업무</td>
-	        <td style="width:180px;">중요도(%)</td>
-	        <td style="width:180px;">시간비중(%)</td>
-	        <td style="width:180px;">결과물</td>
+	        <th style="width:180px;">주요업무</th>
+	        <th style="width:180px;">중요도(%)</th>
+	        <th style="width:180px;">시간비중(%)</th>
+	        <th style="width:180px;">결과물</th>
 	    </tr>
 	    <tr>
 	        <td style="width:180px;"></td>
@@ -181,9 +199,9 @@
 	<input type="hidden" name="count" value="0" />
 	<table id="border_table" border="1" style="width:720px;">
 		<tr>
-	    	<td align="right">
-	    		<input type="submit" value="저장" onclick="goSubmit()"/>
-	    		<input type="button" value="취소" onclick="javascript:self.close()"/>
+	    	<td style="text-align:right;border-top:hidden; border-right: hidden; border-left: hidden; border-bottom: hidden">
+	    		<input type="submit" class="button" value="저장" onclick="goSubmit()"/>
+	    		<input type="button" class="button" value="취소" onclick="javascript:self.close()"/>
 	    	</td>
 	    </tr>
 	</table>

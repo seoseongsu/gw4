@@ -6,6 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>업무명세서목록</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <script>
 function deleteEvent(a){
 	if(confirm("정말 삭제하시겠습니까??")==true){
@@ -56,31 +83,31 @@ function deleteEvent(a){
 
 <div>
 	<c:if test="${countMy == 0 }">
-	<table align="center" border="1" width="720">
-		<tr><td colspan="6"><strong>나의 업무명세표</strong></td></tr>
+	<table id="border_table" align="left" border="1" width="720">
+		<tr><th colspan="6"><strong>나의 업무명세표</strong></th></tr>
 		<tr>
 			<td>
 				등록된 업무명세표가 없습니다.
 			</td>
 		</tr>
 		<tr>
-			<td>
-				<input type="button" value="등록" onclick="javascript:window.open('bsInsert.do?emp_code=${emp_code}','new','left=50, top=50, width=900, height=500')"/>
+			<td style="text-align:right;">
+				<input type="button" class="button" value="등록" onclick="javascript:window.open('bsInsert.do?emp_code=${emp_code}','new','left=50, top=50, width=900, height=500')"/>
 			</td>
 		</tr>
 	</table>
 	</c:if>
 	
 	<c:if test="${countMy > 0 }">
-		<table align="center" border="1" width="720">
-			<tr><td colspan="6"><strong>나의 업무명세표</strong></td></tr>
+		<table id="border_table" align="left" border="1" width="720">
+			<tr><th colspan="6"><strong>나의 업무명세표</strong></th></tr>
 			<tr align="center">
-				<td width="100">실행년도</td>
-				<td width="70">부서</td>
-				<td width="100">평가자</td>
-				<td width="200">작성일</td>
-				<td width="150">상태</td>
-				<td width="100">&nbsp;</td>	
+				<th width="100">실행년도</th>
+				<th width="70">부서</th>
+				<th width="100">평가자</th>
+				<th width="200">작성일</th>
+				<th width="150">상태</th>
+				<th width="100">&nbsp;</th>	
 			</tr>
 			<c:forEach var="bsMyList" items="${bsMyList }">
 			<tr align="center">
@@ -89,13 +116,13 @@ function deleteEvent(a){
 				<td>${bsMyList.bs_ap }</td>
 				<td>${bsMyList.bs_date }</td>
 				<td>${bsMyList.bs_st }</td>
-				<td><input type="button" value="수정" onclick="javascript:window.open('bsUpdate.do?emp_code=${bsMyList.emp_code }&bs_code=${bsMyList.bs_code }','new','left=50, top=50, width=900, height=500')"/>
-				<input type="button" value="삭제" onclick="deleteEvent(${bsMyList.bs_code})"/></td>
+				<td><input type="button" class="buttonS" value="수정" onclick="javascript:window.open('bsUpdate.do?emp_code=${bsMyList.emp_code }&bs_code=${bsMyList.bs_code }','new','left=50, top=50, width=900, height=500')"/>
+				<input type="button" class="buttonS" value="삭제" onclick="deleteEvent(${bsMyList.bs_code})"/></td>
 			</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="6" align="right">
-					<input type="button" value="등록" onclick="javascript:window.open('bsInsert.do?emp_code=${emp_code}','new','left=50, top=50, width=900, height=500')"/>
+				<td colspan="6" align="right" style="text-align:right;">
+					<input type="button" class="button"  value="등록" onclick="javascript:window.open('bsInsert.do?emp_code=${emp_code}','new','left=50, top=50, width=900, height=500')"/>
 				</td>
 			</tr>
 		</table>
@@ -105,8 +132,8 @@ function deleteEvent(a){
 	<c:if test="${empVo.po_name == '대표이사' || empVo.po_name == '부장' || empVo.po_name == '차장' || memId == 'admin' }">
 	
 		<c:if test="${countDept == 0 }">
-		<table align="center" border="1" width="720">
-			<tr><td colspan="6"><strong>부서원의 업무명세표</strong></td></tr>
+		<table id="border_table" align="left" border="1" width="720">
+			<tr><th colspan="6"><strong>부서원의 업무명세표</strong></th></tr>
 			<tr>
 				<td>
 					등록된 업무명세표가 없습니다.
@@ -116,15 +143,15 @@ function deleteEvent(a){
 		</c:if>
 		<c:if test="${countDept > 0 }">
 			<c:if test="${leaderCk.po_code <= 2 }" >
-				<table align="center" border="1" width="720">
-					<tr><td colspan="6"><strong>부서원의 업무명세표</strong></td></tr>
+				<table id="border_table" align="left" border="1" width="720">
+					<tr><th colspan="6"><strong>부서원의 업무명세표</strong></th></tr>
 					<tr align="center">
-						<td width="100">실행년도</td>
-						<td width="70">부서</td>
-						<td width="100">작성자</td>
-						<td width="200">작성일</td>
-						<td width="150">상태</td>
-						<td width="100">&nbsp;</td>			
+						<th width="100">실행년도</th>
+						<th width="70">부서</th>
+						<th width="100">작성자</th>
+						<th width="200">작성일</th>
+						<th width="150">상태</th>
+						<th width="100">&nbsp;</th>			
 					</tr>
 					<c:forEach var="bsDeptList" items="${bsDeptList }">
 					<tr align="center">
@@ -134,7 +161,7 @@ function deleteEvent(a){
 						<td>${bsDeptList.bs_date }</td>
 						<td>${bsDeptList.bs_st }</td>
 						<td align="left">
-							<input type="button" value="검토" onclick="javascript:window.open('bsUpdate.do?emp_code=${bsDeptList.emp_code }&bs_code=${bsDeptList.bs_code }','new','left=50, top=50, width=900, height=500')"/>
+							<input type="button" class="buttonS" value="검토" onclick="javascript:window.open('bsUpdate.do?emp_code=${bsDeptList.emp_code }&bs_code=${bsDeptList.bs_code }','new','left=50, top=50, width=900, height=500')"/>
 						</td>
 					</tr>
 					</c:forEach>
