@@ -6,6 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>근태등록</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 <script language="JavaScript">
     function checkIt() {
@@ -48,37 +75,36 @@
             </div><br><br>
 
 <h2>일일근태등록</h2>
-<form name="comSearch" action="/gw4/commute/comSearch.do" onSubmit="return checkIt()">
-<table border="1" width="80%">
+<table id="border_table" width="60%" border="1" align="left">
+	<form name="comSearch" action="/gw4/commute/comSearch.do" onSubmit="return checkIt()">
 	<input type="hidden" name="emp_code" value="${emp_code }" />
 	<tr>
+		<th>
+			근무일자 
+		</th>
 		<td>
-			* 근무일자 &nbsp;&nbsp;&nbsp;
-			<input type="text" name="searchDate" id="searchDate"  onclick="fnPopUpCalendar(searchDate,searchDate,'yyyy-mm-dd')"/>
+			<input type="text" style="border: 1px solid;" name="searchDate" id="searchDate"  onclick="fnPopUpCalendar(searchDate,searchDate,'yyyy-mm-dd')"/>
 		</td> 
-		<td>
-			<input type="submit" value="검색" />
+		<td colspan="4" style="text-align:left;border-top:hidden; border-right: hidden"> 
+			<input type="submit" class="button" value="검색" />
 		</td>
 	</tr>
-</table>
-</form>
-
-<table border="1" width="80%">
+	</form>
 	<tr>
-		<td colspan="5" style="color:red; font-weight: bold;">접속IP : ${ip }</td>
+		<td colspan="5" style="font-weight: bold;text-align:left;">접속IP : ${ip }</td>
 		<td>
-			<input type="button" value="출근" onclick="window.location='/gw4/commute/comGo.do?emp_code=${emp_code}'" />
-			<input type="button" value="퇴근" onclick="window.location='/gw4/commute/comOff.do?emp_code=${emp_code}'" />
+			<input type="button" class="button" value="출근" onclick="window.location='/gw4/commute/comGo.do?emp_code=${emp_code}'" />
+			<input type="button" class="button" value="퇴근" onclick="window.location='/gw4/commute/comOff.do?emp_code=${emp_code}'" />
 		</td>
 	</tr>
 
 	<tr>
-		<td>사원번호</td>
-		<td>성명</td>
-		<td>출근시각</td>
-		<td>퇴근시각</td>
-		<td>상태</td>
-		<td>PC IP</td>
+		<th>사원번호</th>
+		<th>성명</th>
+		<th>출근시각</th>
+		<th>퇴근시각</th>
+		<th>상태</th>
+		<th>PC IP</th>
 	</tr>
 
 <c:if test="${count == 0 }">

@@ -66,7 +66,7 @@
             </div><br><br>
 
 
-<table id="border_table" width="400" border="1" cellspacing="0" cellpadding="3" align="center" >
+<table id="border_table" width="400" border="1" cellspacing="0" cellpadding="3" align="left" >
   	<tr>
   	<td colspan="2" style="text-align:right;border-right: hidden; border-top: hidden; border-left: hidden;">
   		<input type="button" class="button" value="수정" onclick="javascript:window.open('myUpdate.do?','new','left=50, top=50, width=700, height=500')">

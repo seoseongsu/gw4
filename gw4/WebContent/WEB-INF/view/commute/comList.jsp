@@ -6,6 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>근태검색</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <script type="text/javascript" src="/gw4/calendar/calendar.js"></script>
 <script language="JavaScript">
     function checkIt() {
@@ -56,15 +83,17 @@
 
 
 <form method="get" action="/gw4/commute/comListSearch.do" name="comListSh" onSubmit="return checkIt()">
-<table border="1" width="80%">
+<table id="border_table" border="1" align="left" width="70%">
 	<tr>
-		<td>
-			* 기간별검색 &nbsp;&nbsp;&nbsp;
-			<input type="text" name="searchDate1" id="searchDate1" onclick="fnPopUpCalendar(searchDate1,searchDate1,'yyyy-mm-dd')"/>~
-			<input type="text" name="searchDate2" id="searchDate2" onclick="fnPopUpCalendar(searchDate2,searchDate2,'yyyy-mm-dd')"/>
+		<th>
+			기간별검색
+		</th>
+		<td colspan="3">
+			<input type="text" style="border: 1px solid;" name="searchDate1" id="searchDate1" onclick="fnPopUpCalendar(searchDate1,searchDate1,'yyyy-mm-dd')"/>~
+			<input type="text" style="border: 1px solid;" name="searchDate2" id="searchDate2" onclick="fnPopUpCalendar(searchDate2,searchDate2,'yyyy-mm-dd')"/>
 		</td>
-		<td>
-			<select name="dept_code" style="width:120px;height:23px;">
+		<td style="border-left:hidden; border-right: hidden;">
+			<select name="dept_code" style="width:120px;height:23px;border: 1px solid;">
 				<c:forEach var="deptList" items="${deptList }">
 		      		<c:choose>
 			      		<c:when test="${deptList.dept_higher eq null}">
@@ -77,23 +106,23 @@
 		      	</c:forEach>
 	    	</select>
 		</td> 
-		<td>
-			<input type="submit" name="confirm" value="검색" />
+		<td >
+			<input type="submit" class="button" name="confirm" value="검색" />
 		</td>
 	</tr>
-</table>
 </form>
-
-<table border="1" width="80%">
 	<tr>
-		<td>사원번호</td>
-		<td>성명</td>
-		<td>직급</td>
-		<td>부서</td>
-		<td>출근시각</td>
-		<td>퇴근시각</td>
-		<td>근무시간</td>
-		<td>PC IP</td>
+		<td style="border-left:hidden; border-right: hidden;">&nbsp;</td>
+	</tr>
+	<tr>
+		<th>사원번호</th>
+		<th>성명</th>
+		<th>직급</th>
+		<th>부서</th>
+		<th>출근시각</th>
+		<th>퇴근시각</th>
+		<th>근무시간</th>
+		<th>PC IP</th>
 	</tr>
 	
 	<c:forEach var="comSearchVo" items="${comSearchVo }">
