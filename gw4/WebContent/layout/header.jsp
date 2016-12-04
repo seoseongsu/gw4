@@ -71,9 +71,9 @@ $(document).ready(function(){
 			<div id="main_nav">
 				<ul>
 					<li><a href="#">전자결재</a></li>
-					<li><a href="#">개인정보</a></li>
+					<li><a href="/gw4/my/myView.do">개인정보</a></li>
 					<li><a href="/gw4/emp/empList.do">인사관리</a></li>
-					<li><a href="#">커뮤니티</a></li>
+					<li><a href="/gw4/chat/chat.do">커뮤니티</a></li>
 					<li><a href="/gw4/board_List.do"">게시판</a></li>
 				</ul>
 				

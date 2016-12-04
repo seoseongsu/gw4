@@ -18,17 +18,126 @@ function deleteEvent(a){
 
 <style>
 	#border_table{
-	border: 1px solid;
+	border: 1px solid #32607F;
 	margin: auto;
 	line-height: auto;
+	border-collapse:collapse;
 	}
 	
-	#border_table tr, #border_table td, #border_table th{
-	border: 1px solid;
+	#border_table tr, #border_table td{
+	border: 1px solid #32607F;
 	text-align:center;
 	vertical-align:middle;
 	padding: 1px;
+	border-collapse:collapse;
 	}
+	#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse:collapse;
+	color: #ffffff;
+	}
+	
+.button {
+   border: 1px solid #006199;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+   padding: 2.5px 5px;
+   -webkit-border-radius: 6px;
+   -moz-border-radius: 6px;
+   border-radius: 6px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   text-shadow: #7ea4bd 0 1px 0;
+   color: #ffffff;
+   font-size: 14px;
+   font-family: 돋움, serif;
+   font-weight: bold;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border: 1px solid #006199;
+   text-shadow: #1e4158 0 1px 0;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+   color: #cfcfcf;
+   }
+.button:active {
+   text-shadow: #1e4158 0 1px 0;
+   border: 1px solid #bdbdbd;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#3e779d));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   background-image: -ms-linear-gradient(top, #3e779d 0%, #65a9d7 100%);
+   color: #d1d1d1;
+   }
+   
+   .buttonS {
+   border: 1px solid #006199;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+   padding: 2.5px 5px;
+   -webkit-border-radius: 6px;
+   -moz-border-radius: 6px;
+   border-radius: 6px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   text-shadow: #7ea4bd 0 1px 0;
+   color: #ffffff;
+   font-size: 11px;
+   font-family: 돋움, serif;
+   font-weight: bold;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hoverS {
+   border: 1px solid #006199;
+   text-shadow: #1e4158 0 1px 0;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+   color: #cfcfcf;
+   }
+.button:activeS {
+   text-shadow: #1e4158 0 1px 0;
+   border: 1px solid #bdbdbd;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#3e779d));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   background-image: -ms-linear-gradient(top, #3e779d 0%, #65a9d7 100%);
+   color: #d1d1d1;
+   }
+   
 </style>
 </head>
 
@@ -65,7 +174,7 @@ function deleteEvent(a){
                <h1>사원 관리</h1>
             </div><br><br>
             
-            
+
     <c:if test="${memId == null }">
 		<script type="text/javascript">
 			alert("로그인을 먼저 해주세요. 로그인창으로 이동합니다.");
@@ -84,7 +193,7 @@ function deleteEvent(a){
             
             
     <c:if test="${count == 0 }">
-	<table id="border_table">
+	<table id="border_table1">
 		<tr>
 			<td>	
 				등록된 사원 정보가 없습니다.
@@ -94,12 +203,12 @@ function deleteEvent(a){
 	</c:if>
 	
 	<c:if test="${count > 0 }">
-		<form method="get" action="/gw4/emp/empListSh.do" name="empSh" onSubmit="return checkIt()">
-			<table id="border_table" border="1" width="80%">
-				<tr>
-					<td>부서</td>
-				    <td colspan="5">
-					    <select name="dept_code">
+		<table id="border_table">
+			<tr style="border:none;border-bottom:1px solid;">
+				<form method="get" action="/gw4/emp/empListSh.do" name="empSh" onSubmit="return checkIt()">
+				<th style="background-color:#3e779d;">부서</th>
+				    <td colspan="2">
+					    <select name="dept_code" style="width:125px;">
 					    	<option value="d">전체</option>
 					      	<c:forEach var="deptList" items="${deptList }">
 					      		<c:choose>
@@ -113,9 +222,9 @@ function deleteEvent(a){
 					      	</c:forEach>
 					      </select>
 				     </td>
-				     <td>직급</td>
-      				 <td colspan="5">
-      				  	<select name="po_code">
+				     <th style="background-color:#3e779d;">직급</th>
+      				 <td>
+      				  	<select name="po_code" style="width:125px;">
       				  		<option value="p">전체</option>
 					      	<c:forEach var="poList" items="${poList }">
 					      		<option value ="${poList.po_code }">${poList.po_name }</option>
@@ -123,17 +232,13 @@ function deleteEvent(a){
 	      				</select>
 	      			</td>
 					<td>
-						<input type="submit" name="confirm" value="검색" />
-						<input type="button" value="전체보기" onclick="location.href='empList.do';"/>
+						<input type="submit" class="button" name="confirm" value="검색" />
+						<input type="button" class="button" value="전체보기" onclick="location.href='empList.do';"/>
 					</td>
-				</tr>
-			</table>
-		</form>
-		<table id="border_table">
-			<tr style="border:none;border:hidden;border-bottom:1px solid;">
-				<td colspan="14" style="text-align:right; border:none;"><button type="button" onclick="javascript:window.open('empInsert.do','new','left=50, top=50, width=700, height=500')">사원등록</button></td>
+					</form>
+				<td colspan="8" style="text-align:right; border:none;"><button type="button" class="button" onclick="javascript:window.open('empInsert.do','new','left=50, top=50, width=700, height=500')">사원등록</button></td>
 			</tr>
-			<tr style="background-color:#B7B7B7;">
+			<tr style="background-color:#3e779d;">
 				<th>사원번호</th>
 				<th>성명</th>
 				<th>부서(조직)</th>
@@ -164,8 +269,8 @@ function deleteEvent(a){
 				<td>${article.emp_join }</td>
 				<td>${article.emp_bank }</td>
 				<td>${article.emp_acnum }</td>
-				<td><input type="button" value="수정" onclick="javascript:window.open('empUpdate.do?emp_code=${article.emp_code }','new','left=50, top=50, width=700, height=500')"/>
-				<input type="button" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
+				<td><input type="button" class="buttonS" value="수정" onclick="javascript:window.open('empUpdate.do?emp_code=${article.emp_code }','new','left=50, top=50, width=700, height=500')"/>
+				<input type="button" class="buttonS" value="삭제" onclick="deleteEvent(${article.emp_code})"/></td>
 			</tr>
 			</c:forEach>
 		</table>
@@ -173,6 +278,7 @@ function deleteEvent(a){
 	
 	
 	</c:if>
+
 	
          </div>
       </div>
