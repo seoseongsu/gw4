@@ -10,4 +10,4 @@ alert("수정되었습니다.");
       
 </script>
 </head>
-<meta http-equiv="Refresh" content="0;url=board_Content.do?reply_num=${reply_num}board_num=${board_num}&pageNum=${pageNum}" >
+<meta http-equiv="Refresh" content="0;url=board_Content.do?reply_num=${reply_num}&board_num=${board_num}&pageNum=${pageNum}" >

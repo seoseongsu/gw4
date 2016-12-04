@@ -42,6 +42,27 @@
                <h1>게시판</h1>
             </div>
      
+<script language="javascript">
+
+function categorycheck(c)
+{
+	if(c=='C001'){
+		document.writeform.category_name.value='[공지사항]';		
+		'brake';
+	}	
+	
+	else if (c=='C002'){
+		document.writeform.category_name.value='[자유게시판]';		
+		'brake';
+	}
+	else if (c=='C003'){
+		document.writeform.category_name.value='[파일함]';		
+		'brake';
+	}
+}
+
+</script>
+
 
 
 <b><center>글 작성</b><br />
@@ -57,10 +78,10 @@
 	<tr>
 		<th width ="100">카테고리</th>
 		<td>
-		<select id ="category" name="category_code"  >
-			<option>--------------</option>
+		<select id ="category" name="category_code"  onchange="categorycheck(this.value)">
+			<option value="vacuum" >----------</option>
 			<c:forEach items="${categoryList}" var="category">
-				<option  value="${category.category_code}">${category.category_name}</option>		
+				<option value="${category.category_code}">${category.category_name}</option>		
 			</c:forEach>
 		</select>		
 	</tr>
@@ -69,6 +90,7 @@
 		<th width="100">제목</th>
 		<td width="600">
 			<input type="text" width="600" name="board_subject" >
+			<input type="hidden" name="category_name">
 		</td>
 	</tr>
 	

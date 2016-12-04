@@ -64,9 +64,9 @@ import gw.employee.EmployeeVO;
 	@RequestMapping("board_List.do")
 		public String board_List(HttpServletRequest request, Iboard_categoryVO category,
 				HttpSession session, EmployeeVO empVO) throws Exception{
-			
 			String emp_code = (String)session.getAttribute("memId");
 			EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+		
 		
 		
 		
@@ -116,7 +116,7 @@ import gw.employee.EmployeeVO;
 			request.setAttribute("boardList", boardList);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("category_code", category_code);
-			request.setAttribute("emp_code", emp_code);
+			request.setAttribute("empVo", empVo);
 			
 		
 			return "/gboard/board_List";
@@ -312,22 +312,13 @@ import gw.employee.EmployeeVO;
 		public String board_Content(Map<String, Object> model, HttpServletRequest request, 
 				HttpServletResponse response, Board_replyVO board_replyVO, HttpSession session, EmployeeVO empVO) 
 						throws Exception {
-		
-		
+		String emp_code = (String)session.getAttribute("memId");
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+		String board_emp = request.getParameter("emp_code");
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
         String pageNum = request.getParameter("pageNum");
-        
-
-		String emp_code = (String)session.getAttribute("memId");
-		empVO = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
-		String emp_name = (String)sqlMap.queryForObject("nameCheck", empVO.getEmp_code());
-		
-		
-		
-		
-        
-
+       
         sqlMap.update("gboard.boardReadcount", num);
         BoardVO boardList =  (BoardVO)sqlMap.queryForObject("gboard.boardSelectNum", num);
         
@@ -339,8 +330,9 @@ import gw.employee.EmployeeVO;
         request.setAttribute("pageNum", pageNum);
         request.setAttribute("boardList", boardList);
         request.setAttribute("replyList", replyList);
+        request.setAttribute("empVo", empVo);
+        request.setAttribute("board_emp", board_emp);
         request.setAttribute("emp_code", emp_code);
-		request.setAttribute("emp_name", emp_name);
 		
 		
         
@@ -357,38 +349,27 @@ import gw.employee.EmployeeVO;
 	@RequestMapping("board_DeleteForm.do")
 		public String board_DeleteForm(HttpServletRequest request, 
 				HttpSession session, EmployeeVO empVO, BoardVO boardVO) throws Exception{
+		String emp_code = (String)session.getAttribute("memId");
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);		
+		
 		
 		int num = Integer.parseInt(request.getParameter("board_num"));
 	    String pageNum = request.getParameter("pageNum");
 	    String board_emp = request.getParameter("emp_code");
+	   
+	    
+	    
+	    
 	    request.setAttribute("board_num", new Integer(num));
 	    request.setAttribute("pageNum", new Integer(pageNum));
-	  
- /* --------------------------------권한 설정 부분-------------------------------------------------*/
-		
-	    String emp_code = (String)session.getAttribute("memId");
-		empVO = (EmployeeVO)sqlMap.queryForObject("getMemberlist", emp_code);
-		
-		System.out.println(board_emp);
-		System.out.println(emp_code);
-		
-		if(emp_code == null || (emp_code != null && !emp_code.equals(board_emp)))
-		{
-			return "/gboard/noAuth";
-		}
-			else
-		{
-		
-	/*----------------------------------------------------------------------------------------*/	
-		request.setAttribute("emp_code", emp_code);
+	    request.setAttribute("empVo", empVo);
 		request.setAttribute("board_emp", board_emp);
 	
-			System.out.println(board_emp);
-			System.out.println(emp_code);
+
 			return "/gboard/board_DeleteForm";
 		}
 		
-	}
+	
 	
 
 /*------------------------------DeletePro-----------------------------------------------------*/	
@@ -552,6 +533,32 @@ import gw.employee.EmployeeVO;
 	
 	
 /*--------------------- Board_reply(Delete)  --------------------------------------------------------------*/		
+
+	
+	@RequestMapping("reply_DeleteForm.do")
+		public String reply_DeleteForm(HttpServletRequest request, BoardVO boardVO, 
+				Board_replyVO board_replyVO, HttpSession session, EmployeeVO empVO ) throws Exception{
+		int num = Integer.parseInt(request.getParameter("board_num"));
+	    int reply_num = Integer.parseInt(request.getParameter("reply_num"));
+	    String pageNum = request.getParameter("pageNum");
+	    
+		String emp_code = (String)session.getAttribute("memId");
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+		String reply_emp = request.getParameter("emp_code");
+	
+	    
+	    
+	    request.setAttribute("pageNum", pageNum);
+		request.setAttribute("reply_num", reply_num);
+		request.setAttribute("board_num", num);
+		request.setAttribute("empVo", empVo);
+		request.setAttribute("reply_emp", reply_emp);
+	
+		
+		return "/gboard/reply_DeleteForm";
+	
+		}
+	
 	
 	@RequestMapping("reply_DeletePro.do")
 		public String reply_Delete(HttpServletRequest request, BoardVO boardVO, 
@@ -559,7 +566,7 @@ import gw.employee.EmployeeVO;
 		int num = Integer.parseInt(request.getParameter("board_num"));
 	    int reply_num = Integer.parseInt(request.getParameter("reply_num"));
 	    String pageNum = request.getParameter("pageNum");
-	    
+	  
 	
 	    
 	    
@@ -570,14 +577,14 @@ import gw.employee.EmployeeVO;
 		request.setAttribute("reply_num", reply_num);
 		request.setAttribute("board_num", num);
 
-		System.out.println(reply_num);
+	
 		
 		return "/gboard/reply_DeletePro";
 	
 		}
 	
 	
-/*--------------------- Board_reply(ModifyPro)  --------------------------------------------------------------*/			
+/*--------------------- Board_reply(ModifyForm)  --------------------------------------------------------------*/			
 	
 	
 	@RequestMapping("reply_ModifyForm.do")
@@ -587,6 +594,9 @@ import gw.employee.EmployeeVO;
 		int num = Integer.parseInt(request.getParameter("board_num"));
 	    int reply_num = Integer.parseInt(request.getParameter("reply_num"));
 	    String pageNum = request.getParameter("pageNum");
+		String emp_code = (String)session.getAttribute("memId");
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+		String reply_emp = request.getParameter("emp_code");
 	    
 	    
 	    Board_replyVO replyList =  (Board_replyVO)sqlMap.queryForObject("gboard.replySelectNum", reply_num);
@@ -597,7 +607,8 @@ import gw.employee.EmployeeVO;
 		
 		request.setAttribute("board_num", num);
 		request.setAttribute("pageNum", pageNum);
-		
+		request.setAttribute("empVo", empVo);
+		request.setAttribute("reply_emp", reply_emp);
 		
 		return "/gboard/reply_ModifyForm";
 		}

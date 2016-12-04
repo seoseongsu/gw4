@@ -26,6 +26,15 @@
 				 and emp_code != 'admin'
 		</select>
 	
+		<select id="empSelect" resultClass="gw.employee.EmployeeJoinVO" parameterClass="String">
+			select emp_code,e.dept_code,dept_name,dept_higher,e.po_code,po_name,emp_name,emp_jumin,
+				emp_birth,emp_phone,emp_email,emp_acability,emp_career,emp_join,emp_bank,emp_acnum
+ 			 from department d, employee e, position p
+			 where e.dept_code = d.dept_code
+			 and e.po_code = p.po_code
+			 and emp_code = #emp_code#
+		</select>
+	
 
 	
 	<!-- Board_Delete emp_code  -->
@@ -44,11 +53,11 @@
 	
 			<select id="boardAll" resultClass="BoardVO" parameterClass="java.util.HashMap">
 				<![CDATA[
-				select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,emp_code,emp_name
+				select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,emp_code,emp_name,category_name
 				from 
-				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,emp_code,emp_name,rownum r
+				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,emp_code,emp_name,category_name,rownum r
 				from 
-				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,emp_code,emp_name
+				(select board_num,category_code,board_subject,board_content,board_passwd,board_date,board_readcount,board_file_orgname,board_file_savname,emp_code,emp_name,category_name
 				from board order by board_num desc) 
 				order by decode(category_code,#C001#,0)  ) where r >= #start# and r <= #end#
 				]]>

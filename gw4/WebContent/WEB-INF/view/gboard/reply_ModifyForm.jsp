@@ -3,6 +3,13 @@
 
 <html>
 <head>
+	<c:if test="${empVo.emp_code != reply_emp && memId != 'admin' }">
+		<script type="text/javascript">
+			alert("수정 하실 수 없습니다.");
+			location.href='board_Content.do?board_num=${board_num}&pageNum=${pageNum}';
+		</script>
+	</c:if>
+ 
 <title>게시판</title>
 
 <form method="post" name="replyModify"  action="reply_ModifyPro.do?reply_num=${reply_num}&board_num=${board_num}&pageNum=${pageNum}">

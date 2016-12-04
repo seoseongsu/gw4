@@ -57,6 +57,8 @@
      
 	<b><center>통합 게시판</b>	
 	
+
+	
 	<table cellspacing="0" cellpadding="0" width="1000" align="center">
 		<tr>
 			<td colspan"4" align="right">
@@ -83,7 +85,8 @@
 				<tr align="center">
 			
 					<td  height="40">
-					<a href="board_Content.do?board_num=${boardList.board_num}&pageNum=${currentPage}">${boardList.board_subject}</a></td>
+					<a href="board_Content.do?board_num=${boardList.board_num}&pageNum=${currentPage}">
+						${boardList.category_name}${boardList.board_subject}</a></td>
 					<td>${boardList.emp_name}</td>
 					<td>${boardList.board_date}</td>
 					<td>${boardList.board_readcount}</td>

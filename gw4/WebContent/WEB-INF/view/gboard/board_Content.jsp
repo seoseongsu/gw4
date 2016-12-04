@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
-	
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>게시판</title>
@@ -68,7 +68,7 @@ function show(a){
 <br>
 	<form method="post" action="replyInsert.do?board_num=${boardList.board_num}&pageNum=${pageNum}" name="Board_reply">
 	
-	<input tpye="text" name="emp_code" value="${boardList.emp_code}">
+
 	<table width="800" cellspacing="0" cellpadding="0" border="1" align="center">  
 	  <tr height="30">
 	    <td align="center" width="125">조회수</td>
@@ -110,12 +110,12 @@ function show(a){
 	  			</td>
 	  			<td style="width:100" align="right">
 	  			<input type="button" value="수정" 
-	  			onclick="document.location.href='reply_ModifyForm.do?reply_num=${replyView.reply_num}&board_num=${replyView.board_num}&pageNum=${pageNum}'">
+	  			onclick="document.location.href='reply_ModifyForm.do?reply_num=${replyView.reply_num}&board_num=${replyView.board_num}&pageNum=${pageNum}&emp_code=${replyView.emp_code}'">
 	  		
 	  			
 	  			
 	  			<input type="button" value="삭제"  
-	  			onclick="document.location.href='reply_DeletePro.do?reply_num=${replyView.reply_num}&board_num=${replyView.board_num}&pageNum=${pageNum}'">
+	  			onclick="document.location.href='reply_DeleteForm.do?reply_num=${replyView.reply_num}&board_num=${replyView.board_num}&pageNum=${pageNum}&emp_code=${replyView.emp_code}'">
 	  			</td>
 	  			</tr>	
 	  	</c:forEach>
@@ -126,6 +126,7 @@ function show(a){
 	  		<c:forEach  items="${reply}" var="board_reply">
 	  		</c:forEach>
 	  		<br/>
+	  		
 	  		<input type="hidden" name="emp_code" value="${emp_code}">
 	  		<input type="hidden" name="emp_name"value="${emp_name}">
 	  		<textarea rows ="2" cols="80" name="reply_text"
