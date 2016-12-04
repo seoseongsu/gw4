@@ -96,7 +96,7 @@ $(document).ready(function(){
 								<a href="/gw4/commute/comDay.do">근태현황</a>
 								<a href="/gw4/main/calendar.do">일정관리</a>
 								<a href="/gw4/bs/bsList.do">업무관리</a>
-								<a href="/gw4/dept/deptList.do">조직도</a>
+								<a href="#" onclick="javascript:window.open('/gw4/dept/deptList.do','new','left=50, top=50, width=1000, height=700')">조직도</a>
 							</ul>
 							<ul>
 								<a href="/gw4/emp/empList.do">사원관리</a>
