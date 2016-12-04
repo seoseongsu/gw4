@@ -87,5 +87,9 @@ public class MainController{
 		session.removeAttribute("memId");
 		return "/main/logout";
 	}
+	@RequestMapping("/main/calendar.do")
+	public String calendar(HttpSession session){
+		return "/main/calendar";
+		}
 }
 
