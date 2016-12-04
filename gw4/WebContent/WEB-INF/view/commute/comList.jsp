@@ -68,7 +68,7 @@
                <a href="/gw4/fund/fundList.do">회계장부<i class="fa fa-chevron-right"></i></a>
                <a class="active" href="/gw4/commute/comList.do">근태관리<i class="fa fa-chevron-right"></i></a>         
                <a href="/gw4/product_List.do">H/W관리<i class="fa fa-chevron-right"></i></a>          
-               <a href="#">S/W관리<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/productSoft_List.do">S/W관리<i class="fa fa-chevron-right"></i></a>         
             </ul>
          </div>
          <div id="right_wrapper">
@@ -121,7 +121,6 @@
 		<th>부서</th>
 		<th>출근시각</th>
 		<th>퇴근시각</th>
-		<th>근무시간</th>
 		<th>PC IP</th>
 	</tr>
 	
@@ -133,11 +132,7 @@
 			<td>${comSearchVo.dept_name }</td>
 			<td><fmt:formatDate pattern="HH:mm" value="${comSearchVo.com_go }" /></td>
 			<td><fmt:formatDate pattern="HH:mm" value="${comSearchVo.com_off }" /></td>
-			<td>
-				<c:if test="${comSearchVo.com_off != null }">
-				시간
-				</c:if>
-			</td>
+			
 			<td>${comSearchVo.com_ip }</td>
 		</tr>
 	</c:forEach>

@@ -119,7 +119,6 @@
 		<th>부서</th>
 		<th>출근시각</th>
 		<th>퇴근시각</th>
-		<th>근무시간</th>
 		<th>PC IP</th>
 	</tr>
 	
@@ -131,11 +130,7 @@
 			<td>${comSearchVo.dept_name }</td>
 			<td><fmt:formatDate pattern="HH:mm" value="${comSearchVo.com_go }" /></td>
 			<td><fmt:formatDate pattern="HH:mm" value="${comSearchVo.com_off }" /></td>
-			<td>
-				<c:if test="${comSearchVo.com_off != null }">
-				시간
-				</c:if>
-			</td>
+			
 			<td>${comSearchVo.com_ip }</td>
 		</tr>
 	</c:forEach>
