@@ -143,7 +143,7 @@ function categorycheck(c)
 	
 		<tr>
 		<th width="100">비밀번호</th>
-		<td><input type="password" style="border: 1px solid;" size="8" maxlength="12" name="board_passwd"></td>
+		<td><input type="password" style="border: 1px solid;" size="8" maxlength="12" name="board_passwd" required></td>
 	</tr>
 		<tr>
 		<th width="100"></th>
