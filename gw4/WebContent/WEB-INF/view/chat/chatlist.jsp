@@ -6,7 +6,7 @@
 	
 	<c:if test="${sessionScope.memId == null }">
             <script> alert('로그인을 먼저 하세요');
-             location.href = "/gw4/main/main.do";
+             location.href = "/gw4/main/login.do";
               </script>          
 	</c:if>
 	
