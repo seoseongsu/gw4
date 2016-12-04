@@ -51,8 +51,7 @@
                <a href="/gw4/approval/approvalGuide.do">기안서작성<i class="fa fa-chevron-right"></i></a>   
                <a href="/gw4/approval/approvalUp.do">올린결재<i class="fa fa-chevron-right"></i></a>         
                <a class="active" href="/gw4/approval/approvalSend.do">받은결재<i class="fa fa-chevron-right"></i></a>
-               <a href="#">양식관리<i class="fa fa-chevron-right"></i></a>         
-            </ul>
+                </ul>
          </div>
          <div id="right_wrapper">
             <div id="right_path">
