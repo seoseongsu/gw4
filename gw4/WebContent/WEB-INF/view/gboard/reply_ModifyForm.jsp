@@ -11,10 +11,38 @@
 	</c:if>
  
 <title>게시판</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:left;
+	vertical-align:left;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
+</head>
+<body>
 
 <form method="post" name="replyModify"  action="reply_ModifyPro.do?reply_num=${reply_num}&board_num=${board_num}&pageNum=${pageNum}">
-<center><b>댓글 수정</b>
-<table width="800"  align="center" cellspacing="0" cellpadding="0">
+<table id="border_table"  border="1" width="800" cellspacing="0" cellpadding="0" align="left">
 	<tr>
 	<th  align="center" width="125">작성자</th> 
 	<td align="left" width="500">작성자</td>	
@@ -23,19 +51,28 @@
 	</tr>
 	<tr>
 	<th align="center" wwidth="125">내용</th>
-	<td align="left" width="500">
+	<td colspan="3" align="left" width="500">
 	<input type="text" size ="50" name="reply_text" value="${replyList.reply_text}" >
 	</td>
 	</tr>
 	<tr>
-	<td align="center" colspan="2">
-	<input type="submit" value="댓글 수정">
-	<input type="button" value="취소" 
-       onclick="javascript:history.go(-1)">
+	<td align="center" colspan="4" style="text-align:right;border-right: hidden; border-bottom: hidden; border-left: hidden;">
+	<input type="submit" class="button" value="댓글 수정" onclick="goSubmit()">
+	<input type="button" class="button" value="취소" 
+       onclick="javascript:self.close()">
 	
 	</td>
 	</tr>
 	
-	
-<table >
-</head>
+</table>
+<script type="text/javascript">
+function goSubmit() {
+    window.opener.name = "parentPage"; // 부모창의 이름 설정
+    document.replyModify.target = "parentPage"; // 타켓을 부모창으로 설정
+    document.replyModify.action = "/gw4/reply_ModifyPro.do?reply_num=${reply_num}&board_num=${board_num}&pageNum=${pageNum}";
+    document.replyModify.submit();
+    self.close();
+}
+</script>
+</body>
+</html>

@@ -6,6 +6,33 @@
 <head>
 
 <title>게시판</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:left;
+	vertical-align:left;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
@@ -40,7 +67,7 @@
             
             <div id="right_header">
                <h1>게시판</h1>
-            </div>
+            </div><br><br>
      
 <script language="javascript">
 
@@ -65,7 +92,6 @@ function categorycheck(c)
 
 
 
-<b><center>글 작성</b><br />
 <form method="post" name="writeform" action="board_WritePro.do" enctype="multipart/form-data" > 
 <input type="hidden" name="board_num" value="${board_num}">
 
@@ -74,11 +100,11 @@ function categorycheck(c)
 <input type="hidden" name="emp_code" value="${emp_code}">
 
 
-<table width="900" border ="1" align="center" cellspacing="0" cellpadding="0">
+<table id="border_table"  border="1" width="900" align="left" cellspacing="0" cellpadding="0">
 	<tr>
 		<th width ="100">카테고리</th>
 		<td>
-		<select id ="category" name="category_code"  onchange="categorycheck(this.value)">
+		<select id ="category" style="border: 1px solid;" name="category_code"  onchange="categorycheck(this.value)">
 			<option value="vacuum" >----------</option>
 			<c:forEach items="${categoryList}" var="category">
 				<option value="${category.category_code}">${category.category_name}</option>		
@@ -89,7 +115,7 @@ function categorycheck(c)
 	<tr>
 		<th width="100">제목</th>
 		<td width="600">
-			<input type="text" width="600" name="board_subject" >
+			<input type="text" style="border: 1px solid;" width="600" name="board_subject" >
 			<input type="hidden" name="category_name">
 		</td>
 	</tr>
@@ -98,7 +124,7 @@ function categorycheck(c)
 	<tr>
 		<th width="100">작성자</th>
 		<td width="600">
-			<input tpye=text name="emp_name" readonly="readonly" value="${emp_name}">
+			<input tpye=text style="border: 1px solid;" name="emp_name" readonly="readonly" value="${emp_name}">
 		</td>
 	</tr>
 	
@@ -117,7 +143,7 @@ function categorycheck(c)
 	
 		<tr>
 		<th width="100">비밀번호</th>
-		<td><input type="password" size="8" maxlength="12" name="board_passwd"></td>
+		<td><input type="password" style="border: 1px solid;" size="8" maxlength="12" name="board_passwd"></td>
 	</tr>
 		<tr>
 		<th width="100"></th>
@@ -126,10 +152,11 @@ function categorycheck(c)
 	</tr>
 	
 	<tr>
-	<td colspan="2" align="center"> 
-	  	<input type="submit" value="글쓰기" >  
-	  	<input type="reset" value="다시작성">
-	 	<input type="button" value="목록보기" OnClick="window.location='board_List.do'">
+			
+	<td colspan="2" align="center" style="text-align:right;border-right: hidden; border-bottom: hidden; border-left: hidden;"> 
+	  	<input type="submit" class="button" value="글쓰기" >  
+	  	<input type="reset" class="button" value="다시작성">
+	 	<input type="button" class="button" value="목록보기" OnClick="window.location='board_List.do'">
 	</tr>
 	</table>
 

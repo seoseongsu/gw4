@@ -9,6 +9,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <link rel="stylesheet" type="text/css" href="/gw4/css/flexslider.css">
 <link rel="stylesheet" type="text/css" href="/gw4/css/style.css">
 <script type="text/javascript" src="/gw4/js/jquery.flexslider.js"></script>
@@ -46,7 +73,10 @@
             
             <div id="right_header">
                <h1>게시판</h1>
-            </div>
+            </div><br><br>
+            
+            
+            
      <c:if test="${memId == null }">
 		<script type="text/javascript">
 			alert("로그인을 먼저 해주세요. 로그인창으로 이동합니다.");
@@ -55,14 +85,12 @@
 	</c:if>
      
      
-	<b><center>통합 게시판</b>	
-	
 
 	
-	<table cellspacing="0" cellpadding="0" width="1000" align="center">
+	<table id="border_table"  border="1" cellspacing="0" cellpadding="0" width="1000" align="left">
 		<tr>
-			<td colspan"4" align="right">
-			<select  id ="category" name="category" onchange="categoryChange(this.value)">
+			<td colspan"4" style="text-align: right;vertical-align:right;border:hidden;">
+			<select  id ="category" style="border: 1px solid;" name="category" onchange="categoryChange(this.value)">
 				<option>---------</option>
 			<c:forEach items="${categoryList}" var="category" >
 					<option value="${category.category_code}">${category.category_name}</option>		
@@ -72,7 +100,7 @@
 		</tr>
 	</table>
 	<br />
-		<table cellspacing="0" cellpadding="0" border="1"  width="1000" align="center">
+		<table id="border_table" border="1" cellspacing="0" cellpadding="0" border="1"  width="1000" align="left">
 		<tr>	
 		
 				<th  height="40" width="600">제목</th>
@@ -100,7 +128,7 @@
 		<table cellspacing="0" cellpadding="0" width="1000" align="center">
 			<tr>
 			<td colspan="4" align="right">
-				<input  type="button" value="글등록" OnClick="window.location='board_WriteForm.do'">
+				<input  type="button" class="button" value="글등록" OnClick="window.location='board_WriteForm.do'">
 			</td>
 			</tr>
 		</table>
