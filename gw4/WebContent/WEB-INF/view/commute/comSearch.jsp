@@ -61,9 +61,9 @@
             <ul>
                <a href="/gw4/my/myView.do">정보조회<i class="fa fa-chevron-right"></i></a>   
                <a class="active" href="/gw4/commute/comDay.do">근태현황<i class="fa fa-chevron-right"></i></a>
-               <a href="#">일정관리<i class="fa fa-chevron-right"></i></a>         
+               <a href="/gw4/main/calendar.do">일정관리<i class="fa fa-chevron-right"></i></a>         
                <a href="/gw4/bs/bsList.do">업무관리<i class="fa fa-chevron-right"></i></a>          
-               <a href="/gw4/dept/deptList.do">조직도<i class="fa fa-chevron-right"></i></a>       
+               <a href="#" onclick="javascript:window.open('/gw4/dept/deptList.do','new','left=50, top=50, width=1000, height=700')">조직도<i class="fa fa-chevron-right"></i></a>   
             </ul>
          </div>
          <div id="right_wrapper">
