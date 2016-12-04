@@ -4,10 +4,10 @@ import java.sql.Timestamp;
 
 public class Board_replyVO {
 
-	private int reply_num;
-	private int board_num;
-	private String emp_code;
-	private String emp_name;
+	private int reply_num; // 리플 번호
+	private int board_num; // 글 번호
+	private String emp_code; // 작성자 코드
+	private String emp_name; // 작성자 이름
 	
 	public String getEmp_code() {
 		return emp_code;

@@ -1,0 +1,89 @@
+
+
+<---------- BoardVO ---------->
+
+board_num;	 // 글 번호
+board_subject; // 글제목
+board_content; // 글 내용
+board_passwd; // 글 비밀번호
+board_date; // 글 작성시간
+board_readcount;   // 클릭수
+board_file_orgname; // 파일 오리지널 네임
+board_file_savname; // 파일 저장 이름
+MultipartFile file; 
+emp_code; // 사원번호
+emp_name; // 사원 이름
+category_code; // 카테고리 코드
+category_name; // 카테고리 네임
+
+
+
+<---------- CategoryVO ---------->
+
+category_code; // 카테고리 코드
+category_name; // 카테고리 네임
+
+
+
+<---------- Board_replyVO ---------->
+
+reply_num; // 리플 번호
+board_num; // 글 번호
+emp_code; // 작성자 코드
+emp_name; // 작성자 이름
+
+
+
+<---------- ProductVO ---------->
+
+product_num; // 장비 번호(시퀀스)
+hw_product_code; // 하드웨어 장비 코드 (시리얼 넘버)
+product_name; // 장비 이름
+product_divide; // 장비 구분 (입/출 고)
+product_note;  // 비고
+product_posesion; // 보유부서
+product_type; // 장비 종류
+product_quantity; // 총수량
+product_in;// 재고량
+product_out; // 출고량
+product_register_day; //등록날짜
+product_rona_day; // 출고 날짜
+product_return_day; // 입고 날짜
+
+
+
+
+<---------- ProductSoftVO ---------->
+
+product_num; // 장비 번호(시퀀스)
+sw_product_code; // 하드웨어 장비 코드 (시리얼 넘버)
+product_name; // 장비 이름
+product_divide; // 장비 구분 (입/출 고)
+product_note;  // 비고
+product_posesion; // 보유부서
+product_type; // 장비 종류
+product_quantity; // 총수량
+product_in;// 재고량
+product_out; // 출고량
+product_register_day; //등록날짜
+product_rona_day; // 출고 날짜
+product_return_day; // 입고 날짜
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
