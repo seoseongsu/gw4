@@ -4,6 +4,33 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <title>자금관리</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
@@ -68,7 +95,7 @@ function fundDelete(a){
             
             <div id="right_header">
                <h1>회계 장부</h1>
-            </div>
+            </div><br><br>
 
 
 	<table width="110">
@@ -76,29 +103,29 @@ function fundDelete(a){
 			<td align="center">자금수지 목록</td>
 		</tr>
 	</table>
-	<table>
+	<tableid="border_table" border="1" align="left">
 		<form method="get" action="fundDays.do" name="fundDays" onSubmit="return checkIt()">
-			<tr><input type="text" id="fund_days" name="fund_days" onclick="fnPopUpCalendar(fund_days,fund_days,'yyyy - mm - dd')"> 일정별 조회<input type="text" id="fund_day" name="fund_day" onclick="fnPopUpCalendar(fund_day,fund_day,'yyyy - mm - dd')"></tr>
-			<tr><input type="submit" value="조회하기"></tr>
+			<tr><input type="text" id="fund_days" style="border: 1px solid;" name="fund_days" onclick="fnPopUpCalendar(fund_days,fund_days,'yyyy - mm - dd')"> 일정별 조회<input type="text" style="border: 1px solid;" id="fund_day" name="fund_day" onclick="fnPopUpCalendar(fund_day,fund_day,'yyyy - mm - dd')"></tr>
+			<tr><input type="submit" class="button" value="조회하기"></tr>
 		</form>
 	</table>
-		<span style="float:right"><input type="button"  value="자금등록" onclick="window.open('/spring/fund/fundAdd.do','_self')"></span>
+		<span style="float:right"><input type="button" class="button" value="자금등록" onclick="window.open('/spring/fund/fundAdd.do','_self')"></span>
 
-	<table border="1" width="100%">
+	<table id="border_table" border="1" align="left" width="100%">
 	<form>
 		<tr>
-			<td align="center" width="50">집행일</td>
-			<td align="center" width="50">집행부서</td>
-			<td align="center" width="50">집행직급</td>
-			<td align="center" width="50">집행자</td>
-			<td align="center" width="50">구분</td>
-			<td align="center" width="80">자금항목</td>
-			<td align="center" width="120">적요</td>
-			<td align="center" width="50">거래처</td>
-			<td align="center" width="50">입금액</td>
-			<td align="center" width="50">출금액</td>
-			<td align="center" width="50">잔액</td>
-			<td align="center" width="50">비고</td>
+			<th align="center" width="50">집행일</th>
+			<th align="center" width="50">집행부서</th>
+			<th align="center" width="50">집행직급</th>
+			<th align="center" width="50">집행자</th>
+			<th align="center" width="50">구분</th>
+			<th align="center" width="80">자금항목</th>
+			<th align="center" width="120">적요</th>
+			<th align="center" width="50">거래처</th>
+			<th align="center" width="50">입금액</th>
+			<th align="center" width="50">출금액</th>
+			<th align="center" width="50">잔액</th>
+			<th align="center" width="50">비고</th>
 
 		</tr>
 			<c:forEach var="fund" items="${fundDays}">
@@ -118,8 +145,8 @@ function fundDelete(a){
 				<td align="center" width="50"><fmt:formatNumber value="${fund.fund_withdraw }" type="number"/></td>
 				<td align="center" width="50"><fmt:formatNumber value="${balance }" type="number"/></td>
 				<td align="center" width="50">				
-				<input type="button" value="수정" onclick="location='fundUpdate.do?fund_code=${fund.fund_code }'"/>
-				<input type="button" value="삭제" onclick="fundDelete(${fund.fund_code})"/>
+				<input type="button" class="buttonS" value="수정" onclick="location='fundUpdate.do?fund_code=${fund.fund_code }'"/>
+				<input type="button" class="buttonS" value="삭제" onclick="fundDelete(${fund.fund_code})"/>
 				</td>
 			</tr>
 
