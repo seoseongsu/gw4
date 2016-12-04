@@ -89,7 +89,6 @@ $(document).ready(function(){
 								<a href="/gw4/approval/approvalGuide.do">기안서작성</a>
 								<a href="/gw4/approval/approvalUp.do">올린결재</a>
 								<a href="/gw4/approval/approvalSend.do">받은결재</a>
-								<a href="#">양식관리</a>
 							</ul>
 							<ul>
 								<a href="/gw4/my/myView.do"">정보조회</a>
@@ -107,11 +106,10 @@ $(document).ready(function(){
 								<a href="/gw4/productSoft_List.do">S/W관리</a>
 							</ul>						
 							<ul>
-								<a href="#">메일</a>
 								<a href="/gw4/chat/chat.do">메신저</a>
 							</ul>
 							<ul style="border-right:1px solid #ccc;">
-								<a href="#">찾아오시는 길</a>
+								<a href="/gw4/main/map.do">찾아오시는 길</a>
 							</ul>						
 						</div><!-- End #slide_right -->
 					</div><!-- End #slide_con_nav -->

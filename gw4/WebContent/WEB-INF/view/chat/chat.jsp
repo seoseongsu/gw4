@@ -14,16 +14,16 @@
 <script src="/gw4/js/socket.io.js"></script>
 <style>
 #mainContent{
-	width: 100%;
+	width: 80%;
 	clear: both;
 	padding-top: 30px;
 }
 .textarea_size {
     resize:none;
     line-height:150%;
-    width:60%;
+    width:100%;
     overflow-y:auto;
-    height:100px;
+    height:320px;
     border:1px solid #ccc;
 }
 </style>
@@ -195,6 +195,7 @@ $(document).ready(function(){
                <h1>메신저</h1>
             </div>
             <!-- mainContent 시작 본문 내용 삽입-->
+            <br/>
             <table border="1">
 			<tr>
 				<td>
@@ -221,8 +222,3 @@ $(document).ready(function(){
 <jsp:include page="/layout/footer.jsp" />
 </body>
 </html>
-<c:if test="${sessionScope.memId == null }">
-            <script> alert('로그인을 먼저 하세요');
-             location.href = "/gw4/main/login.do";
-              </script>          
-</c:if>	

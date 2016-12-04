@@ -91,5 +91,9 @@ public class MainController{
 	public String calendar(HttpSession session){
 		return "/main/calendar";
 		}
+	@RequestMapping("/main/map.do")
+	public String map(){
+		return "/main/map";
+		}
 }
 

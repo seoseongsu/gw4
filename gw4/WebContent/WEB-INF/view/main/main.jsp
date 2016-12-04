@@ -26,20 +26,20 @@
 		<div id="bottom_con_wrapper">
 			<section style="background:url(/gw4/images/section01.jpg) 100% 98% no-repeat;">
 				<h4>ABOUT <span>COMPANY</span></h4>
-				<p>앞서가는 기술력과 노하우로<br>세계로 뻗어나가는<br>저희 회사를 소개합니다.</p>
-				<a href="#">자세히보기</a>
+				<p>방금 떠올랐던<br>아이디어들을<br>결재서로 옮기세요!</p>
+				<a href="/gw4/approval/approvalGuide.do">결재서 작성</a>
 			</section>
 			
 			<section style="background:url(/gw4/images/section02.jpg) 100% 98% no-repeat;">
 				<h4>PRODUCTS <span>INFO</span></h4>
-				<p>최고의 품질을 보증하는<br>저희 제품을 소개합니다.</p>
-				<a href="#">자세히보기</a>
+				<p>회사는 항상<br>열린 마음!<br>쌍방향 소통 좋아요!</p>
+				<a href="/gw4/board_List.do">게시판 바로가기</a>
 			</section>
 
 			<section style="background:url(/gw4/images/section03.jpg) 100% 98% no-repeat;">
 				<h4>CONTACT <span>INFO</span></h4>
 				<p>전화 : 02) 000-0000<br>팩스 : 02) 000-0000<br>E-MAIL : KH@information.com</p>
-				<a href="#">찾아오시는길</a>
+				<a href="/gw4/main/map.do">찾아오시는길</a>
 			</section>
 		</div><!-- End #bottom_con_wrapper -->
 	</div><!-- End #bottom_wrapper -->
