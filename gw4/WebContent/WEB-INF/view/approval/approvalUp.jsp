@@ -20,7 +20,7 @@ function approvalDeletePro(a){
 		</script>
 	</c:if>
 	
-	<c:if test="${memId == '7'}">
+	<c:if test="${empVo.dept_name == '대표이사' && memId != 'admin'}">
 		<script type="text/javascript">
 			alert("대표이사님은 받은결재목록으로 이동합니다.");
 			location.href='/gw4/approval/approvalSend.do';

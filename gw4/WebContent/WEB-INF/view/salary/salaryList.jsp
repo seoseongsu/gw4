@@ -77,16 +77,14 @@ function salaryDelete(a){
 		</script>
 	</c:if>
 	
-	<c:if test="${memId != '20' && memId != '7' && memId != 'admin' }">
+	<c:if test="${empVo.dept_name != '운영부' && empVo.dept_name != '총무팀' && empVo.dept_name != '대표이사' && memId != 'admin'}">
 		<script type="text/javascript">
 			alert("해당부서만 이용가능합니다. 메인으로 이동합니다.");
 			location.href='/gw4/main/main.do';
 		</script>
 	</c:if>
-	
-	<c:if test="${memId == '20' || memId == '7' || memId == 'admin' }">
 		
-
+	<c:if test="${empVo.dept_name == '운영부' || empVo.dept_name == '총무팀' || empVo.dept_name == '대표이사' || memId == 'admin'}">
 	<table width="110">
 		<tr>
 			<td align="center">급여조회</td>
@@ -154,7 +152,7 @@ function salaryDelete(a){
 			<td align="center">${salary.emp_acnum }</td>
 			<td align="center">
 			<input type="button" value="수정" onclick="location='salaryUpdate.do?salary_code=${salary.salary_code }'"/>
-			<input type="button" value="삭제" onclick="salaryDelete(${salary.salary_code})"/>
+			<input type="button" value="삭제" onclick="salaryDelete(${salary.salary_code})" />
 			</td>
 		</tr>
 		</c:forEach>

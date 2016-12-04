@@ -21,7 +21,10 @@ public class FundController{
 	public String fundList(HttpServletRequest request, HttpSession session){
 		String emp_code = (String)session.getAttribute("memId");
 		
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
 		List fundList = sqlMap.queryForList("fundList", emp_code);
+
+		request.setAttribute("empVo", empVo);
 		request.setAttribute("fundList", fundList);
 		return "/fund/fundList";
 	}
@@ -57,6 +60,7 @@ public class FundController{
 	
 	@RequestMapping("/fund/fundDeletePro.do")
 	public String fundDeletePro(HttpServletRequest request, FundVO vo){
+		
 		String fund_code = (String) request.getParameter("fund_code");
 		sqlMap.delete("fundDeletePro", fund_code);
 		return "/fund/fundDeletePro";

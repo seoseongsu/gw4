@@ -24,12 +24,11 @@ public class ApprovalController {
 	
 	@RequestMapping("/approval/approvalDining.do")
 	public String approvalDining(HttpServletRequest request, HttpSession session){
-		List empList = null;
 		
 		String emp_code = (String)session.getAttribute("memId");
 		
 		EmployeeJoinVO employeeJoinVo = (EmployeeJoinVO) sqlMap.queryForObject("approvalSelect", emp_code);
-		empList = sqlMap.queryForList("approvalSelectAll", null);
+		List empList = sqlMap.queryForList("approvalSelectAll", null);
 		
 		request.setAttribute("empList", empList);
 		request.setAttribute("employeeJoinVo", employeeJoinVo);
@@ -67,15 +66,23 @@ public class ApprovalController {
 	public String approvalSend(HttpServletRequest request, HttpSession session){
 		String emp_code = (String)session.getAttribute("memId");
 		
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
 		List approvalList = sqlMap.queryForList("approvalList", emp_code);
+		
+		request.setAttribute("empVo", empVo);
 		request.setAttribute("approvalList", approvalList);
 		
 		return "/approval/approvalSend";
 	}
 	
 	@RequestMapping("/approval/approvalUp.do")
-	public String approvalUp(HttpServletRequest request){
+	public String approvalUp(HttpServletRequest request, HttpSession session){
+		String emp_code = (String)session.getAttribute("memId");
+		
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
 		List approvalList = sqlMap.queryForList("approvalList", null);
+		
+		request.setAttribute("empVo", empVo);
 		request.setAttribute("approvalList", approvalList);
 		
 		return "/approval/approvalUp";

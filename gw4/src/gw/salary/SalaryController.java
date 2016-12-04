@@ -12,16 +12,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import gw.employee.EmployeeJoinVO;
+
 @Controller
 public class SalaryController {
 @Autowired SqlMapClientTemplate sqlMap;
 	
 	@RequestMapping("/salary/salaryList.do")
 	public String salaryList(HttpServletRequest request, HttpSession session){
-		String emp_code = (String)session.getAttribute("emp_code");
+		String emp_code = (String)session.getAttribute("memId");
 		
-		
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
 		List salaryList = sqlMap.queryForList("salarySelectList", emp_code);
+
+		request.setAttribute("empVo", empVo);
 		request.setAttribute("salaryList", salaryList);
 		return "/salary/salaryList";
 	}
