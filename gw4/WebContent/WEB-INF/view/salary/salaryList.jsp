@@ -5,6 +5,33 @@
 <html>
 <head>
 <title>급여관리</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
@@ -55,12 +82,12 @@ function checkIt(){
          </div>
          <div id="right_wrapper">
             <div id="right_path">
-               <h5><i class="fa fa-home"></i>&nbsp; > 인사관리 > 사원관리</h5>
+               <h5><i class="fa fa-home"></i>&nbsp; > 인사관리 > 급여관리</h5>
             </div>
             
             <div id="right_header">
                <h1>급여 관리</h1>
-            </div>
+            </div><br><br>
 	
 	<c:if test="${memId == null }">
 		<script type="text/javascript">
@@ -82,34 +109,34 @@ function checkIt(){
 			<td align="center">급여조회</td>
 		</tr>
 	</table>
-	<table>
+	<table id="border_table" border="1" align="left" >
 		<form method="get" action="salaryDays.do" name="salaryDays" onSubmit="return checkIt()">
-			<tr><input type="text" id="salary_days" name="salary_days" onclick="fnPopUpCalendar(salary_days,salary_days,'yyyy - mm - dd')"> 일정별 조회<input type="text" id="salary_day" name="salary_day" onclick="fnPopUpCalendar(salary_day,salary_day,'yyyy - mm - dd')"></tr>
-			<tr><input type="submit" value="조회하기"></tr>
+			<tr><input type="text" style="border: 1px solid;" id="salary_days" name="salary_days" onclick="fnPopUpCalendar(salary_days,salary_days,'yyyy - mm - dd')"> 일정별 조회<input type="text" style="border: 1px solid;" id="salary_day" name="salary_day" onclick="fnPopUpCalendar(salary_day,salary_day,'yyyy - mm - dd')"></tr>
+			<tr><input type="submit" class="button" value="조회하기"></tr>
 		</form>
 	</table>
-	<span style="float:right"><input type="button" value="급여등록" onclick="window.open('/gw4/salary/salaryAdd.do','_self')"></span>
-	<table border="1" width="100%">
+	<span style="float:right"><input type="button" class="button" value="급여등록" onclick="window.open('/gw4/salary/salaryAdd.do','_self')"></span>
+	<table id="border_table" border="1" align="left" width="100%">
 	<form>
 		<tr>
-			<td align="center">등록일자</td>
-			<td align="center">부서명</td>
-			<td align="center">직급명</td>
-			<td align="center">사원명</td>
-			<td align="center" >기본급</td>
-			<td align="center">상여금</td>
-			<td align="center">지급액</td>
-			<td align="center">국민연금</td>
-			<td align="center">건강보험</td>
-			<td align="center" >요양보험</td>
-			<td align="center">고용보험</td>
-			<td align="center">소득세</td>
-			<td align="center">주민세</td>
-			<td align="center">공제액</td>
-			<td align="center">실지급액</td>
-			<td align="center">은행</td>
-			<td align="center">계좌번호</td>
-			<td align="center">비고</td>
+			<th align="center" style="width: 30px;">등록일자</th>
+			<th align="center">부서명</th>
+			<th align="center">직급명</th>
+			<th align="center">사원명</th>
+			<th align="center">기본급</th>
+			<th align="center" style="width: 30px;">상여금</th>
+			<th align="center">지급액</th>
+			<th align="center">국민연금</th>
+			<th align="center">건강보험</th>
+			<th align="center" >요양보험</th>
+			<th align="center">고용보험</th>
+			<th align="center">소득세</th>
+			<th align="center" style="width: 30px;">주민세</th>
+			<th align="center">공제액</th>
+			<th align="center">실지급액</th>
+			<th align="center">은행</th>
+			<th align="center">계좌번호</th>
+			<th align="center">비고</th>
 		</tr>
 		<c:forEach var="salary" items="${salaryList }">
 		<tr>
@@ -143,8 +170,8 @@ function checkIt(){
 			<td align="center">${salary.emp_bank }</td>
 			<td align="center">${salary.emp_acnum }</td>
 			<td align="center">
-			<input type="button" value="수정" onclick="document.location.href='salaryUpdate.do?salary_code=${salary.salary_code}&emp_code=${salary.emp_code}'"/>
-			<input type="button" value="삭제" onclick="document.location.href='salaryDeletePro.do?salary_code=${salary.salary_code}&emp_code=${salary.emp_code}'" />
+			<input type="button" class="buttonS" value="수정" onclick="document.location.href='salaryUpdate.do?salary_code=${salary.salary_code}&emp_code=${salary.emp_code}'"/>
+			<input type="button" class="buttonS" value="삭제" onclick="document.location.href='salaryDeletePro.do?salary_code=${salary.salary_code}&emp_code=${salary.emp_code}'" />
 			</td>
 		</tr>
 		</c:forEach>
