@@ -6,6 +6,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>나의 사원 정보</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:left;
+	vertical-align:left;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+}
+</style>
 </head>
 <body>
 <jsp:include page="/layout/header.jsp" />  
@@ -40,16 +66,15 @@
             </div><br><br>
 
 
-
-  <table width="600" border="1" cellspacing="0" cellpadding="3" align="center" >
+<table id="border_table" width="400" border="1" cellspacing="0" cellpadding="3" align="center" >
   	<tr>
-  	<td colspan="2">
-  		<input type="button" value="수정" onclick="javascript:window.open('myUpdate.do?','new','left=50, top=50, width=700, height=500')">
+  	<td colspan="2" style="text-align:right;border-right: hidden; border-top: hidden; border-left: hidden;">
+  		<input type="button" class="button" value="수정" onclick="javascript:window.open('myUpdate.do?','new','left=50, top=50, width=700, height=500')">
   	</td>
   	</tr>
     <tr> 
-    <td colspan="2" height="39" align="center">
-       <font size="+1" ><b>나의 사원 정보</b></font></td>
+    <th colspan="2" height="39" align="center" style="background-color:#3e779d;">
+       <font size="+1" ><b>나의 사원 정보</b></font></th>
     </tr>
     <tr> 
       <td> 사원번호</td>
@@ -104,8 +129,6 @@
       <td>${empVo.emp_acnum }</td>
     </tr>
   </table>
-  
-  
   
   		</div>
       </div>
