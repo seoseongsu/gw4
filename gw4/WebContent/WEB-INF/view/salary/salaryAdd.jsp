@@ -4,6 +4,33 @@
 <html>
 <head>
 <title>급여등록</title>
+<link rel="stylesheet" href="/gw4/css/styleS.css">
+<style type="text/css">
+#border_table{
+	border: 1px solid #32607F;
+	margin: auto;
+	line-height: auto;
+	border-collapse: collapse;
+}
+	
+#border_table tr, #border_table td{
+	border: 1px solid #32607F;
+	text-align:left;
+	vertical-align:left;
+	padding: 1px;
+	border-collapse: collapse;
+}
+
+#border_table th{
+	border: 1px solid #32607F;
+	text-align:center;
+	vertical-align:middle;
+	padding: 1px;
+	border-collapse: collapse;
+	color: #ffffff;
+	background-color:#3e779d;
+}
+</style>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
@@ -65,12 +92,12 @@
          </div>
          <div id="right_wrapper">
             <div id="right_path">
-               <h5><i class="fa fa-home"></i>&nbsp; > 인사관리 > 사원관리</h5>
+               <h5><i class="fa fa-home"></i>&nbsp; > 인사관리 > 급여관리</h5>
             </div>
             
             <div id="right_header">
                <h1>급여 관리</h1>
-            </div>
+            </div><br><br>
 
 
 
@@ -81,23 +108,23 @@
 	</table>
 	
 	
-	<table border="1" width="100%" >
+	<table id="border_table" border="1" align="left" >
 	<form method="get" action="salaryAddPro.do" name="salaryinput" onSubmit="return checkIt()">
 		<tr>
-		<td>등록일자</td>
-		<td>부서명</td>
-		<td>직급명</td>
-		<td>사원이름</td>
-		<td>기본급</td>
-		<td>상여금</td>
+		<th>등록일자</th>
+		<th>부서명</th>
+		<th>직급명</th>
+		<th>사원이름</th>
+		<th>기본급</th>
+		<th>상여금</th>
 		</tr>
 		
 		<tr>
 			<td>
-				<input type="text" id="salary_days" name="salary_days" onclick="fnPopUpCalendar(salary_days,salary_days,'yyyy - mm - dd')">
+				<input type="text" style="border: 1px solid;" id="salary_days" name="salary_days" onclick="fnPopUpCalendar(salary_days,salary_days,'yyyy - mm - dd')">
 			</td>
 			<td>
-				<select name="dept_code">
+				<select name="dept_code" style="border: 1px solid;">
 					<c:forEach var="deptList" items="${deptList }">
 						<c:choose>
 				      		<c:when test="${deptList.dept_higher eq null}">
@@ -111,36 +138,37 @@
 				</select>
 			</td>
 			<td>
-				<select name="po_code" id="po_code">
+				<select name="po_code" id="po_code" style="border: 1px solid;">
 				<c:forEach var="poList" items="${poList }">
 					<option value="${poList.po_code }">${poList.po_name }</option>
 				</c:forEach>
 			</select>
 			</td>
 			<td>
-				<select name="emp_code">
+				<select name="emp_code" style="border: 1px solid;">
 					<c:forEach var="empList" items="${empList }">
 						<option value="${empList.emp_code }">${empList.emp_name }</option>
 					</c:forEach>
 				</select>
 			</td>
   		   <td>
- 		   <input type="text" id="salary_normal" name="salary_normal">
+ 		   <input type="text" style="border: 1px solid;" id="salary_normal" name="salary_normal">
 		   (해당직급의 기본급은 <span id="normal">0</span> 원입니다.)
 		   </td>
 		   <td>
-		   <input type="text" id="salary_bonus" name="salary_bonus">
+		   <input type="text" style="border: 1px solid;" id="salary_bonus" name="salary_bonus">
 		   </td>
 		</tr>
 	
-	</table>
 		<tr>
-			<td>
-				<span style="float:right"><input type="submit" name="confirm" value="등록">
-				<span style="float:right"><input type="button" value="취소" onclick="javascript:window.location='salaryList.do'">
+			<td colspan="6" style="text-align:right;border-right: hidden; border-bottom: hidden; border-left: hidden;">
+				<span style="float:right"><input type="submit" class="button" name="confirm" value="등록">
+				<span style="float:right"><input type="button" class="button" value="취소" onclick="javascript:window.location='salaryList.do'">
 			</td>
 		</tr>
 	</form>
+	
+	</table>
 	
 
 		</div>

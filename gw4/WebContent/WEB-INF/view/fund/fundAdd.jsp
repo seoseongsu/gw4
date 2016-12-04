@@ -108,7 +108,7 @@ function change(style){
             
             <div id="right_header">
                <h1>회계 장부</h1>
-            </div>
+            </div><br><br>
 
 
 	<table>

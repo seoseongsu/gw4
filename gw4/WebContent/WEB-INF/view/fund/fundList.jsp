@@ -117,16 +117,16 @@ function checkIt(){
 	<table id="border_table" border="1" align="left" width="100%">
 	<form>
 		<tr>
-			<th align="center" width="50">집행일</th>
+			<th align="center" width="50" style="width: 30px;">집행일</th>
 			<th align="center" width="50">집행부서</th>
 			<th align="center" width="50">집행직급</th>
 			<th align="center" width="50">집행자</th>
 			<th align="center" width="50">구분</th>
 			<th align="center" width="80">자금항목</th>
-			<th align="center" width="120">적요</th>
+			<th align="center" style="width: 30px;" width="120">적요</th>
 			<th align="center" width="50">거래처</th>
-			<th align="center" width="50">입금액</th>
-			<th align="center" width="50">출금액</th>
+			<th align="center" width="50" style="width: 30px;">입금액</th>
+			<th align="center" width="50" style="width: 30px;">출금액</th>
 			<th align="center" width="50">잔액</th>
 			<th align="center" width="50">비고</th>
 		</tr>
