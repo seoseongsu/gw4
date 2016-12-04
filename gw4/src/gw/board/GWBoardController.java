@@ -32,6 +32,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.AbstractView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import gw.employee.EmployeeJoinVO;
 import gw.employee.EmployeeVO;
 
 
@@ -63,6 +64,69 @@ import gw.employee.EmployeeVO;
 	@RequestMapping("board_List.do")
 		public String board_List(HttpServletRequest request, Iboard_categoryVO category,
 				HttpSession session, EmployeeVO empVO) throws Exception{
+			
+			String emp_code = (String)session.getAttribute("memId");
+			EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
+		
+		
+		
+	   
+			List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
+	        String category_code = request.getParameter("category_code");
+	        String pageNum = request.getParameter("pageNum");
+	        
+	        if (pageNum == null) {
+	            pageNum = "1";
+	        }
+	        int pageSize = 10;
+	        int currentPage = Integer.parseInt(pageNum);
+	        int startRow = (currentPage - 1) * pageSize + 1;
+	        int endRow = currentPage * pageSize;
+	        int count = 0;
+	        int number=0;
+	        
+	        
+	        
+	        List boardList = null;
+	        HashMap map = new HashMap();
+        	map.put("start", startRow);
+		    map.put("end", endRow);
+		    map.put("C001", "C001");
+	        if (category_code == null) {
+	        	count = (Integer)sqlMap.queryForObject("gboard.boardCount", null);
+		        if (count > 0) {
+		        	boardList = sqlMap.queryForList("gboard.boardAll", map);
+		        } else {
+		        	boardList = Collections.EMPTY_LIST;
+		        }
+	        } else {
+	        	map.put("category_code",category_code);
+	        	boardList = sqlMap.queryForList("gboard.boardOnchage", map);
+	        }
+	       
+			number=count-(currentPage-1)*pageSize;
+	        request.setAttribute("currentPage", new Integer(currentPage));
+	        request.setAttribute("startRow", new Integer(startRow));
+	        request.setAttribute("endRow", new Integer(endRow));
+	        request.setAttribute("count", new Integer(count));
+	        request.setAttribute("pageSize", new Integer(pageSize));
+			request.setAttribute("number", new Integer(number));
+	
+			request.setAttribute("categoryList", categoryList);  
+			request.setAttribute("boardList", boardList);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("category_code", category_code);
+			request.setAttribute("emp_code", emp_code);
+			
+		
+			return "/gboard/board_List";
+		}
+
+/*
+ @RequestMapping("board_List.do")
+		public String board_List(HttpServletRequest request, Iboard_categoryVO category,
+				HttpSession session, EmployeeVO empVO) throws Exception{
+		
 			String emp_code = request.getParameter("emp_code");
 			String emp_passwd =request.getParameter("emp_passwd");
 			
@@ -119,8 +183,7 @@ import gw.employee.EmployeeVO;
 			
 			return "/gboard/board_List";
 		}
-
-
+*/
 
 /*---------------------------- WriteForm -------------------------------------------------------*/	
 
@@ -366,6 +429,9 @@ import gw.employee.EmployeeVO;
 	
 	@RequestMapping("board_ModifyForm.do")
 		public String board_ModifyForm(HttpServletRequest request, HttpSession session, EmployeeVO empVO)throws Exception{
+		String board_emp = request.getParameter("emp_code");
+		String emp_code = (String)session.getAttribute("memId");
+		EmployeeJoinVO empVo = (EmployeeJoinVO) sqlMap.queryForObject("emp.empSelect", emp_code);
 		
 		
 			int num = Integer.parseInt(request.getParameter("board_num"));
@@ -375,11 +441,13 @@ import gw.employee.EmployeeVO;
 		    
 		    Iboard_categoryVO category = new Iboard_categoryVO();
 			List categoryList = sqlMap.queryForList("gboard.categorySelect", category);
-		    request.setAttribute("categoryList", categoryList);
+		    
+			request.setAttribute("empVo", empVo);
+			request.setAttribute("categoryList", categoryList);
 		    request.setAttribute("pageNum", pageNum);
 		    request.setAttribute("boardList", boardList);
 		    request.setAttribute("board_num", num);
-		
+		    request.setAttribute("board_emp", board_emp);
 		
 		
 		

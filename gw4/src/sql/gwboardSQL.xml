@@ -7,16 +7,25 @@
 	<typeAlias alias="BcommentVO" type="gw.board.BcommentVO"/>
 	<typeAlias alias="Board_replyVO" type="gw.board.Board_replyVO"/>
 	<typeAlias alias="empVO" type="gw.employee.EmployeeVO"/>
-
-	<select id="userCheck" resultClass="int" parameterClass="java.util.HashMap">
-		select count(*) from employee where	emp_code = #emp_code# and emp_passwd = #emp_passwd#
-	</select>
-	<select id="getMemberlist" resultClass="empVO" parameterClass="String">
-		select * from employee where emp_code = #emp_code#
-	</select>
-	<select id="nameCheck" resultClass="string" parameterClass="string">
-		select emp_name from employee where emp_code = #emp_code# 
-	</select>
+	
+		<select id="userCheck" resultClass="int" parameterClass="java.util.HashMap">
+			select count(*) from employee where	emp_code = #emp_code# and emp_passwd = #emp_passwd#
+		</select>
+		<select id="getMemberlist" resultClass="empVO" parameterClass="String">
+			select * from employee where emp_code = #emp_code#
+		</select>
+		<select id="nameCheck" resultClass="string" parameterClass="string">
+			select emp_name from employee where emp_code = #emp_code# 
+		</select>
+		<select id="empSelectList" resultClass="gw.employee.EmployeeJoinVO">
+				select emp_code,e.dept_code,dept_name,dept_higher,e.po_code,po_name,emp_name,emp_jumin,
+					emp_birth,emp_phone,emp_email,emp_acability,emp_career,emp_join,emp_bank,emp_acnum
+	 			 from department d, employee e, position p
+				 where e.dept_code = d.dept_code
+				 and e.po_code = p.po_code
+				 and emp_code != 'admin'
+		</select>
+	
 
 	
 	<!-- Board_Delete emp_code  -->
@@ -105,7 +114,7 @@
 	<!-- board_ModifyPro 글 수정 -->
 	
 			<update id="boardModify" parameterClass="boardVO">
-				update board set board_num=#board_num#,category_code=#category_code#,board_subject=#board_subject#,board_passwd=#board_passwd#,board_content=#board_content# where board_num=#board_num#
+				update board set board_num=#board_num#,category_code=#category_code#,board_subject=#board_subject#,board_passwd=#board_passwd#,board_content=#board_content#,category_name=#category_name# where board_num=#board_num#
 			</update>
 
 

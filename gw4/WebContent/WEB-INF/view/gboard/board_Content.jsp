@@ -78,7 +78,7 @@ function show(a){
 	  </tr>
 	  <tr height="30" >
 	    <td align="center" width="125" >작성자</td>
-	    <td align="left" width="375" align="center" colspan="3">작성자</td>
+	    <td align="left" width="375" align="center" colspan="3">${boardList.emp_name}</td>
 	  </tr>
 	  <tr height="30">
 	    <td align="center" width="125" >글제목</td>

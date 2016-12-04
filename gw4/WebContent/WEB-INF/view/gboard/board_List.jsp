@@ -47,7 +47,12 @@
             <div id="right_header">
                <h1>게시판</h1>
             </div>
-     
+     <c:if test="${memId == null }">
+		<script type="text/javascript">
+			alert("로그인을 먼저 해주세요. 로그인창으로 이동합니다.");
+			location.href='/gw4/main/login.do';
+		</script>
+	</c:if>
      
      
 	<b><center>통합 게시판</b>	

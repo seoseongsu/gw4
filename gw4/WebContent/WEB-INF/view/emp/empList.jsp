@@ -86,7 +86,7 @@ function deleteEvent(a){
     <c:if test="${count == 0 }">
 	<table id="border_table">
 		<tr>
-			<td>
+			<td>	
 				등록된 사원 정보가 없습니다.
 			</td>
 		</tr>
