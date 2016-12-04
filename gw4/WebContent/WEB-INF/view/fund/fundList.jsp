@@ -25,15 +25,6 @@ function checkIt(){
 	}
 }
 </script>
-<script>
-function fundDelete(a){
-	if(confirm("정말 삭제하시겠습니까??")==true){
-		location.href="fundDeletePro.do?fund_code="+a
-	}else{
-		return;
-	}
-}
-</script>
 
 
 <body>
@@ -129,8 +120,8 @@ function fundDelete(a){
 				<td align="center" width="50"><fmt:formatNumber value="${fund.fund_withdraw }" type="number"/></td>
 				<td align="center" width="50"><fmt:formatNumber value="${balance }" type="number"/></td>
 				<td align="center" width="50">
-				<input type="button" value="수정" onclick="location='fundUpdate.do?fund_code=${fund.fund_code }'"/>
-				<input type="button" value="삭제" onclick="fundDelete(${fund.fund_code})"/>
+				<input type="button" value="수정" onclick="document.location.href='fundUpdate.do?fund_code=${fund.fund_code }&emp_code=${fund.emp_code }'"/>
+				<input type="button" value="삭제" onclick="document.location.href='fundDeletePro.do?fund_code=${fund.fund_code}&emp_code=${fund.emp_code}'"/>
 				</td>
 			</tr>
 

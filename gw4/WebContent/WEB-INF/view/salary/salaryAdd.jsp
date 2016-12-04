@@ -26,18 +26,6 @@
 		}
 	}
 </script>
-<script>
-$(function(){
-	$("#salary_days").datepicker({
-		dateFormat: 'yy - mm - dd',
-		monthNamesShort: ['1월', '2월','3월', '4월','5월', '6월','7월', '8월','9월', '10월','11월', '12월'],
-		dayNameMin: ['일','월','화','수','목','금','토'],
-		changeMonth: true,	//월변경가능
-		changeYear: true,	//일변경가능
-		showMonthAfterYear: true	//년 뒤에 월표시
-	});
-});
-</script>
 <script type="text/javascript">
 	window.onload=function(){
 		document.getElementById("po_code").onchange=function(){
@@ -50,7 +38,6 @@ $(function(){
 		return array[jid];
 	}
 </script>
-</head>
 
 <body>
 <jsp:include page="/layout/header.jsp" />  

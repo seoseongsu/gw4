@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import gw.employee.EmployeeJoinVO;
+import gw.employee.EmployeeVO;
 
 @Controller
 public class FundController{
@@ -59,21 +60,37 @@ public class FundController{
 	}
 	
 	@RequestMapping("/fund/fundDeletePro.do")
-	public String fundDeletePro(HttpServletRequest request, FundVO vo){
+	public String fundDeletePro(HttpServletRequest request,HttpSession session, FundVO vo){
+		String fund_emp = request.getParameter("emp_code");
+		String emp_code = (String)session.getAttribute("memId");
 		
-		String fund_code = (String) request.getParameter("fund_code");
-		sqlMap.delete("fundDeletePro", fund_code);
-		return "/fund/fundDeletePro";
+		EmployeeVO empVo = (EmployeeVO)sqlMap.queryForObject("fundMemberList", emp_code);
+		if(emp_code == null || (emp_code != null && !emp_code.equals(fund_emp)))
+		{
+			return "/fund/fundNoAuth";
+		}else{
+			String fund_code = (String) request.getParameter("fund_code");
+			sqlMap.delete("fundDeletePro", fund_code);
+			return "/fund/fundDeletePro";
+		}
 	}
 	
 	@RequestMapping("/fund/fundUpdate.do")
-	public String fundUpdate(HttpServletRequest request){
-		String fund_code = (String) request.getParameter("fund_code");
+	public String fundUpdate(HttpServletRequest request, HttpSession session){
+		String fund_emp = request.getParameter("emp_code");
+		String emp_code = (String)session.getAttribute("memId");
 		
-		FundJoinVO fundJoinVo = (FundJoinVO) sqlMap.queryForObject("fundSelectUpdate", fund_code);
-		request.setAttribute("fundJoinVo", fundJoinVo);
+		EmployeeVO empVo = (EmployeeVO)sqlMap.queryForObject("fundMemberList", emp_code);
+		if(emp_code == null || (emp_code != null && !emp_code.equals(fund_emp)))
+		{
+			return "/fund/fundNoAuth";
+		}else{
+			String fund_code = (String) request.getParameter("fund_code");
+			FundJoinVO fundJoinVo = (FundJoinVO) sqlMap.queryForObject("fundSelectUpdate", fund_code);
+			request.setAttribute("fundJoinVo", fundJoinVo);
 		
 		return "/fund/fundUpdate";
+		}
 	}
 	
 	@RequestMapping("/fund/fundUpdatePro.do")

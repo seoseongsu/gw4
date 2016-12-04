@@ -63,4 +63,8 @@
 			and f.emp_code = e.emp_code
 			and fund_days >= #fund_days# and fund_days <= #fund_day#]]>
 	</select>
+	
+	<select id="fundMemberList" resultClass="empVO" parameterClass="String">
+			select * from employee where emp_code = #emp_code#
+	</select>
 </sqlMap>

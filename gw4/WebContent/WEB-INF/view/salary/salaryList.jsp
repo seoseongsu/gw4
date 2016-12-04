@@ -27,15 +27,7 @@ function checkIt(){
 	}
 }
 </script>
-<script>
-function salaryDelete(a){
-	if(confirm("정말 삭제하시겠습니까??")==true){
-		location.href="salaryDeletePro.do?salary_code="+a
-	}else{
-		return;
-	}
-}
-</script>
+
 </head>
 <body>
 <jsp:include page="/layout/header.jsp" />  
@@ -151,8 +143,8 @@ function salaryDelete(a){
 			<td align="center">${salary.emp_bank }</td>
 			<td align="center">${salary.emp_acnum }</td>
 			<td align="center">
-			<input type="button" value="수정" onclick="location='salaryUpdate.do?salary_code=${salary.salary_code }'"/>
-			<input type="button" value="삭제" onclick="salaryDelete(${salary.salary_code})" />
+			<input type="button" value="수정" onclick="document.location.href='salaryUpdate.do?salary_code=${salary.salary_code}&emp_code=${salary.emp_code}'"/>
+			<input type="button" value="삭제" onclick="document.location.href='salaryDeletePro.do?salary_code=${salary.salary_code}&emp_code=${salary.emp_code}'" />
 			</td>
 		</tr>
 		</c:forEach>
