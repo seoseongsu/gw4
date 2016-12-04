@@ -6,8 +6,11 @@ public class Board_replyVO {
 
 	private int reply_num; // 리플 번호
 	private int board_num; // 글 번호
+	private String reply_text; // 댓글 내용
+	private String pageNum; // 페이지 번호
 	private String emp_code; // 작성자 코드
 	private String emp_name; // 작성자 이름
+	
 	
 	public String getEmp_code() {
 		return emp_code;
@@ -21,11 +24,7 @@ public class Board_replyVO {
 	public void setEmp_name(String emp_name) {
 		this.emp_name = emp_name;
 	}
-	private String reply_text;
-	private String pageNum;
 
-	
-	
 	public String getPageNum() {
 		return pageNum;
 	}

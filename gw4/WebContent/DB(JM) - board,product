@@ -3,6 +3,7 @@
 <---------- BoardVO ---------->
 
 board_num;	 // 글 번호
+category_code; // 카테고리 코드
 board_subject; // 글제목
 board_content; // 글 내용
 board_passwd; // 글 비밀번호
@@ -10,11 +11,9 @@ board_date; // 글 작성시간
 board_readcount;   // 클릭수
 board_file_orgname; // 파일 오리지널 네임
 board_file_savname; // 파일 저장 이름
-MultipartFile file; 
+category_name // 카테고리 네임
 emp_code; // 사원번호
 emp_name; // 사원 이름
-category_code; // 카테고리 코드
-category_name; // 카테고리 네임
 
 
 
@@ -29,6 +28,8 @@ category_name; // 카테고리 네임
 
 reply_num; // 리플 번호
 board_num; // 글 번호
+reply_text // 댓글 내용
+pageNum // 페이지 번호
 emp_code; // 작성자 코드
 emp_name; // 작성자 이름
 
@@ -74,17 +75,6 @@ product_return_day; // 입고 날짜
 <---------- 테이블 정의서 ---------->
 
 
-카테고리(게시판)
-
-create table Ibaord_category
-(
-	category_code varchar2(100) primary key,
-	category_name varchar2(100) 
-
-);
-
-
-
 
 
 사내게시판
@@ -98,8 +88,25 @@ create table BOARD
 	BOARD_DATE DATE,
 	BOARD_READCOUNT NUMBER,
 	BOARD_FILE_ORGNAME VARCHAR2(100),
-	BOARD_FILE_SAVNAME VARCHAR2(100)
+	BOARD_FILE_SAVNAME VARCHAR2(100),
+	CATEGORY_NAME VARCHAR2(100),
+	EMP_CODE VARCHAR2(100),
+	EMP_NAME VARCHAR2(100)
 );
+
+
+
+카테고리(게시판)
+
+create table Iboard_category
+(
+	category_code varchar2(100) primary key,
+	category_name varchar2(100) 
+
+);
+
+
+
 
 
 게시판 댓글
@@ -108,9 +115,11 @@ create table board_reply
 (
     reply_num number primary key,
     board_num number,
-    reply_text varchar2(1000),
-    reply_date date 
-    
+    REPLY_DATE DATE,
+    REPLY_TEXT CLOB,
+    PAGENUM VARCHAR2(100),
+    EMP_CODE VARCHAR2(100),
+    EMP_NAME VARCHAR2(100)
 );
 
 
