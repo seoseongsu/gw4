@@ -14,7 +14,7 @@
 <body>
   <div class="wrapper">
 	<div class="container">
-		<h1>환영합니다</h1>
+		<h1>EYTime</h1>
 		<form class="form" method="post" action="/gw4/main/loginPro.do">
 			<input type="text" name="emp_code" placeholder="사원코드">
 			<input type="password" name="emp_passwd" placeholder="패스워드">
