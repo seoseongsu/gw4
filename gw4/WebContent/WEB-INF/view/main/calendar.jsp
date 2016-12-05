@@ -571,7 +571,7 @@ $(document).ready(function(){
 			Date: <input type="text" id="dateSelect" size="20"/>
 			&nbsp;&nbsp;&nbsp;
 			<button id="BtnDeleteAll">전체 삭제</button>
-			<button id="BtnICalTest">메인으로 돌아가기</button>
+			<button id="BtnICalTest">이전으로 돌아가기</button>
 		</div>
 
 		<br>

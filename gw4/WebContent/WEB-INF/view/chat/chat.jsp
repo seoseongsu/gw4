@@ -31,7 +31,7 @@
 
 var xmlHttp;
 	$(document).ready(function() {
-		var socket = io.connect("http://192.168.0.2:12345");  //서버연결 (서버연결한 ip를 적는다)
+		var socket = io.connect("http://192.168.10.110:12345");  //서버연결 (서버연결한 ip를 적는다)
 		
 		socket.on('in',function(inmsg){
 			
@@ -203,7 +203,7 @@ $(document).ready(function(){
 					<input type="hidden" name="userin" value="${list.emp_name}"/>
 					<input type="hidden" name="userout" value="${list.emp_name}"/>
 					<input type="text" name="uesrid" id="id" size="7"   readonly="readonly"  value="${sessionScope.emp_name}" onkeydown="chkEnter()"/>
-					<input type="text"  name="chat" id="chat"  value="" onkeydown="chkEnter()" onfocus="sa();"/>
+					<input type="text"  name="chat" style="border: 1px solid;" id="chat"  value="" onkeydown="chkEnter()" onfocus="sa();"/>
 					<input type="button"  class="button" value="전송" id="sendBtn" />
 					<input type="button"  class="button" id="exitBtn"  value="채팅방 나가기" onclick="javascript:window.location='/gw4/chat/chatExit.do'"/><br>		
 				</td>
